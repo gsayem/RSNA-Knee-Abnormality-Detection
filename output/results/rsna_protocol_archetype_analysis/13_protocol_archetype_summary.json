@@ -1,0 +1,160 @@
+{
+    "dataset": {
+        "train_studies": 4407,
+        "gold_labeled_studies": 58,
+        "series": 336
+    },
+    "protocol_archetypes": [
+        {
+            "ProtocolArchetype": "CORE_4_PLUS_CORONAL_NONFLUID",
+            "ProtocolArchetypeDescription": "Core 4 + Coronal non-fluid/non-FS",
+            "StudyCount": 31,
+            "MeanSeries": 5.645161290322581,
+            "MedianSeries": 5.0,
+            "MeanSlices": 175.25806451612902,
+            "MedianSlices": 166.0,
+            "Manufacturers": "GE|Philips|Siemens",
+            "FieldStrengths": "1.5|3.0",
+            "StudyPercentage": 53.44827586206896
+        },
+        {
+            "ProtocolArchetype": "CORE_4_ONLY",
+            "ProtocolArchetypeDescription": "Core 4 acquisitions only",
+            "StudyCount": 11,
+            "MeanSeries": 4.545454545454546,
+            "MedianSeries": 5.0,
+            "MeanSlices": 118.0909090909091,
+            "MedianSlices": 114.0,
+            "Manufacturers": "GE|Philips|Siemens|Toshiba",
+            "FieldStrengths": "1.5|3.0|Unknown",
+            "StudyPercentage": 18.96551724137931
+        },
+        {
+            "ProtocolArchetype": "CORE_4_PLUS_BOTH_OPTIONAL",
+            "ProtocolArchetypeDescription": "Core 4 + both optional acquisitions",
+            "StudyCount": 11,
+            "MeanSeries": 8.090909090909092,
+            "MedianSeries": 8.0,
+            "MeanSlices": 239.54545454545453,
+            "MedianSlices": 239.0,
+            "Manufacturers": "Canon|GE|Philips|Siemens",
+            "FieldStrengths": "1.5|3.0",
+            "StudyPercentage": 18.96551724137931
+        },
+        {
+            "ProtocolArchetype": "INCOMPLETE_CORE_3",
+            "ProtocolArchetypeDescription": "Missing 1 core acquisition",
+            "StudyCount": 5,
+            "MeanSeries": 4.4,
+            "MedianSeries": 4.0,
+            "MeanSlices": 232.2,
+            "MedianSlices": 276.0,
+            "Manufacturers": "Philips|Siemens",
+            "FieldStrengths": "1.5|3.0",
+            "StudyPercentage": 8.620689655172415
+        }
+    ],
+    "acquisition_patterns": [
+        {
+            "AcquisitionPattern": "1-1-1-1-1-0",
+            "StudyCount": 31,
+            "StudyPercentage": 53.44827586206896
+        },
+        {
+            "AcquisitionPattern": "1-1-1-1-0-0",
+            "StudyCount": 11,
+            "StudyPercentage": 18.96551724137931
+        },
+        {
+            "AcquisitionPattern": "1-1-1-1-1-1",
+            "StudyCount": 11,
+            "StudyPercentage": 18.96551724137931
+        },
+        {
+            "AcquisitionPattern": "1-1-0-1-1-0",
+            "StudyCount": 2,
+            "StudyPercentage": 3.4482758620689653
+        },
+        {
+            "AcquisitionPattern": "1-1-1-0-0-1",
+            "StudyCount": 2,
+            "StudyPercentage": 3.4482758620689653
+        },
+        {
+            "AcquisitionPattern": "1-0-1-1-1-0",
+            "StudyCount": 1,
+            "StudyPercentage": 1.7241379310344827
+        }
+    ],
+    "protocol_scanner_associations": [
+        {
+            "Analysis": "Protocol_vs_ManufacturerFamily",
+            "Rows": 4,
+            "Columns": 5,
+            "CramersV": 0.2704812752562104,
+            "ChiSquare": 24.27039456145028,
+            "ChiSquarePValue": 0.018684872112478025,
+            "ExpectedCellsBelow5Pct": 85.0
+        },
+        {
+            "Analysis": "Protocol_vs_FieldStrength",
+            "Rows": 4,
+            "Columns": 3,
+            "CramersV": 0.4700980171030589,
+            "ChiSquare": 30.840875253778478,
+            "ChiSquarePValue": 2.7185430242195062e-05,
+            "ExpectedCellsBelow5Pct": 83.33333333333334
+        },
+        {
+            "Analysis": "Protocol_vs_ScannerModel",
+            "Rows": 4,
+            "Columns": 23,
+            "CramersV": 0.5350906478119055,
+            "ChiSquare": 114.35581622678396,
+            "ChiSquarePValue": 0.00020736863439093606,
+            "ExpectedCellsBelow5Pct": 98.91304347826086
+        }
+    ],
+    "optional_scanner_associations": [
+        {
+            "AcquisitionFeature": "Has_Coronal_NonFluid_NonFS",
+            "CramersV": 0.23289824332010697,
+            "ChiSquare": 7.1609945609945616,
+            "ChiSquarePValue": 0.12762108079341125,
+            "ExpectedCellsBelow5Pct": 70.0
+        },
+        {
+            "AcquisitionFeature": "Has_Axial_NonFluid_NonFS",
+            "CramersV": 0.18793586258319206,
+            "ChiSquare": 6.082789432789433,
+            "ChiSquarePValue": 0.1930502314870769,
+            "ExpectedCellsBelow5Pct": 70.0
+        }
+    ],
+    "manufacturer_distribution": {
+        "Siemens": 22,
+        "Philips": 18,
+        "GE": 16,
+        "Toshiba": 1,
+        "Canon": 1
+    },
+    "field_strength_distribution": {
+        "1.5": 26,
+        "3.0": 26,
+        "Unknown": 6
+    },
+    "label_prevalence": {
+        "ACL": 24,
+        "MCL": 9,
+        "Medial Meniscus": 26,
+        "Lateral Meniscus": 23,
+        "Medial OA": 15,
+        "Lateral OA": 11,
+        "PF OA": 21,
+        "Effusion": 35,
+        "Synovitis": 27,
+        "Baker's": 12,
+        "Contusion": 19,
+        "Fracture": 18
+    }
+}

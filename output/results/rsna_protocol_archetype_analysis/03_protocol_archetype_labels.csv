@@ -1,0 +1,49 @@
+ProtocolArchetype,ProtocolArchetypeDescription,StudyCount,Label,PositiveCount,Prevalence
+CORE_4_ONLY,Core 4 acquisitions only,11,ACL,5,0.45454545454545453
+CORE_4_ONLY,Core 4 acquisitions only,11,MCL,2,0.18181818181818182
+CORE_4_ONLY,Core 4 acquisitions only,11,Medial Meniscus,3,0.2727272727272727
+CORE_4_ONLY,Core 4 acquisitions only,11,Lateral Meniscus,4,0.36363636363636365
+CORE_4_ONLY,Core 4 acquisitions only,11,Medial OA,0,0.0
+CORE_4_ONLY,Core 4 acquisitions only,11,Lateral OA,1,0.09090909090909091
+CORE_4_ONLY,Core 4 acquisitions only,11,PF OA,2,0.18181818181818182
+CORE_4_ONLY,Core 4 acquisitions only,11,Effusion,6,0.5454545454545454
+CORE_4_ONLY,Core 4 acquisitions only,11,Synovitis,2,0.18181818181818182
+CORE_4_ONLY,Core 4 acquisitions only,11,Baker's,2,0.18181818181818182
+CORE_4_ONLY,Core 4 acquisitions only,11,Contusion,6,0.5454545454545454
+CORE_4_ONLY,Core 4 acquisitions only,11,Fracture,5,0.45454545454545453
+CORE_4_PLUS_BOTH_OPTIONAL,Core 4 + both optional acquisitions,11,ACL,4,0.36363636363636365
+CORE_4_PLUS_BOTH_OPTIONAL,Core 4 + both optional acquisitions,11,MCL,1,0.09090909090909091
+CORE_4_PLUS_BOTH_OPTIONAL,Core 4 + both optional acquisitions,11,Medial Meniscus,6,0.5454545454545454
+CORE_4_PLUS_BOTH_OPTIONAL,Core 4 + both optional acquisitions,11,Lateral Meniscus,5,0.45454545454545453
+CORE_4_PLUS_BOTH_OPTIONAL,Core 4 + both optional acquisitions,11,Medial OA,4,0.36363636363636365
+CORE_4_PLUS_BOTH_OPTIONAL,Core 4 + both optional acquisitions,11,Lateral OA,3,0.2727272727272727
+CORE_4_PLUS_BOTH_OPTIONAL,Core 4 + both optional acquisitions,11,PF OA,4,0.36363636363636365
+CORE_4_PLUS_BOTH_OPTIONAL,Core 4 + both optional acquisitions,11,Effusion,6,0.5454545454545454
+CORE_4_PLUS_BOTH_OPTIONAL,Core 4 + both optional acquisitions,11,Synovitis,6,0.5454545454545454
+CORE_4_PLUS_BOTH_OPTIONAL,Core 4 + both optional acquisitions,11,Baker's,2,0.18181818181818182
+CORE_4_PLUS_BOTH_OPTIONAL,Core 4 + both optional acquisitions,11,Contusion,3,0.2727272727272727
+CORE_4_PLUS_BOTH_OPTIONAL,Core 4 + both optional acquisitions,11,Fracture,1,0.09090909090909091
+CORE_4_PLUS_CORONAL_NONFLUID,Core 4 + Coronal non-fluid/non-FS,31,ACL,12,0.3870967741935484
+CORE_4_PLUS_CORONAL_NONFLUID,Core 4 + Coronal non-fluid/non-FS,31,MCL,5,0.16129032258064516
+CORE_4_PLUS_CORONAL_NONFLUID,Core 4 + Coronal non-fluid/non-FS,31,Medial Meniscus,13,0.41935483870967744
+CORE_4_PLUS_CORONAL_NONFLUID,Core 4 + Coronal non-fluid/non-FS,31,Lateral Meniscus,13,0.41935483870967744
+CORE_4_PLUS_CORONAL_NONFLUID,Core 4 + Coronal non-fluid/non-FS,31,Medial OA,10,0.3225806451612903
+CORE_4_PLUS_CORONAL_NONFLUID,Core 4 + Coronal non-fluid/non-FS,31,Lateral OA,6,0.1935483870967742
+CORE_4_PLUS_CORONAL_NONFLUID,Core 4 + Coronal non-fluid/non-FS,31,PF OA,14,0.45161290322580644
+CORE_4_PLUS_CORONAL_NONFLUID,Core 4 + Coronal non-fluid/non-FS,31,Effusion,19,0.6129032258064516
+CORE_4_PLUS_CORONAL_NONFLUID,Core 4 + Coronal non-fluid/non-FS,31,Synovitis,15,0.4838709677419355
+CORE_4_PLUS_CORONAL_NONFLUID,Core 4 + Coronal non-fluid/non-FS,31,Baker's,7,0.22580645161290322
+CORE_4_PLUS_CORONAL_NONFLUID,Core 4 + Coronal non-fluid/non-FS,31,Contusion,8,0.25806451612903225
+CORE_4_PLUS_CORONAL_NONFLUID,Core 4 + Coronal non-fluid/non-FS,31,Fracture,10,0.3225806451612903
+INCOMPLETE_CORE_3,Missing 1 core acquisition,5,ACL,3,0.6
+INCOMPLETE_CORE_3,Missing 1 core acquisition,5,MCL,1,0.2
+INCOMPLETE_CORE_3,Missing 1 core acquisition,5,Medial Meniscus,4,0.8
+INCOMPLETE_CORE_3,Missing 1 core acquisition,5,Lateral Meniscus,1,0.2
+INCOMPLETE_CORE_3,Missing 1 core acquisition,5,Medial OA,1,0.2
+INCOMPLETE_CORE_3,Missing 1 core acquisition,5,Lateral OA,1,0.2
+INCOMPLETE_CORE_3,Missing 1 core acquisition,5,PF OA,1,0.2
+INCOMPLETE_CORE_3,Missing 1 core acquisition,5,Effusion,4,0.8
+INCOMPLETE_CORE_3,Missing 1 core acquisition,5,Synovitis,4,0.8
+INCOMPLETE_CORE_3,Missing 1 core acquisition,5,Baker's,1,0.2
+INCOMPLETE_CORE_3,Missing 1 core acquisition,5,Contusion,2,0.4
+INCOMPLETE_CORE_3,Missing 1 core acquisition,5,Fracture,2,0.4

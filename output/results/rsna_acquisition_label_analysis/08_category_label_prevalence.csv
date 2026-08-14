@@ -1,0 +1,73 @@
+AcquisitionCategory,Label,StudiesWithCategory,PositiveStudies,Prevalence
+Axial_Fluid_FS,ACL,58,24,0.41379310344827586
+Axial_Fluid_FS,MCL,58,9,0.15517241379310345
+Axial_Fluid_FS,Medial Meniscus,58,26,0.4482758620689655
+Axial_Fluid_FS,Lateral Meniscus,58,23,0.39655172413793105
+Axial_Fluid_FS,Medial OA,58,15,0.25862068965517243
+Axial_Fluid_FS,Lateral OA,58,11,0.1896551724137931
+Axial_Fluid_FS,PF OA,58,21,0.3620689655172414
+Axial_Fluid_FS,Effusion,58,35,0.603448275862069
+Axial_Fluid_FS,Synovitis,58,27,0.46551724137931033
+Axial_Fluid_FS,Baker's,58,12,0.20689655172413793
+Axial_Fluid_FS,Contusion,58,19,0.3275862068965517
+Axial_Fluid_FS,Fracture,58,18,0.3103448275862069
+Sagittal_NonFluid_NonFS,ACL,57,24,0.42105263157894735
+Sagittal_NonFluid_NonFS,MCL,57,9,0.15789473684210525
+Sagittal_NonFluid_NonFS,Medial Meniscus,57,25,0.43859649122807015
+Sagittal_NonFluid_NonFS,Lateral Meniscus,57,22,0.38596491228070173
+Sagittal_NonFluid_NonFS,Medial OA,57,14,0.24561403508771928
+Sagittal_NonFluid_NonFS,Lateral OA,57,11,0.19298245614035087
+Sagittal_NonFluid_NonFS,PF OA,57,21,0.3684210526315789
+Sagittal_NonFluid_NonFS,Effusion,57,34,0.5964912280701754
+Sagittal_NonFluid_NonFS,Synovitis,57,26,0.45614035087719296
+Sagittal_NonFluid_NonFS,Baker's,57,12,0.21052631578947367
+Sagittal_NonFluid_NonFS,Contusion,57,19,0.3333333333333333
+Sagittal_NonFluid_NonFS,Fracture,57,18,0.3157894736842105
+Coronal_Fluid_FS,ACL,56,22,0.39285714285714285
+Coronal_Fluid_FS,MCL,56,8,0.14285714285714285
+Coronal_Fluid_FS,Medial Meniscus,56,25,0.44642857142857145
+Coronal_Fluid_FS,Lateral Meniscus,56,23,0.4107142857142857
+Coronal_Fluid_FS,Medial OA,56,15,0.26785714285714285
+Coronal_Fluid_FS,Lateral OA,56,10,0.17857142857142858
+Coronal_Fluid_FS,PF OA,56,21,0.375
+Coronal_Fluid_FS,Effusion,56,33,0.5892857142857143
+Coronal_Fluid_FS,Synovitis,56,26,0.4642857142857143
+Coronal_Fluid_FS,Baker's,56,12,0.21428571428571427
+Coronal_Fluid_FS,Contusion,56,18,0.32142857142857145
+Coronal_Fluid_FS,Fracture,56,17,0.30357142857142855
+Sagittal_Fluid_FS,ACL,56,23,0.4107142857142857
+Sagittal_Fluid_FS,MCL,56,9,0.16071428571428573
+Sagittal_Fluid_FS,Medial Meniscus,56,24,0.42857142857142855
+Sagittal_Fluid_FS,Lateral Meniscus,56,23,0.4107142857142857
+Sagittal_Fluid_FS,Medial OA,56,15,0.26785714285714285
+Sagittal_Fluid_FS,Lateral OA,56,11,0.19642857142857142
+Sagittal_Fluid_FS,PF OA,56,20,0.35714285714285715
+Sagittal_Fluid_FS,Effusion,56,34,0.6071428571428571
+Sagittal_Fluid_FS,Synovitis,56,25,0.44642857142857145
+Sagittal_Fluid_FS,Baker's,56,11,0.19642857142857142
+Sagittal_Fluid_FS,Contusion,56,18,0.32142857142857145
+Sagittal_Fluid_FS,Fracture,56,17,0.30357142857142855
+Coronal_NonFluid_NonFS,ACL,45,18,0.4
+Coronal_NonFluid_NonFS,MCL,45,7,0.15555555555555556
+Coronal_NonFluid_NonFS,Medial Meniscus,45,21,0.4666666666666667
+Coronal_NonFluid_NonFS,Lateral Meniscus,45,19,0.4222222222222222
+Coronal_NonFluid_NonFS,Medial OA,45,15,0.3333333333333333
+Coronal_NonFluid_NonFS,Lateral OA,45,10,0.2222222222222222
+Coronal_NonFluid_NonFS,PF OA,45,18,0.4
+Coronal_NonFluid_NonFS,Effusion,45,28,0.6222222222222222
+Coronal_NonFluid_NonFS,Synovitis,45,23,0.5111111111111111
+Coronal_NonFluid_NonFS,Baker's,45,9,0.2
+Coronal_NonFluid_NonFS,Contusion,45,12,0.26666666666666666
+Coronal_NonFluid_NonFS,Fracture,45,12,0.26666666666666666
+Axial_NonFluid_NonFS,ACL,13,5,0.38461538461538464
+Axial_NonFluid_NonFS,MCL,13,1,0.07692307692307693
+Axial_NonFluid_NonFS,Medial Meniscus,13,8,0.6153846153846154
+Axial_NonFluid_NonFS,Lateral Meniscus,13,5,0.38461538461538464
+Axial_NonFluid_NonFS,Medial OA,13,4,0.3076923076923077
+Axial_NonFluid_NonFS,Lateral OA,13,3,0.23076923076923078
+Axial_NonFluid_NonFS,PF OA,13,5,0.38461538461538464
+Axial_NonFluid_NonFS,Effusion,13,7,0.5384615384615384
+Axial_NonFluid_NonFS,Synovitis,13,8,0.6153846153846154
+Axial_NonFluid_NonFS,Baker's,13,3,0.23076923076923078
+Axial_NonFluid_NonFS,Contusion,13,4,0.3076923076923077
+Axial_NonFluid_NonFS,Fracture,13,2,0.15384615384615385

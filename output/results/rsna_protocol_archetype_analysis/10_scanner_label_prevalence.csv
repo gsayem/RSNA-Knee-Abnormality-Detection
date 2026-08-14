@@ -1,0 +1,61 @@
+ManufacturerFamily,StudyCount,Label,PositiveCount,Prevalence
+Canon,1,ACL,0,0.0
+Canon,1,MCL,0,0.0
+Canon,1,Medial Meniscus,1,1.0
+Canon,1,Lateral Meniscus,1,1.0
+Canon,1,Medial OA,1,1.0
+Canon,1,Lateral OA,1,1.0
+Canon,1,PF OA,1,1.0
+Canon,1,Effusion,1,1.0
+Canon,1,Synovitis,1,1.0
+Canon,1,Baker's,1,1.0
+Canon,1,Contusion,0,0.0
+Canon,1,Fracture,1,1.0
+GE,16,ACL,6,0.375
+GE,16,MCL,2,0.125
+GE,16,Medial Meniscus,8,0.5
+GE,16,Lateral Meniscus,5,0.3125
+GE,16,Medial OA,3,0.1875
+GE,16,Lateral OA,2,0.125
+GE,16,PF OA,4,0.25
+GE,16,Effusion,11,0.6875
+GE,16,Synovitis,7,0.4375
+GE,16,Baker's,0,0.0
+GE,16,Contusion,5,0.3125
+GE,16,Fracture,7,0.4375
+Philips,18,ACL,9,0.5
+Philips,18,MCL,2,0.1111111111111111
+Philips,18,Medial Meniscus,5,0.2777777777777778
+Philips,18,Lateral Meniscus,5,0.2777777777777778
+Philips,18,Medial OA,3,0.16666666666666666
+Philips,18,Lateral OA,1,0.05555555555555555
+Philips,18,PF OA,6,0.3333333333333333
+Philips,18,Effusion,9,0.5
+Philips,18,Synovitis,7,0.3888888888888889
+Philips,18,Baker's,4,0.2222222222222222
+Philips,18,Contusion,7,0.3888888888888889
+Philips,18,Fracture,4,0.2222222222222222
+Siemens,22,ACL,9,0.4090909090909091
+Siemens,22,MCL,4,0.18181818181818182
+Siemens,22,Medial Meniscus,12,0.5454545454545454
+Siemens,22,Lateral Meniscus,12,0.5454545454545454
+Siemens,22,Medial OA,8,0.36363636363636365
+Siemens,22,Lateral OA,7,0.3181818181818182
+Siemens,22,PF OA,10,0.45454545454545453
+Siemens,22,Effusion,14,0.6363636363636364
+Siemens,22,Synovitis,12,0.5454545454545454
+Siemens,22,Baker's,7,0.3181818181818182
+Siemens,22,Contusion,6,0.2727272727272727
+Siemens,22,Fracture,6,0.2727272727272727
+Toshiba,1,ACL,0,0.0
+Toshiba,1,MCL,1,1.0
+Toshiba,1,Medial Meniscus,0,0.0
+Toshiba,1,Lateral Meniscus,0,0.0
+Toshiba,1,Medial OA,0,0.0
+Toshiba,1,Lateral OA,0,0.0
+Toshiba,1,PF OA,0,0.0
+Toshiba,1,Effusion,0,0.0
+Toshiba,1,Synovitis,0,0.0
+Toshiba,1,Baker's,0,0.0
+Toshiba,1,Contusion,1,1.0
+Toshiba,1,Fracture,0,0.0

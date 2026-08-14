@@ -1,0 +1,7 @@
+,Has_Axial_Fluid_FS,Has_Axial_NonFluid_NonFS,Has_Coronal_Fluid_FS,Has_Coronal_NonFluid_NonFS,Has_Sagittal_Fluid_FS,Has_Sagittal_NonFluid_NonFS
+Has_Axial_Fluid_FS,58,13,56,45,56,57
+Has_Axial_NonFluid_NonFS,13,13,13,11,11,13
+Has_Coronal_Fluid_FS,56,13,56,43,54,55
+Has_Coronal_NonFluid_NonFS,45,11,43,45,45,44
+Has_Sagittal_Fluid_FS,56,11,54,45,56,55
+Has_Sagittal_NonFluid_NonFS,57,13,55,44,55,57
