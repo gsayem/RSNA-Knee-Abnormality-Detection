@@ -1,4 +1,5 @@
 # ============================================================
+# 07_DICOM_protocol_archetype_analysis.py
 # RSNA KNEE ABNORMALITY DETECTION
 #
 # FINAL METADATA-LEVEL INVESTIGATION
@@ -36,53 +37,25 @@ warnings.filterwarnings("ignore")
 # 1. CONFIGURATION
 # ============================================================
 
-# DATA_ROOT = "/input"
-
-# TRAIN_CSV = os.path.join(DATA_ROOT, "train.csv")
-
-# TRAIN_SERIES_CSV = os.path.join(DATA_ROOT, "train_series.csv")
-
-# # Previous integrated analysis
-# MASTER_CSV = (
-#     "/output/results/" "rsna_58_integrated_analysis/" "01_labeled_series_joined.csv"
-# )
-
-# # Previous acquisition analysis
-# STUDY_MATRIX_CSV = (
-#     "/output/results/"
-#     "rsna_acquisition_label_analysis/"
-#     "01_study_acquisition_label_matrix.csv"
-# )
-
-# OUTPUT_DIR = "/output/results/" "rsna_protocol_archetype_analysis"
-
-# os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-
-script_dir = os.path.dirname(os.path.abspath(__file__))
-DATA_ROOT = os.path.join(script_dir, "..", "input")
+DATA_ROOT = "/kaggle/input/competitions/" "rsna-knee-abnormality-detection"
 
 TRAIN_CSV = os.path.join(DATA_ROOT, "train.csv")
+
 TRAIN_SERIES_CSV = os.path.join(DATA_ROOT, "train_series.csv")
 
 # Previous integrated analysis
-MASTER_CSV = os.path.join(
-    script_dir,
-    "..",
-    "output/results/rsna_58_integrated_analysis/01_labeled_series_joined.csv",
+MASTER_CSV = (
+    "/kaggle/working/" "rsna_58_integrated_analysis/" "01_labeled_series_joined.csv"
 )
 
 # Previous acquisition analysis
-STUDY_MATRIX_CSV = os.path.join(
-    script_dir,
-    "..",
-    "output/results/rsna_acquisition_label_analysis/01_study_acquisition_label_matrix.csv",
+STUDY_MATRIX_CSV = (
+    "/kaggle/working/"
+    "rsna_acquisition_label_analysis/"
+    "01_study_acquisition_label_matrix.csv"
 )
 
-# Output directory creation
-OUTPUT_DIR = os.path.join(
-    script_dir, "..", "output/results/rsna_protocol_archetype_analysis"
-)
+OUTPUT_DIR = "/kaggle/working/" "rsna_protocol_archetype_analysis"
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
