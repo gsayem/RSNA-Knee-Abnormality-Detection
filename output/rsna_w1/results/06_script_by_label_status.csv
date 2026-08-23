@@ -1,0 +1,7 @@
+LabelStatus,DominantScript,Count
+gold,Cyrillic,3
+gold,Greek,3
+gold,Latin,52
+unlabeled,Cyrillic,217
+unlabeled,Greek,318
+unlabeled,Latin,3814

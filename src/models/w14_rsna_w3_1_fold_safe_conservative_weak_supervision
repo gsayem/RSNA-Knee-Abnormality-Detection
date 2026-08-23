@@ -1,0 +1,2996 @@
+#!/usr/bin/env python3
+# ============================================================
+# RSNA KNEE ABNORMALITY DETECTION - W3.1
+#
+# Fold-Safe Conservative Weak Supervision
+#
+# PURPOSE
+# -------
+# Answer one controlled question as quickly as possible:
+#
+#   Does fold-safe report-derived weak supervision improve the
+#   reproduced W3.0/V4 gold-only MRI baseline?
+#
+# W3.1 changes ONLY the supervision channel.
+#
+# Kept from W3.0:
+#   - cached frozen ImageNet ResNet18 slice features
+#   - exact V4/W2.3 5-fold split
+#   - same trainable projection / slice attention / series fusion
+#   - zero-metadata V4 ablation
+#   - same series attention / classifier
+#   - 12 fixed epochs
+#   - AdamW lr=1e-3, wd=1e-4
+#   - CosineAnnealingLR eta_min=1e-6
+#   - gold BCE pos_weight = neg/pos clipped [1,5]
+#   - batch size 1
+#   - no early stopping
+#
+# Added:
+#   - ONE fold-specific W2.3 pseudo study per gold optimizer step
+#   - only W2.3 SoftLabelAvailable cells
+#   - only CandidateSelectionScore >= 0.50 cells
+#   - continuous SOFT probability targets, never hard 0/1
+#   - sparse masked pseudo BCE, normalized ONLY across selected cells
+#   - total loss:
+#
+#         L = L_gold + 0.25 * L_pseudo
+#
+# IMPORTANT LEAKAGE RULE
+# ----------------------
+# Outer fold k can ONLY read:
+#
+#   /kaggle/working/rsna_w2_3/folds/fold_k/
+#
+# It never uses:
+#   - all-58 W2 calibrators
+#   - other folds' W2.3 probabilities
+#   - cross-fold stability scores
+#   - held-out image-fold gold labels for pseudo selection
+#
+# CONTUSION
+# ---------
+# No global special case is hardcoded.
+# W2.3 availability decides per fold:
+#   fold 1: on
+#   fold 2: off
+#   fold 3: on
+#   fold 4: off
+#   fold 5: on
+#
+# if the supplied W2.3 outputs are the validated run.
+#
+# FAST EXECUTION
+# --------------
+# No DICOM decoding.
+# No ResNet18 image forward pass.
+# Only the ~392 MB W3.0 cached [series,16,512] features are loaded.
+#
+# Expected Kaggle command:
+#   !python rsna_w3_1_fold_safe_conservative_weak_supervision.py
+# ============================================================
+
+from __future__ import annotations
+
+import os
+import gc
+import json
+import math
+import time
+import random
+import hashlib
+from pathlib import Path
+from contextlib import nullcontext
+from typing import Dict, List, Tuple, Any, Optional
+
+import numpy as np
+import pandas as pd
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch.utils.data import Dataset, DataLoader
+from torchvision.models import resnet18
+
+from sklearn.metrics import (
+    roc_auc_score,
+    average_precision_score,
+    f1_score,
+)
+
+# ============================================================
+# 1. CONFIGURATION
+# ============================================================
+
+DATA_ROOT = Path(
+    os.environ.get(
+        "W31_DATA_ROOT",
+        "/kaggle/input/competitions/rsna-knee-abnormality-detection",
+    )
+)
+
+TRAIN_CSV = DATA_ROOT / "train.csv"
+
+W30_ROOT = Path(
+    os.environ.get(
+        "W31_W30_ROOT",
+        "/kaggle/working/rsna_w3_0",
+    )
+)
+
+FEATURE_CACHE_ROOT = Path(
+    os.environ.get(
+        "W31_FEATURE_CACHE_ROOT",
+        str(W30_ROOT / "feature_cache"),
+    )
+)
+
+W30_RESULTS_ROOT = Path(
+    os.environ.get(
+        "W31_W30_RESULTS_ROOT",
+        str(W30_ROOT / "results"),
+    )
+)
+
+W23_ROOT = Path(
+    os.environ.get(
+        "W31_W23_ROOT",
+        "/kaggle/working/rsna_w2_3",
+    )
+)
+
+WORK_ROOT = Path(
+    os.environ.get(
+        "W31_WORK_ROOT",
+        "/kaggle/working/rsna_w3_1",
+    )
+)
+
+CHECKPOINT_ROOT = WORK_ROOT / "checkpoints"
+
+RESULT_ROOT = WORK_ROOT / "results"
+
+for path in [
+    WORK_ROOT,
+    CHECKPOINT_ROOT,
+    RESULT_ROOT,
+]:
+    path.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+
+# ------------------------------------------------------------
+# Exact W3.0 / V4 architecture and optimization
+# ------------------------------------------------------------
+
+SLICES_PER_SERIES = 16
+FEATURE_DIM = 512
+SERIES_META_DIM = 9
+NUM_LABELS = 12
+
+BATCH_SIZE = 1
+
+NUM_WORKERS = max(
+    0,
+    int(
+        os.environ.get(
+            "W31_NUM_WORKERS",
+            "2",
+        )
+    ),
+)
+
+NUM_FOLDS = 5
+RANDOM_SEED = 42
+NUM_EPOCHS = 12
+
+HEAD_LEARNING_RATE = 1e-3
+WEIGHT_DECAY = 1e-4
+COSINE_ETA_MIN = 1e-6
+
+USE_AMP = True
+
+USE_SERIES_METADATA = False
+
+FEATURE_CACHE_VERSION = "w3_0_v4_resnet18_amp_fp16_v1"
+
+
+# ------------------------------------------------------------
+# W3.1 intervention
+# ------------------------------------------------------------
+
+PSEUDO_LAMBDA = float(
+    os.environ.get(
+        "W31_PSEUDO_LAMBDA",
+        "0.25",
+    )
+)
+
+SELECTION_THRESHOLD = float(
+    os.environ.get(
+        "W31_SELECTION_THRESHOLD",
+        "0.50",
+    )
+)
+
+# Conservative W3.1:
+# exactly one pseudo study per gold study/optimizer step.
+PSEUDO_STUDIES_PER_GOLD_STEP = int(
+    os.environ.get(
+        "W31_PSEUDO_STUDIES_PER_GOLD_STEP",
+        "1",
+    )
+)
+
+if PSEUDO_STUDIES_PER_GOLD_STEP != 1:
+    raise ValueError(
+        "W3.1 is the pre-specified conservative experiment. "
+        "PSEUDO_STUDIES_PER_GOLD_STEP must remain 1."
+    )
+
+if not (0.0 <= PSEUDO_LAMBDA <= 1.0):
+    raise ValueError("PSEUDO_LAMBDA must be in [0,1].")
+
+
+# ------------------------------------------------------------
+# Controlled fold audit
+# ------------------------------------------------------------
+
+EXPECTED_V4_FOLD_SHA256 = (
+    "1d9959b027c055974325f4de59e26974" "b036ae8b2c1b63aa417d3eef7aaf9f4a"
+)
+
+
+# ------------------------------------------------------------
+# W3.0 reference endpoint
+# ------------------------------------------------------------
+
+W30_REFERENCE_MACRO_AUROC = 0.545918
+W30_REFERENCE_MACRO_AP = 0.433128
+W30_REFERENCE_MACRO_F1 = 0.407160
+
+
+# ------------------------------------------------------------
+# Diagnostics
+# ------------------------------------------------------------
+
+BOOTSTRAP_REPEATS = max(
+    0,
+    int(
+        os.environ.get(
+            "W31_BOOTSTRAP_REPEATS",
+            "2000",
+        )
+    ),
+)
+
+BOOTSTRAP_SEED = 310031
+
+UID_COLUMN = "StudyInstanceUID"
+
+LABEL_COLUMNS = [
+    "ACL",
+    "MCL",
+    "Medial Meniscus",
+    "Lateral Meniscus",
+    "Medial OA",
+    "Lateral OA",
+    "PF OA",
+    "Effusion",
+    "Synovitis",
+    "Baker's",
+    "Contusion",
+    "Fracture",
+]
+
+
+# ============================================================
+# 2. REPRODUCIBILITY / DEVICE
+# ============================================================
+
+
+def seed_everything(
+    seed: int,
+) -> None:
+
+    random.seed(seed)
+
+    np.random.seed(seed)
+
+    torch.manual_seed(seed)
+
+    torch.cuda.manual_seed_all(seed)
+
+    torch.backends.cudnn.deterministic = True
+
+    torch.backends.cudnn.benchmark = False
+
+
+seed_everything(RANDOM_SEED)
+
+DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
+GPU_COUNT = torch.cuda.device_count() if torch.cuda.is_available() else 0
+
+
+# ============================================================
+# 3. GENERIC HELPERS
+# ============================================================
+
+
+def autocast_context():
+
+    if USE_AMP and DEVICE.type == "cuda":
+
+        return torch.amp.autocast(
+            device_type="cuda",
+            enabled=True,
+        )
+
+    return nullcontext()
+
+
+def safe_auc(
+    y_true: np.ndarray,
+    y_score: np.ndarray,
+) -> float:
+
+    try:
+
+        if len(np.unique(y_true)) < 2:
+
+            return float("nan")
+
+        return float(
+            roc_auc_score(
+                y_true,
+                y_score,
+            )
+        )
+
+    except Exception:
+
+        return float("nan")
+
+
+def safe_ap(
+    y_true: np.ndarray,
+    y_score: np.ndarray,
+) -> float:
+
+    try:
+
+        if len(np.unique(y_true)) < 2:
+
+            return float("nan")
+
+        return float(
+            average_precision_score(
+                y_true,
+                y_score,
+            )
+        )
+
+    except Exception:
+
+        return float("nan")
+
+
+def atomic_torch_save(
+    obj: Any,
+    destination: Path,
+) -> None:
+
+    destination.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    tmp = destination.with_suffix(destination.suffix + ".tmp")
+
+    torch.save(
+        obj,
+        tmp,
+    )
+
+    os.replace(
+        tmp,
+        destination,
+    )
+
+
+def elapsed_string(
+    seconds: float,
+) -> str:
+
+    seconds = max(
+        0.0,
+        float(seconds),
+    )
+
+    h = int(seconds // 3600)
+
+    m = int((seconds % 3600) // 60)
+
+    s = int(seconds % 60)
+
+    return f"{h:02d}:" f"{m:02d}:" f"{s:02d}"
+
+
+def coerce_bool_series(
+    series: pd.Series,
+) -> pd.Series:
+
+    if series.dtype == bool:
+
+        return series.astype(bool)
+
+    lowered = series.astype(str).str.strip().str.lower()
+
+    truthy = {
+        "true",
+        "1",
+        "yes",
+        "y",
+    }
+
+    falsy = {
+        "false",
+        "0",
+        "no",
+        "n",
+        "",
+        "nan",
+        "none",
+    }
+
+    unknown = set(lowered.unique()) - truthy - falsy
+
+    if unknown:
+
+        raise ValueError("Unexpected boolean values: " f"{sorted(unknown)[:10]}")
+
+    return lowered.isin(truthy)
+
+
+# ============================================================
+# 4. LOAD GOLD DATA + EXACT OUTER FOLDS
+# ============================================================
+
+
+def greedy_multilabel_folds(
+    y: np.ndarray,
+    n_splits: int,
+    seed: int,
+) -> np.ndarray:
+
+    rng = np.random.default_rng(seed)
+
+    n_samples, n_labels = y.shape
+
+    fold_assignments = -np.ones(
+        n_samples,
+        dtype=int,
+    )
+
+    label_frequency = y.sum(axis=0) + 1e-8
+
+    sample_rarity = np.zeros(
+        n_samples,
+        dtype=np.float64,
+    )
+
+    for i in range(n_samples):
+
+        positive_labels = np.where(y[i] > 0)[0]
+
+        if len(positive_labels) == 0:
+
+            sample_rarity[i] = 0.0
+
+        else:
+
+            sample_rarity[i] = float(np.sum(1.0 / label_frequency[positive_labels]))
+
+    tie_noise = rng.random(n_samples) * 1e-6
+
+    order = np.argsort(-sample_rarity - tie_noise)
+
+    fold_label_counts = np.zeros(
+        (
+            n_splits,
+            n_labels,
+        ),
+        dtype=np.float64,
+    )
+
+    fold_sizes = np.zeros(
+        n_splits,
+        dtype=int,
+    )
+
+    desired = label_frequency / n_splits
+
+    for sample_idx in order:
+
+        sample = y[sample_idx]
+
+        positive_labels = np.where(sample > 0)[0]
+
+        scores: List[float] = []
+
+        for fold in range(n_splits):
+
+            label_score = 0.0
+
+            if len(positive_labels) > 0:
+
+                ratios = fold_label_counts[
+                    fold,
+                    positive_labels,
+                ] / (desired[positive_labels] + 1e-8)
+
+                label_score = float(np.mean(ratios))
+
+            size_score = fold_sizes[fold] / max(
+                1,
+                math.ceil(n_samples / n_splits),
+            )
+
+            scores.append(label_score + 0.05 * size_score)
+
+        best_fold = int(np.argmin(scores))
+
+        fold_assignments[sample_idx] = best_fold
+
+        fold_sizes[best_fold] += 1
+
+        fold_label_counts[best_fold] += sample
+
+    return fold_assignments
+
+
+def fold_assignment_sha256(
+    assignments: pd.DataFrame,
+) -> str:
+
+    ordered = assignments.sort_values(UID_COLUMN).reset_index(drop=True)
+
+    payload = "".join(
+        f"{uid},{int(fold)}\n"
+        for uid, fold in zip(
+            ordered[UID_COLUMN].astype(str),
+            ordered["OuterFold"].astype(int),
+        )
+    )
+
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def load_gold_and_folds() -> Tuple[
+    pd.DataFrame,
+    np.ndarray,
+    pd.DataFrame,
+]:
+
+    if not TRAIN_CSV.exists():
+
+        raise FileNotFoundError(TRAIN_CSV)
+
+    train_df = pd.read_csv(TRAIN_CSV)
+
+    train_df[UID_COLUMN] = train_df[UID_COLUMN].astype(str)
+
+    gold_df = (
+        train_df[train_df[LABEL_COLUMNS].notna().all(axis=1)]
+        .copy()
+        .sort_values(UID_COLUMN)
+        .reset_index(drop=True)
+    )
+
+    if len(train_df) != 4407:
+
+        print("WARNING: expected 4,407 train studies; " f"found {len(train_df)}.")
+
+    if len(gold_df) != 58:
+
+        raise RuntimeError(
+            "Expected 58 fully labeled studies, " f"found {len(gold_df)}."
+        )
+
+    y = gold_df[LABEL_COLUMNS].values.astype(np.int64)
+
+    fold_zero = greedy_multilabel_folds(
+        y,
+        n_splits=NUM_FOLDS,
+        seed=RANDOM_SEED,
+    )
+
+    fold_df = gold_df[
+        [
+            UID_COLUMN,
+            *LABEL_COLUMNS,
+        ]
+    ].copy()
+
+    fold_df["OuterFold"] = fold_zero + 1
+
+    fold_df = fold_df[
+        [
+            UID_COLUMN,
+            "OuterFold",
+            *LABEL_COLUMNS,
+        ]
+    ]
+
+    fold_hash = fold_assignment_sha256(
+        fold_df[
+            [
+                UID_COLUMN,
+                "OuterFold",
+            ]
+        ]
+    )
+
+    print(
+        "Outer fold SHA256:",
+        fold_hash,
+    )
+
+    print(
+        "Expected V4/W2.3 SHA256:",
+        EXPECTED_V4_FOLD_SHA256,
+    )
+
+    if fold_hash != EXPECTED_V4_FOLD_SHA256:
+
+        raise RuntimeError("W3.1 outer folds do not match " "V4/W3.0/W2.3.")
+
+    fold_df.to_csv(
+        RESULT_ROOT / "00_outer_fold_assignments.csv",
+        index=False,
+    )
+
+    return (
+        gold_df,
+        fold_zero,
+        fold_df,
+    )
+
+
+def verify_w23_fold_assignments(
+    fold_df: pd.DataFrame,
+) -> None:
+
+    path = W23_ROOT / "results" / "00_outer_fold_assignments.csv"
+
+    if not path.exists():
+
+        raise FileNotFoundError(
+            "W2.3 outer fold assignment file not found:\n" f"{path}"
+        )
+
+    w23 = pd.read_csv(path)
+
+    w23[UID_COLUMN] = w23[UID_COLUMN].astype(str)
+
+    expected = (
+        fold_df[
+            [
+                UID_COLUMN,
+                "OuterFold",
+            ]
+        ]
+        .sort_values(UID_COLUMN)
+        .reset_index(drop=True)
+    )
+
+    actual = (
+        w23[
+            [
+                UID_COLUMN,
+                "OuterFold",
+            ]
+        ]
+        .sort_values(UID_COLUMN)
+        .reset_index(drop=True)
+    )
+
+    if not expected.equals(actual):
+
+        raise RuntimeError(
+            "W2.3 fold assignments do not exactly " "match W3.1/V4 folds."
+        )
+
+    print("W2.3 outer fold assignments: EXACT MATCH.")
+
+
+# ============================================================
+# 5. W3.0 FEATURE CACHE
+# ============================================================
+
+
+def feature_cache_path(
+    study_uid: str,
+) -> Path:
+
+    digest = hashlib.md5(str(study_uid).encode("utf-8")).hexdigest()
+
+    return FEATURE_CACHE_ROOT / f"{digest}.pt"
+
+
+def load_cached_features(
+    study_uid: str,
+) -> torch.Tensor:
+
+    path = feature_cache_path(study_uid)
+
+    if not path.exists():
+
+        raise FileNotFoundError(
+            "W3.0 feature cache missing for " f"{study_uid}:\n{path}"
+        )
+
+    payload = torch.load(
+        path,
+        map_location="cpu",
+        weights_only=False,
+    )
+
+    if payload.get("cache_version") != FEATURE_CACHE_VERSION:
+
+        raise RuntimeError(
+            "Feature cache version mismatch for "
+            f"{study_uid}. "
+            f"Expected {FEATURE_CACHE_VERSION!r}, "
+            f"got {payload.get('cache_version')!r}."
+        )
+
+    features = payload["features"]
+
+    if (
+        features.ndim != 3
+        or features.shape[1] != SLICES_PER_SERIES
+        or features.shape[2] != FEATURE_DIM
+    ):
+
+        raise RuntimeError(
+            "Invalid cached feature shape for " f"{study_uid}: {tuple(features.shape)}"
+        )
+
+    return features.float().contiguous()
+
+
+def verify_feature_cache_manifest() -> None:
+
+    manifest_path = W30_RESULTS_ROOT / "feature_manifest_all_4407.csv"
+
+    if not manifest_path.exists():
+
+        print(
+            "WARNING: W3.0 full feature manifest was not found. "
+            "W3.1 will validate cache files lazily."
+        )
+
+        return
+
+    manifest = pd.read_csv(manifest_path)
+
+    if "Cached" in manifest.columns:
+
+        cached = manifest["Cached"]
+
+        if cached.dtype != bool:
+
+            cached = coerce_bool_series(cached)
+
+        cached_n = int(cached.sum())
+
+    else:
+
+        cached_n = len(manifest)
+
+    print(
+        "W3.0 cached studies:",
+        f"{cached_n}/{len(manifest)}",
+    )
+
+    if len(manifest) != 4407 or cached_n != 4407:
+
+        raise RuntimeError("W3.0 feature cache manifest is not complete.")
+
+
+# ============================================================
+# 6. LOAD ONE FOLD'S W2.3 PSEUDO POOL
+# ============================================================
+
+
+def _read_w23_wide(
+    fold: int,
+    filename: str,
+) -> pd.DataFrame:
+
+    path = W23_ROOT / "folds" / f"fold_{fold}" / filename
+
+    if not path.exists():
+
+        raise FileNotFoundError(path)
+
+    df = pd.read_csv(path)
+
+    if UID_COLUMN not in (df.columns):
+
+        raise RuntimeError(f"{path} has no {UID_COLUMN} column.")
+
+    df[UID_COLUMN] = df[UID_COLUMN].astype(str)
+
+    missing = [label for label in (LABEL_COLUMNS) if label not in (df.columns)]
+
+    if missing:
+
+        raise RuntimeError(f"{path} missing labels: {missing}")
+
+    if df[UID_COLUMN].duplicated().any():
+
+        raise RuntimeError(f"Duplicate study UIDs in {path}")
+
+    return df
+
+
+def load_fold_pseudo_pool(
+    fold: int,
+    gold_uid_set: set,
+) -> Tuple[
+    pd.DataFrame,
+    pd.DataFrame,
+]:
+
+    probability_df = _read_w23_wide(
+        fold,
+        "soft_probabilities_wide.csv",
+    )
+
+    availability_df = _read_w23_wide(
+        fold,
+        "soft_label_availability_wide.csv",
+    )
+
+    selection_df = _read_w23_wide(
+        fold,
+        "candidate_selection_scores_wide.csv",
+    )
+
+    if not (
+        probability_df[UID_COLUMN].tolist()
+        == availability_df[UID_COLUMN].tolist()
+        == selection_df[UID_COLUMN].tolist()
+    ):
+
+        raise RuntimeError(
+            f"W2.3 fold {fold} wide files have " "different UID ordering/content."
+        )
+
+    uids = probability_df[UID_COLUMN].astype(str)
+
+    gold_overlap = set(uids) & gold_uid_set
+
+    if gold_overlap:
+
+        raise RuntimeError(
+            "W2.3 pseudo pool contains gold studies. "
+            f"Examples: {sorted(gold_overlap)[:3]}"
+        )
+
+    if len(probability_df) != 4349:
+
+        print(
+            f"WARNING: fold {fold} expected 4,349 "
+            f"unlabeled studies, found {len(probability_df)}."
+        )
+
+    probability = probability_df[LABEL_COLUMNS].apply(
+        pd.to_numeric,
+        errors="coerce",
+    )
+
+    selection = (
+        selection_df[LABEL_COLUMNS]
+        .apply(
+            pd.to_numeric,
+            errors="coerce",
+        )
+        .fillna(0.0)
+    )
+
+    availability = pd.DataFrame(index=availability_df.index)
+
+    for label in LABEL_COLUMNS:
+
+        availability[label] = coerce_bool_series(availability_df[label])
+
+    # Pre-specified W3.1 selection rule:
+    # available AND selection score >= 0.5 AND probability exists.
+    mask = (
+        availability[LABEL_COLUMNS]
+        & (selection[LABEL_COLUMNS] >= SELECTION_THRESHOLD)
+        & probability[LABEL_COLUMNS].notna()
+    )
+
+    # If the exact W2.3 high-selection file is present and we are
+    # using its original threshold 0.5, verify our reconstruction.
+    high_mask_path = (
+        W23_ROOT / "folds" / f"fold_{fold}" / "high_selection_candidate_mask_wide.csv"
+    )
+
+    if high_mask_path.exists() and abs(SELECTION_THRESHOLD - 0.50) < 1e-12:
+
+        high_df = pd.read_csv(high_mask_path)
+
+        high_df[UID_COLUMN] = high_df[UID_COLUMN].astype(str)
+
+        if high_df[UID_COLUMN].tolist() != uids.tolist():
+
+            raise RuntimeError("W2.3 high-selection mask UID mismatch.")
+
+        high_bool = pd.DataFrame(index=high_df.index)
+
+        for label in LABEL_COLUMNS:
+
+            high_bool[label] = coerce_bool_series(high_df[label])
+
+        if not np.array_equal(
+            mask[LABEL_COLUMNS].values,
+            high_bool[LABEL_COLUMNS].values,
+        ):
+
+            raise RuntimeError(
+                f"Fold {fold}: reconstructed selection "
+                "mask does not equal W2.3 high-selection mask."
+            )
+
+    candidate_any = mask[LABEL_COLUMNS].any(axis=1)
+
+    candidate_uids = uids[candidate_any].reset_index(drop=True)
+
+    candidate_probability = probability.loc[
+        candidate_any,
+        LABEL_COLUMNS,
+    ].reset_index(drop=True)
+
+    candidate_mask = mask.loc[
+        candidate_any,
+        LABEL_COLUMNS,
+    ].reset_index(drop=True)
+
+    candidate_selection = selection.loc[
+        candidate_any,
+        LABEL_COLUMNS,
+    ].reset_index(drop=True)
+
+    pool = pd.DataFrame({UID_COLUMN: candidate_uids})
+
+    for label in LABEL_COLUMNS:
+
+        # Values outside the mask are never used by the loss.
+        pool[f"{label}_target"] = (
+            candidate_probability[label].fillna(0.5).astype(np.float32)
+        )
+
+        pool[f"{label}_mask"] = candidate_mask[label].astype(bool)
+
+        pool[f"{label}_selection"] = candidate_selection[label].astype(np.float32)
+
+    # --------------------------------------------------------
+    # Audit by label
+    # --------------------------------------------------------
+
+    rows: List[
+        Dict[
+            str,
+            Any,
+        ]
+    ] = []
+
+    for label in LABEL_COLUMNS:
+
+        selected = candidate_mask[label].values.astype(bool)
+
+        selected_n = int(selected.sum())
+
+        if selected_n > 0:
+
+            targets = candidate_probability.loc[
+                selected,
+                label,
+            ].values.astype(np.float64)
+
+            selected_scores = candidate_selection.loc[
+                selected,
+                label,
+            ].values.astype(np.float64)
+
+            target_mean = float(np.mean(targets))
+
+            target_positive_fraction = float(np.mean(targets >= 0.5))
+
+            score_mean = float(np.mean(selected_scores))
+
+        else:
+
+            target_mean = float("nan")
+
+            target_positive_fraction = float("nan")
+
+            score_mean = float("nan")
+
+        rows.append(
+            {
+                "OuterFold": fold,
+                "Label": label,
+                "SelectedCellN": selected_n,
+                "SelectedStudyCoverage": selected_n
+                / max(
+                    len(probability_df),
+                    1,
+                ),
+                "MeanSoftTarget": target_mean,
+                "SoftTargetFraction_ge_0_5": target_positive_fraction,
+                "MeanSelectionScore": score_mean,
+            }
+        )
+
+    audit_df = pd.DataFrame(rows)
+
+    expected_candidate_studies = int(candidate_any.sum())
+
+    expected_cells = int(candidate_mask[LABEL_COLUMNS].values.sum())
+
+    print(
+        f"Fold {fold} W2.3 high-selection pool: "
+        f"{expected_candidate_studies} studies, "
+        f"{expected_cells} selected cells"
+    )
+
+    return (
+        pool,
+        audit_df,
+    )
+
+
+# ============================================================
+# 7. CACHED FEATURE DATASETS
+# ============================================================
+
+
+class GoldCachedDataset(Dataset):
+    def __init__(
+        self,
+        study_uids: List[str],
+        gold_df: pd.DataFrame,
+    ):
+
+        self.study_uids = [str(uid) for uid in (study_uids)]
+
+        self.gold = gold_df.set_index(UID_COLUMN)
+
+    def __len__(
+        self,
+    ) -> int:
+
+        return len(self.study_uids)
+
+    def __getitem__(
+        self,
+        index: int,
+    ) -> Dict[
+        str,
+        Any,
+    ]:
+
+        uid = self.study_uids[index]
+
+        features = load_cached_features(uid)
+
+        labels = torch.tensor(
+            self.gold.loc[
+                uid,
+                LABEL_COLUMNS,
+            ].values.astype(np.float32),
+            dtype=torch.float32,
+        )
+
+        return {
+            "study_uid": uid,
+            "features": features,
+            "labels": labels,
+        }
+
+
+class PseudoCachedDataset(Dataset):
+    def __init__(
+        self,
+        pool: pd.DataFrame,
+    ):
+
+        self.pool = pool.reset_index(drop=True).copy()
+
+    def __len__(
+        self,
+    ) -> int:
+
+        return len(self.pool)
+
+    def __getitem__(
+        self,
+        index: int,
+    ) -> Dict[
+        str,
+        Any,
+    ]:
+
+        row = self.pool.iloc[index]
+
+        uid = str(row[UID_COLUMN])
+
+        features = load_cached_features(uid)
+
+        targets = np.asarray(
+            [float(row[f"{label}_target"]) for label in (LABEL_COLUMNS)],
+            dtype=np.float32,
+        )
+
+        mask = np.asarray(
+            [bool(row[f"{label}_mask"]) for label in (LABEL_COLUMNS)],
+            dtype=np.bool_,
+        )
+
+        if not mask.any():
+
+            raise RuntimeError(
+                "Pseudo dataset contains a study with " f"no selected labels: {uid}"
+            )
+
+        return {
+            "study_uid": uid,
+            "features": features,
+            "targets": torch.from_numpy(targets),
+            "target_mask": torch.from_numpy(mask),
+        }
+
+
+def collate_cached_studies(
+    batch: List[
+        Dict[
+            str,
+            Any,
+        ]
+    ],
+) -> Dict[
+    str,
+    Any,
+]:
+
+    b = len(batch)
+
+    max_series = max(item["features"].shape[0] for item in (batch))
+
+    features = torch.zeros(
+        b,
+        max_series,
+        SLICES_PER_SERIES,
+        FEATURE_DIM,
+        dtype=torch.float32,
+    )
+
+    metadata = torch.zeros(
+        b,
+        max_series,
+        SERIES_META_DIM,
+        dtype=torch.float32,
+    )
+
+    series_mask = torch.zeros(
+        b,
+        max_series,
+        dtype=torch.bool,
+    )
+
+    study_uids: List[str] = []
+
+    for i, item in enumerate(batch):
+
+        s = item["features"].shape[0]
+
+        features[
+            i,
+            :s,
+        ] = item["features"]
+
+        series_mask[
+            i,
+            :s,
+        ] = True
+
+        study_uids.append(item["study_uid"])
+
+    output: Dict[
+        str,
+        Any,
+    ] = {
+        "study_uid": study_uids,
+        "features": features,
+        "metadata": metadata,
+        "series_mask": series_mask,
+    }
+
+    if "labels" in batch[0]:
+
+        output["labels"] = torch.stack([item["labels"] for item in (batch)])
+
+    if "targets" in batch[0]:
+
+        output["targets"] = torch.stack([item["targets"] for item in (batch)])
+
+        output["target_mask"] = torch.stack([item["target_mask"] for item in (batch)])
+
+    return output
+
+
+# ============================================================
+# 8. EXACT W3.0/V4 TRAINABLE MODEL
+# ============================================================
+
+
+class SliceAttention(nn.Module):
+    def __init__(
+        self,
+        embedding_dim: int,
+    ):
+
+        super().__init__()
+
+        hidden = max(
+            64,
+            embedding_dim // 2,
+        )
+
+        self.score = nn.Sequential(
+            nn.Linear(
+                embedding_dim,
+                hidden,
+            ),
+            nn.Tanh(),
+            nn.Linear(
+                hidden,
+                1,
+            ),
+        )
+
+    def forward(
+        self,
+        x: torch.Tensor,
+    ) -> Tuple[
+        torch.Tensor,
+        torch.Tensor,
+    ]:
+
+        scores = self.score(x).squeeze(-1)
+
+        attention = torch.softmax(
+            scores,
+            dim=1,
+        )
+
+        pooled = torch.sum(
+            x * attention.unsqueeze(-1),
+            dim=1,
+        )
+
+        return (
+            pooled,
+            attention,
+        )
+
+
+class SeriesAttention(nn.Module):
+    def __init__(
+        self,
+        embedding_dim: int,
+    ):
+
+        super().__init__()
+
+        hidden = max(
+            64,
+            embedding_dim // 2,
+        )
+
+        self.score = nn.Sequential(
+            nn.Linear(
+                embedding_dim,
+                hidden,
+            ),
+            nn.Tanh(),
+            nn.Linear(
+                hidden,
+                1,
+            ),
+        )
+
+    def forward(
+        self,
+        x: torch.Tensor,
+        mask: torch.Tensor,
+    ) -> Tuple[
+        torch.Tensor,
+        torch.Tensor,
+    ]:
+
+        scores = self.score(x).squeeze(-1)
+
+        scores = scores.float()
+
+        scores = scores.masked_fill(
+            ~mask,
+            torch.finfo(scores.dtype).min,
+        )
+
+        attention = torch.softmax(
+            scores,
+            dim=1,
+        )
+
+        pooled = torch.sum(
+            x * attention.unsqueeze(-1),
+            dim=1,
+        )
+
+        return (
+            pooled,
+            attention,
+        )
+
+
+def consume_v4_backbone_initialization_rng() -> None:
+    """
+    Match W3.0's RNG alignment: V4 constructed ResNet18 before
+    constructing the trainable attention head.
+    """
+
+    dummy = resnet18(weights=None)
+
+    del dummy
+
+
+class CachedV4MetadataAblationModel(nn.Module):
+    def __init__(
+        self,
+        metadata_dim: int,
+        num_labels: int,
+        align_v4_rng: bool = True,
+    ):
+
+        super().__init__()
+
+        if align_v4_rng:
+
+            consume_v4_backbone_initialization_rng()
+
+        visual_dim = FEATURE_DIM
+
+        self.embedding_dim = 256
+
+        self.visual_projection = nn.Sequential(
+            nn.Linear(
+                visual_dim,
+                self.embedding_dim,
+            ),
+            nn.LayerNorm(self.embedding_dim),
+            nn.GELU(),
+        )
+
+        self.metadata_projection = nn.Sequential(
+            nn.Linear(
+                metadata_dim,
+                64,
+            ),
+            nn.LayerNorm(64),
+            nn.GELU(),
+            nn.Linear(
+                64,
+                128,
+            ),
+            nn.GELU(),
+        )
+
+        self.series_fusion = nn.Sequential(
+            nn.Linear(
+                self.embedding_dim + 128,
+                self.embedding_dim,
+            ),
+            nn.LayerNorm(self.embedding_dim),
+            nn.GELU(),
+            nn.Dropout(0.10),
+        )
+
+        self.slice_attention = SliceAttention(self.embedding_dim)
+
+        self.series_attention = SeriesAttention(self.embedding_dim)
+
+        self.classifier = nn.Sequential(
+            nn.LayerNorm(self.embedding_dim),
+            nn.Dropout(0.15),
+            nn.Linear(
+                self.embedding_dim,
+                num_labels,
+            ),
+        )
+
+    def forward(
+        self,
+        features: torch.Tensor,
+        metadata: torch.Tensor,
+        series_mask: torch.Tensor,
+    ) -> Dict[
+        str,
+        torch.Tensor,
+    ]:
+
+        b, s, k, d = features.shape
+
+        flat_features = features.reshape(
+            b * s * k,
+            d,
+        )
+
+        flat_features = self.visual_projection(flat_features)
+
+        slice_features = flat_features.reshape(
+            b * s,
+            k,
+            self.embedding_dim,
+        )
+
+        (
+            series_visual,
+            slice_attention,
+        ) = self.slice_attention(slice_features)
+
+        series_visual = series_visual.reshape(
+            b,
+            s,
+            self.embedding_dim,
+        )
+
+        slice_attention = slice_attention.reshape(
+            b,
+            s,
+            k,
+        )
+
+        if USE_SERIES_METADATA:
+
+            metadata_input = metadata
+
+        else:
+
+            metadata_input = torch.zeros_like(metadata)
+
+        metadata_features = self.metadata_projection(metadata_input)
+
+        combined = torch.cat(
+            [
+                series_visual,
+                metadata_features,
+            ],
+            dim=-1,
+        )
+
+        series_features = self.series_fusion(combined)
+
+        (
+            study_embedding,
+            series_attention,
+        ) = self.series_attention(
+            series_features,
+            series_mask,
+        )
+
+        logits = self.classifier(study_embedding)
+
+        return {
+            "logits": logits,
+            "study_embedding": study_embedding,
+            "slice_attention": slice_attention,
+            "series_attention": series_attention,
+        }
+
+
+# ============================================================
+# 9. LOSSES / METRICS
+# ============================================================
+
+
+def make_pos_weight(
+    y_train: np.ndarray,
+) -> torch.Tensor:
+
+    positive = y_train.sum(axis=0)
+
+    negative = y_train.shape[0] - positive
+
+    weights = negative / np.maximum(
+        positive,
+        1,
+    )
+
+    weights = np.clip(
+        weights,
+        1.0,
+        5.0,
+    )
+
+    return torch.tensor(
+        weights,
+        dtype=torch.float32,
+        device=DEVICE,
+    )
+
+
+def masked_soft_bce(
+    logits: torch.Tensor,
+    targets: torch.Tensor,
+    mask: torch.Tensor,
+) -> Tuple[
+    torch.Tensor,
+    int,
+]:
+
+    per_cell = F.binary_cross_entropy_with_logits(
+        logits.float(),
+        targets.float(),
+        reduction="none",
+    )
+
+    mask_float = mask.float()
+
+    selected_n = int(mask_float.sum().detach().cpu().item())
+
+    if selected_n <= 0:
+
+        raise RuntimeError("Pseudo batch contains no selected target cells.")
+
+    loss = (per_cell * mask_float).sum() / mask_float.sum().clamp_min(1.0)
+
+    return (
+        loss,
+        selected_n,
+    )
+
+
+def metric_summary(
+    y_true: np.ndarray,
+    y_prob: np.ndarray,
+) -> Dict[
+    str,
+    float,
+]:
+
+    metrics: Dict[
+        str,
+        float,
+    ] = {}
+
+    aucs: List[float] = []
+
+    aps: List[float] = []
+
+    for idx, label in enumerate(LABEL_COLUMNS):
+
+        auc = safe_auc(
+            y_true[
+                :,
+                idx,
+            ],
+            y_prob[
+                :,
+                idx,
+            ],
+        )
+
+        ap = safe_ap(
+            y_true[
+                :,
+                idx,
+            ],
+            y_prob[
+                :,
+                idx,
+            ],
+        )
+
+        metrics[f"{label}_AUROC"] = auc
+
+        metrics[f"{label}_AP"] = ap
+
+        if np.isfinite(auc):
+
+            aucs.append(auc)
+
+        if np.isfinite(ap):
+
+            aps.append(ap)
+
+    metrics["macro_AUROC"] = float(np.mean(aucs)) if aucs else float("nan")
+
+    metrics["macro_AP"] = float(np.mean(aps)) if aps else float("nan")
+
+    y_pred = (y_prob >= 0.5).astype(np.int32)
+
+    metrics["macro_F1"] = float(
+        f1_score(
+            y_true,
+            y_pred,
+            average="macro",
+            zero_division=0,
+        )
+    )
+
+    return metrics
+
+
+# ============================================================
+# 10. TRAIN / VALIDATE
+# ============================================================
+
+
+def to_device(
+    batch: Dict[
+        str,
+        Any,
+    ],
+) -> Dict[
+    str,
+    Any,
+]:
+
+    output = dict(batch)
+
+    for key in [
+        "features",
+        "metadata",
+        "series_mask",
+        "labels",
+        "targets",
+        "target_mask",
+    ]:
+
+        if key in output and isinstance(
+            output[key],
+            torch.Tensor,
+        ):
+
+            output[key] = output[key].to(
+                DEVICE,
+                non_blocking=True,
+            )
+
+    return output
+
+
+def train_weak_epoch(
+    model: nn.Module,
+    gold_loader: DataLoader,
+    pseudo_loader: DataLoader,
+    gold_criterion: nn.Module,
+    optimizer: torch.optim.Optimizer,
+    scaler: Optional[torch.amp.GradScaler],
+) -> Dict[
+    str,
+    Any,
+]:
+
+    model.train()
+
+    pseudo_iterator = iter(pseudo_loader)
+
+    total_gold_loss = 0.0
+    total_pseudo_loss = 0.0
+    total_loss = 0.0
+
+    gold_steps = 0
+    pseudo_selected_cells = 0
+
+    pseudo_seen_uids: set = set()
+
+    for gold_batch in gold_loader:
+
+        gold_batch = to_device(gold_batch)
+
+        try:
+
+            pseudo_batch = next(pseudo_iterator)
+
+        except StopIteration:
+
+            pseudo_iterator = iter(pseudo_loader)
+
+            pseudo_batch = next(pseudo_iterator)
+
+        pseudo_seen_uids.update(pseudo_batch["study_uid"])
+
+        pseudo_batch = to_device(pseudo_batch)
+
+        optimizer.zero_grad(set_to_none=True)
+
+        with autocast_context():
+
+            gold_outputs = model(
+                gold_batch["features"],
+                gold_batch["metadata"],
+                gold_batch["series_mask"],
+            )
+
+            gold_loss = gold_criterion(
+                gold_outputs["logits"],
+                gold_batch["labels"],
+            )
+
+            pseudo_outputs = model(
+                pseudo_batch["features"],
+                pseudo_batch["metadata"],
+                pseudo_batch["series_mask"],
+            )
+
+            (
+                pseudo_loss,
+                selected_n,
+            ) = masked_soft_bce(
+                pseudo_outputs["logits"],
+                pseudo_batch["targets"],
+                pseudo_batch["target_mask"],
+            )
+
+            loss = gold_loss + PSEUDO_LAMBDA * pseudo_loss
+
+        if scaler is not None:
+
+            scaler.scale(loss).backward()
+
+            scaler.step(optimizer)
+
+            scaler.update()
+
+        else:
+
+            loss.backward()
+
+            optimizer.step()
+
+        total_gold_loss += float(gold_loss.detach().cpu().item())
+
+        total_pseudo_loss += float(pseudo_loss.detach().cpu().item())
+
+        total_loss += float(loss.detach().cpu().item())
+
+        pseudo_selected_cells += selected_n
+
+        gold_steps += 1
+
+    return {
+        "gold_loss": total_gold_loss
+        / max(
+            gold_steps,
+            1,
+        ),
+        "pseudo_loss": total_pseudo_loss
+        / max(
+            gold_steps,
+            1,
+        ),
+        "total_loss": total_loss
+        / max(
+            gold_steps,
+            1,
+        ),
+        "gold_steps": gold_steps,
+        "pseudo_studies_seen": len(pseudo_seen_uids),
+        "pseudo_selected_cells_seen": pseudo_selected_cells,
+    }
+
+
+@torch.no_grad()
+def evaluate_gold(
+    model: nn.Module,
+    loader: DataLoader,
+    criterion: nn.Module,
+) -> Tuple[
+    Dict[
+        str,
+        float,
+    ],
+    np.ndarray,
+    np.ndarray,
+]:
+
+    model.eval()
+
+    total_loss = 0.0
+    total_samples = 0
+
+    targets: List[np.ndarray] = []
+
+    probabilities: List[np.ndarray] = []
+
+    for batch in loader:
+
+        batch = to_device(batch)
+
+        with autocast_context():
+
+            outputs = model(
+                batch["features"],
+                batch["metadata"],
+                batch["series_mask"],
+            )
+
+            logits = outputs["logits"]
+
+            loss = criterion(
+                logits,
+                batch["labels"],
+            )
+
+        batch_size = batch["labels"].shape[0]
+
+        total_loss += float(loss.detach().cpu().item()) * batch_size
+
+        total_samples += batch_size
+
+        targets.append(batch["labels"].detach().cpu().numpy())
+
+        probabilities.append(torch.sigmoid(logits).detach().cpu().numpy())
+
+    y_true = np.concatenate(
+        targets,
+        axis=0,
+    )
+
+    y_prob = np.concatenate(
+        probabilities,
+        axis=0,
+    )
+
+    metrics = metric_summary(
+        y_true,
+        y_prob,
+    )
+
+    metrics["loss"] = total_loss / max(
+        total_samples,
+        1,
+    )
+
+    return (
+        metrics,
+        y_true,
+        y_prob,
+    )
+
+
+# ============================================================
+# 11. OOF SUMMARIES / W3.0 COMPARISON
+# ============================================================
+
+
+def pooled_oof_metrics(
+    oof_df: pd.DataFrame,
+) -> Tuple[
+    pd.DataFrame,
+    Dict[
+        str,
+        float,
+    ],
+]:
+
+    rows: List[
+        Dict[
+            str,
+            Any,
+        ]
+    ] = []
+
+    y_true_matrix: List[np.ndarray] = []
+
+    y_prob_matrix: List[np.ndarray] = []
+
+    aucs: List[float] = []
+
+    aps: List[float] = []
+
+    for label in LABEL_COLUMNS:
+
+        y_true = oof_df[f"{label}_true"].values.astype(np.int64)
+
+        y_prob = oof_df[f"{label}_prob"].values.astype(np.float64)
+
+        auc = safe_auc(
+            y_true,
+            y_prob,
+        )
+
+        ap = safe_ap(
+            y_true,
+            y_prob,
+        )
+
+        rows.append(
+            {
+                "Label": label,
+                "PositiveCount": int(y_true.sum()),
+                "AUROC": auc,
+                "AveragePrecision": ap,
+            }
+        )
+
+        if np.isfinite(auc):
+            aucs.append(auc)
+
+        if np.isfinite(ap):
+            aps.append(ap)
+
+        y_true_matrix.append(y_true)
+
+        y_prob_matrix.append(y_prob)
+
+    y_true_full = np.stack(
+        y_true_matrix,
+        axis=1,
+    )
+
+    y_prob_full = np.stack(
+        y_prob_matrix,
+        axis=1,
+    )
+
+    y_pred_full = (y_prob_full >= 0.5).astype(np.int32)
+
+    summary = {
+        "macro_AUROC": float(np.mean(aucs)),
+        "macro_AP": float(np.mean(aps)),
+        "macro_F1": float(
+            f1_score(
+                y_true_full,
+                y_pred_full,
+                average="macro",
+                zero_division=0,
+            )
+        ),
+    }
+
+    return (
+        pd.DataFrame(rows),
+        summary,
+    )
+
+
+def load_w30_baseline_oof() -> Optional[pd.DataFrame]:
+
+    path = W30_RESULTS_ROOT / "oof_predictions.csv"
+
+    if not path.exists():
+
+        print(
+            "WARNING: W3.0 oof_predictions.csv not found. "
+            "Only fixed reference metrics will be used."
+        )
+
+        return None
+
+    baseline = pd.read_csv(path)
+
+    baseline[UID_COLUMN] = baseline[UID_COLUMN].astype(str)
+
+    return baseline
+
+
+def compare_to_w30(
+    w31_oof: pd.DataFrame,
+    w31_per_label: pd.DataFrame,
+    w31_summary: Dict[
+        str,
+        float,
+    ],
+    baseline: Optional[pd.DataFrame],
+) -> Tuple[
+    pd.DataFrame,
+    Dict[
+        str,
+        Any,
+    ],
+]:
+
+    rows: List[
+        Dict[
+            str,
+            Any,
+        ]
+    ] = []
+
+    reference_summary = {
+        "macro_AUROC": W30_REFERENCE_MACRO_AUROC,
+        "macro_AP": W30_REFERENCE_MACRO_AP,
+        "macro_F1": W30_REFERENCE_MACRO_F1,
+    }
+
+    comparison: Dict[
+        str,
+        Any,
+    ] = {
+        "w3_0_reference": reference_summary,
+        "w3_1": w31_summary,
+        "delta_w3_1_minus_w3_0_reference": {
+            metric: float(w31_summary[metric] - reference_summary[metric])
+            for metric in [
+                "macro_AUROC",
+                "macro_AP",
+                "macro_F1",
+            ]
+        },
+    }
+
+    if baseline is None:
+
+        return (
+            pd.DataFrame(rows),
+            comparison,
+        )
+
+    left = w31_oof.sort_values(UID_COLUMN).reset_index(drop=True)
+
+    right = baseline.sort_values(UID_COLUMN).reset_index(drop=True)
+
+    if left[UID_COLUMN].tolist() != right[UID_COLUMN].tolist():
+
+        raise RuntimeError("W3.0 and W3.1 OOF UID mismatch.")
+
+    if "Fold" in right.columns and not np.array_equal(
+        left["Fold"].values,
+        right["Fold"].values,
+    ):
+
+        raise RuntimeError("W3.0 and W3.1 OOF fold mismatch.")
+
+    for label in LABEL_COLUMNS:
+
+        y_true = left[f"{label}_true"].values
+
+        weak_prob = left[f"{label}_prob"].values
+
+        baseline_prob = right[f"{label}_prob"].values
+
+        weak_auc = safe_auc(
+            y_true,
+            weak_prob,
+        )
+
+        baseline_auc = safe_auc(
+            y_true,
+            baseline_prob,
+        )
+
+        weak_ap = safe_ap(
+            y_true,
+            weak_prob,
+        )
+
+        baseline_ap = safe_ap(
+            y_true,
+            baseline_prob,
+        )
+
+        rows.append(
+            {
+                "Label": label,
+                "W3_0_AUROC": baseline_auc,
+                "W3_1_AUROC": weak_auc,
+                "Delta_AUROC": weak_auc - baseline_auc,
+                "W3_0_AP": baseline_ap,
+                "W3_1_AP": weak_ap,
+                "Delta_AP": weak_ap - baseline_ap,
+            }
+        )
+
+    baseline_per_label, baseline_summary = pooled_oof_metrics(right)
+
+    comparison["w3_0_from_attached_oof"] = baseline_summary
+
+    comparison["delta_w3_1_minus_w3_0_oof"] = {
+        metric: float(w31_summary[metric] - baseline_summary[metric])
+        for metric in [
+            "macro_AUROC",
+            "macro_AP",
+            "macro_F1",
+        ]
+    }
+
+    return (
+        pd.DataFrame(rows),
+        comparison,
+    )
+
+
+def paired_bootstrap_auc_delta(
+    w31_oof: pd.DataFrame,
+    baseline: Optional[pd.DataFrame],
+) -> Optional[
+    Dict[
+        str,
+        Any,
+    ]
+]:
+
+    if baseline is None or BOOTSTRAP_REPEATS <= 0:
+
+        return None
+
+    weak = w31_oof.sort_values(UID_COLUMN).reset_index(drop=True)
+
+    base = baseline.sort_values(UID_COLUMN).reset_index(drop=True)
+
+    n = len(weak)
+
+    rng = np.random.default_rng(BOOTSTRAP_SEED)
+
+    deltas: List[float] = []
+
+    for _ in range(BOOTSTRAP_REPEATS):
+
+        indices = rng.integers(
+            0,
+            n,
+            size=n,
+        )
+
+        weak_aucs: List[float] = []
+
+        base_aucs: List[float] = []
+
+        for label in LABEL_COLUMNS:
+
+            y = weak[f"{label}_true"].values[indices]
+
+            if len(np.unique(y)) < 2:
+
+                continue
+
+            weak_auc = safe_auc(
+                y,
+                weak[f"{label}_prob"].values[indices],
+            )
+
+            base_auc = safe_auc(
+                y,
+                base[f"{label}_prob"].values[indices],
+            )
+
+            if np.isfinite(weak_auc) and np.isfinite(base_auc):
+
+                weak_aucs.append(weak_auc)
+
+                base_aucs.append(base_auc)
+
+        if weak_aucs:
+
+            deltas.append(float(np.mean(weak_aucs) - np.mean(base_aucs)))
+
+    if not deltas:
+
+        return None
+
+    values = np.asarray(
+        deltas,
+        dtype=np.float64,
+    )
+
+    return {
+        "method": "paired_study_bootstrap_descriptive",
+        "repeats_requested": BOOTSTRAP_REPEATS,
+        "repeats_valid": int(len(values)),
+        "mean_delta_macro_AUROC": float(np.mean(values)),
+        "median_delta_macro_AUROC": float(np.median(values)),
+        "ci95_low": float(
+            np.quantile(
+                values,
+                0.025,
+            )
+        ),
+        "ci95_high": float(
+            np.quantile(
+                values,
+                0.975,
+            )
+        ),
+        "probability_delta_gt_0": float(np.mean(values > 0)),
+        "warning": (
+            "Descriptive only. n=58 and the same research cohort "
+            "was used throughout method development."
+        ),
+    }
+
+
+# ============================================================
+# 12. MAIN TRAINING
+# ============================================================
+
+
+def run_w31() -> None:
+
+    started = time.time()
+
+    print("=" * 88)
+    print("RSNA W3.1 - FOLD-SAFE CONSERVATIVE WEAK SUPERVISION")
+    print("=" * 88)
+
+    print(f"Device                     : {DEVICE}")
+    print(f"CUDA GPU count             : {GPU_COUNT}")
+    print(f"W3.0 feature cache         : {FEATURE_CACHE_ROOT}")
+    print(f"W2.3 root                  : {W23_ROOT}")
+    print(f"Output                     : {WORK_ROOT}")
+    print(f"Pseudo lambda              : {PSEUDO_LAMBDA}")
+    print(f"Selection threshold        : {SELECTION_THRESHOLD}")
+    print("Pseudo studies/gold step   : 1")
+    print("Pseudo target              : continuous probability")
+    print("Pseudo loss weighting      : NONE beyond global lambda")
+    print("Epoch length               : gold loader length")
+
+    (
+        gold_df,
+        fold_ids,
+        fold_df,
+    ) = load_gold_and_folds()
+
+    verify_w23_fold_assignments(fold_df)
+
+    verify_feature_cache_manifest()
+
+    gold_uid_set = set(gold_df[UID_COLUMN].astype(str))
+
+    study_uids = gold_df[UID_COLUMN].astype(str).tolist()
+
+    y_all = gold_df[LABEL_COLUMNS].values.astype(np.int64)
+
+    all_pseudo_audits: List[pd.DataFrame] = []
+
+    all_fold_histories: List[pd.DataFrame] = []
+
+    oof_records: List[
+        Dict[
+            str,
+            Any,
+        ]
+    ] = []
+
+    epoch_oof_records: List[
+        Dict[
+            str,
+            Any,
+        ]
+    ] = []
+
+    fold_metric_rows: List[
+        Dict[
+            str,
+            Any,
+        ]
+    ] = []
+
+    for fold_zero in range(NUM_FOLDS):
+
+        fold = fold_zero + 1
+
+        print("\n")
+        print("#" * 88)
+        print(f"OUTER IMAGE FOLD {fold}/{NUM_FOLDS}")
+        print("#" * 88)
+
+        train_indices = np.where(fold_ids != fold_zero)[0]
+
+        val_indices = np.where(fold_ids == fold_zero)[0]
+
+        train_uids = [study_uids[index] for index in (train_indices)]
+
+        val_uids = [study_uids[index] for index in (val_indices)]
+
+        print(
+            "Gold train/validation studies:",
+            f"{len(train_uids)} / {len(val_uids)}",
+        )
+
+        pseudo_pool, pseudo_audit = load_fold_pseudo_pool(
+            fold,
+            gold_uid_set,
+        )
+
+        if len(pseudo_pool) == 0:
+
+            raise RuntimeError(f"Fold {fold} has zero selected pseudo studies.")
+
+        # Fast cache sanity check: validate every selected pseudo UID
+        # has a feature file before training begins.
+        missing_feature_uids = [
+            uid
+            for uid in (pseudo_pool[UID_COLUMN].astype(str))
+            if not feature_cache_path(uid).exists()
+        ]
+
+        if missing_feature_uids:
+
+            raise RuntimeError(
+                f"Fold {fold}: {len(missing_feature_uids)} "
+                "pseudo studies lack W3.0 cached features. "
+                f"Example: {missing_feature_uids[0]}"
+            )
+
+        all_pseudo_audits.append(pseudo_audit)
+
+        pseudo_audit.to_csv(
+            RESULT_ROOT / f"fold_{fold}_pseudo_pool_by_label.csv",
+            index=False,
+        )
+
+        pseudo_pool[
+            [
+                UID_COLUMN,
+                *[f"{label}_target" for label in (LABEL_COLUMNS)],
+                *[f"{label}_mask" for label in (LABEL_COLUMNS)],
+            ]
+        ].to_csv(
+            RESULT_ROOT / f"fold_{fold}_selected_pseudo_pool.csv",
+            index=False,
+        )
+
+        train_y = y_all[train_indices]
+
+        pos_weight = make_pos_weight(train_y)
+
+        gold_train_dataset = GoldCachedDataset(
+            train_uids,
+            gold_df,
+        )
+
+        gold_val_dataset = GoldCachedDataset(
+            val_uids,
+            gold_df,
+        )
+
+        pseudo_dataset = PseudoCachedDataset(pseudo_pool)
+
+        # Match W3.0 construction order for the gold loaders/model.
+        gold_train_loader = DataLoader(
+            gold_train_dataset,
+            batch_size=BATCH_SIZE,
+            shuffle=True,
+            num_workers=NUM_WORKERS,
+            pin_memory=(DEVICE.type == "cuda"),
+            collate_fn=collate_cached_studies,
+            persistent_workers=(NUM_WORKERS > 0),
+        )
+
+        gold_val_loader = DataLoader(
+            gold_val_dataset,
+            batch_size=BATCH_SIZE,
+            shuffle=False,
+            num_workers=NUM_WORKERS,
+            pin_memory=(DEVICE.type == "cuda"),
+            collate_fn=collate_cached_studies,
+            persistent_workers=(NUM_WORKERS > 0),
+        )
+
+        model = CachedV4MetadataAblationModel(
+            metadata_dim=SERIES_META_DIM,
+            num_labels=NUM_LABELS,
+            align_v4_rng=True,
+        ).to(DEVICE)
+
+        optimizer = torch.optim.AdamW(
+            [
+                parameter
+                for parameter in (model.parameters())
+                if parameter.requires_grad
+            ],
+            lr=HEAD_LEARNING_RATE,
+            weight_decay=WEIGHT_DECAY,
+        )
+
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+            optimizer,
+            T_max=NUM_EPOCHS,
+            eta_min=COSINE_ETA_MIN,
+        )
+
+        gold_criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
+
+        scaler = (
+            torch.amp.GradScaler(
+                "cuda",
+                enabled=(USE_AMP and DEVICE.type == "cuda"),
+            )
+            if DEVICE.type == "cuda"
+            else None
+        )
+
+        # Dedicated pseudo generator prevents pseudo shuffling from
+        # consuming the global RNG used by the model/gold loader.
+        pseudo_generator = torch.Generator()
+
+        pseudo_generator.manual_seed(100_000 + RANDOM_SEED + fold)
+
+        pseudo_loader = DataLoader(
+            pseudo_dataset,
+            batch_size=1,
+            shuffle=True,
+            generator=pseudo_generator,
+            num_workers=NUM_WORKERS,
+            pin_memory=(DEVICE.type == "cuda"),
+            collate_fn=collate_cached_studies,
+            persistent_workers=(NUM_WORKERS > 0),
+        )
+
+        fold_history: List[
+            Dict[
+                str,
+                Any,
+            ]
+        ] = []
+
+        fold_epoch_predictions: List[
+            Dict[
+                str,
+                Any,
+            ]
+        ] = []
+
+        fold_pseudo_unique_seen: set = set()
+
+        for epoch in range(
+            1,
+            NUM_EPOCHS + 1,
+        ):
+
+            train_metrics = train_weak_epoch(
+                model,
+                gold_train_loader,
+                pseudo_loader,
+                gold_criterion,
+                optimizer,
+                scaler,
+            )
+
+            (
+                val_metrics,
+                y_true,
+                y_prob,
+            ) = evaluate_gold(
+                model,
+                gold_val_loader,
+                gold_criterion,
+            )
+
+            scheduler.step()
+
+            current_lr = float(optimizer.param_groups[0]["lr"])
+
+            history_row = {
+                "Fold": fold,
+                "Epoch": epoch,
+                "LearningRate": current_lr,
+                "GoldLoss": train_metrics["gold_loss"],
+                "PseudoLoss": train_metrics["pseudo_loss"],
+                "TotalLoss": train_metrics["total_loss"],
+                "GoldSteps": train_metrics["gold_steps"],
+                "PseudoStudiesSeenThisEpoch": train_metrics["pseudo_studies_seen"],
+                "PseudoSelectedCellsSeenThisEpoch": train_metrics[
+                    "pseudo_selected_cells_seen"
+                ],
+                "ValLoss": val_metrics["loss"],
+                "ValMacroAUROC": val_metrics["macro_AUROC"],
+                "ValMacroAP": val_metrics["macro_AP"],
+                "ValMacroF1": val_metrics["macro_F1"],
+            }
+
+            fold_history.append(history_row)
+
+            print(
+                f"Fold {fold} "
+                f"Epoch {epoch:02d}/{NUM_EPOCHS}: "
+                f"gold={history_row['GoldLoss']:.4f} "
+                f"pseudo={history_row['PseudoLoss']:.4f} "
+                f"total={history_row['TotalLoss']:.4f} "
+                f"val_auc={history_row['ValMacroAUROC']:.4f} "
+                f"val_ap={history_row['ValMacroAP']:.4f} "
+                f"val_f1={history_row['ValMacroF1']:.4f}"
+            )
+
+            for row_idx, uid in enumerate(val_uids):
+
+                record: Dict[
+                    str,
+                    Any,
+                ] = {
+                    UID_COLUMN: uid,
+                    "Fold": fold,
+                    "Epoch": epoch,
+                }
+
+                for label_idx, label in enumerate(LABEL_COLUMNS):
+
+                    record[f"{label}_true"] = int(
+                        y_true[
+                            row_idx,
+                            label_idx,
+                        ]
+                    )
+
+                    record[f"{label}_prob"] = float(
+                        y_prob[
+                            row_idx,
+                            label_idx,
+                        ]
+                    )
+
+                fold_epoch_predictions.append(record)
+
+                epoch_oof_records.append(record)
+
+            if epoch == NUM_EPOCHS:
+
+                atomic_torch_save(
+                    {
+                        "fold": fold,
+                        "epoch": epoch,
+                        "model_state_dict": model.state_dict(),
+                        "optimizer_state_dict": optimizer.state_dict(),
+                        "config": {
+                            "experiment": "W3.1_fold_safe_conservative_weak_supervision",
+                            "pseudo_lambda": PSEUDO_LAMBDA,
+                            "selection_threshold": SELECTION_THRESHOLD,
+                            "pseudo_studies_per_gold_step": 1,
+                            "pseudo_target": "continuous_probability",
+                            "pseudo_loss": "masked_unweighted_soft_BCE",
+                            "feature_cache_version": FEATURE_CACHE_VERSION,
+                            "num_epochs": NUM_EPOCHS,
+                            "learning_rate": HEAD_LEARNING_RATE,
+                            "weight_decay": WEIGHT_DECAY,
+                            "cosine_eta_min": COSINE_ETA_MIN,
+                        },
+                    },
+                    CHECKPOINT_ROOT / f"fold_{fold}_epoch_{NUM_EPOCHS}.pt",
+                )
+
+        fold_history_df = pd.DataFrame(fold_history)
+
+        fold_history_df.to_csv(
+            RESULT_ROOT / f"fold_{fold}_history.csv",
+            index=False,
+        )
+
+        all_fold_histories.append(fold_history_df)
+
+        pd.DataFrame(fold_epoch_predictions).to_csv(
+            RESULT_ROOT / f"fold_{fold}_epoch_predictions.csv",
+            index=False,
+        )
+
+        # Epoch 12 is the pre-specified final model.
+        final_epoch_records = [
+            record
+            for record in (fold_epoch_predictions)
+            if int(record["Epoch"]) == NUM_EPOCHS
+        ]
+
+        oof_records.extend(
+            [
+                {key: value for key, value in (record.items()) if key != "Epoch"}
+                for record in (final_epoch_records)
+            ]
+        )
+
+        final_df = pd.DataFrame(final_epoch_records)
+
+        final_metrics_df, final_summary = pooled_oof_metrics(final_df)
+
+        fold_metric_rows.append(
+            {
+                "Fold": fold,
+                "GoldTrainN": len(train_uids),
+                "GoldValidationN": len(val_uids),
+                "PseudoCandidateStudyN": len(pseudo_dataset),
+                "PseudoSelectedCellN": int(
+                    sum(
+                        pseudo_pool[f"{label}_mask"].astype(bool).sum()
+                        for label in (LABEL_COLUMNS)
+                    )
+                ),
+                "FinalMacroAUROC": final_summary["macro_AUROC"],
+                "FinalMacroAP": final_summary["macro_AP"],
+                "FinalMacroF1": final_summary["macro_F1"],
+            }
+        )
+
+        print(
+            f"Fold {fold} final: "
+            f"AUROC={final_summary['macro_AUROC']:.4f} "
+            f"AP={final_summary['macro_AP']:.4f} "
+            f"F1={final_summary['macro_F1']:.4f}"
+        )
+
+        del model
+        del optimizer
+        del scheduler
+        del gold_criterion
+        del scaler
+        del gold_train_loader
+        del gold_val_loader
+        del pseudo_loader
+        del gold_train_dataset
+        del gold_val_dataset
+        del pseudo_dataset
+
+        gc.collect()
+
+        if DEVICE.type == "cuda":
+
+            torch.cuda.empty_cache()
+
+    # ========================================================
+    # FINAL OOF RESULTS
+    # ========================================================
+
+    oof_df = pd.DataFrame(oof_records).sort_values(UID_COLUMN).reset_index(drop=True)
+
+    if len(oof_df) != 58:
+
+        raise RuntimeError(f"Expected 58 final OOF rows, found {len(oof_df)}.")
+
+    oof_df.to_csv(
+        RESULT_ROOT / "oof_predictions.csv",
+        index=False,
+    )
+
+    epoch_oof_df = pd.DataFrame(epoch_oof_records)
+
+    epoch_oof_df.to_csv(
+        RESULT_ROOT / "epoch_oof_predictions.csv",
+        index=False,
+    )
+
+    epoch_rows: List[
+        Dict[
+            str,
+            Any,
+        ]
+    ] = []
+
+    for epoch in range(
+        1,
+        NUM_EPOCHS + 1,
+    ):
+
+        epoch_df = epoch_oof_df[epoch_oof_df["Epoch"] == epoch].copy()
+
+        if len(epoch_df) != 58:
+
+            raise RuntimeError(
+                f"Epoch {epoch}: expected 58 OOF rows, " f"found {len(epoch_df)}."
+            )
+
+        _, summary = pooled_oof_metrics(epoch_df)
+
+        epoch_rows.append(
+            {
+                "Epoch": epoch,
+                "OOF_Macro_AUROC": summary["macro_AUROC"],
+                "OOF_Macro_AP": summary["macro_AP"],
+                "OOF_Macro_F1": summary["macro_F1"],
+            }
+        )
+
+    epoch_summary_df = pd.DataFrame(epoch_rows)
+
+    epoch_summary_df.to_csv(
+        RESULT_ROOT / "epoch_oof_summary.csv",
+        index=False,
+    )
+
+    per_label_df, final_summary = pooled_oof_metrics(oof_df)
+
+    per_label_df.to_csv(
+        RESULT_ROOT / "oof_per_label_metrics.csv",
+        index=False,
+    )
+
+    pd.DataFrame(fold_metric_rows).to_csv(
+        RESULT_ROOT / "fold_metrics.csv",
+        index=False,
+    )
+
+    pd.concat(
+        all_pseudo_audits,
+        ignore_index=True,
+    ).to_csv(
+        RESULT_ROOT / "pseudo_pool_by_fold_label.csv",
+        index=False,
+    )
+
+    pd.concat(
+        all_fold_histories,
+        ignore_index=True,
+    ).to_csv(
+        RESULT_ROOT / "all_fold_history.csv",
+        index=False,
+    )
+
+    # ========================================================
+    # DIRECT CONTROL COMPARISON
+    # ========================================================
+
+    baseline = load_w30_baseline_oof()
+
+    (
+        delta_per_label_df,
+        comparison,
+    ) = compare_to_w30(
+        oof_df,
+        per_label_df,
+        final_summary,
+        baseline,
+    )
+
+    if not delta_per_label_df.empty:
+
+        delta_per_label_df.to_csv(
+            RESULT_ROOT / "delta_vs_w3_0_per_label.csv",
+            index=False,
+        )
+
+    bootstrap = paired_bootstrap_auc_delta(
+        oof_df,
+        baseline,
+    )
+
+    if bootstrap is not None:
+
+        with open(
+            RESULT_ROOT / "paired_bootstrap_macro_auc_delta.json",
+            "w",
+            encoding="utf-8",
+        ) as handle:
+
+            json.dump(
+                bootstrap,
+                handle,
+                indent=2,
+                allow_nan=True,
+            )
+
+    comparison["paired_bootstrap_macro_auc_delta"] = bootstrap
+
+    comparison["runtime_seconds"] = time.time() - started
+
+    with open(
+        RESULT_ROOT / "W3_1_COMPARISON.json",
+        "w",
+        encoding="utf-8",
+    ) as handle:
+
+        json.dump(
+            comparison,
+            handle,
+            indent=2,
+            allow_nan=True,
+        )
+
+    # ========================================================
+    # CONFIG / REPORT
+    # ========================================================
+
+    config = {
+        "experiment": "W3.1 Fold-Safe Conservative Weak Supervision",
+        "data_root": str(DATA_ROOT),
+        "feature_cache_root": str(FEATURE_CACHE_ROOT),
+        "w2_3_root": str(W23_ROOT),
+        "output_root": str(WORK_ROOT),
+        "feature_cache_version": FEATURE_CACHE_VERSION,
+        "num_folds": NUM_FOLDS,
+        "fold_sha256": EXPECTED_V4_FOLD_SHA256,
+        "num_epochs": NUM_EPOCHS,
+        "batch_size_gold": 1,
+        "batch_size_pseudo": 1,
+        "pseudo_studies_per_gold_step": 1,
+        "pseudo_lambda": PSEUDO_LAMBDA,
+        "selection_threshold": SELECTION_THRESHOLD,
+        "pseudo_mask": (
+            "W2.3 SoftLabelAvailable AND "
+            "CandidateSelectionScore >= threshold AND "
+            "soft probability is not null"
+        ),
+        "pseudo_target": "continuous W2.3 fold-specific probability",
+        "pseudo_loss": (
+            "unweighted BCEWithLogits, reduction none, "
+            "masked and normalized over selected cells only"
+        ),
+        "candidate_selection_score_used_as_loss_weight": False,
+        "pseudo_class_pos_weight": False,
+        "gold_loss": (
+            "BCEWithLogitsLoss with fold-train neg/pos " "pos_weight clipped [1,5]"
+        ),
+        "optimizer": "AdamW",
+        "learning_rate": HEAD_LEARNING_RATE,
+        "weight_decay": WEIGHT_DECAY,
+        "scheduler": "CosineAnnealingLR",
+        "cosine_eta_min": COSINE_ETA_MIN,
+        "early_stopping": False,
+        "amp": USE_AMP,
+        "labels": LABEL_COLUMNS,
+    }
+
+    with open(
+        RESULT_ROOT / "w3_1_config.json",
+        "w",
+        encoding="utf-8",
+    ) as handle:
+
+        json.dump(
+            config,
+            handle,
+            indent=2,
+        )
+
+    delta_ref = final_summary["macro_AUROC"] - W30_REFERENCE_MACRO_AUROC
+
+    if "delta_w3_1_minus_w3_0_oof" in comparison:
+
+        delta_exact = comparison["delta_w3_1_minus_w3_0_oof"]["macro_AUROC"]
+
+    else:
+
+        delta_exact = delta_ref
+
+    if delta_exact >= 0.02:
+
+        practical_result = "STRONG_SUCCESS"
+
+    elif delta_exact >= 0.005:
+
+        practical_result = "USEFUL_SIGNAL"
+
+    elif delta_exact > -0.005:
+
+        practical_result = "NEAR_ZERO"
+
+    else:
+
+        practical_result = "NEGATIVE"
+
+    report_lines = [
+        "# W3.1 Fold-Safe Conservative Weak Supervision",
+        "",
+        "## Final endpoint",
+        "",
+        f"- W3.1 macro OOF AUROC: {final_summary['macro_AUROC']:.6f}",
+        f"- W3.1 macro OOF AP: {final_summary['macro_AP']:.6f}",
+        f"- W3.1 macro OOF F1: {final_summary['macro_F1']:.6f}",
+        f"- W3.0 reference AUROC: {W30_REFERENCE_MACRO_AUROC:.6f}",
+        f"- Delta AUROC: {delta_exact:+.6f}",
+        f"- Practical result bucket: {practical_result}",
+        "",
+        "## Fixed intervention",
+        "",
+        f"- Pseudo lambda: {PSEUDO_LAMBDA}",
+        f"- Selection threshold: {SELECTION_THRESHOLD}",
+        "- One pseudo study per gold optimizer step.",
+        "- Soft targets remain continuous probabilities.",
+        "- Pseudo BCE is masked to selected cells only.",
+        "- CandidateSelectionScore is NOT a loss weight.",
+        "- No pseudo positive-class weighting is applied.",
+        "- Epoch length is defined by the gold loader.",
+        "",
+        "## Leakage controls",
+        "",
+        "- Outer image fold k consumes only W2.3 fold_k pseudo outputs.",
+        "- W2.3 fold assignment file is required to match V4/W3.0 exactly.",
+        "- No cross-fold probability stability file is used.",
+        "- No all-58 W2 soft probabilities/calibrators are used.",
+        "",
+        "## Interpretation caution",
+        "",
+        "- n=58 gold studies makes OOF deltas noisy.",
+        "- Epoch 12 is the pre-specified endpoint; no validation-driven epoch selection.",
+        "- Bootstrap output, when present, is descriptive rather than an independent significance test.",
+    ]
+
+    if bootstrap is not None:
+
+        report_lines.extend(
+            [
+                "",
+                "## Paired descriptive bootstrap",
+                "",
+                f"- 95% CI delta macro AUROC: "
+                f"[{bootstrap['ci95_low']:+.6f}, "
+                f"{bootstrap['ci95_high']:+.6f}]",
+                f"- Bootstrap P(delta>0): "
+                f"{bootstrap['probability_delta_gt_0']:.3f}",
+            ]
+        )
+
+    with open(
+        RESULT_ROOT / "W3_1_REPORT.md",
+        "w",
+        encoding="utf-8",
+    ) as handle:
+
+        handle.write("\n".join(report_lines) + "\n")
+
+    # ========================================================
+    # CONSOLE DECISION SUMMARY
+    # ========================================================
+
+    print("\n")
+    print("=" * 88)
+    print("W3.1 COMPLETE")
+    print("=" * 88)
+
+    print("\nEpoch-wise pooled OOF:")
+    print(epoch_summary_df.to_string(index=False))
+
+    print("\nFinal pooled OOF:")
+    print(f"  W3.1 AUROC : " f"{final_summary['macro_AUROC']:.6f}")
+    print(f"  W3.0 AUROC : " f"{W30_REFERENCE_MACRO_AUROC:.6f}")
+    print(f"  Delta      : " f"{delta_exact:+.6f}")
+    print(f"  W3.1 AP    : " f"{final_summary['macro_AP']:.6f}")
+    print(f"  W3.1 F1    : " f"{final_summary['macro_F1']:.6f}")
+
+    print(f"\nPractical result: " f"{practical_result}")
+
+    if bootstrap is not None:
+
+        print(
+            "\nPaired descriptive bootstrap " f"({bootstrap['repeats_valid']} valid):"
+        )
+
+        print(
+            "  delta AUROC 95% CI: "
+            f"[{bootstrap['ci95_low']:+.6f}, "
+            f"{bootstrap['ci95_high']:+.6f}]"
+        )
+
+        print("  P(delta > 0): " f"{bootstrap['probability_delta_gt_0']:.3f}")
+
+    if not delta_per_label_df.empty:
+
+        print("\nPer-label AUROC delta vs W3.0:")
+
+        print(
+            delta_per_label_df[
+                [
+                    "Label",
+                    "W3_0_AUROC",
+                    "W3_1_AUROC",
+                    "Delta_AUROC",
+                ]
+            ].to_string(index=False)
+        )
+
+    print("\nResults directory:")
+    print(RESULT_ROOT)
+
+    print("\nRuntime:" f" {elapsed_string(time.time() - started)}")
+
+
+if __name__ == "__main__":
+
+    run_w31()

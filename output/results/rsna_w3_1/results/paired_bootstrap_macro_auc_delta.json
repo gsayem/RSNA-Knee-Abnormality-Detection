@@ -1,0 +1,11 @@
+{
+  "method": "paired_study_bootstrap_descriptive",
+  "repeats_requested": 2000,
+  "repeats_valid": 2000,
+  "mean_delta_macro_AUROC": -0.011456799434723629,
+  "median_delta_macro_AUROC": -0.011637943928706151,
+  "ci95_low": -0.07717916648483264,
+  "ci95_high": 0.05484547284540889,
+  "probability_delta_gt_0": 0.364,
+  "warning": "Descriptive only. n=58 and the same research cohort was used throughout method development."
+}

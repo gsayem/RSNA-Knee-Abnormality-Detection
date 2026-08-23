@@ -113,7 +113,7 @@ strict_repeats = signature_counts[signature_counts["RepeatedCount"] > 1].copy()
 
 
 print("\nStrict repeated groups:")
-display(strict_repeats)
+# display(strict_repeats)
 
 
 # ============================================================
@@ -735,7 +735,7 @@ if len(comparison_df) > 0:
 
     print("\nDetailed comparison:")
 
-    display(comparison_df)
+    # display(comparison_df)
 
 
 print("\nRepresentative Dummy study:")

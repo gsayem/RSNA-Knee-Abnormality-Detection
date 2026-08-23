@@ -1,0 +1,11 @@
+ReviewerGoldMappingCategory,Count,Percent
+report_positive_gold_positive,37,30.833333333333332
+report_positive_gold_negative,36,30.0
+report_negative_gold_negative,12,10.0
+report_related_gold_negative,10,8.333333333333334
+report_related_gold_positive,8,6.666666666666667
+report_not_mentioned_gold_positive,6,5.0
+report_uncertain_gold_positive,4,3.3333333333333335
+report_uncertain_gold_negative,3,2.5
+report_mixed_gold_negative,2,1.6666666666666667
+report_negative_gold_positive,2,1.6666666666666667

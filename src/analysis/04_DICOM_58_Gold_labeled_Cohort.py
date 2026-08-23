@@ -1038,14 +1038,14 @@ print("\nDONE.")
 
 print("\nFirst 20 rows of the master joined dataset:")
 
-display(master_df.head(20))
+# display(master_df.head(20))
 
 
 print("\nDummy / blank series:")
 
-display(dummy_blank_df[dummy_blank_columns])
+# display(dummy_blank_df[dummy_blank_columns])
 
 
 print("\nStudy sequence matrix:")
 
-display(study_matrix_df.head(20))
+# display(study_matrix_df.head(20))

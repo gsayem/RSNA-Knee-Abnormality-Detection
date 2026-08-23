@@ -1,0 +1,26 @@
+{
+  "cache_version": "w4_0_curia2_cls_allseries_24slice_canonical_orientation_slow_processor_v1",
+  "cache_complete": true,
+  "train_studies": 4407,
+  "cached_studies": 4407,
+  "encoded_series": 24371,
+  "encoded_slices": 565551,
+  "mean_encoded_series_per_study": 5.530065804402088,
+  "mean_encoded_slices_per_study": 128.3301565690946,
+  "curia_model_sha256": "403a02e27531d2858ecd1e9b1ec2d5ea7bfa909f10ff0d9e8416090a6a8c96ef",
+  "curia_config": {
+    "model_sha256": "403a02e27531d2858ecd1e9b1ec2d5ea7bfa909f10ff0d9e8416090a6a8c96ef",
+    "hidden_size": 768,
+    "num_channels": 1,
+    "image_size": 512,
+    "patch_size": 16,
+    "num_hidden_layers": 12,
+    "num_attention_heads": 12
+  },
+  "encoder_batch_size": 16,
+  "orientation_min_alignment_seen": 0.6859648167130746,
+  "series_below_orientation_threshold": 1,
+  "series_plane_metadata_geometry_matches": 24371,
+  "series_audit_rows": 24371,
+  "runtime_seconds_this_call": 0.0
+}

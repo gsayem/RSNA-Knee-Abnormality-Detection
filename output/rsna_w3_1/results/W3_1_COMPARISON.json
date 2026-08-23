@@ -1,0 +1,39 @@
+{
+  "w3_0_reference": {
+    "macro_AUROC": 0.545918,
+    "macro_AP": 0.433128,
+    "macro_F1": 0.40716
+  },
+  "w3_1": {
+    "macro_AUROC": 0.5243007501344246,
+    "macro_AP": 0.42646165536969166,
+    "macro_F1": 0.34162458014537816
+  },
+  "delta_w3_1_minus_w3_0_reference": {
+    "macro_AUROC": -0.02161724986557545,
+    "macro_AP": -0.006666344630308352,
+    "macro_F1": -0.06553541985462186
+  },
+  "w3_0_from_attached_oof": {
+    "macro_AUROC": 0.5459179096093576,
+    "macro_AP": 0.43312810539264596,
+    "macro_F1": 0.407159620467866
+  },
+  "delta_w3_1_minus_w3_0_oof": {
+    "macro_AUROC": -0.021617159474933034,
+    "macro_AP": -0.0066664500229542956,
+    "macro_F1": -0.06553504032248786
+  },
+  "paired_bootstrap_macro_auc_delta": {
+    "method": "paired_study_bootstrap_descriptive",
+    "repeats_requested": 2000,
+    "repeats_valid": 2000,
+    "mean_delta_macro_AUROC": -0.02164644535011206,
+    "median_delta_macro_AUROC": -0.021314541737263937,
+    "ci95_low": -0.08160688733418021,
+    "ci95_high": 0.038622903122956916,
+    "probability_delta_gt_0": 0.232,
+    "warning": "Descriptive only. n=58 and the same research cohort was used throughout method development."
+  },
+  "runtime_seconds": 95.56502199172974
+}

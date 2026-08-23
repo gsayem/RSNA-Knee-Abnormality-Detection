@@ -1,0 +1,111 @@
+Label,Severity,Gold,Count
+ACL,complete,1,11
+ACL,degenerative,0,1
+ACL,degenerative,1,1
+ACL,grade_graad 2,1,1
+ACL,grade_grade 1,0,1
+ACL,grade_grade 2,0,1
+ACL,grade_grade i,1,1
+ACL,grade_grade ii,1,1
+ACL,mild,0,3
+ACL,mild,1,1
+ACL,moderate,0,2
+ACL,moderate,1,1
+ACL,partial,0,4
+ACL,partial,1,2
+ACL,severe,0,1
+ACL,severe,1,2
+Baker's,degenerative,1,1
+Baker's,mild,1,2
+Baker's,moderate,1,3
+Baker's,partial,1,1
+Baker's,severe,1,2
+Contusion,complete,0,2
+Contusion,complete,1,2
+Contusion,degenerative,0,2
+Contusion,grade_grade 3,1,1
+Contusion,grade_grade i,1,1
+Contusion,grade_grade ii,0,1
+Contusion,grade_grade ii,1,1
+Contusion,mild,0,5
+Contusion,mild,1,5
+Contusion,moderate,0,2
+Contusion,moderate,1,1
+Contusion,severe,0,1
+Contusion,severe,1,2
+Effusion,complete,1,1
+Effusion,degenerative,1,1
+Effusion,grade_grade i,1,2
+Effusion,grade_grade ii,1,1
+Effusion,mild,0,11
+Effusion,mild,1,13
+Effusion,moderate,0,1
+Effusion,moderate,1,5
+Effusion,severe,1,2
+Fracture,complete,1,1
+Fracture,grade_grade i,1,1
+Fracture,grade_grade ii,1,1
+Fracture,mild,1,2
+Fracture,moderate,1,1
+Fracture,severe,1,1
+Lateral Meniscus,complete,0,1
+Lateral Meniscus,degenerative,0,6
+Lateral Meniscus,degenerative,1,4
+Lateral Meniscus,grade_grade i,0,2
+Lateral Meniscus,grade_grade ii,0,2
+Lateral Meniscus,grade_grade ii,1,1
+Lateral Meniscus,mild,0,4
+Lateral Meniscus,mild,1,2
+Lateral Meniscus,moderate,0,2
+Lateral Meniscus,moderate,1,1
+Lateral Meniscus,partial,1,3
+Lateral OA,complete,1,1
+Lateral OA,severe,1,1
+MCL,complete,0,1
+MCL,complete,1,3
+MCL,grade_graad 2,1,1
+MCL,grade_grade 2,0,1
+MCL,grade_grade 2,1,3
+MCL,grade_grade i,0,3
+MCL,grade_grade ii,0,2
+MCL,grade_grade ii,1,1
+MCL,grade_grado ii,1,1
+MCL,mild,0,3
+MCL,mild,1,2
+MCL,moderate,0,3
+MCL,moderate,1,5
+MCL,partial,0,2
+MCL,partial,1,3
+MCL,severe,1,1
+Medial Meniscus,complete,1,2
+Medial Meniscus,degenerative,0,3
+Medial Meniscus,degenerative,1,5
+Medial Meniscus,grade_grade ii,1,2
+Medial Meniscus,grade_grade iii,1,1
+Medial Meniscus,mild,1,3
+Medial Meniscus,moderate,1,3
+Medial Meniscus,partial,0,1
+Medial Meniscus,partial,1,1
+Medial Meniscus,severe,1,2
+Medial OA,complete,1,3
+Medial OA,degenerative,1,2
+Medial OA,grade_grade ii,1,1
+Medial OA,grade_grado 3,1,1
+Medial OA,mild,1,2
+Medial OA,moderate,1,2
+Medial OA,severe,1,1
+PF OA,grade_grade 3,1,1
+PF OA,grade_grado 2,1,1
+PF OA,grade_grado 4,1,1
+PF OA,mild,1,1
+PF OA,moderate,1,2
+PF OA,severe,1,1
+Synovitis,complete,1,1
+Synovitis,degenerative,1,1
+Synovitis,grade_grade i,1,1
+Synovitis,grade_grade ii,1,1
+Synovitis,mild,0,2
+Synovitis,mild,1,5
+Synovitis,moderate,0,1
+Synovitis,moderate,1,2
+Synovitis,severe,1,1

@@ -1,0 +1,14 @@
+Label,CompletedN,ExactAssertionAgreement,BinaryComparableN,BinaryAgreement,ParserFalsePositiveVsReviewer,ParserFalseNegativeVsReviewer
+ALL,120,0.725,69,1.0,0,0
+ACL,10,0.6,6,1.0,0,0
+MCL,10,1.0,9,1.0,0,0
+Medial Meniscus,12,0.6666666666666666,6,1.0,0,0
+Lateral Meniscus,12,0.75,5,1.0,0,0
+Medial OA,8,0.5,4,1.0,0,0
+Lateral OA,6,0.3333333333333333,2,1.0,0,0
+PF OA,6,0.5,2,1.0,0,0
+Effusion,12,0.75,8,1.0,0,0
+Synovitis,9,0.8888888888888888,5,1.0,0,0
+Baker's,10,0.9,8,1.0,0,0
+Contusion,13,0.9230769230769231,8,1.0,0,0
+Fracture,12,0.5833333333333334,6,1.0,0,0

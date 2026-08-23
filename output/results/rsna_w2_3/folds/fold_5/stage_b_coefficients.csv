@@ -1,0 +1,157 @@
+OuterFold,Label,Feature,StandardizedCoefficient
+5,ACL,EvidencePositiveScore,0.42600774687873727
+5,ACL,EvidenceNegativeScore,-0.3162710161233817
+5,ACL,RelatedScore,-0.05325307312965124
+5,ACL,UncertaintyFlag,0.0
+5,ACL,FusedAssertionConfidence,0.15314042127501676
+5,ACL,RuleDecidableFlag,0.21568978011516582
+5,ACL,SemanticDirectStrength,0.25520981607661064
+5,ACL,SemanticDirectMargin,0.4124219499780735
+5,ACL,SeverityLow,-0.19732095723467347
+5,ACL,SeverityModerate,-0.19807049967545204
+5,ACL,SeverityHigh,0.3534002587169212
+5,ACL,SeverityDegenerative,-0.0018849605253966084
+5,ACL,Intercept,-0.16320483203843636
+5,MCL,EvidencePositiveScore,0.1401208621476769
+5,MCL,EvidenceNegativeScore,-0.10865427901011253
+5,MCL,RelatedScore,0.002874754055198465
+5,MCL,UncertaintyFlag,0.23180520658074527
+5,MCL,FusedAssertionConfidence,0.08269592641346209
+5,MCL,RuleDecidableFlag,0.05665897311459318
+5,MCL,SemanticDirectStrength,0.16826825826791547
+5,MCL,SemanticDirectMargin,0.2064841882785975
+5,MCL,SeverityLow,0.11223618455131545
+5,MCL,SeverityModerate,0.27083220235041383
+5,MCL,SeverityHigh,0.24802306922328624
+5,MCL,SeverityDegenerative,0.0
+5,MCL,Intercept,-0.7855876383849345
+5,Medial Meniscus,EvidencePositiveScore,0.3719252286167175
+5,Medial Meniscus,EvidenceNegativeScore,-0.2517933550322346
+5,Medial Meniscus,RelatedScore,-0.232775488500093
+5,Medial Meniscus,UncertaintyFlag,0.0
+5,Medial Meniscus,FusedAssertionConfidence,0.11785476763577908
+5,Medial Meniscus,RuleDecidableFlag,0.28643552668875166
+5,Medial Meniscus,SemanticDirectStrength,0.32486252420668366
+5,Medial Meniscus,SemanticDirectMargin,0.40759418344530385
+5,Medial Meniscus,SeverityLow,0.042598577012273646
+5,Medial Meniscus,SeverityModerate,0.10993723340080973
+5,Medial Meniscus,SeverityHigh,0.11835353641860544
+5,Medial Meniscus,SeverityDegenerative,-0.08015427099745291
+5,Medial Meniscus,Intercept,-0.04641835088142401
+5,Lateral Meniscus,EvidencePositiveScore,0.43928895282687774
+5,Lateral Meniscus,EvidenceNegativeScore,-0.2992370553832967
+5,Lateral Meniscus,RelatedScore,-0.01587274568220539
+5,Lateral Meniscus,UncertaintyFlag,-0.1518224118053315
+5,Lateral Meniscus,FusedAssertionConfidence,0.10123324878985103
+5,Lateral Meniscus,RuleDecidableFlag,0.11570694723200285
+5,Lateral Meniscus,SemanticDirectStrength,0.16710249619182424
+5,Lateral Meniscus,SemanticDirectMargin,0.3765808404068018
+5,Lateral Meniscus,SeverityLow,0.10726970514623585
+5,Lateral Meniscus,SeverityModerate,-0.0881914468773088
+5,Lateral Meniscus,SeverityHigh,0.0
+5,Lateral Meniscus,SeverityDegenerative,-0.049229149970017476
+5,Lateral Meniscus,Intercept,-0.2168815661597412
+5,Medial OA,EvidencePositiveScore,0.13320205993646658
+5,Medial OA,EvidenceNegativeScore,-0.06784143956983445
+5,Medial OA,RelatedScore,0.4982515734869654
+5,Medial OA,UncertaintyFlag,0.0
+5,Medial OA,FusedAssertionConfidence,0.01669404065057409
+5,Medial OA,RuleDecidableFlag,0.016694044825999482
+5,Medial OA,SemanticDirectStrength,-0.027732316933685757
+5,Medial OA,SemanticDirectMargin,-0.04764267218553153
+5,Medial OA,SeverityLow,0.18311746146695332
+5,Medial OA,SeverityModerate,-0.03659749125752083
+5,Medial OA,SeverityHigh,0.2074726279932882
+5,Medial OA,SeverityDegenerative,0.0
+5,Medial OA,Intercept,-0.48673206920482115
+5,Lateral OA,EvidencePositiveScore,0.20690017278996145
+5,Lateral OA,EvidenceNegativeScore,-0.09046889137828702
+5,Lateral OA,RelatedScore,0.18878164058839803
+5,Lateral OA,UncertaintyFlag,0.0
+5,Lateral OA,FusedAssertionConfidence,0.04314365453796784
+5,Lateral OA,RuleDecidableFlag,0.043143663722326316
+5,Lateral OA,SemanticDirectStrength,0.14813484358155238
+5,Lateral OA,SemanticDirectMargin,0.20771019287023215
+5,Lateral OA,SeverityLow,0.008412643752519267
+5,Lateral OA,SeverityModerate,0.26809153667503177
+5,Lateral OA,SeverityHigh,0.13128078884179176
+5,Lateral OA,SeverityDegenerative,0.27883523766249607
+5,Lateral OA,Intercept,-0.635714789837735
+5,PF OA,EvidencePositiveScore,0.34047798526937306
+5,PF OA,EvidenceNegativeScore,0.014361285176942708
+5,PF OA,RelatedScore,0.19429056548649223
+5,PF OA,UncertaintyFlag,0.0
+5,PF OA,FusedAssertionConfidence,0.3082622395738826
+5,PF OA,RuleDecidableFlag,0.3082622578327285
+5,PF OA,SemanticDirectStrength,0.12764649636762668
+5,PF OA,SemanticDirectMargin,0.0954234667180541
+5,PF OA,SeverityLow,-0.027111875489493845
+5,PF OA,SeverityModerate,-0.024213526806195654
+5,PF OA,SeverityHigh,0.0
+5,PF OA,SeverityDegenerative,0.0
+5,PF OA,Intercept,-0.2259090463711006
+5,Effusion,EvidencePositiveScore,0.2946512691597216
+5,Effusion,EvidenceNegativeScore,-0.24860275612075092
+5,Effusion,RelatedScore,0.0
+5,Effusion,UncertaintyFlag,0.0
+5,Effusion,FusedAssertionConfidence,0.026221546886724484
+5,Effusion,RuleDecidableFlag,0.09481352521464423
+5,Effusion,SemanticDirectStrength,0.17086982923548813
+5,Effusion,SemanticDirectMargin,0.055669720199620715
+5,Effusion,SeverityLow,-0.18672677894898657
+5,Effusion,SeverityModerate,0.23513870833314726
+5,Effusion,SeverityHigh,0.06505570036342384
+5,Effusion,SeverityDegenerative,0.06337482605445668
+5,Effusion,Intercept,0.2727545320273747
+5,Synovitis,EvidencePositiveScore,0.19696227219294316
+5,Synovitis,EvidenceNegativeScore,0.11649667009272423
+5,Synovitis,RelatedScore,0.10932738256143396
+5,Synovitis,UncertaintyFlag,0.0
+5,Synovitis,FusedAssertionConfidence,0.20195659849068295
+5,Synovitis,RuleDecidableFlag,0.20195659849068295
+5,Synovitis,SemanticDirectStrength,-0.016718109566464603
+5,Synovitis,SemanticDirectMargin,-0.016798087690972276
+5,Synovitis,SeverityLow,-0.06533942402010384
+5,Synovitis,SeverityModerate,0.04533956908649137
+5,Synovitis,SeverityHigh,0.06919668232653636
+5,Synovitis,SeverityDegenerative,0.06919668232653636
+5,Synovitis,Intercept,0.0024881799780908744
+5,Baker's,EvidencePositiveScore,0.326624221196546
+5,Baker's,EvidenceNegativeScore,-0.18816947790889454
+5,Baker's,RelatedScore,0.0
+5,Baker's,UncertaintyFlag,0.0
+5,Baker's,FusedAssertionConfidence,0.1944591367702317
+5,Baker's,RuleDecidableFlag,0.1944591367702317
+5,Baker's,SemanticDirectStrength,0.1791199162031626
+5,Baker's,SemanticDirectMargin,0.22711974113455835
+5,Baker's,SeverityLow,0.21808428716413833
+5,Baker's,SeverityModerate,0.24415539643435735
+5,Baker's,SeverityHigh,0.11733717848189738
+5,Baker's,SeverityDegenerative,0.11733717848189738
+5,Baker's,Intercept,-0.6037630756633818
+5,Contusion,EvidencePositiveScore,0.3207786177705401
+5,Contusion,EvidenceNegativeScore,-0.3002036862551063
+5,Contusion,RelatedScore,-0.048094063262987895
+5,Contusion,UncertaintyFlag,0.3498101711188879
+5,Contusion,FusedAssertionConfidence,0.28330151264192194
+5,Contusion,RuleDecidableFlag,0.02172421564052987
+5,Contusion,SemanticDirectStrength,0.20689547455117793
+5,Contusion,SemanticDirectMargin,0.20467559632280458
+5,Contusion,SeverityLow,0.1649707576646388
+5,Contusion,SeverityModerate,0.0
+5,Contusion,SeverityHigh,-0.02523857766702942
+5,Contusion,SeverityDegenerative,-0.11416625930820379
+5,Contusion,Intercept,-0.3584795818891226
+5,Fracture,EvidencePositiveScore,0.3909107254617033
+5,Fracture,EvidenceNegativeScore,-0.2588543866333947
+5,Fracture,RelatedScore,0.2289366943320827
+5,Fracture,UncertaintyFlag,0.0
+5,Fracture,FusedAssertionConfidence,0.22135873380314974
+5,Fracture,RuleDecidableFlag,0.15646649540784124
+5,Fracture,SemanticDirectStrength,0.18891433269356087
+5,Fracture,SemanticDirectMargin,0.17699088402220983
+5,Fracture,SeverityLow,0.1750751743927798
+5,Fracture,SeverityModerate,0.0
+5,Fracture,SeverityHigh,0.13881901074793934
+5,Fracture,SeverityDegenerative,0.0
+5,Fracture,Intercept,-0.3500617480142062

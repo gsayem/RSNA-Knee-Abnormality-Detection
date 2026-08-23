@@ -1,0 +1,843 @@
+Label,Term,TermRank,StudyInstanceUID,Language,Sentence
+ACL,ve,1,1.2.826.0.1.3680043.8.498.11382021393803389951964005983002209238,en,"In the medial compartment, there is longitudinal vertical tear at the body and posterior horn of the medial meniscus."
+ACL,ve,1,1.2.826.0.1.3680043.8.498.11382021393803389951964005983002209238,en,-- Longitudinal vertical tear at the body and posterior horn of the medial meniscus.
+ACL,ve,1,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,"Leve a moderado derrame articular, probablemente hemartrosis."
+ACL,ve,1,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Leve cantidad de liquido
+ACL,ve,1,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,"Leve a moderado derrame articular, probablemente hemartrosis"
+ACL,van,2,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Gevorderd lateraal femorotibiaal kraakbeenlijden met volledig kraakbeenverlies anterieur, centrale en posterieure dragende deel en van het laterale tibiaplateau, gepaard gaand met marginale osteofytose, beperkte subchondrale botveranderingen."
+ACL,van,2,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Degeneratief voorkomen laterale meniscus met opzetting van het corpus, die zich bevindt buiten de gewrichtsspleet ."
+ACL,van,2,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Verder opzetting van suprapatellaire recessus, met talrijke verdikkingen van van het synovium, nodulair beginnend tot matig femoropatellair kraakbeenlijden met meerdere fissuren."
+ACL,van,2,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Gevorderde muco ïde degeneratie van de voorste kruisband, met opgezet voorkomen en gestegen T2-signaal ."
+ACL,van,2,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Besluit: Gevorderde gonartrose van de rechterknie, op heden met hydrops, chronische synovitis, gevorderde muco ïde degeneratie voorste kruisband, recente scheur van popliteale cyste , echter zonder significant botoedeem ."
+ACL,met,3,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Gevorderd lateraal femorotibiaal kraakbeenlijden met volledig kraakbeenverlies anterieur, centrale en posterieure dragende deel en van het laterale tibiaplateau, gepaard gaand met marginale osteofytose, beperkte subchondrale botveranderingen."
+ACL,met,3,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Degeneratief voorkomen laterale meniscus met opzetting van het corpus, die zich bevindt buiten de gewrichtsspleet ."
+ACL,met,3,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Verder opzetting van suprapatellaire recessus, met talrijke verdikkingen van van het synovium, nodulair beginnend tot matig femoropatellair kraakbeenlijden met meerdere fissuren."
+ACL,met,3,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Matig mediaal femorotibiaal kraakbeenlijden, met quasi volledig kraakbeenverlies dragende deel mediale femorale condyl, uitgebreide marginale osteofytose,."
+ACL,met,3,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Gevorderde muco ïde degeneratie van de voorste kruisband, met opgezet voorkomen en gestegen T2-signaal ."
+ACL,posterior horn of,4,1.2.826.0.1.3680043.8.498.11382021393803389951964005983002209238,en,"In the medial compartment, there is longitudinal vertical tear at the body and posterior horn of the medial meniscus."
+ACL,posterior horn of,4,1.2.826.0.1.3680043.8.498.11382021393803389951964005983002209238,en,-- Longitudinal vertical tear at the body and posterior horn of the medial meniscus.
+ACL,posterior horn of,4,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,"The lateral compartment, there is longitudinal vertical oblique tear at the posterior horn of the lateral meniscus."
+ACL,posterior horn of,4,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,- Longitudinal vertical oblique tear at the posterior horn of the lateral meniscus.
+ACL,posterior horn of,4,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,"* Linear signal intensity in the body and posterior horn of medial meniscus with extension to the surface, in favor of tear."
+ACL,hafif,5,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Diz eklemi içi sıvı miktarı hafif derecede artmış.
+ACL,hafif,5,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+ACL,hafif,5,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Lateral ve medial kollateral ligamanlar çevresinde hafif ödematöz görünüm (grade I sprain) izlenmiştir.
+ACL,hafif,5,1.2.826.0.1.3680043.8.498.67188121544063723837669983597453941774,tr,"PCL hafif elonge görünümdedir, sinyal bütünlüğü korunmuştur."
+ACL,kemik,6,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Lateral femoral kondilin ağırlık taşıyan yüzeyinin anteriyor yarısındaki subkondral kırığı kemik iliği ödemi çevreliyor.
+ACL,kemik,6,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Tibyal plato posterolateral köşesinde pivot kayması ile ilintili kemik kontüzyonu mevcut.
+ACL,kemik,6,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Eklem kıkırdakları ve kemikler bunların dışında normal.
+ACL,kemik,6,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+ACL,kemik,6,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Femur lateral kondil ve tibia lateral plato seviyesinde yaygın kontüzyonel kemik iliği ödemleri izlenmiştir.
+ACL,izlenmiştir,7,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Bulgular: Medial ve lateral menisküs posterior hornu ve gövde kesiminde grade II dejenerasyon izlenmiştir.Arka çapraz bağ, lateral kollateral ligaman normaldir.Anterior çapraz bağda komplet rüptüre sekonder bütünlük kaybı izlenmiştir."
+ACL,izlenmiştir,7,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,Medial kollateral ligamende incelme ve periligamentöz ödem izlenmiştir.
+ACL,izlenmiştir,7,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+ACL,izlenmiştir,7,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Lateral ve medial kollateral ligamanlar çevresinde hafif ödematöz görünüm (grade I sprain) izlenmiştir.
+ACL,izlenmiştir,7,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Patella normal yerleşimlidir.İnfrapatellar yağ yastıkçığında ödematöz görünüm izlenmiştir.Suprapatellar bursada ve diz eklemi içerisinde yaygın sıvı artışı izlenmiştir.
+ACL,lateral tibial,8,1.2.826.0.1.3680043.8.498.26790702379506190936834447203448882465,en,There is mild residual bone contusion in the weightbearing aspect of the lateral femoral condyle and posterior aspect of the lateral tibial condyle.
+ACL,lateral tibial,8,1.2.826.0.1.3680043.8.498.26790702379506190936834447203448882465,en,Mild anterior translation of the lateral tibial plateau is seen in relation to femur.
+ACL,lateral tibial,8,1.2.826.0.1.3680043.8.498.29764868091238287072166823522853419550,la,There is mild anterior translation of the lateral tibial plateau in relation to femur.
+ACL,lateral tibial,8,1.2.826.0.1.3680043.8.498.29764868091238287072166823522853419550,la,A bone contusion is noted in the posterolateral corner of the lateral tibial plateau.
+ACL,lateral tibial,8,1.2.826.0.1.3680043.8.498.29764868091238287072166823522853419550,la,Posterolateral tibial contusion.
+ACL,lateral tibial plateau,9,1.2.826.0.1.3680043.8.498.26790702379506190936834447203448882465,en,Mild anterior translation of the lateral tibial plateau is seen in relation to femur.
+ACL,lateral tibial plateau,9,1.2.826.0.1.3680043.8.498.29764868091238287072166823522853419550,la,There is mild anterior translation of the lateral tibial plateau in relation to femur.
+ACL,lateral tibial plateau,9,1.2.826.0.1.3680043.8.498.29764868091238287072166823522853419550,la,A bone contusion is noted in the posterolateral corner of the lateral tibial plateau.
+ACL,lateral tibial plateau,9,1.2.826.0.1.3680043.8.498.41600498783384864111179175518614837125,en,There is bone contusion at the posterolateral tibial plateau.
+ACL,lateral tibial plateau,9,1.2.826.0.1.3680043.8.498.41600498783384864111179175518614837125,en,Bone contusion at the posterolateral tibial plateau.
+ACL,posterior horn,10,1.2.826.0.1.3680043.8.498.11382021393803389951964005983002209238,en,"In the medial compartment, there is longitudinal vertical tear at the body and posterior horn of the medial meniscus."
+ACL,posterior horn,10,1.2.826.0.1.3680043.8.498.11382021393803389951964005983002209238,en,-- Longitudinal vertical tear at the body and posterior horn of the medial meniscus.
+ACL,posterior horn,10,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,"The lateral compartment, there is longitudinal vertical oblique tear at the posterior horn of the lateral meniscus."
+ACL,posterior horn,10,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,- Longitudinal vertical oblique tear at the posterior horn of the lateral meniscus.
+ACL,posterior horn,10,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Bulgular: Medial ve lateral menisküs posterior hornu ve gövde kesiminde grade II dejenerasyon izlenmiştir.Arka çapraz bağ, lateral kollateral ligaman normaldir.Anterior çapraz bağda komplet rüptüre sekonder bütünlük kaybı izlenmiştir."
+ACL,tibial plateau,11,1.2.826.0.1.3680043.8.498.26790702379506190936834447203448882465,en,Mild anterior translation of the lateral tibial plateau is seen in relation to femur.
+ACL,tibial plateau,11,1.2.826.0.1.3680043.8.498.29764868091238287072166823522853419550,la,There is mild anterior translation of the lateral tibial plateau in relation to femur.
+ACL,tibial plateau,11,1.2.826.0.1.3680043.8.498.29764868091238287072166823522853419550,la,A bone contusion is noted in the posterolateral corner of the lateral tibial plateau.
+ACL,tibial plateau,11,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,"A subchondral linear hypointensity over posterior aspect of medial tibial plateau on T1WI and F/S T2WI, without associated contour deformity (Sr/Im: [ID]; [ID]."
+ACL,tibial plateau,11,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,Subchondral fracture over posterior aspect of medial tibial plateau (Sr/Im: [ID]; [ID].
+ACL,van de,12,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Gevorderde muco ïde degeneratie van de voorste kruisband, met opgezet voorkomen en gestegen T2-signaal ."
+ACL,van de,12,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Besluit: Gevorderde gonartrose van de rechterknie, op heden met hydrops, chronische synovitis, gevorderde muco ïde degeneratie voorste kruisband, recente scheur van popliteale cyste , echter zonder significant botoedeem ."
+ACL,van de,12,1.2.826.0.1.3680043.8.498.62549354677638403845904556149868367236,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Impactiefractuur op centraal dragende deel van de laterale femorale condylen, gepaard gaand met uitgebreid botoedeem ."
+ACL,van de,12,1.2.826.0.1.3680043.8.498.62549354677638403845904556149868367236,nl,"Volledige scheur van de voorste kruisband, onregelmatig voorkomend, discontinu, met uitgebreid infiltratie van de omliggende weefsels."
+ACL,van de,12,1.2.826.0.1.3680043.8.498.62549354677638403845904556149868367236,nl,"Besluit: Ernstige distorsio van de rechterknie met : - Volledige ruptuur van de voorste kruisband, - Parti ële scheur proximaal op het mediale collaterale ligament, graad 2."
+ACL,tear of,13,1.2.826.0.1.3680043.8.498.11382021393803389951964005983002209238,en,"In the intercondylar notch, there is complete tear of the anterior cruciate ligament, at mid substance."
+ACL,tear of,13,1.2.826.0.1.3680043.8.498.11382021393803389951964005983002209238,en,"-- Complete tear of the anterior cruciate ligament, at mid substance."
+ACL,tear of,13,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,"In the intercondylar notch, there is complete tear of the anterior cruciate ligament, at mid substance."
+ACL,tear of,13,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,"- Complete tear of the anterior cruciate ligament, at mid substance."
+ACL,tear of,13,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,Meniscal tear in the body and posterior horn of medial meniscus; suspect posterior root tear of lateral meniscus.
+ACL,plateau,14,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Gevorderd lateraal femorotibiaal kraakbeenlijden met volledig kraakbeenverlies anterieur, centrale en posterieure dragende deel en van het laterale tibiaplateau, gepaard gaand met marginale osteofytose, beperkte subchondrale botveranderingen."
+ACL,plateau,14,1.2.826.0.1.3680043.8.498.26790702379506190936834447203448882465,en,Mild anterior translation of the lateral tibial plateau is seen in relation to femur.
+ACL,plateau,14,1.2.826.0.1.3680043.8.498.29764868091238287072166823522853419550,la,There is mild anterior translation of the lateral tibial plateau in relation to femur.
+ACL,plateau,14,1.2.826.0.1.3680043.8.498.29764868091238287072166823522853419550,la,A bone contusion is noted in the posterolateral corner of the lateral tibial plateau.
+ACL,plateau,14,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,"A subchondral linear hypointensity over posterior aspect of medial tibial plateau on T1WI and F/S T2WI, without associated contour deformity (Sr/Im: [ID]; [ID]."
+ACL,grade ii,15,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,There is grade II ligamentous sprain (partial tear) of the medial collateral ligament.
+ACL,grade ii,15,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,- Grade II ligamentous sprain (partial tear) of the medial collateral ligament.
+ACL,grade ii,15,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Bulgular: Medial ve lateral menisküs posterior hornu ve gövde kesiminde grade II dejenerasyon izlenmiştir.Arka çapraz bağ, lateral kollateral ligaman normaldir.Anterior çapraz bağda komplet rüptüre sekonder bütünlük kaybı izlenmiştir."
+ACL,grade ii,15,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+ACL,grade ii,15,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,"Bulgular: Medial menisküste grade II dejenerasyon, radial yırtık ile uyumlu görünüm mevcuttur."
+MCL,del,1,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Resultados: Rotura del LCA.
+MCL,del,1,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura parcial del LCM.
+MCL,del,1,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Impresión: Rotura del LCA.
+MCL,del,1,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura parcial del LCM.
+MCL,del,1,1.2.826.0.1.3680043.8.498.48348615349418615469875801439348424274,es,Esguince del ligamento colateral medial.
+MCL,aspect,2,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* Bone marrow edema in bilateral femoral condyles and anteromedial and posterolateral aspect of proximal tibia, suspect bone contusion."
+MCL,aspect,2,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,* Subcutaneous edema over medial aspect of right knee.
+MCL,aspect,2,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,Suspect grade 2 injury of MCL with adjacent soft tissue edema over anteromedial aspect of right knee.
+MCL,aspect,2,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"Bone marrow edema in distal femur and proximal tibia (major at anteromedial and posterolateral aspect), suspect bone contusion."
+MCL,aspect,2,1.2.826.0.1.3680043.8.498.62465595376489211274225312453216559395,en,Tiny bone bruise at the posterior aspect of the lateral tibial plateau.
+MCL,rotura,3,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Resultados: Rotura del LCA.
+MCL,rotura,3,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura parcial del LCM.
+MCL,rotura,3,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura de menisco interno y lateral.
+MCL,rotura,3,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Impresión: Rotura del LCA.
+MCL,rotura,3,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura parcial del LCM.
+MCL,parcial,4,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura parcial del LCM.
+MCL,parcial,4,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura parcial del LCM.
+MCL,parcial,4,1.2.826.0.1.3680043.8.498.48348615349418615469875801439348424274,es,Engrosamiento y aumento de señal con pérdida parcial de la continuidad del tercio medio proximal
+MCL,parcial,4,1.2.826.0.1.3680043.8.498.48348615349418615469875801439348424274,es,representar una lesión parcial regional.
+MCL,parcial del,5,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura parcial del LCM.
+MCL,parcial del,5,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura parcial del LCM.
+MCL,de,8,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* High signal in the soft tissue medial to the medial collateral ligament with mild increased signal intensity of proximal ligament, suspect grade 2 injury."
+MCL,de,8,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* Interstitial hyperintense signal of ACL, in favor of grade 1 injury."
+MCL,de,8,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* Bone marrow edema in bilateral femoral condyles and anteromedial and posterolateral aspect of proximal tibia, suspect bone contusion."
+MCL,de,8,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,* Subcutaneous edema over medial aspect of right knee.
+MCL,de,8,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,> No evidence of tear noted in either medial or lateral meniscus in this study.
+MCL,femorotibiales,9,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Contusiones óseas femorotibiales.
+MCL,femorotibiales,9,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Contusiones óseas femorotibiales.
+MCL,femorotibiales,9,1.2.826.0.1.3680043.8.498.48348615349418615469875801439348424274,es,Cartílagos de los compartimentos femorotibiales y patelofemorales sin alteraciones.
+MCL,anteromedial,10,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* Bone marrow edema in bilateral femoral condyles and anteromedial and posterolateral aspect of proximal tibia, suspect bone contusion."
+MCL,anteromedial,10,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,Suspect grade 2 injury of MCL with adjacent soft tissue edema over anteromedial aspect of right knee.
+MCL,anteromedial,10,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"Bone marrow edema in distal femur and proximal tibia (major at anteromedial and posterolateral aspect), suspect bone contusion."
+MCL,anteromedial,10,1.2.826.0.1.3680043.8.498.72853333220043794904856138561095171921,en,Focal bone marrow edema at the anteromedial tibial plateau.
+MCL,anteromedial,10,1.2.826.0.1.3680043.8.498.72853333220043794904856138561095171921,en,"Small focus of bone marrow edema at the anteromedial tibial plateau, likely a contusion."
+MCL,partial tear,11,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,There is grade II ligamentous sprain (partial tear) of the medial collateral ligament.
+MCL,partial tear,11,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,- Grade II ligamentous sprain (partial tear) of the medial collateral ligament.
+MCL,partial tear,11,1.2.826.0.1.3680043.8.498.62465595376489211274225312453216559395,en,High-grade partial tear of the proximal lateral collateral ligament.
+MCL,partial tear,11,1.2.826.0.1.3680043.8.498.62465595376489211274225312453216559395,en,High-grade partial tear proximal LCL.
+MCL,partial tear,11,1.2.826.0.1.3680043.8.498.64703506772167798469048460791472465039,en,Moderate grade partial tear of the deep meniscal femoral and meniscal tibial components with partial meniscocapsular separation of the medial meniscal body.
+MCL,injury,12,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* High signal in the soft tissue medial to the medial collateral ligament with mild increased signal intensity of proximal ligament, suspect grade 2 injury."
+MCL,injury,12,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* Interstitial hyperintense signal of ACL, in favor of grade 1 injury."
+MCL,injury,12,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,Suspect grade 2 injury of MCL with adjacent soft tissue edema over anteromedial aspect of right knee.
+MCL,injury,12,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,Suspect grade 1 injury of ACL.
+MCL,injury,12,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,"In the medial compartment, the meniscus is not torn and there is no focal chondrosis or chondral injury."
+MCL,proximal,13,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* High signal in the soft tissue medial to the medial collateral ligament with mild increased signal intensity of proximal ligament, suspect grade 2 injury."
+MCL,proximal,13,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* Bone marrow edema in bilateral femoral condyles and anteromedial and posterolateral aspect of proximal tibia, suspect bone contusion."
+MCL,proximal,13,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"Bone marrow edema in distal femur and proximal tibia (major at anteromedial and posterolateral aspect), suspect bone contusion."
+MCL,proximal,13,1.2.826.0.1.3680043.8.498.48348615349418615469875801439348424274,es,Engrosamiento y aumento de señal con pérdida parcial de la continuidad del tercio medio proximal
+MCL,proximal,13,1.2.826.0.1.3680043.8.498.62465595376489211274225312453216559395,en,The proximal fibers are squiggly.
+MCL,bony,14,1.2.826.0.1.3680043.8.498.62465595376489211274225312453216559395,en,Subchondral fracture in the lateral tibial plateau extending for an AP dimension of 2.7 cm with underlying bony edema.
+MCL,bony,14,1.2.826.0.1.3680043.8.498.62465595376489211274225312453216559395,en,Hairline subchondral fracture lateral tibial plateau with diffuse underlying bony edema.
+MCL,bony,14,1.2.826.0.1.3680043.8.498.64703506772167798469048460791472465039,en,"Anterior cruciate ligament: The distal bony avulsion with laxity of the ACL, showing some internal high T2 signal changes compatible with additional low-grade partial ligamentous tear."
+MCL,bony,14,1.2.826.0.1.3680043.8.498.64703506772167798469048460791472465039,en,Bony avulsion of the posterior horn root insertion as detailed above.
+MCL,bony,14,1.2.826.0.1.3680043.8.498.64703506772167798469048460791472465039,en,There is a bony avulsion of the anterior horn and posterior horn root insertion sites.
+MCL,at the posterior,15,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,"The lateral compartment, there is longitudinal vertical oblique tear at the posterior horn of the lateral meniscus."
+MCL,at the posterior,15,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,- Longitudinal vertical oblique tear at the posterior horn of the lateral meniscus.
+MCL,at the posterior,15,1.2.826.0.1.3680043.8.498.62465595376489211274225312453216559395,en,Tiny bone bruise at the posterior aspect of the lateral tibial plateau.
+MCL,at the posterior,15,1.2.826.0.1.3680043.8.498.62465595376489211274225312453216559395,en,Small congruent at the posterior aspect of the medial tibial plateau.
+MCL,at the posterior,15,1.2.826.0.1.3680043.8.498.72853333220043794904856138561095171921,en,Small focal osteochondral impaction injury at the posterior lateral femoral condyle.
+Medial Meniscus,im,1,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Exam Date and Time: [DATE] [TIME]
+Medial Meniscus,im,1,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,IMPRESSION:
+Medial Meniscus,im,1,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Exam Date and Time: [DATE] [TIME]
+Medial Meniscus,im,1,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,IMPRESSION:
+Medial Meniscus,im,1,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Bulgular: Medial ve lateral menisküs posterior hornu ve gövde kesiminde grade II dejenerasyon izlenmiştir.Arka çapraz bağ, lateral kollateral ligaman normaldir.Anterior çapraz bağda komplet rüptüre sekonder bütünlük kaybı izlenmiştir."
+Medial Meniscus,izlenmiştir,2,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Bulgular: Medial ve lateral menisküs posterior hornu ve gövde kesiminde grade II dejenerasyon izlenmiştir.Arka çapraz bağ, lateral kollateral ligaman normaldir.Anterior çapraz bağda komplet rüptüre sekonder bütünlük kaybı izlenmiştir."
+Medial Meniscus,izlenmiştir,2,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,Medial kollateral ligamende incelme ve periligamentöz ödem izlenmiştir.
+Medial Meniscus,izlenmiştir,2,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Medial Meniscus,izlenmiştir,2,1.2.826.0.1.3680043.8.498.28925345859498351203477642741908452608,tr,"Arka çapraz bağ, çm çapraz bağ , lateral ve medial kollateral ligaman normaldir.Medial kollateral ligaman çevresinde sıvı artışı izlenmiştir."
+Medial Meniscus,izlenmiştir,2,1.2.826.0.1.3680043.8.498.28925345859498351203477642741908452608,tr,Retinaküler devamsızlık yoktur.Suprapatellar bursada sıvı artışı izlenmiştir.
+Medial Meniscus,des,3,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Medial and lateral meniscus tears as described.
+Medial Meniscus,des,3,1.2.826.0.1.3680043.8.498.64703506772167798469048460791472465039,en,Intra-articular fracture extension involving the central portion of the medial tibial plateau with small gap/step as described.
+Medial Meniscus,des,3,1.2.826.0.1.3680043.8.498.64703506772167798469048460791472465039,en,*Additional low-grade tears involving the medial and lateral menisci as described.
+Medial Meniscus,des,3,1.2.826.0.1.3680043.8.498.64703506772167798469048460791472465039,en,*Posteromedial and posterolateral corner injuries as described.
+Medial Meniscus,des,3,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,"T2-hyperintense lineare radiale Läsion der Pars intermedia des Innenmeniskus mit inkompletter Separation eines kleinen Lappens (3/7, 5/109-110)."
+Medial Meniscus,çok,4,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Tetkik protokolü: Çok düzlemli, çok sekanslı."
+Medial Meniscus,çok,4,1.2.826.0.1.3680043.8.498.28925345859498351203477642741908452608,tr,"Tetkik protokolü: Çok düzlemli, çok sekanslı."
+Medial Meniscus,çok,4,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,"Tetkik protokolü: Çok düzlemli, çok sekanslı."
+Medial Meniscus,çok,4,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,"Tetkik protokolü: Çok düzlemli, çok sekanslı."
+Medial Meniscus,çok,4,1.2.826.0.1.3680043.8.498.67188121544063723837669983597453941774,tr,"Tetkik protokolü: Çok düzlemli, çok sekanslı."
+Medial Meniscus,mit,5,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,"A subchondral linear hypointensity over posterior aspect of medial tibial plateau on T1WI and F/S T2WI, without associated contour deformity (Sr/Im: [ID]; [ID]."
+Medial Meniscus,mit,5,1.2.826.0.1.3680043.8.498.64703506772167798469048460791472465039,en,"The fracture involves the central portion of the medial tibial plateau articular surface anteriorly and posteriorly with articular surface collapse of 3 mm anteriorly and 5 mm posteriorly, as well as a step deformity of up to 2 mm posteriorly."
+Medial Meniscus,mit,5,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,"T2-hyperintense lineare radiale Läsion der Pars intermedia des Innenmeniskus mit inkompletter Separation eines kleinen Lappens (3/7, 5/109-110)."
+Medial Meniscus,mit,5,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,Stigmata der Inaktivitätsosteopenie sowie verbliebenes bone bruise im posterolateralen Tibiaplateau nahe der Eminentia bei subchondraler Impression mit teils punktuell chondralen Läsionen.
+Medial Meniscus,mit,5,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,VKB Ruptur mit wohl ligamentärer Ruptur des anteromedialen Bündels sowie knöchernem Ausriss des posterolateralen Bündels (4/23).
+Medial Meniscus,mevcuttur,6,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Medial Meniscus,mevcuttur,6,1.2.826.0.1.3680043.8.498.28925345859498351203477642741908452608,tr,Medial menisküs ekstrüde görünümde olup posterior hornunda yırtık ile uyumlu sinyal değişiklikleri mevcuttur.
+Medial Meniscus,mevcuttur,6,1.2.826.0.1.3680043.8.498.28925345859498351203477642741908452608,tr,Tibia proksimali ve femur distal epikondil seviyesi medialde kemik iliği ödemi ile uyumlu görünümler mevcuttur.
+Medial Meniscus,mevcuttur,6,1.2.826.0.1.3680043.8.498.28925345859498351203477642741908452608,tr,Bu düzeyde eklem aralığı belirgin daralmıştır.Popliteal fossada 54x15 mm çapta Baker kisti ile uyumlu görünüm mevcuttur.
+Medial Meniscus,mevcuttur,6,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,"Bulgular: Medial menisküste grade II dejenerasyon, radial yırtık ile uyumlu görünüm mevcuttur."
+Medial Meniscus,cm,7,1.2.826.0.1.3680043.8.498.41600498783384864111179175518614837125,en,There is focal osteochondral injury a mid weightbaring lateral femoral condyle (about intact6* 1 cm).
+Medial Meniscus,cm,7,1.2.826.0.1.3680043.8.498.41600498783384864111179175518614837125,en,Acute osteochondral injury a mid weightbaring lateral femoral condyle (about intact6* 1 cm) of right knee.
+Medial Meniscus,cm,7,1.2.826.0.1.3680043.8.498.62465595376489211274225312453216559395,en,Subchondral fracture in the lateral tibial plateau extending for an AP dimension of 2.7 cm with underlying bony edema.
+Medial Meniscus,cm,7,1.2.826.0.1.3680043.8.498.65708905118633339771181857781063784327,en,There is focal high grade chondrla defectat mid lateral tibial plateau (about 1.2* 1.1 cm).
+Medial Meniscus,cm,7,1.2.826.0.1.3680043.8.498.65708905118633339771181857781063784327,en,A 1.5*1.5* 4.5 cm baker's cyst at the posteromedial aspect of left knee.
+Medial Meniscus,kollateral,8,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Bulgular: Medial ve lateral menisküs posterior hornu ve gövde kesiminde grade II dejenerasyon izlenmiştir.Arka çapraz bağ, lateral kollateral ligaman normaldir.Anterior çapraz bağda komplet rüptüre sekonder bütünlük kaybı izlenmiştir."
+Medial Meniscus,kollateral,8,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,Medial kollateral ligamende incelme ve periligamentöz ödem izlenmiştir.
+Medial Meniscus,kollateral,8,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Medial Meniscus,kollateral,8,1.2.826.0.1.3680043.8.498.28925345859498351203477642741908452608,tr,"Arka çapraz bağ, çm çapraz bağ , lateral ve medial kollateral ligaman normaldir.Medial kollateral ligaman çevresinde sıvı artışı izlenmiştir."
+Medial Meniscus,kollateral,8,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Lateral ve medial kollateral ligamanlar çevresinde hafif ödematöz görünüm (grade I sprain) izlenmiştir.
+Medial Meniscus,normaldir,9,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Bulgular: Medial ve lateral menisküs posterior hornu ve gövde kesiminde grade II dejenerasyon izlenmiştir.Arka çapraz bağ, lateral kollateral ligaman normaldir.Anterior çapraz bağda komplet rüptüre sekonder bütünlük kaybı izlenmiştir."
+Medial Meniscus,normaldir,9,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,Distal kuadriseps ve patellar tendonlar normaldir.
+Medial Meniscus,normaldir,9,1.2.826.0.1.3680043.8.498.28925345859498351203477642741908452608,tr,"Arka çapraz bağ, çm çapraz bağ , lateral ve medial kollateral ligaman normaldir.Medial kollateral ligaman çevresinde sıvı artışı izlenmiştir."
+Medial Meniscus,normaldir,9,1.2.826.0.1.3680043.8.498.28925345859498351203477642741908452608,tr,Distal kuadriseps ve patellar tendonlar normaldir.
+Medial Meniscus,normaldir,9,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Distal kuadriseps ve patellar tendon normaldir.
+Medial Meniscus,ve,10,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Background marrow signal is normal without infiltrative marrow process.
+Medial Meniscus,ve,10,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,No aggressive osseous lesions.
+Medial Meniscus,ve,10,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,"Medial meniscus: Extensive complete tearing of the body, posterior horn, and posterior root medial meniscus with severe extrusion."
+Medial Meniscus,ve,10,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Lateral meniscus: Degenerative signal throughout the lateral meniscus without surfacing tear.
+Medial Meniscus,ve,10,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Normal tibial tubercle-trochlear groove (TT-TG) distance measuring 17 mm.
+Medial Meniscus,der,11,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Gevorderd lateraal femorotibiaal kraakbeenlijden met volledig kraakbeenverlies anterieur, centrale en posterieure dragende deel en van het laterale tibiaplateau, gepaard gaand met marginale osteofytose, beperkte subchondrale botveranderingen."
+Medial Meniscus,der,11,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Verder opzetting van suprapatellaire recessus, met talrijke verdikkingen van van het synovium, nodulair beginnend tot matig femoropatellair kraakbeenlijden met meerdere fissuren."
+Medial Meniscus,der,11,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Gevorderde muco ïde degeneratie van de voorste kruisband, met opgezet voorkomen en gestegen T2-signaal ."
+Medial Meniscus,der,11,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Besluit: Gevorderde gonartrose van de rechterknie, op heden met hydrops, chronische synovitis, gevorderde muco ïde degeneratie voorste kruisband, recente scheur van popliteale cyste , echter zonder significant botoedeem ."
+Medial Meniscus,der,11,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Bulgular: Medial ve lateral menisküs posterior hornu ve gövde kesiminde grade II dejenerasyon izlenmiştir.Arka çapraz bağ, lateral kollateral ligaman normaldir.Anterior çapraz bağda komplet rüptüre sekonder bütünlük kaybı izlenmiştir."
+Medial Meniscus,meniscus tear,12,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Medial and lateral meniscus tears as described.
+Medial Meniscus,meniscus tear,12,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Medial meniscus tear.
+Medial Meniscus,meniscus tear,12,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Lateral meniscus tear.
+Medial Meniscus,meniscus tear,12,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Conclusion: Medial meniscus tear.
+Medial Meniscus,meniscus tear,12,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Lateral meniscus tear.
+Medial Meniscus,medial kollateral,13,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,Medial kollateral ligamende incelme ve periligamentöz ödem izlenmiştir.
+Medial Meniscus,medial kollateral,13,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Medial Meniscus,medial kollateral,13,1.2.826.0.1.3680043.8.498.28925345859498351203477642741908452608,tr,"Arka çapraz bağ, çm çapraz bağ , lateral ve medial kollateral ligaman normaldir.Medial kollateral ligaman çevresinde sıvı artışı izlenmiştir."
+Medial Meniscus,medial kollateral,13,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Lateral ve medial kollateral ligamanlar çevresinde hafif ödematöz görünüm (grade I sprain) izlenmiştir.
+Medial Meniscus,medial kollateral,13,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,"Lateral kollateral ligaman normaldir.Medial kollateral ligamen çevresinde ödematöz görünüm mevcuttur ( grade I sprain ).Suprapatellar bursada ,diz eklemi içerisinde yaygın sıvı artışı izlendi."
+Medial Meniscus,vkb,14,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,"VKB, HKB, MCL und LCL intakt und physiologisch signalgebend."
+Medial Meniscus,vkb,14,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,Kleine zystoide Veränderungen an den Insertionsstellen des VKB.
+Medial Meniscus,vkb,14,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,VKB Ruptur mit wohl ligamentärer Ruptur des anteromedialen Bündels sowie knöchernem Ausriss des posterolateralen Bündels (4/23).
+Medial Meniscus,pars,15,1.2.826.0.1.3680043.8.498.67188121544063723837669983597453941774,tr,"ACL'de parsiyel rüptürü düşündüren devamsızlık, trasesinde sinyal-kalınlık artışı izlenmiştir."
+Medial Meniscus,pars,15,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,"T2-hyperintense lineare radiale Läsion der Pars intermedia des Innenmeniskus mit inkompletter Separation eines kleinen Lappens (3/7, 5/109-110)."
+Medial Meniscus,pars,15,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,Die initial extruierte Pars intermedia des Innenmeniskus im Corpusbereich mukoid aufgefasert.
+Medial Meniscus,pars,15,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,Innenmeniskus mit horizontalem Riss Pars intermedia bis ins Hinterhorn ziehend bei mukoider Vorschädigung.
+Lateral Meniscus,del,1,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura espesor y ancho total de la unión del tercio medio del tercio proximal del LCA asociado a
+Lateral Meniscus,del,1,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,discreto edema óseo del aspecto posterior de platillo tibial lateral.
+Lateral Meniscus,del,1,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Aumento de señal central del cuerno posterior y cuerpo del menisco medial que no impresiona
+Lateral Meniscus,del,1,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Menisco lateral con pequeña rotura radial incompleta de la unión del cuerno posterior con el
+Lateral Meniscus,del,1,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Úlcera condral de espesor total de la zona de carga del cóndilo femoral lateral que mide
+Lateral Meniscus,rotura,2,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura espesor y ancho total de la unión del tercio medio del tercio proximal del LCA asociado a
+Lateral Meniscus,rotura,2,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,"contactar con la superficie articular, sin caracteres propios de rotura."
+Lateral Meniscus,rotura,2,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Menisco lateral con pequeña rotura radial incompleta de la unión del cuerno posterior con el
+Lateral Meniscus,rotura,2,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura espesor y ancho total del LCA.
+Lateral Meniscus,rotura,2,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura radial incompleta de la unión del cuerno posterior con el cuerpo del menisco lateral.
+Lateral Meniscus,van,3,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Comparison: No relevant prior studies available for comparison.
+Lateral Meniscus,van,3,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Gevorderd lateraal femorotibiaal kraakbeenlijden met volledig kraakbeenverlies anterieur, centrale en posterieure dragende deel en van het laterale tibiaplateau, gepaard gaand met marginale osteofytose, beperkte subchondrale botveranderingen."
+Lateral Meniscus,van,3,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Degeneratief voorkomen laterale meniscus met opzetting van het corpus, die zich bevindt buiten de gewrichtsspleet ."
+Lateral Meniscus,van,3,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Verder opzetting van suprapatellaire recessus, met talrijke verdikkingen van van het synovium, nodulair beginnend tot matig femoropatellair kraakbeenlijden met meerdere fissuren."
+Lateral Meniscus,van,3,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Gevorderde muco ïde degeneratie van de voorste kruisband, met opgezet voorkomen en gestegen T2-signaal ."
+Lateral Meniscus,met,4,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Gevorderd lateraal femorotibiaal kraakbeenlijden met volledig kraakbeenverlies anterieur, centrale en posterieure dragende deel en van het laterale tibiaplateau, gepaard gaand met marginale osteofytose, beperkte subchondrale botveranderingen."
+Lateral Meniscus,met,4,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Degeneratief voorkomen laterale meniscus met opzetting van het corpus, die zich bevindt buiten de gewrichtsspleet ."
+Lateral Meniscus,met,4,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Verder opzetting van suprapatellaire recessus, met talrijke verdikkingen van van het synovium, nodulair beginnend tot matig femoropatellair kraakbeenlijden met meerdere fissuren."
+Lateral Meniscus,met,4,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Matig mediaal femorotibiaal kraakbeenlijden, met quasi volledig kraakbeenverlies dragende deel mediale femorale condyl, uitgebreide marginale osteofytose,."
+Lateral Meniscus,met,4,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Gevorderde muco ïde degeneratie van de voorste kruisband, met opgezet voorkomen en gestegen T2-signaal ."
+Lateral Meniscus,anterior horn,5,1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269,en,Horizontal tear at anterior horn of the lateral meniscus is noted.
+Lateral Meniscus,anterior horn,5,1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269,en,Horizontal tear at anterior horn of the lateral meniscus.
+Lateral Meniscus,anterior horn,5,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Lateral meniscus: Partial inner margin radial tear at the anterior horn/body junction of the lateral meniscus without extrusion.
+Lateral Meniscus,anterior horn,5,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"There is a complex degenerative tear of the lateral meniscus with partial maceration of the anterior horn and anterior body, as well as a longitudinal oblique component involving the posterior horn."
+Lateral Meniscus,anterior horn,5,1.2.826.0.1.3680043.8.498.13267780356245120052411517053322874891,en,"> There are linear signal intensity in anterior horn of medial meniscus, it extends into the surface, in favor of tear."
+Lateral Meniscus,van de,6,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Gevorderde muco ïde degeneratie van de voorste kruisband, met opgezet voorkomen en gestegen T2-signaal ."
+Lateral Meniscus,van de,6,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Besluit: Gevorderde gonartrose van de rechterknie, op heden met hydrops, chronische synovitis, gevorderde muco ïde degeneratie voorste kruisband, recente scheur van popliteale cyste , echter zonder significant botoedeem ."
+Lateral Meniscus,van de,6,1.2.826.0.1.3680043.8.498.62549354677638403845904556149868367236,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Impactiefractuur op centraal dragende deel van de laterale femorale condylen, gepaard gaand met uitgebreid botoedeem ."
+Lateral Meniscus,van de,6,1.2.826.0.1.3680043.8.498.62549354677638403845904556149868367236,nl,"Volledige scheur van de voorste kruisband, onregelmatig voorkomend, discontinu, met uitgebreid infiltratie van de omliggende weefsels."
+Lateral Meniscus,van de,6,1.2.826.0.1.3680043.8.498.62549354677638403845904556149868367236,nl,"Besluit: Ernstige distorsio van de rechterknie met : - Volledige ruptuur van de voorste kruisband, - Parti ële scheur proximaal op het mediale collaterale ligament, graad 2."
+Lateral Meniscus,del lca,7,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura espesor y ancho total de la unión del tercio medio del tercio proximal del LCA asociado a
+Lateral Meniscus,del lca,7,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura espesor y ancho total del LCA.
+Lateral Meniscus,del lca,7,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Resultados: Rotura del LCA.
+Lateral Meniscus,del lca,7,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Impresión: Rotura del LCA.
+Lateral Meniscus,del lca,7,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,Transformación quística parcial del tercio proximal del LCA.
+Lateral Meniscus,lca,8,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura espesor y ancho total de la unión del tercio medio del tercio proximal del LCA asociado a
+Lateral Meniscus,lca,8,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura espesor y ancho total del LCA.
+Lateral Meniscus,lca,8,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Resultados: Rotura del LCA.
+Lateral Meniscus,lca,8,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Impresión: Rotura del LCA.
+Lateral Meniscus,lca,8,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,Transformación quística parcial del tercio proximal del LCA.
+Lateral Meniscus,subchondral,9,1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269,en,with subchondral bone edema is detected.
+Lateral Meniscus,subchondral,9,1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269,en,at lateral trochlea with subchondral bone edema is noted.
+Lateral Meniscus,subchondral,9,1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269,en,at lateral trochlea with subchondral bone edema.
+Lateral Meniscus,subchondral,9,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Subchondral insufficiency fracture at the medial margin of the medial tibial plateau without articular surface collapse.
+Lateral Meniscus,subchondral,9,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Mild cartilage thinning along the medial patellar facet with mild subchondral cystic change.
+Lateral Meniscus,rotura del,10,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Resultados: Rotura del LCA.
+Lateral Meniscus,rotura del,10,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Impresión: Rotura del LCA.
+Lateral Meniscus,rotura del,10,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,"Rotura del cuerno anterior, cuerpo y cuerno posterior del menisco lateral con mínima extrusión."
+Lateral Meniscus,rotura del,10,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,"Signos de una rotura del menisco medial, no desplazada."
+Lateral Meniscus,rotura del,10,1.2.826.0.1.3680043.8.498.54977581323931277817074741182670080450,es,"Rotura del cuerno anterior, cuerpo y parte del cuerno posterior del menisco lateral con edema las"
+Lateral Meniscus,condyl,11,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Medial compartment cartilage: High-grade cartilage fissuring along the posterior weightbearing medial femoral condyle.
+Lateral Meniscus,condyl,11,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Lateral compartment cartilage: Low-grade cartilage fissuring spanning the weightbearing lateral femoral condyle.
+Lateral Meniscus,condyl,11,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Intercondylar compartment (anterior and posterior cruciate ligaments):
+Lateral Meniscus,condyl,11,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,"In the intercondylar notch, there is complete tear of the anterior cruciate ligament, at mid substance."
+Lateral Meniscus,condyl,11,1.2.826.0.1.3680043.8.498.13267780356245120052411517053322874891,en,> Split fractures at tibial plateau with depression of the lateral articular surface and extending to tibial intercondylar region
+Lateral Meniscus,present,12,1.2.826.0.1.3680043.8.498.12606657226568558340797193167488111973,en,No knee effusion is present.
+Lateral Meniscus,present,12,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Baker's cyst present.
+Lateral Meniscus,present,12,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Baker's cyst present.
+Lateral Meniscus,present,12,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,Minimal degenerative subchondral bone marrow edema is present at the lateral tibiofemoral compartment related to overlying chondrosis.
+Lateral Meniscus,present,12,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,Moderate-sized Baker cyst with slight surrounding edema likely representing leakage.
+Lateral Meniscus,parcial,13,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura parcial del LCM.
+Lateral Meniscus,parcial,13,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura parcial del LCM.
+Lateral Meniscus,parcial,13,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,Transformación quística parcial del tercio proximal del LCA.
+Lateral Meniscus,parcial,13,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,Úlceras condrales de espesor parcial y total de la región central de la zona de carga del cóndilo femoral
+Lateral Meniscus,parcial,13,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,Úlceras condrales espesor parcial de la región central del platillo tibial lateral.
+Lateral Meniscus,het,14,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Gevorderd lateraal femorotibiaal kraakbeenlijden met volledig kraakbeenverlies anterieur, centrale en posterieure dragende deel en van het laterale tibiaplateau, gepaard gaand met marginale osteofytose, beperkte subchondrale botveranderingen."
+Lateral Meniscus,het,14,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Degeneratief voorkomen laterale meniscus met opzetting van het corpus, die zich bevindt buiten de gewrichtsspleet ."
+Lateral Meniscus,het,14,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Verder opzetting van suprapatellaire recessus, met talrijke verdikkingen van van het synovium, nodulair beginnend tot matig femoropatellair kraakbeenlijden met meerdere fissuren."
+Lateral Meniscus,het,14,1.2.826.0.1.3680043.8.498.62549354677638403845904556149868367236,nl,"Licht verdikt voorkomen mediale collaterale ligament, proximaal, met vocht oppervlakkig en diep aan het mediale collaterale ligament."
+Lateral Meniscus,het,14,1.2.826.0.1.3680043.8.498.62549354677638403845904556149868367236,nl,"Licht verdikt voorkom end proximale patellapees, met minimaal gestegen T2-signaal, met m inimale infiltratie van het Hoffa vetpad aanliggend."
+Lateral Meniscus,cuerno,15,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Aumento de señal central del cuerno posterior y cuerpo del menisco medial que no impresiona
+Lateral Meniscus,cuerno,15,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Menisco lateral con pequeña rotura radial incompleta de la unión del cuerno posterior con el
+Lateral Meniscus,cuerno,15,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura radial incompleta de la unión del cuerno posterior con el cuerpo del menisco lateral.
+Lateral Meniscus,cuerno,15,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,Aumento de señal central del cuerno posterior y cuerpo del menisco medial que contacta la superficie
+Lateral Meniscus,cuerno,15,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,"Rotura del cuerno anterior, cuerpo y cuerno posterior del menisco lateral con mínima extrusión."
+Medial OA,oa,1,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Tricompartmental osteoarthritis worse in the medial compartment.
+Medial OA,oa,1,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+Medial OA,oa,1,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+Medial OA,oa,1,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,OA of medial compartment.
+Medial OA,oa,1,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Conclusion: OA of medial compartment.
+Medial OA,oa of,2,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+Medial OA,oa of,2,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+Medial OA,oa of,2,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,OA of medial compartment.
+Medial OA,oa of,2,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Conclusion: OA of medial compartment.
+Medial OA,signala,3,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,Stražnji križni ligament je primjerenih intenziteta signala i održanog kontinuiteta.
+Medial OA,signala,3,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,"Lateralni i medijalni kolateralni ligamenti su primjerenih intenziteta signala, održanog"
+Medial OA,signala,3,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,"Patelarni ligament su primjerenih intenziteta signala, održanog kontinuiteta."
+Medial OA,signala,3,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,plohu uz promijenjen intenzitet signala posteromedijalnog dijela zglobne čahure i meniskotibijalne
+Medial OA,signala,3,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,Početno degenerativno promijenjen intenizet signala preostalog dijela medijalnog meniska.
+Medial OA,se,4,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,OSSEOUS STRUCTURES:
+Medial OA,se,4,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,No acute fracture or bone bruise.
+Medial OA,se,4,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,No aggressive osseous lesions.
+Medial OA,se,4,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,"Medial meniscus: Extensive complete tearing of the body, posterior horn, and posterior root medial meniscus with severe extrusion."
+Medial OA,se,4,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Visualized tendons not previously discussed are intact without tendinosis or tear.
+Medial OA,te,5,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Exam Date and Time: [DATE] [TIME]
+Medial OA,te,5,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,TECHNIQUE:
+Medial OA,te,5,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,"MRI of the right knee was performed on a 1.5 Tesla system body coil in three planes (axial, sagittal, and coronal), using a standard non-contrast protocol."
+Medial OA,te,5,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,No acute fracture or bone bruise.
+Medial OA,te,5,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Tricompartmental marginal osteophytes
+Medial OA,promjene,6,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,Obzirom erozivne promjene zglobne hrskavice medijalnog kompartmenta femorotibijalnog zgloba
+Medial OA,promjene,6,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,Entezopatske promjene tetive kvadricepsa.
+Medial OA,promjene,6,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,"PF artrotske promjene s reduciranim zglobnim prostorom, manjim izljevom i hondromalacijom IV"
+Medial OA,promjene,6,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,"OA promjene obostrano, izraženije lateralno uz osteofite."
+Medial OA,promjene,6,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,Blage tendinopatske promjene hvatišta tetive kvadricepsa.
+Medial OA,present,7,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Baker's cyst present.
+Medial OA,present,7,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Baker's cyst present.
+Medial OA,present,7,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,Minimal degenerative subchondral bone marrow edema is present at the lateral tibiofemoral compartment related to overlying chondrosis.
+Medial OA,present,7,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,Moderate-sized Baker cyst with slight surrounding edema likely representing leakage.
+Medial OA,present,7,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,"Lateral compartment cartilage: Mild cartilage thinning and fissuring is present at the posterior and peripheral weightbearing aspect, with minimal degenerative subchondral bone marrow edema."
+Medial OA,uz,8,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,Prikazana zglobna tijela primjereno su uzglobljena.
+Medial OA,uz,8,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,"OA promjene obostrano, izraženije lateralno uz osteofite."
+Medial OA,uz,8,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,plohu uz promijenjen intenzitet signala posteromedijalnog dijela zglobne čahure i meniskotibijalne
+Medial OA,uz,8,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,Uz stražnju konturu meniska vidi se nekoliko milimetarskih ganglion cista.
+Medial OA,uz,8,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,Manja ekstruzija dijela diska u meniskotibijalni recesus.
+Medial OA,medijalnog,9,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,"Koštani edem medijalnog kondila femura, anterionog dijela medijalnog kondila tibije te lateralnog"
+Medial OA,medijalnog,9,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,Obzirom erozivne promjene zglobne hrskavice medijalnog kompartmenta femorotibijalnog zgloba
+Medial OA,medijalnog,9,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,Hondromalacija II.stupnja lateralnog platoa tibije i hrskavice medijalnog kondila femura.
+Medial OA,medijalnog,9,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,Vertikalna ruptura stražnjeg roga medijalnog meniska koja seže i zahvaća donju artikulacijsku
+Medial OA,medijalnog,9,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,plohu uz promijenjen intenzitet signala posteromedijalnog dijela zglobne čahure i meniskotibijalne
+Medial OA,compartment,10,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Tricompartmental marginal osteophytes
+Medial OA,compartment,10,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,MEDIAL COMPARTMENT:
+Medial OA,compartment,10,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Medial compartment cartilage: Full thickness cartilage loss along the medial femoral condyle and medial tibial plateau with subchondral cystic change and marrow edema.
+Medial OA,compartment,10,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,LATERAL COMPARTMENT:
+Medial OA,compartment,10,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Lateral compartment cartilage: Mild cartilage heterogeneity and fissuring.
+Medial OA,lateralni,11,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,Lateralni menisk bez znakova rupture blaže degenerativno promijenjen u prednjem rogu i
+Medial OA,lateralni,11,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,"Lateralni i medijalni kolateralni ligamenti su primjerenih intenziteta signala, održanog"
+Medial OA,lateralni,11,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,Lateralni menisk bez znakova degeneracije ili rupture.
+Medial OA,lateralni,11,1.2.826.0.1.3680043.8.498.78512215519177850923279235346968676828,hr,Lateralni i medijalni kolateralni ligamenti urednog signala te se prate u kontinuitetu.
+Medial OA,lateralni,11,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,Lateralni kolateralni ligament je vretenasto zadebljan pri hvatištu na lateralni epikondil femura te
+Medial OA,effusion with synovitis,12,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Effusion with synovitis.
+Medial OA,effusion with synovitis,12,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Effusion with synovitis.
+Medial OA,effusion with synovitis,12,1.2.826.0.1.3680043.8.498.65708905118633339771181857781063784327,en,Some amount of left knee effusion with synovitis is present.
+Medial OA,effusion with synovitis,12,1.2.826.0.1.3680043.8.498.65708905118633339771181857781063784327,en,Some amount of left knee effusion with synovitis and 1.5*1.5* 4.5 cm baker's cyst.
+Medial OA,του,13,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"ΤΕΧΝΙΚΗ Η εξέταση έγινε με ακολουθίες παλμών Τ1, πυκνότητας πρωτονίων με καταστολή του σήματος του λίπους και Τ2 βαθμιδωτής ηχούς."
+Medial OA,του,13,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,ΕΥΡΗΜΑΤΑ - Στο έσω διαμέρισμα παρατηρείται εκφυλιστική ρήξη στο οπίσθιο κέρας και σώμα του μηνίσκου.
+Medial OA,του,13,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"Επιπλέον παρατηρείται ήπιο οστεομυελικό οίδημα και πλήρης εξάλειψη του αρθρικού χόνδρου (ICRS Grade IV) στον έσω κνημιαίο κόνδυλο, ενώ συνυπάρχουν μικρής έκτασης επιχείλια οστεόφυτα στον μηριαίο και κνημιαίο κόνδυλο."
+Medial OA,του,13,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του έξω διαμερίσματος παρατηρείται ήπιο οστεομυελικό οίδημα στον έξω κνημιαίο κόνδυλο.
+Medial OA,του,13,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του πρόσθιου διαμερίσματος δεν σημειώνονται παθολογικά ευρήματα.
+Medial OA,baker's,14,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,No Baker's cyst.
+Medial OA,baker's,14,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Trace Baker's cyst.
+Medial OA,baker's,14,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Baker's cyst present.
+Medial OA,baker's,14,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Baker's cyst present.
+Medial OA,baker's,14,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,No baker's cyst.
+Medial OA,baker's cyst,15,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,No Baker's cyst.
+Medial OA,baker's cyst,15,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Trace Baker's cyst.
+Medial OA,baker's cyst,15,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Baker's cyst present.
+Medial OA,baker's cyst,15,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Baker's cyst present.
+Medial OA,baker's cyst,15,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,No baker's cyst.
+Lateral OA,meniscus tear,1,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Medial meniscus tear.
+Lateral OA,meniscus tear,1,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Lateral meniscus tear.
+Lateral OA,meniscus tear,1,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Conclusion: Medial meniscus tear.
+Lateral OA,meniscus tear,1,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Lateral meniscus tear.
+Lateral OA,meniscus tear,1,1.2.826.0.1.3680043.8.498.77362718298550276679350855963451855003,la,Medial meniscus tear.
+Lateral OA,cyst,2,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,There is popliteal cyst measuring 21 x 17 x 35 mm.
+Lateral OA,cyst,2,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Small amount of edema along the inferior margin of the popliteal cyst suggesting a minimal partial rupture.
+Lateral OA,cyst,2,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Mild early intraosseous cystic changes at the tibial insertion of the anterior cruciate ligament.
+Lateral OA,cyst,2,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,- Moderate-sized popliteal cyst with minimal partial rupture.
+Lateral OA,cyst,2,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Popliteale cyste, met beperkte vochtinfiltratie oppervlakkig aan de musculus gastrocnemius medialis ."
+Lateral OA,rupture,3,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Small amount of edema along the inferior margin of the popliteal cyst suggesting a minimal partial rupture.
+Lateral OA,rupture,3,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,- Moderate-sized popliteal cyst with minimal partial rupture.
+Lateral OA,rupture,3,1.2.826.0.1.3680043.8.498.62465595376489211274225312453216559395,en,Complete rupture of the ACL.
+Lateral OA,rupture,3,1.2.826.0.1.3680043.8.498.62465595376489211274225312453216559395,en,Complete rupture of the PCL.
+Lateral OA,rupture,3,1.2.826.0.1.3680043.8.498.62465595376489211274225312453216559395,en,Complete rupture of the MCL at the level of the medial jointline.
+Lateral OA,at the,4,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,No subchondral bone marrow edema at the femur.
+Lateral OA,at the,4,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Mild increased signal intensity at the distal iliotibial band.
+Lateral OA,at the,4,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Mild early intraosseous cystic changes at the tibial insertion of the anterior cruciate ligament.
+Lateral OA,at the,4,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"- Tricompartmental moderate chondral thinning with deep fissures at the lateral and patellofemoral compartments, as described above."
+Lateral OA,at the,4,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,Minimal degenerative subchondral bone marrow edema is present at the lateral tibiofemoral compartment related to overlying chondrosis.
+Lateral OA,condyl,7,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Intercondylar compartment (anterior and posterior cruciate ligaments):
+Lateral OA,condyl,7,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Matig mediaal femorotibiaal kraakbeenlijden, met quasi volledig kraakbeenverlies dragende deel mediale femorale condyl, uitgebreide marginale osteofytose,."
+Lateral OA,condyl,7,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Insufficient fracture of medial femoral condyl with adjacent bone marrow oedema.
+Lateral OA,condyl,7,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Medial condyl fracture.
+Lateral OA,condyl,7,1.2.826.0.1.3680043.8.498.65708905118633339771181857781063784327,en,There is diffuse high grade and low grade chondrosis (less than and more than 50% thickness cartilage loss) along weightbaring medial femoral condyle and medial tibial plateau.
+Lateral OA,cuerno,8,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Aumento de señal central del cuerno posterior y cuerpo del menisco medial que no impresiona
+Lateral OA,cuerno,8,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Menisco lateral con pequeña rotura radial incompleta de la unión del cuerno posterior con el
+Lateral OA,cuerno,8,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura radial incompleta de la unión del cuerno posterior con el cuerpo del menisco lateral.
+Lateral OA,cuerno,8,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,Aumento de señal central del cuerno posterior y cuerpo del menisco medial que contacta la superficie
+Lateral OA,cuerno,8,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,"Rotura del cuerno anterior, cuerpo y cuerno posterior del menisco lateral con mínima extrusión."
+Lateral OA,present,9,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Baker's cyst present.
+Lateral OA,present,9,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Baker's cyst present.
+Lateral OA,present,9,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,Minimal degenerative subchondral bone marrow edema is present at the lateral tibiofemoral compartment related to overlying chondrosis.
+Lateral OA,present,9,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,Moderate-sized Baker cyst with slight surrounding edema likely representing leakage.
+Lateral OA,present,9,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,"Lateral compartment cartilage: Mild cartilage thinning and fissuring is present at the posterior and peripheral weightbearing aspect, with minimal degenerative subchondral bone marrow edema."
+Lateral OA,medial meniscus tear,10,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Medial meniscus tear.
+Lateral OA,medial meniscus tear,10,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Conclusion: Medial meniscus tear.
+Lateral OA,medial meniscus tear,10,1.2.826.0.1.3680043.8.498.77362718298550276679350855963451855003,la,Medial meniscus tear.
+Lateral OA,del,11,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura espesor y ancho total de la unión del tercio medio del tercio proximal del LCA asociado a
+Lateral OA,del,11,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,discreto edema óseo del aspecto posterior de platillo tibial lateral.
+Lateral OA,del,11,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Aumento de señal central del cuerno posterior y cuerpo del menisco medial que no impresiona
+Lateral OA,del,11,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Menisco lateral con pequeña rotura radial incompleta de la unión del cuerno posterior con el
+Lateral OA,del,11,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Úlcera condral de espesor total de la zona de carga del cóndilo femoral lateral que mide
+Lateral OA,espesor,12,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura espesor y ancho total de la unión del tercio medio del tercio proximal del LCA asociado a
+Lateral OA,espesor,12,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Úlcera condral de espesor total de la zona de carga del cóndilo femoral lateral que mide
+Lateral OA,espesor,12,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Fina úlcera condral focal de espesor total del aspecto posterior de platillo tibial
+Lateral OA,espesor,12,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura espesor y ancho total del LCA.
+Lateral OA,espesor,12,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,Úlceras condrales de espesor parcial y total de la región central de la zona de carga del cóndilo femoral
+Lateral OA,with,13,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Small joint effusion with synovial thickening compatible with synovitis.
+Lateral OA,with,13,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"There is increased T2 hyperintense signal within the posterior horn of the medial meniscus extending into the posterior horn-body junction without extension to the articular surface, compatible with intrasubstance degeneration."
+Lateral OA,with,13,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"Mild thickening of the proximal fibers of the medial cruciate ligament, with mild edema, compatible with grade 1 sprain."
+Lateral OA,with,13,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"There is a complex degenerative tear of the lateral meniscus with partial maceration of the anterior horn and anterior body, as well as a longitudinal oblique component involving the posterior horn."
+Lateral OA,with,13,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Full-thickness fissures in the articular cartilage of the tibial weightbearing surface with associated subchondral bone marrow edema.
+Lateral OA,total,15,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura espesor y ancho total de la unión del tercio medio del tercio proximal del LCA asociado a
+Lateral OA,total,15,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Úlcera condral de espesor total de la zona de carga del cóndilo femoral lateral que mide
+Lateral OA,total,15,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Fina úlcera condral focal de espesor total del aspecto posterior de platillo tibial
+Lateral OA,total,15,1.2.826.0.1.3680043.8.498.11557620559191469069130827959098335840,es,Rotura espesor y ancho total del LCA.
+Lateral OA,total,15,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,Úlceras condrales de espesor parcial y total de la región central de la zona de carga del cóndilo femoral
+PF OA,de,1,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Antecedentes Clínicos:
+PF OA,de,1,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,No hay alteraciones de señal significativas de la médula ósea.
+PF OA,de,1,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Ligamentos cruzados y colaterales dentro de límites normales.
+PF OA,de,1,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Amputación marginal del cuerpo del menisco lateral.
+PF OA,de,1,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Menisco medial de morfología y señal
+PF OA,oa,2,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Tricompartmental osteoarthritis worse in the medial compartment.
+PF OA,oa,2,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+PF OA,oa,2,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+PF OA,oa,2,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,OA of medial compartment.
+PF OA,oa,2,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Conclusion: OA of medial compartment.
+PF OA,la,3,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Esguince rodilla.
+PF OA,la,3,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Hallazgos:
+PF OA,la,3,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,No hay alteraciones de señal significativas de la médula ósea.
+PF OA,la,3,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Ligamentos cruzados y colaterales dentro de límites normales.
+PF OA,la,3,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Amputación marginal del cuerpo del menisco lateral.
+PF OA,de la,4,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,No hay alteraciones de señal significativas de la médula ósea.
+PF OA,de la,4,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Fina úlcera condral focal de espesor total del aspecto inferior de la vertiente medial de la tróclea
+PF OA,de la,4,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Fenómenos condrales reparativos de la región
+PF OA,de la,4,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,central de la simple femoral.
+PF OA,de la,4,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Aumento de señal de la inserción distal del tendón cuadricipital y de la inserción proximal del
+PF OA,oa of,5,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+PF OA,oa of,5,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+PF OA,oa of,5,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,OA of medial compartment.
+PF OA,oa of,5,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Conclusion: OA of medial compartment.
+PF OA,condropatía,6,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Condropatía focal grado 4 del aspecto inferior de la vertiente medial de la tróclea femoral .
+PF OA,condropatía,6,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Condropatía rotuliana.
+PF OA,condropatía,6,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Condropatía rotuliana.
+PF OA,condropatía,6,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,Condropatía
+PF OA,condropatía,6,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,Condropatía lesiones grado 3 de la región central de la zona de carga del cóndilo femoral medial y del
+PF OA,with synovitis,7,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Small joint effusion with synovial thickening compatible with synovitis.
+PF OA,with synovitis,7,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,- Small joint effusion with synovitis.
+PF OA,with synovitis,7,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Effusion with synovitis.
+PF OA,with synovitis,7,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Effusion with synovitis.
+PF OA,with synovitis,7,1.2.826.0.1.3680043.8.498.65708905118633339771181857781063784327,en,Some amount of left knee effusion with synovitis is present.
+PF OA,de hoffa,8,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,No hay alteraciones de señal de la grasa de Hoffa.
+PF OA,de hoffa,8,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Síndrome de pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,de hoffa,8,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Síndrome de pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,de hoffa,8,1.2.826.0.1.3680043.8.498.69392348385274125385290015404144639002,es,Resultados: Pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,de hoffa,8,1.2.826.0.1.3680043.8.498.69392348385274125385290015404144639002,es,Impresión: Pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,grasa de hoffa,9,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,No hay alteraciones de señal de la grasa de Hoffa.
+PF OA,grasa de hoffa,9,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Síndrome de pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,grasa de hoffa,9,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Síndrome de pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,grasa de hoffa,9,1.2.826.0.1.3680043.8.498.69392348385274125385290015404144639002,es,Resultados: Pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,grasa de hoffa,9,1.2.826.0.1.3680043.8.498.69392348385274125385290015404144639002,es,Impresión: Pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,grasa de,10,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,No hay alteraciones de señal de la grasa de Hoffa.
+PF OA,grasa de,10,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Síndrome de pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,grasa de,10,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Síndrome de pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,grasa de,10,1.2.826.0.1.3680043.8.498.69392348385274125385290015404144639002,es,Resultados: Pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,grasa de,10,1.2.826.0.1.3680043.8.498.69392348385274125385290015404144639002,es,Impresión: Pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,grasa,11,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,No hay alteraciones de señal de la grasa de Hoffa.
+PF OA,grasa,11,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Síndrome de pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,grasa,11,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Síndrome de pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,grasa,11,1.2.826.0.1.3680043.8.498.69392348385274125385290015404144639002,es,Resultados: Pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,grasa,11,1.2.826.0.1.3680043.8.498.69392348385274125385290015404144639002,es,Impresión: Pinzamiento de la almohadilla grasa de Hoffa.
+PF OA,synovitis,12,1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269,en,"Chronic reactive synovitis, suprapatellar bursitis"
+PF OA,synovitis,12,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Small joint effusion with synovial thickening compatible with synovitis.
+PF OA,synovitis,12,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,- Small joint effusion with synovitis.
+PF OA,synovitis,12,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Besluit: Gevorderde gonartrose van de rechterknie, op heden met hydrops, chronische synovitis, gevorderde muco ïde degeneratie voorste kruisband, recente scheur van popliteale cyste , echter zonder significant botoedeem ."
+PF OA,synovitis,12,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Effusion with synovitis.
+PF OA,effusion with synovitis,13,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,- Small joint effusion with synovitis.
+PF OA,effusion with synovitis,13,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Effusion with synovitis.
+PF OA,effusion with synovitis,13,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Effusion with synovitis.
+PF OA,effusion with synovitis,13,1.2.826.0.1.3680043.8.498.65708905118633339771181857781063784327,en,Some amount of left knee effusion with synovitis is present.
+PF OA,effusion with synovitis,13,1.2.826.0.1.3680043.8.498.65708905118633339771181857781063784327,en,Some amount of left knee effusion with synovitis and 1.5*1.5* 4.5 cm baker's cyst.
+PF OA,de la banda,14,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Resultados: Fricción de la banda iliotibial.
+PF OA,de la banda,14,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Impresión: Fricción de la banda iliotibial.
+PF OA,de la banda,14,1.2.826.0.1.3680043.8.498.69392348385274125385290015404144639002,es,Síndrome de fricción de la banda iliotibial.
+PF OA,de la banda,14,1.2.826.0.1.3680043.8.498.69392348385274125385290015404144639002,es,Síndrome de fricción de la banda iliotibial.
+PF OA,la banda iliotibial,15,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Resultados: Fricción de la banda iliotibial.
+PF OA,la banda iliotibial,15,1.2.826.0.1.3680043.8.498.12448079646359892252441208258836556945,es,Impresión: Fricción de la banda iliotibial.
+PF OA,la banda iliotibial,15,1.2.826.0.1.3680043.8.498.69392348385274125385290015404144639002,es,Síndrome de fricción de la banda iliotibial.
+PF OA,la banda iliotibial,15,1.2.826.0.1.3680043.8.498.69392348385274125385290015404144639002,es,Síndrome de fricción de la banda iliotibial.
+Effusion,ve,1,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Fina úlcera condral focal de espesor total del aspecto inferior de la vertiente medial de la tróclea
+Effusion,ve,1,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Leve derrame articular.
+Effusion,ve,1,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Condropatía focal grado 4 del aspecto inferior de la vertiente medial de la tróclea femoral .
+Effusion,ve,1,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Leve derrame articular.
+Effusion,ve,1,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Leve tendinosis cuadricipital distal y rotuliana proximal.
+Effusion,του,2,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"ΤΕΧΝΙΚΗ Η εξέταση έγινε με ακολουθίες παλμών Τ1, πυκνότητας πρωτονίων με καταστολή του σήματος του λίπους και Τ2 βαθμιδωτής ηχούς."
+Effusion,του,2,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,ΕΥΡΗΜΑΤΑ - Στο έσω διαμέρισμα παρατηρείται εκφυλιστική ρήξη στο οπίσθιο κέρας και σώμα του μηνίσκου.
+Effusion,του,2,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"Επιπλέον παρατηρείται ήπιο οστεομυελικό οίδημα και πλήρης εξάλειψη του αρθρικού χόνδρου (ICRS Grade IV) στον έσω κνημιαίο κόνδυλο, ενώ συνυπάρχουν μικρής έκτασης επιχείλια οστεόφυτα στον μηριαίο και κνημιαίο κόνδυλο."
+Effusion,του,2,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του έξω διαμερίσματος παρατηρείται ήπιο οστεομυελικό οίδημα στον έξω κνημιαίο κόνδυλο.
+Effusion,του,2,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του πρόσθιου διαμερίσματος δεν σημειώνονται παθολογικά ευρήματα.
+Effusion,oa,3,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+Effusion,oa,3,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+Effusion,oa,3,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,OA of medial compartment.
+Effusion,oa,3,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Conclusion: OA of medial compartment.
+Effusion,oa,3,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,opisano vjerojatno u sklopu OA promjena.
+Effusion,και,4,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"ΤΕΧΝΙΚΗ Η εξέταση έγινε με ακολουθίες παλμών Τ1, πυκνότητας πρωτονίων με καταστολή του σήματος του λίπους και Τ2 βαθμιδωτής ηχούς."
+Effusion,και,4,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,ΕΥΡΗΜΑΤΑ - Στο έσω διαμέρισμα παρατηρείται εκφυλιστική ρήξη στο οπίσθιο κέρας και σώμα του μηνίσκου.
+Effusion,και,4,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"Επιπλέον παρατηρείται ήπιο οστεομυελικό οίδημα και πλήρης εξάλειψη του αρθρικού χόνδρου (ICRS Grade IV) στον έσω κνημιαίο κόνδυλο, ενώ συνυπάρχουν μικρής έκτασης επιχείλια οστεόφυτα στον μηριαίο και κνημιαίο κόνδυλο."
+Effusion,και,4,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Φυσιολογικά απεικονίζονται οι πλάγιοι και χιαστοί σύνδεσμοί.
+Effusion,και,4,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,Εκφυλιστική οστεοαρθρίτιδα και εκφυλισττική ρήξη του μηνίσκου στο έσω διαμέρισμα.
+Effusion,of medial,5,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Medial meniscus: Complete radial tear of the posterior root of medial meniscus with mild extrusion.
+Effusion,of medial,5,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Insufficient fracture of medial femoral condyl with adjacent bone marrow oedema.
+Effusion,of medial,5,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,"* Linear signal intensity in the body and posterior horn of medial meniscus with extension to the surface, in favor of tear."
+Effusion,of medial,5,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,"A subchondral linear hypointensity over posterior aspect of medial tibial plateau on T1WI and F/S T2WI, without associated contour deformity (Sr/Im: [ID]; [ID]."
+Effusion,of medial,5,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,Suspect grade 1 injury of medial and lateral patellar retinaculum.
+Effusion,έσω,6,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,ΕΥΡΗΜΑΤΑ - Στο έσω διαμέρισμα παρατηρείται εκφυλιστική ρήξη στο οπίσθιο κέρας και σώμα του μηνίσκου.
+Effusion,έσω,6,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"Επιπλέον παρατηρείται ήπιο οστεομυελικό οίδημα και πλήρης εξάλειψη του αρθρικού χόνδρου (ICRS Grade IV) στον έσω κνημιαίο κόνδυλο, ενώ συνυπάρχουν μικρής έκτασης επιχείλια οστεόφυτα στον μηριαίο και κνημιαίο κόνδυλο."
+Effusion,έσω,6,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"- Παρατηρείται μέτρια ποσότητα υγρού ενδαρθρικά που συνέχεται με ευμεγέθη πολύχωρη συνοβιακή κύστη Baker κεφαλουραίας διαμέτρου 9,7εκ παρά την έσω κεφαλή του γαστροκνημίου μυός."
+Effusion,έσω,6,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,Εκφυλιστική οστεοαρθρίτιδα και εκφυλισττική ρήξη του μηνίσκου στο έσω διαμέρισμα.
+Effusion,έσω,6,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,Μικροδοκιδώδη κατάγματα ανεπάρκειας (συνώνυμο SONK) έσω κνημιαιίου και σε μικρότερη έκταση πρόσθιου έξω κνημιαίου κονδύλου.
+Effusion,van,7,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Comparison: No relevant prior studies available for comparison.
+Effusion,van,7,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Gevorderd lateraal femorotibiaal kraakbeenlijden met volledig kraakbeenverlies anterieur, centrale en posterieure dragende deel en van het laterale tibiaplateau, gepaard gaand met marginale osteofytose, beperkte subchondrale botveranderingen."
+Effusion,van,7,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Degeneratief voorkomen laterale meniscus met opzetting van het corpus, die zich bevindt buiten de gewrichtsspleet ."
+Effusion,van,7,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Verder opzetting van suprapatellaire recessus, met talrijke verdikkingen van van het synovium, nodulair beginnend tot matig femoropatellair kraakbeenlijden met meerdere fissuren."
+Effusion,van,7,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Gevorderde muco ïde degeneratie van de voorste kruisband, met opgezet voorkomen en gestegen T2-signaal ."
+Effusion,diz,8,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Diz eklemi içi sıvı miktarı hafif derecede artmış.
+Effusion,diz,8,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Effusion,diz,8,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Patella normal yerleşimlidir.İnfrapatellar yağ yastıkçığında ödematöz görünüm izlenmiştir.Suprapatellar bursada ve diz eklemi içerisinde yaygın sıvı artışı izlenmiştir.
+Effusion,diz,8,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,"Lateral kollateral ligaman normaldir.Medial kollateral ligamen çevresinde ödematöz görünüm mevcuttur ( grade I sprain ).Suprapatellar bursada ,diz eklemi içerisinde yaygın sıvı artışı izlendi."
+Effusion,diz,8,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,Arka çapraz bağ tibia yapışma düzeyinde subkondrial milimetrik kistler izlendi.Diz eklemi prepatellar düzeyde cilt altı yağlı dokuda ödematöz görünüm mevcuttur.
+Effusion,oa of,9,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+Effusion,oa of,9,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+Effusion,oa of,9,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,OA of medial compartment.
+Effusion,oa of,9,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Conclusion: OA of medial compartment.
+Effusion,met,10,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Gevorderd lateraal femorotibiaal kraakbeenlijden met volledig kraakbeenverlies anterieur, centrale en posterieure dragende deel en van het laterale tibiaplateau, gepaard gaand met marginale osteofytose, beperkte subchondrale botveranderingen."
+Effusion,met,10,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Degeneratief voorkomen laterale meniscus met opzetting van het corpus, die zich bevindt buiten de gewrichtsspleet ."
+Effusion,met,10,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Verder opzetting van suprapatellaire recessus, met talrijke verdikkingen van van het synovium, nodulair beginnend tot matig femoropatellair kraakbeenlijden met meerdere fissuren."
+Effusion,met,10,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Matig mediaal femorotibiaal kraakbeenlijden, met quasi volledig kraakbeenverlies dragende deel mediale femorale condyl, uitgebreide marginale osteofytose,."
+Effusion,met,10,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Gevorderde muco ïde degeneratie van de voorste kruisband, met opgezet voorkomen en gestegen T2-signaal ."
+Effusion,menisco interno,11,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura de menisco interno y lateral.
+Effusion,menisco interno,11,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura de menisco interno y lateral.
+Effusion,menisco interno,11,1.2.826.0.1.3680043.8.498.90283565381042081768587894596970552767,es,Resultados: Cambios de señal en el menisco interno sin signos de desgarro.
+Effusion,menisco interno,11,1.2.826.0.1.3680043.8.498.90283565381042081768587894596970552767,es,Impresión: Cambios de señal en el menisco interno sin signos de desgarro.
+Effusion,interno,12,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura de menisco interno y lateral.
+Effusion,interno,12,1.2.826.0.1.3680043.8.498.12505035424093604269515328931488770819,es,Rotura de menisco interno y lateral.
+Effusion,interno,12,1.2.826.0.1.3680043.8.498.90283565381042081768587894596970552767,es,Resultados: Cambios de señal en el menisco interno sin signos de desgarro.
+Effusion,interno,12,1.2.826.0.1.3680043.8.498.90283565381042081768587894596970552767,es,Impresión: Cambios de señal en el menisco interno sin signos de desgarro.
+Effusion,effusion with,13,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,Some amount of right knee effusion with hemarthrosis is present.
+Effusion,effusion with,13,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,Some amount of right knee effusion with hemarthrosis.
+Effusion,effusion with,13,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Small joint effusion with synovial thickening compatible with synovitis.
+Effusion,effusion with,13,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,- Small joint effusion with synovitis.
+Effusion,effusion with,13,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Effusion with synovitis.
+Effusion,με,14,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"ΤΕΧΝΙΚΗ Η εξέταση έγινε με ακολουθίες παλμών Τ1, πυκνότητας πρωτονίων με καταστολή του σήματος του λίπους και Τ2 βαθμιδωτής ηχούς."
+Effusion,με,14,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του έξω διαμερίσματος παρατηρείται ήπιο οστεομυελικό οίδημα στον έξω κνημιαίο κόνδυλο.
+Effusion,με,14,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του πρόσθιου διαμερίσματος δεν σημειώνονται παθολογικά ευρήματα.
+Effusion,με,14,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"- Παρατηρείται μέτρια ποσότητα υγρού ενδαρθρικά που συνέχεται με ευμεγέθη πολύχωρη συνοβιακή κύστη Baker κεφαλουραίας διαμέτρου 9,7εκ παρά την έσω κεφαλή του γαστροκνημίου μυός."
+Effusion,με,14,1.2.826.0.1.3680043.8.498.25695966186129395049687747156570466645,el,"MRI ∆ΕΞΙΟΥ ΓΟΝΑΤΟΣ ΤΕΧΝΙΚΗ Η εξέταση έγινε με ακολουθίες παλμών Τ1, Τ2 βαθμιδωτής ηχούς και πυκνότητας πρωτονίων με καταστολή του σήματος του λίπους."
+Effusion,en,15,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Antecedentes Clínicos:
+Effusion,en,15,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Ligamentos cruzados y colaterales dentro de límites normales.
+Effusion,en,15,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Amputación marginal del cuerpo del menisco lateral.
+Effusion,en,15,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Menisco medial de morfología y señal
+Effusion,en,15,1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149,es,Cartílagos de los compartimentos femorotibiales sin alteraciones.
+Synovitis,im,1,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Exam Date and Time: [DATE] [TIME]
+Synovitis,im,1,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,IMPRESSION:
+Synovitis,im,1,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Small amount of edema along the inferior margin of the popliteal cyst suggesting a minimal partial rupture.
+Synovitis,im,1,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"Mild thickening of the proximal fibers of the medial cruciate ligament, with mild edema, compatible with grade 1 sprain."
+Synovitis,im,1,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,- Moderate-sized popliteal cyst with minimal partial rupture.
+Synovitis,oa,2,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Tricompartmental osteoarthritis worse in the medial compartment.
+Synovitis,oa,2,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+Synovitis,oa,2,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+Synovitis,oa,2,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,OA of medial compartment.
+Synovitis,oa,2,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Conclusion: OA of medial compartment.
+Synovitis,του,3,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"ΤΕΧΝΙΚΗ Η εξέταση έγινε με ακολουθίες παλμών Τ1, πυκνότητας πρωτονίων με καταστολή του σήματος του λίπους και Τ2 βαθμιδωτής ηχούς."
+Synovitis,του,3,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,ΕΥΡΗΜΑΤΑ - Στο έσω διαμέρισμα παρατηρείται εκφυλιστική ρήξη στο οπίσθιο κέρας και σώμα του μηνίσκου.
+Synovitis,του,3,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"Επιπλέον παρατηρείται ήπιο οστεομυελικό οίδημα και πλήρης εξάλειψη του αρθρικού χόνδρου (ICRS Grade IV) στον έσω κνημιαίο κόνδυλο, ενώ συνυπάρχουν μικρής έκτασης επιχείλια οστεόφυτα στον μηριαίο και κνημιαίο κόνδυλο."
+Synovitis,του,3,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του έξω διαμερίσματος παρατηρείται ήπιο οστεομυελικό οίδημα στον έξω κνημιαίο κόνδυλο.
+Synovitis,του,3,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του πρόσθιου διαμερίσματος δεν σημειώνονται παθολογικά ευρήματα.
+Synovitis,des,4,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"- Tricompartmental moderate chondral thinning with deep fissures at the lateral and patellofemoral compartments, as described above."
+Synovitis,des,4,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,"Signos de una rotura del menisco medial, no desplazada."
+Synovitis,des,4,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,"T2-hyperintense lineare radiale Läsion der Pars intermedia des Innenmeniskus mit inkompletter Separation eines kleinen Lappens (3/7, 5/109-110)."
+Synovitis,des,4,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,Die initial extruierte Pars intermedia des Innenmeniskus im Corpusbereich mukoid aufgefasert.
+Synovitis,des,4,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,Kleine zystoide Veränderungen an den Insertionsstellen des VKB.
+Synovitis,mit,5,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,LCP y ligamentos colaterales dentro de límites
+Synovitis,mit,5,1.2.826.0.1.3680043.8.498.15593638897292057356864060466120253309,es,límites normales.
+Synovitis,mit,5,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,"A subchondral linear hypointensity over posterior aspect of medial tibial plateau on T1WI and F/S T2WI, without associated contour deformity (Sr/Im: [ID]; [ID]."
+Synovitis,mit,5,1.2.826.0.1.3680043.8.498.39500553372517290823815606829518305500,es,Ligamentos cruzados y colaterales dentro de límites normales.
+Synovitis,mit,5,1.2.826.0.1.3680043.8.498.39500553372517290823815606829518305500,es,dentro de límites normales.
+Synovitis,και,6,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"ΤΕΧΝΙΚΗ Η εξέταση έγινε με ακολουθίες παλμών Τ1, πυκνότητας πρωτονίων με καταστολή του σήματος του λίπους και Τ2 βαθμιδωτής ηχούς."
+Synovitis,και,6,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,ΕΥΡΗΜΑΤΑ - Στο έσω διαμέρισμα παρατηρείται εκφυλιστική ρήξη στο οπίσθιο κέρας και σώμα του μηνίσκου.
+Synovitis,και,6,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"Επιπλέον παρατηρείται ήπιο οστεομυελικό οίδημα και πλήρης εξάλειψη του αρθρικού χόνδρου (ICRS Grade IV) στον έσω κνημιαίο κόνδυλο, ενώ συνυπάρχουν μικρής έκτασης επιχείλια οστεόφυτα στον μηριαίο και κνημιαίο κόνδυλο."
+Synovitis,και,6,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Φυσιολογικά απεικονίζονται οι πλάγιοι και χιαστοί σύνδεσμοί.
+Synovitis,και,6,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,Εκφυλιστική οστεοαρθρίτιδα και εκφυλισττική ρήξη του μηνίσκου στο έσω διαμέρισμα.
+Synovitis,έσω,7,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,ΕΥΡΗΜΑΤΑ - Στο έσω διαμέρισμα παρατηρείται εκφυλιστική ρήξη στο οπίσθιο κέρας και σώμα του μηνίσκου.
+Synovitis,έσω,7,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"Επιπλέον παρατηρείται ήπιο οστεομυελικό οίδημα και πλήρης εξάλειψη του αρθρικού χόνδρου (ICRS Grade IV) στον έσω κνημιαίο κόνδυλο, ενώ συνυπάρχουν μικρής έκτασης επιχείλια οστεόφυτα στον μηριαίο και κνημιαίο κόνδυλο."
+Synovitis,έσω,7,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"- Παρατηρείται μέτρια ποσότητα υγρού ενδαρθρικά που συνέχεται με ευμεγέθη πολύχωρη συνοβιακή κύστη Baker κεφαλουραίας διαμέτρου 9,7εκ παρά την έσω κεφαλή του γαστροκνημίου μυός."
+Synovitis,έσω,7,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,Εκφυλιστική οστεοαρθρίτιδα και εκφυλισττική ρήξη του μηνίσκου στο έσω διαμέρισμα.
+Synovitis,έσω,7,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,Μικροδοκιδώδη κατάγματα ανεπάρκειας (συνώνυμο SONK) έσω κνημιαιίου και σε μικρότερη έκταση πρόσθιου έξω κνημιαίου κονδύλου.
+Synovitis,van,8,1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052,en,Comparison: No relevant prior studies available for comparison.
+Synovitis,van,8,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Gevorderd lateraal femorotibiaal kraakbeenlijden met volledig kraakbeenverlies anterieur, centrale en posterieure dragende deel en van het laterale tibiaplateau, gepaard gaand met marginale osteofytose, beperkte subchondrale botveranderingen."
+Synovitis,van,8,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Degeneratief voorkomen laterale meniscus met opzetting van het corpus, die zich bevindt buiten de gewrichtsspleet ."
+Synovitis,van,8,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Verder opzetting van suprapatellaire recessus, met talrijke verdikkingen van van het synovium, nodulair beginnend tot matig femoropatellair kraakbeenlijden met meerdere fissuren."
+Synovitis,van,8,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Gevorderde muco ïde degeneratie van de voorste kruisband, met opgezet voorkomen en gestegen T2-signaal ."
+Synovitis,oa of,9,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+Synovitis,oa of,9,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Incipient OA of all three compartmens.
+Synovitis,oa of,9,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,OA of medial compartment.
+Synovitis,oa of,9,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Conclusion: OA of medial compartment.
+Synovitis,met,10,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Gevorderd lateraal femorotibiaal kraakbeenlijden met volledig kraakbeenverlies anterieur, centrale en posterieure dragende deel en van het laterale tibiaplateau, gepaard gaand met marginale osteofytose, beperkte subchondrale botveranderingen."
+Synovitis,met,10,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Degeneratief voorkomen laterale meniscus met opzetting van het corpus, die zich bevindt buiten de gewrichtsspleet ."
+Synovitis,met,10,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Verder opzetting van suprapatellaire recessus, met talrijke verdikkingen van van het synovium, nodulair beginnend tot matig femoropatellair kraakbeenlijden met meerdere fissuren."
+Synovitis,met,10,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Matig mediaal femorotibiaal kraakbeenlijden, met quasi volledig kraakbeenverlies dragende deel mediale femorale condyl, uitgebreide marginale osteofytose,."
+Synovitis,met,10,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Gevorderde muco ïde degeneratie van de voorste kruisband, met opgezet voorkomen en gestegen T2-signaal ."
+Synovitis,effusion with,11,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,Some amount of right knee effusion with hemarthrosis is present.
+Synovitis,effusion with,11,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,Some amount of right knee effusion with hemarthrosis.
+Synovitis,effusion with,11,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Small joint effusion with synovial thickening compatible with synovitis.
+Synovitis,effusion with,11,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,- Small joint effusion with synovitis.
+Synovitis,effusion with,11,1.2.826.0.1.3680043.8.498.56512564464301544960446419143135447363,en,Effusion with synovitis.
+Synovitis,der,12,1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269,en,"Moderate joint effusion, distended suprapatellar bursa with thickend synovial tissue are observed."
+Synovitis,der,12,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Moderate thinning of the articular cartilage of the weightbearing femur and tibia.
+Synovitis,der,12,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,There is moderate thinning of the articular cartilage of the weightbearing femur and of the tibial plateau.
+Synovitis,der,12,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"Additionally, there is moderate thinning of the articular cartilage of the femoral trochlea without subchondral bone marrow edema."
+Synovitis,der,12,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"- Tricompartmental moderate chondral thinning with deep fissures at the lateral and patellofemoral compartments, as described above."
+Synovitis,με,13,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"ΤΕΧΝΙΚΗ Η εξέταση έγινε με ακολουθίες παλμών Τ1, πυκνότητας πρωτονίων με καταστολή του σήματος του λίπους και Τ2 βαθμιδωτής ηχούς."
+Synovitis,με,13,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του έξω διαμερίσματος παρατηρείται ήπιο οστεομυελικό οίδημα στον έξω κνημιαίο κόνδυλο.
+Synovitis,με,13,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του πρόσθιου διαμερίσματος δεν σημειώνονται παθολογικά ευρήματα.
+Synovitis,με,13,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"- Παρατηρείται μέτρια ποσότητα υγρού ενδαρθρικά που συνέχεται με ευμεγέθη πολύχωρη συνοβιακή κύστη Baker κεφαλουραίας διαμέτρου 9,7εκ παρά την έσω κεφαλή του γαστροκνημίου μυός."
+Synovitis,με,13,1.2.826.0.1.3680043.8.498.25695966186129395049687747156570466645,el,"MRI ∆ΕΞΙΟΥ ΓΟΝΑΤΟΣ ΤΕΧΝΙΚΗ Η εξέταση έγινε με ακολουθίες παλμών Τ1, Τ2 βαθμιδωτής ηχούς και πυκνότητας πρωτονίων με καταστολή του σήματος του λίπους."
+Synovitis,intermedia,14,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,"T2-hyperintense lineare radiale Läsion der Pars intermedia des Innenmeniskus mit inkompletter Separation eines kleinen Lappens (3/7, 5/109-110)."
+Synovitis,intermedia,14,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,Die initial extruierte Pars intermedia des Innenmeniskus im Corpusbereich mukoid aufgefasert.
+Synovitis,intermedia,14,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,Innenmeniskus mit horizontalem Riss Pars intermedia bis ins Hinterhorn ziehend bei mukoider Vorschädigung.
+Synovitis,vkb,15,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,"VKB, HKB, MCL und LCL intakt und physiologisch signalgebend."
+Synovitis,vkb,15,1.2.826.0.1.3680043.8.498.73926443729786165628848843707532839995,de,Kleine zystoide Veränderungen an den Insertionsstellen des VKB.
+Synovitis,vkb,15,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,VKB Ruptur mit wohl ligamentärer Ruptur des anteromedialen Bündels sowie knöchernem Ausriss des posterolateralen Bündels (4/23).
+Baker's,mit,1,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,Stigmata der Inaktivitätsosteopenie sowie verbliebenes bone bruise im posterolateralen Tibiaplateau nahe der Eminentia bei subchondraler Impression mit teils punktuell chondralen Läsionen.
+Baker's,mit,1,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,VKB Ruptur mit wohl ligamentärer Ruptur des anteromedialen Bündels sowie knöchernem Ausriss des posterolateralen Bündels (4/23).
+Baker's,mit,1,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,"Weiteres Ossikel/Flake angrenzend an die nicht sicher abgrenzbare Außenmeniskushinterhornwurzel, hier DD ebenfalls Mitbeteiligung/knöcherner Ausriss."
+Baker's,mit,1,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,Innenmeniskus mit horizontalem Riss Pars intermedia bis ins Hinterhorn ziehend bei mukoider Vorschädigung.
+Baker's,mit,1,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,"Begleitend geringer Gelenkerguss, Reizsynovialitis sowie gering Flüssigkeit gefüllte Baker-Zyste mit CC 3,2 cm."
+Baker's,condyl,2,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Intercondylar compartment (anterior and posterior cruciate ligaments):
+Baker's,condyl,2,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Matig mediaal femorotibiaal kraakbeenlijden, met quasi volledig kraakbeenverlies dragende deel mediale femorale condyl, uitgebreide marginale osteofytose,."
+Baker's,condyl,2,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Insufficient fracture of medial femoral condyl with adjacent bone marrow oedema.
+Baker's,condyl,2,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Medial condyl fracture.
+Baker's,condyl,2,1.2.826.0.1.3680043.8.498.65708905118633339771181857781063784327,en,There is diffuse high grade and low grade chondrosis (less than and more than 50% thickness cartilage loss) along weightbaring medial femoral condyle and medial tibial plateau.
+Baker's,plica,3,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,"A thickened medial patellar plica is present, extending into the patellofemoral compartment."
+Baker's,plica,3,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,Thickened medial patellar plica.
+Baker's,plica,3,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,Inkompletna suprapatelarna plica.
+Baker's,plica,3,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,Plica mediopatellaris.
+Baker's,present,4,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Baker's cyst present.
+Baker's,present,4,1.2.826.0.1.3680043.8.498.16060119389060497136231217718921482192,en,Baker's cyst present.
+Baker's,present,4,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,Minimal degenerative subchondral bone marrow edema is present at the lateral tibiofemoral compartment related to overlying chondrosis.
+Baker's,present,4,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,Moderate-sized Baker cyst with slight surrounding edema likely representing leakage.
+Baker's,present,4,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,"Lateral compartment cartilage: Mild cartilage thinning and fissuring is present at the posterior and peripheral weightbearing aspect, with minimal degenerative subchondral bone marrow edema."
+Baker's,der,5,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Moderate thinning of the articular cartilage of the weightbearing femur and tibia.
+Baker's,der,5,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,There is moderate thinning of the articular cartilage of the weightbearing femur and of the tibial plateau.
+Baker's,der,5,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"Additionally, there is moderate thinning of the articular cartilage of the femoral trochlea without subchondral bone marrow edema."
+Baker's,der,5,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"- Tricompartmental moderate chondral thinning with deep fissures at the lateral and patellofemoral compartments, as described above."
+Baker's,der,5,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,- Moderate-sized popliteal cyst with minimal partial rupture.
+Baker's,promjena,6,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,opisano vjerojatno u sklopu OA promjena.
+Baker's,promjena,6,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,hrskavica te opsežne osteofite FP zgloba - opisano u sklopu navedenih OA promjena.
+Baker's,promjena,6,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,uznapredovalih degenerativnih promjena ili parcijalne rupture starijeg datuma.
+Baker's,promjena,6,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,parcijalnoj rupturi ili uslijed entezopatskih promjena.
+Baker's,promjena,6,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,"uz periligamentarni edem, vjerojatno uslijed entezopatskih promjena."
+Baker's,intenziteta signala,7,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,Stražnji križni ligament je primjerenih intenziteta signala i održanog kontinuiteta.
+Baker's,intenziteta signala,7,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,"Lateralni i medijalni kolateralni ligamenti su primjerenih intenziteta signala, održanog"
+Baker's,intenziteta signala,7,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,"Patelarni ligament su primjerenih intenziteta signala, održanog kontinuiteta."
+Baker's,intenziteta signala,7,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,"promijenjenog intenziteta signala pri hvatištu na glavu fibule, moguće stanje po ranijoj"
+Baker's,intenziteta signala,7,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,"Tetiva popliteusa edemazotna, izmijenjenog intenziteta signala, u smislu tendinopatije."
+Baker's,intenziteta,8,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,Stražnji križni ligament je primjerenih intenziteta signala i održanog kontinuiteta.
+Baker's,intenziteta,8,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,"Lateralni i medijalni kolateralni ligamenti su primjerenih intenziteta signala, održanog"
+Baker's,intenziteta,8,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,"Patelarni ligament su primjerenih intenziteta signala, održanog kontinuiteta."
+Baker's,intenziteta,8,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,"promijenjenog intenziteta signala pri hvatištu na glavu fibule, moguće stanje po ranijoj"
+Baker's,intenziteta,8,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,"Tetiva popliteusa edemazotna, izmijenjenog intenziteta signala, u smislu tendinopatije."
+Baker's,mm,9,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,There is popliteal cyst measuring 21 x 17 x 35 mm.
+Baker's,mm,9,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,There is a 4 mm small displaced fragment along the lateral tibial gutter.
+Baker's,mm,9,1.2.826.0.1.3680043.8.498.22109739962224309418874538994436903404,en,Normal tibial tubercle-trochlear groove (TT-TG) distance measuring 14 mm.
+Baker's,mm,9,1.2.826.0.1.3680043.8.498.28925345859498351203477642741908452608,tr,Bu düzeyde eklem aralığı belirgin daralmıştır.Popliteal fossada 54x15 mm çapta Baker kisti ile uyumlu görünüm mevcuttur.
+Baker's,mm,9,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,Baker cista veličine 22x31x37 mm (apxllxcc).
+Baker's,epikondil,10,1.2.826.0.1.3680043.8.498.28925345859498351203477642741908452608,tr,Tibia proksimali ve femur distal epikondil seviyesi medialde kemik iliği ödemi ile uyumlu görünümler mevcuttur.
+Baker's,epikondil,10,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,Lateralni kolateralni ligament je vretenasto zadebljan pri hvatištu na lateralni epikondil femura te
+Baker's,epikondil,10,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,Medijalni kolateralni ligament je vretenasto zadebljan pri hvatištu na medijalni epikondil femura
+Baker's,patelarni,11,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,"Patelarni ligament su primjerenih intenziteta signala, održanog kontinuiteta."
+Baker's,patelarni,11,1.2.826.0.1.3680043.8.498.64408609256163127278435484217683272910,hr,Patelarni retinakulumi održani.
+Baker's,patelarni,11,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,Tetiva kvadricepsa i patelarni ligament su izmijenjenih intenziteta signala na hvatištima za
+Baker's,patelarni,11,1.2.826.0.1.3680043.8.498.88077418639301174409926781329613570435,hr,Patelarni retinakulumi održani.
+Baker's,met,12,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"[DATE]: MR Knie Rechts 15ch AA: Klinische inlichtingen: Zie gescande aanvraag Diagnostische vraagstelling: Zie gescande aanvraag Bevindingen: Gevorderd lateraal femorotibiaal kraakbeenlijden met volledig kraakbeenverlies anterieur, centrale en posterieure dragende deel en van het laterale tibiaplateau, gepaard gaand met marginale osteofytose, beperkte subchondrale botveranderingen."
+Baker's,met,12,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Degeneratief voorkomen laterale meniscus met opzetting van het corpus, die zich bevindt buiten de gewrichtsspleet ."
+Baker's,met,12,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Verder opzetting van suprapatellaire recessus, met talrijke verdikkingen van van het synovium, nodulair beginnend tot matig femoropatellair kraakbeenlijden met meerdere fissuren."
+Baker's,met,12,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Matig mediaal femorotibiaal kraakbeenlijden, met quasi volledig kraakbeenverlies dragende deel mediale femorale condyl, uitgebreide marginale osteofytose,."
+Baker's,met,12,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Gevorderde muco ïde degeneratie van de voorste kruisband, met opgezet voorkomen en gestegen T2-signaal ."
+Baker's,des,13,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"- Tricompartmental moderate chondral thinning with deep fissures at the lateral and patellofemoral compartments, as described above."
+Baker's,des,13,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,VKB Ruptur mit wohl ligamentärer Ruptur des anteromedialen Bündels sowie knöchernem Ausriss des posterolateralen Bündels (4/23).
+Baker's,su,14,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,There is popliteal cyst measuring 21 x 17 x 35 mm.
+Baker's,su,14,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Small amount of edema along the inferior margin of the popliteal cyst suggesting a minimal partial rupture.
+Baker's,su,14,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,"There is increased T2 hyperintense signal within the posterior horn of the medial meniscus extending into the posterior horn-body junction without extension to the articular surface, compatible with intrasubstance degeneration."
+Baker's,su,14,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Full-thickness fissures in the articular cartilage of the tibial weightbearing surface with associated subchondral bone marrow edema.
+Baker's,su,14,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,No subchondral bone marrow edema at the femur.
+Baker's,cyst,15,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,There is popliteal cyst measuring 21 x 17 x 35 mm.
+Baker's,cyst,15,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Small amount of edema along the inferior margin of the popliteal cyst suggesting a minimal partial rupture.
+Baker's,cyst,15,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,Mild early intraosseous cystic changes at the tibial insertion of the anterior cruciate ligament.
+Baker's,cyst,15,1.2.826.0.1.3680043.8.498.11915937982684988073644209606907169581,en,- Moderate-sized popliteal cyst with minimal partial rupture.
+Baker's,cyst,15,1.2.826.0.1.3680043.8.498.13335129881737731410081002627729200903,nl,"Popliteale cyste, met beperkte vochtinfiltratie oppervlakkig aan de musculus gastrocnemius medialis ."
+Contusion,contusion,1,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,There is popliteus muscle contusion.
+Contusion,contusion,1,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,There is no fracture or bone contusion.
+Contusion,contusion,1,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,Popliteus muscle contusion.
+Contusion,contusion,1,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* Bone marrow edema in bilateral femoral condyles and anteromedial and posterolateral aspect of proximal tibia, suspect bone contusion."
+Contusion,contusion,1,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"Bone marrow edema in distal femur and proximal tibia (major at anteromedial and posterolateral aspect), suspect bone contusion."
+Contusion,на,2,1.2.826.0.1.3680043.8.498.59483999067816153759785789654766826710,bg,"МР находка: МР данни за фрактура в областта на латералното тибиално плато, без дислокация."
+Contusion,на,2,1.2.826.0.1.3680043.8.498.59483999067816153759785789654766826710,bg,Наличие на костно-мозъчен едем около фрактурата.
+Contusion,на,2,1.2.826.0.1.3680043.8.498.59483999067816153759785789654766826710,bg,МР данни за руптура на предната кръстна връзка.
+Contusion,на,2,1.2.826.0.1.3680043.8.498.59483999067816153759785789654766826710,bg,"На топичното място на връзката се вижда зона на патологично променен сигнален интензитет, съответстваща на дезорганизирани съединително-тъканни влакна, оток и кръв."
+Contusion,на,2,1.2.826.0.1.3680043.8.498.59483999067816153759785789654766826710,bg,МР данни за MPFL лезия – скъсване на медиалния поплите-феморален лигамент.
+Contusion,του,3,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"ΤΕΧΝΙΚΗ Η εξέταση έγινε με ακολουθίες παλμών Τ1, πυκνότητας πρωτονίων με καταστολή του σήματος του λίπους και Τ2 βαθμιδωτής ηχούς."
+Contusion,του,3,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,ΕΥΡΗΜΑΤΑ - Στο έσω διαμέρισμα παρατηρείται εκφυλιστική ρήξη στο οπίσθιο κέρας και σώμα του μηνίσκου.
+Contusion,του,3,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"Επιπλέον παρατηρείται ήπιο οστεομυελικό οίδημα και πλήρης εξάλειψη του αρθρικού χόνδρου (ICRS Grade IV) στον έσω κνημιαίο κόνδυλο, ενώ συνυπάρχουν μικρής έκτασης επιχείλια οστεόφυτα στον μηριαίο και κνημιαίο κόνδυλο."
+Contusion,του,3,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του έξω διαμερίσματος παρατηρείται ήπιο οστεομυελικό οίδημα στον έξω κνημιαίο κόνδυλο.
+Contusion,του,3,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του πρόσθιου διαμερίσματος δεν σημειώνονται παθολογικά ευρήματα.
+Contusion,grade,4,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,There is grade II ligamentous sprain (partial tear) of lateral collateral ligament.
+Contusion,grade,4,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,Grade II ligamentous sprain (partial tear) of lateral collateral ligament.
+Contusion,grade,4,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* High signal in the soft tissue medial to the medial collateral ligament with mild increased signal intensity of proximal ligament, suspect grade 2 injury."
+Contusion,grade,4,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* Interstitial hyperintense signal of ACL, in favor of grade 1 injury."
+Contusion,grade,4,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,Suspect grade 2 injury of MCL with adjacent soft tissue edema over anteromedial aspect of right knee.
+Contusion,στο,5,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"ΤΕΧΝΙΚΗ Η εξέταση έγινε με ακολουθίες παλμών Τ1, πυκνότητας πρωτονίων με καταστολή του σήματος του λίπους και Τ2 βαθμιδωτής ηχούς."
+Contusion,στο,5,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,ΕΥΡΗΜΑΤΑ - Στο έσω διαμέρισμα παρατηρείται εκφυλιστική ρήξη στο οπίσθιο κέρας και σώμα του μηνίσκου.
+Contusion,στο,5,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"Επιπλέον παρατηρείται ήπιο οστεομυελικό οίδημα και πλήρης εξάλειψη του αρθρικού χόνδρου (ICRS Grade IV) στον έσω κνημιαίο κόνδυλο, ενώ συνυπάρχουν μικρής έκτασης επιχείλια οστεόφυτα στον μηριαίο και κνημιαίο κόνδυλο."
+Contusion,στο,5,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Από τον έλεγχο του έξω διαμερίσματος παρατηρείται ήπιο οστεομυελικό οίδημα στον έξω κνημιαίο κόνδυλο.
+Contusion,στο,5,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Φυσιολογικά απεικονίζονται οι πλάγιοι και χιαστοί σύνδεσμοί.
+Contusion,bone contusion,6,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,There is no fracture or bone contusion.
+Contusion,bone contusion,6,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* Bone marrow edema in bilateral femoral condyles and anteromedial and posterolateral aspect of proximal tibia, suspect bone contusion."
+Contusion,bone contusion,6,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"Bone marrow edema in distal femur and proximal tibia (major at anteromedial and posterolateral aspect), suspect bone contusion."
+Contusion,bone contusion,6,1.2.826.0.1.3680043.8.498.26790702379506190936834447203448882465,en,There is mild residual bone contusion in the weightbearing aspect of the lateral femoral condyle and posterior aspect of the lateral tibial condyle.
+Contusion,bone contusion,6,1.2.826.0.1.3680043.8.498.29764868091238287072166823522853419550,la,A bone contusion is noted in the posterolateral corner of the lateral tibial plateau.
+Contusion,και,7,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"ΤΕΧΝΙΚΗ Η εξέταση έγινε με ακολουθίες παλμών Τ1, πυκνότητας πρωτονίων με καταστολή του σήματος του λίπους και Τ2 βαθμιδωτής ηχούς."
+Contusion,και,7,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,ΕΥΡΗΜΑΤΑ - Στο έσω διαμέρισμα παρατηρείται εκφυλιστική ρήξη στο οπίσθιο κέρας και σώμα του μηνίσκου.
+Contusion,και,7,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"Επιπλέον παρατηρείται ήπιο οστεομυελικό οίδημα και πλήρης εξάλειψη του αρθρικού χόνδρου (ICRS Grade IV) στον έσω κνημιαίο κόνδυλο, ενώ συνυπάρχουν μικρής έκτασης επιχείλια οστεόφυτα στον μηριαίο και κνημιαίο κόνδυλο."
+Contusion,και,7,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,- Φυσιολογικά απεικονίζονται οι πλάγιοι και χιαστοί σύνδεσμοί.
+Contusion,και,7,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,Εκφυλιστική οστεοαρθρίτιδα και εκφυλισττική ρήξη του μηνίσκου στο έσω διαμέρισμα.
+Contusion,retinaculum,8,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,"* High signal in the soft tissue surrounding the medial and lateral patellar retinaculum, in favor of grade 1 injury."
+Contusion,retinaculum,8,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,Suspect grade 1 injury of medial and lateral patellar retinaculum.
+Contusion,retinaculum,8,1.2.826.0.1.3680043.8.498.64703506772167798469048460791472465039,en,Patellar retinacula: Moderate grade partial tear of the medial retinaculum.
+Contusion,retinaculum,8,1.2.826.0.1.3680043.8.498.64703506772167798469048460791472465039,en,*Moderate grade partial tear of the medial patellar retinaculum.
+Contusion,retinaculum,8,1.2.826.0.1.3680043.8.498.77362718298550276679350855963451855003,la,Medial retinaculum rupture and medial patello-femoral ligament tear at the site of femoral attachment with haematoma.
+Contusion,mit,9,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,"A subchondral linear hypointensity over posterior aspect of medial tibial plateau on T1WI and F/S T2WI, without associated contour deformity (Sr/Im: [ID]; [ID]."
+Contusion,mit,9,1.2.826.0.1.3680043.8.498.48946580946665031852355005294734101132,en,"The TT-TG distance measures 12 minutes, within normal limits."
+Contusion,mit,9,1.2.826.0.1.3680043.8.498.48946580946665031852355005294734101132,en,Regional musculature is within normal limits.
+Contusion,mit,9,1.2.826.0.1.3680043.8.498.64703506772167798469048460791472465039,en,"The fracture involves the central portion of the medial tibial plateau articular surface anteriorly and posteriorly with articular surface collapse of 3 mm anteriorly and 5 mm posteriorly, as well as a step deformity of up to 2 mm posteriorly."
+Contusion,mit,9,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,Stigmata der Inaktivitätsosteopenie sowie verbliebenes bone bruise im posterolateralen Tibiaplateau nahe der Eminentia bei subchondraler Impression mit teils punktuell chondralen Läsionen.
+Contusion,mild,10,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* High signal in the soft tissue medial to the medial collateral ligament with mild increased signal intensity of proximal ligament, suspect grade 2 injury."
+Contusion,mild,10,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* Some joint effusion of right knee with mild hypertrophy of the synovium, indicative of synovitis."
+Contusion,mild,10,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,Mild synovitis of right knee joint.
+Contusion,mild,10,1.2.826.0.1.3680043.8.498.26790702379506190936834447203448882465,en,There is a mild knee effusion.
+Contusion,mild,10,1.2.826.0.1.3680043.8.498.26790702379506190936834447203448882465,en,There is mild residual bone contusion in the weightbearing aspect of the lateral femoral condyle and posterior aspect of the lateral tibial condyle.
+Contusion,and,11,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,"In the medial compartment, the meniscus is not torn and there is no focal chondrosis or chondral injury."
+Contusion,and,11,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,"The lateral compartment, there is complex tear (main radial and longitudinal vertical component) at the posterior horn of the lateral meniscus."
+Contusion,and,11,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,"The patellofemoral joint, the patellar and trochlear cartilage appears congruent without chondral lesion."
+Contusion,and,11,1.2.826.0.1.3680043.8.498.11548045715264151632153040089882701935,en,Complex tear (main radial and longitudinal vertical component) at the posterior horn of the lateral meniscus.
+Contusion,and,11,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"* Bone marrow edema in bilateral femoral condyles and anteromedial and posterolateral aspect of proximal tibia, suspect bone contusion."
+Contusion,έσω,12,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,ΕΥΡΗΜΑΤΑ - Στο έσω διαμέρισμα παρατηρείται εκφυλιστική ρήξη στο οπίσθιο κέρας και σώμα του μηνίσκου.
+Contusion,έσω,12,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"Επιπλέον παρατηρείται ήπιο οστεομυελικό οίδημα και πλήρης εξάλειψη του αρθρικού χόνδρου (ICRS Grade IV) στον έσω κνημιαίο κόνδυλο, ενώ συνυπάρχουν μικρής έκτασης επιχείλια οστεόφυτα στον μηριαίο και κνημιαίο κόνδυλο."
+Contusion,έσω,12,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,"- Παρατηρείται μέτρια ποσότητα υγρού ενδαρθρικά που συνέχεται με ευμεγέθη πολύχωρη συνοβιακή κύστη Baker κεφαλουραίας διαμέτρου 9,7εκ παρά την έσω κεφαλή του γαστροκνημίου μυός."
+Contusion,έσω,12,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,Εκφυλιστική οστεοαρθρίτιδα και εκφυλισττική ρήξη του μηνίσκου στο έσω διαμέρισμα.
+Contusion,έσω,12,1.2.826.0.1.3680043.8.498.12801308844398614687904447633432197492,el,Μικροδοκιδώδη κατάγματα ανεπάρκειας (συνώνυμο SONK) έσω κνημιαιίου και σε μικρότερη έκταση πρόσθιου έξω κνημιαίου κονδύλου.
+Contusion,връзка,13,1.2.826.0.1.3680043.8.498.59483999067816153759785789654766826710,bg,МР данни за руптура на предната кръстна връзка.
+Contusion,връзка,13,1.2.826.0.1.3680043.8.498.59483999067816153759785789654766826710,bg,"На топичното място на връзката се вижда зона на патологично променен сигнален интензитет, съответстваща на дезорганизирани съединително-тъканни влакна, оток и кръв."
+Contusion,връзка,13,1.2.826.0.1.3680043.8.498.59483999067816153759785789654766826710,bg,Задна кръстна връзка – без особености.
+Contusion,връзка,13,1.2.826.0.1.3680043.8.498.59483999067816153759785789654766826710,bg,Скъсване на предната кръста връзка.
+Contusion,връзка,13,1.2.826.0.1.3680043.8.498.75187434248356774277526985329346125190,bg,МР данни за пълна руптура на предната кръстна връзка в залавното ѝ място за фемура.
+Contusion,of femoral,14,1.2.826.0.1.3680043.8.498.73527530686853911124431549317032662220,en,> Focal wearing of articular cartilage of femoral trochelam reflecting grade 3-4 chondromalacia and mild subchondral edema (Srs/Img: [ID]
+Contusion,of femoral,14,1.2.826.0.1.3680043.8.498.73527530686853911124431549317032662220,en,Grade 3-4 chondromalacia and mild subchondral edema of femoral trochlea(Srs/Img: [ID].
+Contusion,of femoral,14,1.2.826.0.1.3680043.8.498.77362718298550276679350855963451855003,la,Medial retinaculum rupture and medial patello-femoral ligament tear at the site of femoral attachment with haematoma.
+Contusion,of femoral,14,1.2.826.0.1.3680043.8.498.77362718298550276679350855963451855003,la,Medial retinaculum rupture and medial patello-femoral ligament tear at the site of femoral attachment with haematoma.
+Contusion,femur,15,1.2.826.0.1.3680043.8.498.11771393824519892797114773408583976756,en,"Bone marrow edema in distal femur and proximal tibia (major at anteromedial and posterolateral aspect), suspect bone contusion."
+Contusion,femur,15,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Contusion,femur,15,1.2.826.0.1.3680043.8.498.26790702379506190936834447203448882465,en,Mild anterior translation of the lateral tibial plateau is seen in relation to femur.
+Contusion,femur,15,1.2.826.0.1.3680043.8.498.29764868091238287072166823522853419550,la,There is mild anterior translation of the lateral tibial plateau in relation to femur.
+Contusion,femur,15,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Femur lateral kondil ve tibia lateral plato seviyesinde yaygın kontüzyonel kemik iliği ödemleri izlenmiştir.
+Fracture,ve,1,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Background marrow signal is normal without infiltrative marrow process.
+Fracture,ve,1,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,No aggressive osseous lesions.
+Fracture,ve,1,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Normal tibial tubercle-trochlear groove (TT-TG) distance measuring 7 mm.
+Fracture,ve,1,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Ön çapraz bağdaki laksite artışı ve ödem yüksek olasılıkla tam kat-tam kata yakın yırtık ile birlikte.
+Fracture,ve,1,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Posteriyor oblik ve oblik popliteal bağlar ödemli ancak menisküs yırtığı eşlik etmiyor.
+Fracture,çapraz,2,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Ön çapraz bağdaki laksite artışı ve ödem yüksek olasılıkla tam kat-tam kata yakın yırtık ile birlikte.
+Fracture,çapraz,2,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Arka çapraz ve yan bağlar normal.
+Fracture,çapraz,2,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Bulgular: Medial ve lateral menisküs posterior hornu ve gövde kesiminde grade II dejenerasyon izlenmiştir.Arka çapraz bağ, lateral kollateral ligaman normaldir.Anterior çapraz bağda komplet rüptüre sekonder bütünlük kaybı izlenmiştir."
+Fracture,çapraz,2,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Fracture,çapraz,2,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Arka çaprazda fokal sinyal artışları mevcuttur.
+Fracture,kemik,3,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Lateral femoral kondilin ağırlık taşıyan yüzeyinin anteriyor yarısındaki subkondral kırığı kemik iliği ödemi çevreliyor.
+Fracture,kemik,3,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Tibyal plato posterolateral köşesinde pivot kayması ile ilintili kemik kontüzyonu mevcut.
+Fracture,kemik,3,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Eklem kıkırdakları ve kemikler bunların dışında normal.
+Fracture,kemik,3,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Fracture,kemik,3,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Femur lateral kondil ve tibia lateral plato seviyesinde yaygın kontüzyonel kemik iliği ödemleri izlenmiştir.
+Fracture,на,4,1.2.826.0.1.3680043.8.498.12978510157202852202776899910529174803,bg,МР находка: МР данни за фрактура на тибията в областта на интеркондиларните еминенции.
+Fracture,на,4,1.2.826.0.1.3680043.8.498.12978510157202852202776899910529174803,bg,Фрактурата е без данни за значима дислокация.
+Fracture,на,4,1.2.826.0.1.3680043.8.498.12978510157202852202776899910529174803,bg,Минимален субхондрален едем се изобразява и по медиалната повърхност на пателата.
+Fracture,на,4,1.2.826.0.1.3680043.8.498.12978510157202852202776899910529174803,bg,"Хрущялът, покриващ ставните повърхности на костите е съхранен."
+Fracture,на,4,1.2.826.0.1.3680043.8.498.12978510157202852202776899910529174803,bg,Кръстните връзки са със запазена цялост.
+Fracture,fracture,5,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Subchondral insufficiency fracture at the medial margin of the medial tibial plateau without articular surface collapse.
+Fracture,fracture,5,1.2.826.0.1.3680043.8.498.11851412923016044948101698015974810604,en,Subchondral insufficiency fracture at the medial margin of the medial tibial plateau without articular surface collapse.
+Fracture,fracture,5,1.2.826.0.1.3680043.8.498.13267780356245120052411517053322874891,en,> Split fractures at tibial plateau with depression of the lateral articular surface and extending to tibial intercondylar region
+Fracture,fracture,5,1.2.826.0.1.3680043.8.498.13267780356245120052411517053322874891,en,> Bone contusion with neglected fracture line at fibular head.
+Fracture,fracture,5,1.2.826.0.1.3680043.8.498.13267780356245120052411517053322874891,en,C/W Tibia plateau fracutre and fibular head fracture with bone contusion.
+Fracture,diz,6,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Diz eklemi içi sıvı miktarı hafif derecede artmış.
+Fracture,diz,6,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Fracture,diz,6,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Patella normal yerleşimlidir.İnfrapatellar yağ yastıkçığında ödematöz görünüm izlenmiştir.Suprapatellar bursada ve diz eklemi içerisinde yaygın sıvı artışı izlenmiştir.
+Fracture,diz,6,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,"Lateral kollateral ligaman normaldir.Medial kollateral ligamen çevresinde ödematöz görünüm mevcuttur ( grade I sprain ).Suprapatellar bursada ,diz eklemi içerisinde yaygın sıvı artışı izlendi."
+Fracture,diz,6,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,Arka çapraz bağ tibia yapışma düzeyinde subkondrial milimetrik kistler izlendi.Diz eklemi prepatellar düzeyde cilt altı yağlı dokuda ödematöz görünüm mevcuttur.
+Fracture,mit,7,1.2.826.0.1.3680043.8.498.37040910196459054543310335064167212742,en,"A subchondral linear hypointensity over posterior aspect of medial tibial plateau on T1WI and F/S T2WI, without associated contour deformity (Sr/Im: [ID]; [ID]."
+Fracture,mit,7,1.2.826.0.1.3680043.8.498.64703506772167798469048460791472465039,en,"The fracture involves the central portion of the medial tibial plateau articular surface anteriorly and posteriorly with articular surface collapse of 3 mm anteriorly and 5 mm posteriorly, as well as a step deformity of up to 2 mm posteriorly."
+Fracture,mit,7,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,Stigmata der Inaktivitätsosteopenie sowie verbliebenes bone bruise im posterolateralen Tibiaplateau nahe der Eminentia bei subchondraler Impression mit teils punktuell chondralen Läsionen.
+Fracture,mit,7,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,VKB Ruptur mit wohl ligamentärer Ruptur des anteromedialen Bündels sowie knöchernem Ausriss des posterolateralen Bündels (4/23).
+Fracture,mit,7,1.2.826.0.1.3680043.8.498.97274720257634584071500649275217521662,de,"Weiteres Ossikel/Flake angrenzend an die nicht sicher abgrenzbare Außenmeniskushinterhornwurzel, hier DD ebenfalls Mitbeteiligung/knöcherner Ausriss."
+Fracture,menisküs,8,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Posteriyor oblik ve oblik popliteal bağlar ödemli ancak menisküs yırtığı eşlik etmiyor.
+Fracture,menisküs,8,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Medyal menisküs ve lateral menisküs normal.
+Fracture,menisküs,8,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Bulgular: Medial ve lateral menisküs posterior hornu ve gövde kesiminde grade II dejenerasyon izlenmiştir.Arka çapraz bağ, lateral kollateral ligaman normaldir.Anterior çapraz bağda komplet rüptüre sekonder bütünlük kaybı izlenmiştir."
+Fracture,menisküs,8,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Fracture,menisküs,8,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,"Bulgular: Medial menisküste grade II dejenerasyon, radial yırtık ile uyumlu görünüm mevcuttur."
+Fracture,без,9,1.2.826.0.1.3680043.8.498.12978510157202852202776899910529174803,bg,Фрактурата е без данни за значима дислокация.
+Fracture,без,9,1.2.826.0.1.3680043.8.498.12978510157202852202776899910529174803,bg,"Заключение: МР данни за фрактура на тибията в областта на интеркондиларните еминенции, без значима дислокация."
+Fracture,без,9,1.2.826.0.1.3680043.8.498.59483999067816153759785789654766826710,bg,"МР находка: МР данни за фрактура в областта на латералното тибиално плато, без дислокация."
+Fracture,без,9,1.2.826.0.1.3680043.8.498.59483999067816153759785789654766826710,bg,Задна кръстна връзка – без особености.
+Fracture,без,9,1.2.826.0.1.3680043.8.498.59483999067816153759785789654766826710,bg,Менискуси – без особености.
+Fracture,ödem,10,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Lateral femoral kondilin ağırlık taşıyan yüzeyinin anteriyor yarısındaki subkondral kırığı kemik iliği ödemi çevreliyor.
+Fracture,ödem,10,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Ön çapraz bağdaki laksite artışı ve ödem yüksek olasılıkla tam kat-tam kata yakın yırtık ile birlikte.
+Fracture,ödem,10,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Posteriyor oblik ve oblik popliteal bağlar ödemli ancak menisküs yırtığı eşlik etmiyor.
+Fracture,ödem,10,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,Medial kollateral ligamende incelme ve periligamentöz ödem izlenmiştir.
+Fracture,ödem,10,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Fracture,eklemi,11,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Diz eklemi içi sıvı miktarı hafif derecede artmış.
+Fracture,eklemi,11,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Fracture,eklemi,11,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Patella normal yerleşimlidir.İnfrapatellar yağ yastıkçığında ödematöz görünüm izlenmiştir.Suprapatellar bursada ve diz eklemi içerisinde yaygın sıvı artışı izlenmiştir.
+Fracture,eklemi,11,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,"Lateral kollateral ligaman normaldir.Medial kollateral ligamen çevresinde ödematöz görünüm mevcuttur ( grade I sprain ).Suprapatellar bursada ,diz eklemi içerisinde yaygın sıvı artışı izlendi."
+Fracture,eklemi,11,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,Arka çapraz bağ tibia yapışma düzeyinde subkondrial milimetrik kistler izlendi.Diz eklemi prepatellar düzeyde cilt altı yağlı dokuda ödematöz görünüm mevcuttur.
+Fracture,diz eklemi,12,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Diz eklemi içi sıvı miktarı hafif derecede artmış.
+Fracture,diz eklemi,12,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Fracture,diz eklemi,12,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Patella normal yerleşimlidir.İnfrapatellar yağ yastıkçığında ödematöz görünüm izlenmiştir.Suprapatellar bursada ve diz eklemi içerisinde yaygın sıvı artışı izlenmiştir.
+Fracture,diz eklemi,12,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,"Lateral kollateral ligaman normaldir.Medial kollateral ligamen çevresinde ödematöz görünüm mevcuttur ( grade I sprain ).Suprapatellar bursada ,diz eklemi içerisinde yaygın sıvı artışı izlendi."
+Fracture,diz eklemi,12,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,Arka çapraz bağ tibia yapışma düzeyinde subkondrial milimetrik kistler izlendi.Diz eklemi prepatellar düzeyde cilt altı yağlı dokuda ödematöz görünüm mevcuttur.
+Fracture,arka,13,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Arka çapraz ve yan bağlar normal.
+Fracture,arka,13,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Bulgular: Medial ve lateral menisküs posterior hornu ve gövde kesiminde grade II dejenerasyon izlenmiştir.Arka çapraz bağ, lateral kollateral ligaman normaldir.Anterior çapraz bağda komplet rüptüre sekonder bütünlük kaybı izlenmiştir."
+Fracture,arka,13,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Arka çaprazda fokal sinyal artışları mevcuttur.
+Fracture,arka,13,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,Arka çapraz bağda yer yer sinyal artışları izlendi(grade I sprain).
+Fracture,arka,13,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,Arka çapraz bağ tibia yapışma düzeyinde subkondrial milimetrik kistler izlendi.Diz eklemi prepatellar düzeyde cilt altı yağlı dokuda ödematöz görünüm mevcuttur.
+Fracture,artışı,14,1.2.826.0.1.3680043.8.498.17844546765907321649997094867791102711,tr,Ön çapraz bağdaki laksite artışı ve ödem yüksek olasılıkla tam kat-tam kata yakın yırtık ile birlikte.
+Fracture,artışı,14,1.2.826.0.1.3680043.8.498.18392509497170616983977319528036573378,tr,"Retinaküler devamsızlık yoktur.Suprapatellar bursa ve diz eklem mesafesinde sıvı artışı izlenmiştir.Femur lateral kondilde subartiküler nondeplase fraktür ve komşu kemik iliğinde ödem izlenmiştir.Tibia lateral plato posteriorunda fibula başında kontüzyonel kemik iliği ödemleri izlenmektedir.Tibianın tibiafemoral eklemden hafif anteriora doğru subluksasyonu izlenmiştir.Soleus kası proksimal kesimde kas dokuda STIR sekans ödeme bağlı sinyal artışı, kas basısında sıvı artışı mevcuttur.SONUÇ:Anterior çapraz bağ komplet rüptürü.Tibia ve femurda kissing kontüzyon ve femurda subartiküler fraktür.Tibianın anteriora hafif subluksasyonu.Medial ve lateral menisküste grade II meniskopati.Medial kollateral ligamanda grade I sprain.Suprapatellar bursit, diz ekleminde hafif sinovit.Soleus kasında grade I strain ."
+Fracture,artışı,14,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Patella normal yerleşimlidir.İnfrapatellar yağ yastıkçığında ödematöz görünüm izlenmiştir.Suprapatellar bursada ve diz eklemi içerisinde yaygın sıvı artışı izlenmiştir.
+Fracture,artışı,14,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,Ön çapraz bağda diffüz sinyal artışı izlendi(miksoid dejenerasyon).
+Fracture,artışı,14,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,"Lateral kollateral ligaman normaldir.Medial kollateral ligamen çevresinde ödematöz görünüm mevcuttur ( grade I sprain ).Suprapatellar bursada ,diz eklemi içerisinde yaygın sıvı artışı izlendi."
+Fracture,izlendi,15,1.2.826.0.1.3680043.8.498.30246079718471552972130572444383079911,tr,Ayrıca fibula baş düzeyinde subkondral ve patellar kemik medullada kemik iliği ödemleri izlendi.
+Fracture,izlendi,15,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,Bulgular: Medial menisküs posterior hornda grade III dejenerasyon ve horizontal yırtık izlendi.
+Fracture,izlendi,15,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,Lateral menisküste grade I dejenerasyon izlendi.
+Fracture,izlendi,15,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,Ön çapraz bağda diffüz sinyal artışı izlendi(miksoid dejenerasyon).
+Fracture,izlendi,15,1.2.826.0.1.3680043.8.498.47921753480592595198052407850568677187,tr,Arka çapraz bağda yer yer sinyal artışları izlendi(grade I sprain).

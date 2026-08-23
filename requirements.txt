@@ -1,0 +1,14 @@
+ftfy==6.3.1
+joblib==1.5.3
+langdetect==1.0.9
+langid==1.1.6
+lingua==4.16.2
+matplotlib==3.11.1
+numpy==2.5.2
+pandas==3.0.5
+pydicom==3.0.2
+scikit_learn==1.9.0
+scipy==1.18.0
+torch==2.13.0
+torchvision==0.28.0
+transformers==5.15.1

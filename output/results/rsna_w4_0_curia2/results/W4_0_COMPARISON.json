@@ -1,0 +1,58 @@
+{
+  "gold_only": {
+    "macro_AUROC": 0.6206400750390512,
+    "macro_AP": 0.4919651462136936,
+    "macro_F1": 0.43069306418476433,
+    "final_epoch": 24,
+    "n_oof_studies": 58,
+    "delta_AUROC_vs_W3_0": 0.07472216542969357
+  },
+  "fold_safe_weak": {
+    "macro_AUROC": 0.6410767022764444,
+    "macro_AP": 0.4986983842730022,
+    "macro_F1": 0.43222958918841003,
+    "final_epoch": 24,
+    "n_oof_studies": 58,
+    "delta_AUROC_vs_W3_0": 0.09515879266708682
+  },
+  "weak_minus_gold": {
+    "macro_AUROC": 0.020436627237393257,
+    "macro_AP": 0.006733238059308644,
+    "macro_F1": 0.0015365250036457057
+  },
+  "paired_study_bootstrap_AUROC_delta": {
+    "iterations_requested": 2000,
+    "iterations_valid": 2000,
+    "mean_delta": 0.019457390995167034,
+    "ci_2_5": -0.028815339005252027,
+    "ci_97_5": 0.066988174545337,
+    "p_delta_gt_0": 0.788
+  },
+  "w3_0_reference_AUROC": 0.5459179096093576,
+  "config_hash": "c0fba803bef4b924d76476e51cbdb7a36bffaef8603f8f8e3dcdc980c9f9b9e8",
+  "config": {
+    "experiment": "W4.0",
+    "backbone": "raidium/curia-2",
+    "backbone_frozen": true,
+    "cache_version": "w4_0_curia2_cls_allseries_24slice_canonical_orientation_slow_processor_v1",
+    "embedding": "CLS last_hidden_state[:,0]",
+    "max_slices_per_series": 24,
+    "all_series": true,
+    "hidden_dim": 384,
+    "num_heads": 8,
+    "transformer_layers": 2,
+    "head_dropout": 0.15,
+    "slice_dropout": 0.05,
+    "series_dropout": 0.05,
+    "epochs": 24,
+    "steps_per_epoch": 32,
+    "gold_batch_size": 16,
+    "pseudo_batch_size": 64,
+    "head_max_lr": 0.001,
+    "head_weight_decay": 0.001,
+    "selection_threshold": 0.5,
+    "gold_authority": 8.0,
+    "pseudo_authority": 1.0,
+    "fold_sha256": "1d9959b027c055974325f4de59e26974b036ae8b2c1b63aa417d3eef7aaf9f4a"
+  }
+}

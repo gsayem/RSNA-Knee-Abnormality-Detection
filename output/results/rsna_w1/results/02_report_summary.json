@@ -1,0 +1,13 @@
+{
+    "total_studies": 4407,
+    "gold_studies": 58,
+    "unlabeled_studies": 4349,
+    "partial_studies": 0,
+    "reports_present": 4407,
+    "reports_missing": 0,
+    "language_backend": "langid",
+    "visible_gpu_count": 0,
+    "median_report_characters": 974.0,
+    "median_report_words": 126.0,
+    "median_report_sentences": 15.0
+}

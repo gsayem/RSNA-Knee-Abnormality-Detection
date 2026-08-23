@@ -1,0 +1,58 @@
+{
+  "overall_pass": true,
+  "curia_repo_id": "raidium/curia-2",
+  "curia_revision": "645f566dd9e002505691178917cee265b491c7f7",
+  "curia_root": "/kaggle/input/datasets/isayem/curia-2-model/curia-2-model",
+  "model_sha256": "403a02e27531d2858ecd1e9b1ec2d5ea7bfa909f10ff0d9e8416090a6a8c96ef",
+  "expected_model_sha256_match": true,
+  "parameter_count": 86072832,
+  "device": "cuda:0",
+  "gpu_count": 2,
+  "sample_studies": 3,
+  "sample_series": 9,
+  "metadata_geometry_plane_matches": 9,
+  "metadata_geometry_plane_total": 9,
+  "minimum_target_orientation_alignment_cosine": 0.9800147102345609,
+  "processor_std_ok": true,
+  "embedding_dim_ok": true,
+  "orientation_ok": true,
+  "plane_match_ok": true,
+  "fp16_ok": true,
+  "embedding": {
+    "processor_pixel_values_shape": [
+      9,
+      1,
+      512,
+      512
+    ],
+    "output_shapes": {
+      "cls_token": [
+        9,
+        768
+      ],
+      "mean_patch_token": [
+        9,
+        768
+      ],
+      "pooler_output": [
+        9,
+        768
+      ],
+      "last_hidden_state": [
+        9,
+        1025,
+        768
+      ]
+    },
+    "selected_embedding": "pooler_output",
+    "selected_embedding_dim": 768,
+    "selected_embedding_mean_norm": 27.103853225708008,
+    "cross_slice_cosine_mean_off_diagonal": 0.44692742824554443,
+    "cross_slice_cosine_min_off_diagonal": 0.08981958031654358,
+    "cross_slice_cosine_max_off_diagonal": 0.8828544616699219
+  },
+  "recommended_single_gpu_fp16_batch_size": 16,
+  "best_single_gpu_slices_per_second": 64.38478243186111,
+  "preview_path": "/kaggle/working/rsna_w4_0_curia2_preflight/results/curia2_canonical_orientation_preview.png",
+  "runtime_seconds": 35.07909893989563
+}

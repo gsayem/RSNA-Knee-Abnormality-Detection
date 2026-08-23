@@ -1,0 +1,21 @@
+{
+    "phase": "W1.3 blinded gold-report adjudication",
+    "mode": "finalize",
+    "benchmark_pairs": 120,
+    "completed_pairs": 120,
+    "completed_review_path": "/kaggle/working/rsna_w1_3/review/01_W1_3_BLINDED_REVIEW_COMPLETED.csv",
+    "private_answer_key_path": "/kaggle/working/rsna_w1_3/private/02_W1_3_PRIVATE_ANSWER_KEY.csv",
+    "nlp_model_trained": false,
+    "pseudo_labels_generated": false,
+    "outputs": [
+        "10_W1_3_ADJUDICATED_MERGED.csv",
+        "11_reviewer_vs_parser_summary.csv",
+        "12_report_assertion_to_gold_mapping.csv",
+        "13_label_report_trust_summary.csv",
+        "14_severity_to_gold_mapping.csv",
+        "15_language_review_summary.csv",
+        "16_review_completion_summary.csv",
+        "17_gold_mapping_case_counts.csv",
+        "W1_3_FINAL_REPORT.md"
+    ]
+}

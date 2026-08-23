@@ -1,0 +1,50 @@
+{
+    "phase": "W2 multilingual structured report labeler",
+    "mode": "full",
+    "train_csv": "/kaggle/input/competitions/rsna-knee-abnormality-detection/train.csv",
+    "semantic_model": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
+    "local_files_only": false,
+    "use_multi_gpu": true,
+    "nli_batch_size": 32,
+    "nli_max_length": 192,
+    "max_units_per_report": 40,
+    "semantic_thresholds": {
+        "strong": 0.72,
+        "related": 0.7,
+        "weak": 0.48,
+        "margin": 0.18,
+        "conflict": 0.72
+    },
+    "stage_b": {
+        "features": [
+            "EvidencePositiveScore",
+            "EvidenceNegativeScore",
+            "RelatedScore",
+            "UncertaintyFlag",
+            "FusedAssertionConfidence",
+            "RuleDecidableFlag",
+            "SemanticDirectStrength",
+            "SemanticDirectMargin",
+            "SeverityLow",
+            "SeverityModerate",
+            "SeverityHigh",
+            "SeverityDegenerative"
+        ],
+        "logistic_C": 0.1,
+        "cv_splits": 5,
+        "cv_repeats": 5,
+        "random_state": 42042,
+        "pseudo_label_gate": {
+            "min_evidence_n": 15,
+            "min_evidence_auc": 0.55,
+            "min_evidence_brier_improvement": 0.0
+        }
+    },
+    "hard_constraints": {
+        "not_mentioned_is_negative": false,
+        "not_mentioned_soft_label_available": false,
+        "mentioned_neutral_soft_label_available": false,
+        "w13_ppv_used_as_direct_weight": false,
+        "image_model_trained": false
+    }
+}
