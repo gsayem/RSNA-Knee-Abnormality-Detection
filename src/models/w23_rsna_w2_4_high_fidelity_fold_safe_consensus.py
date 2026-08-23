@@ -1,0 +1,2318 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+RSNA Knee Abnormality Detection — W2.4
+High-Fidelity Fold-Safe Report Supervision
+==========================================
+
+Purpose
+-------
+W2.4 does NOT rerun MRI training and does NOT replace the controlled 5-fold
+image-validation split. It upgrades report-derived supervision by combining:
+
+  Source A (required): our existing W2.3 fold-safe Stage-B report probabilities
+  Source B (required): an independent public LLM report-label dataset
+                       (default Kaggle dataset name: rsna-knee-llm-labels)
+  Source C (optional): any additional independent teacher probability file
+
+For each outer image fold and each of the 12 labels, W2.4:
+  1) preserves the exact controlled W2.3/W4/W5 outer fold assignment;
+  2) evaluates source reliability only on that fold's OUTER-TRAIN gold cases;
+     W2.3 uses its inner-OOF predictions, not fitted predictions;
+  3) fits conservative one-dimensional Platt recalibrators on outer-train gold;
+  4) fuses sources with label-specific reliability and per-cell confidence;
+  5) explicitly downweights silence, disagreement, and near-0.5 consensus;
+  6) predicts the held-out gold fold strictly for leakage-audited diagnostics;
+  7) writes continuous probabilities AND continuous loss weights for all 4,349
+     unlabeled studies.
+
+Important methodological boundary
+---------------------------------
+W2.4 is fold-safe for OUR calibration/fusion layer. The public teacher is a
+fixed external report-derived signal. Its original author may have used the 58
+competition gold studies during prompt/model development; W2.4 cannot prove or
+undo that upstream development history. This is recorded in the manifest.
+
+Public source discovery
+-----------------------
+Attach Kaggle dataset:
+    pilkwang/rsna-knee-llm-labels
+
+Typical mount:
+    /kaggle/input/rsna-knee-llm-labels
+
+The script auto-detects CSV/Parquet schema and supports direct label columns,
+prob_/score_/p_ prefixes, common sanitized aliases, and long-format files.
+Override with:
+    W24_PUBLIC_ROOT=/path/to/dataset
+    W24_PUBLIC_FILE=/path/to/file.csv
+
+Existing W2.3:
+    W24_W23_ROOT=/kaggle/input/.../rsna_w2_3
+
+Optional third teacher:
+    W24_TEACHER3_FILE=/path/to/teacher3.csv
+
+Notebook API
+------------
+    run_w24('status')
+    run_w24('inspect_public')
+    run_w24('build')
+    run_w24('validate')
+    run_w24('all')
+
+Primary W6 inputs after build
+-----------------------------
+    folds/fold_1/soft_probabilities_wide.csv
+    folds/fold_1/soft_label_weights_wide.csv
+    folds/fold_1/soft_label_availability_wide.csv
+    folds/fold_1/candidate_selection_scores_wide.csv
+    ... fold_2 ... fold_5
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import math
+import os
+import re
+import sys
+import warnings
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
+
+import numpy as np
+import pandas as pd
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (
+    average_precision_score,
+    brier_score_loss,
+    log_loss,
+    roc_auc_score,
+)
+
+# ============================================================
+# 1. CONFIGURATION
+# ============================================================
+
+UID_COLUMN = "StudyInstanceUID"
+LABEL_COLUMNS = [
+    "ACL",
+    "MCL",
+    "Medial Meniscus",
+    "Lateral Meniscus",
+    "Medial OA",
+    "Lateral OA",
+    "PF OA",
+    "Effusion",
+    "Synovitis",
+    "Baker's",
+    "Contusion",
+    "Fracture",
+]
+
+EXPECTED_TOTAL_STUDIES = 4407
+EXPECTED_GOLD_STUDIES = 58
+EXPECTED_UNLABELED_STUDIES = 4349
+NUM_OUTER_FOLDS = 5
+EXPECTED_FOLD_SHA256 = (
+    "1d9959b027c055974325f4de59e26974" "b036ae8b2c1b63aa417d3eef7aaf9f4a"
+)
+
+DATA_ROOT = Path(
+    os.environ.get(
+        "W24_DATA_ROOT",
+        "/kaggle/input/competitions/rsna-knee-abnormality-detection",
+    )
+)
+TRAIN_CSV = Path(os.environ.get("W24_TRAIN_CSV", str(DATA_ROOT / "train.csv")))
+
+EXPLICIT_W23_ROOT = os.environ.get("W24_W23_ROOT", "/kaggle/input/datasets/isayem/rsna-w2-3/rsna_w2_3").strip()
+EXPLICIT_PUBLIC_ROOT = os.environ.get("W24_PUBLIC_ROOT", "").strip()
+EXPLICIT_PUBLIC_FILE = os.environ.get("W24_PUBLIC_FILE", "/kaggle/input/datasets/isayem/w24-teacher3-file/report_labels_v2.csv").strip()
+EXPLICIT_TEACHER3_FILE = os.environ.get("W24_TEACHER3_FILE", "/kaggle/input/datasets/isayem/w24-teacher3-file/report_labels_v2.csv").strip()
+
+OUTPUT_ROOT = Path(os.environ.get("W24_OUTPUT_ROOT", "/kaggle/working/rsna_w2_4"))
+RESULT_ROOT = OUTPUT_ROOT / "results"
+FOLD_ROOT = OUTPUT_ROOT / "folds"
+RESULT_ROOT.mkdir(parents=True, exist_ok=True)
+FOLD_ROOT.mkdir(parents=True, exist_ok=True)
+
+# Conservative calibration / reliability settings.
+PLATT_C = float(os.environ.get("W24_PLATT_C", "0.10"))
+QUALITY_SHRINK_N = float(os.environ.get("W24_QUALITY_SHRINK_N", "20"))
+QUALITY_FLOOR = float(os.environ.get("W24_QUALITY_FLOOR", "0.03"))
+MIN_TRAIN_WEIGHT = float(os.environ.get("W24_MIN_TRAIN_WEIGHT", "0.12"))
+HIGH_SELECTION_WEIGHT = float(os.environ.get("W24_HIGH_SELECTION_WEIGHT", "0.50"))
+SILENCE_NEGATIVE_WEIGHT_CAP = float(
+    os.environ.get("W24_SILENCE_NEGATIVE_WEIGHT_CAP", "0.35")
+)
+DISAGREEMENT_WEIGHT_CAP = float(os.environ.get("W24_DISAGREEMENT_WEIGHT_CAP", "0.55"))
+
+# Strong inversion only when a teacher is clearly anti-correlated on the
+# outer-training gold cohort. This catches a reversed column without turning
+# ordinary small-sample noise into label inversion.
+INVERT_AUC_THRESHOLD = float(os.environ.get("W24_INVERT_AUC_THRESHOLD", "0.35"))
+
+BOOTSTRAP_REPEATS = int(os.environ.get("W24_BOOTSTRAP_REPEATS", "2000"))
+BOOTSTRAP_SEED = int(os.environ.get("W24_BOOTSTRAP_SEED", "20260824"))
+
+PUBLIC_DATASET_HINT = "pilkwang/rsna-knee-llm-labels"
+
+
+LABEL_ALIASES: Dict[str, List[str]] = {
+    "ACL": ["acl", "anteriorcruciateligament"],
+    "MCL": ["mcl", "medialcollateralligament"],
+    "Medial Meniscus": ["medialmeniscus", "medialmeniscal", "mm"],
+    "Lateral Meniscus": ["lateralmeniscus", "lateralmeniscal", "lm"],
+    "Medial OA": ["medialoa", "medialosteoarthritis", "medialtibiofemoraloa"],
+    "Lateral OA": ["lateraloa", "lateralosteoarthritis", "lateraltibiofemoraloa"],
+    "PF OA": [
+        "pfoa",
+        "patellofemoralOA",
+        "patellofemoralosteoarthritis",
+        "patellofemoral",
+    ],
+    "Effusion": ["effusion", "jointeffusion"],
+    "Synovitis": ["synovitis", "synovialinflammation"],
+    "Baker's": ["bakers", "bakercyst", "bakerscyst", "poplitealcyst"],
+    "Contusion": ["contusion", "bonecontusion", "bonebruise", "marrowcontusion"],
+    "Fracture": ["fracture", "fx"],
+}
+
+UID_ALIASES = [
+    "studyinstanceuid",
+    "studyuid",
+    "studyid",
+    "uid",
+    "id",
+    "study_instance_uid",
+]
+
+
+# ============================================================
+# 2. GENERIC UTILITIES
+# ============================================================
+
+
+def log(message: str = "") -> None:
+    print(message, flush=True)
+
+
+def normalize_name(value: Any) -> str:
+    return re.sub(r"[^a-z0-9]+", "", str(value).lower())
+
+
+def clip_probability(values: np.ndarray, eps: float = 1e-4) -> np.ndarray:
+    return np.clip(np.asarray(values, dtype=np.float64), eps, 1.0 - eps)
+
+
+def logit(values: np.ndarray) -> np.ndarray:
+    p = clip_probability(values)
+    return np.log(p / (1.0 - p))
+
+
+def sigmoid(values: np.ndarray) -> np.ndarray:
+    x = np.asarray(values, dtype=np.float64)
+    return 1.0 / (1.0 + np.exp(-np.clip(x, -30.0, 30.0)))
+
+
+def safe_float(value: Any, default: float = float("nan")) -> float:
+    try:
+        result = float(value)
+        return result if np.isfinite(result) else default
+    except Exception:
+        return default
+
+
+def sha256_file(path: Path, chunk_size: int = 16 * 1024 * 1024) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while True:
+            chunk = handle.read(chunk_size)
+            if not chunk:
+                break
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def fold_assignment_sha256(assignments: pd.DataFrame) -> str:
+    ordered = assignments.sort_values(UID_COLUMN).reset_index(drop=True)
+    payload = "".join(
+        f"{uid},{int(fold)}\n"
+        for uid, fold in zip(
+            ordered[UID_COLUMN].astype(str),
+            ordered["OuterFold"].astype(int),
+        )
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def shallow_kaggle_dirs(max_depth: int = 3) -> List[Path]:
+    root = Path("/kaggle/input")
+    if not root.exists():
+        return []
+    result = [root]
+    frontier = [(root, 0)]
+    while frontier:
+        current, depth = frontier.pop(0)
+        if depth >= max_depth:
+            continue
+        try:
+            children = [x for x in current.iterdir() if x.is_dir()]
+        except Exception:
+            continue
+        for child in children:
+            # Never descend into the 570GB DICOM trees.
+            if child.name in {"train_series", "test_series"}:
+                continue
+            result.append(child)
+            frontier.append((child, depth + 1))
+    return result
+
+
+def metric_value(y: np.ndarray, p: np.ndarray, kind: str) -> float:
+    y = np.asarray(y, dtype=np.int64)
+    p = np.asarray(p, dtype=np.float64)
+    valid = np.isfinite(p)
+    y = y[valid]
+    p = p[valid]
+    if len(y) == 0 or len(np.unique(y)) < 2:
+        return float("nan")
+    if kind == "auc":
+        return float(roc_auc_score(y, p))
+    if kind == "ap":
+        return float(average_precision_score(y, p))
+    if kind == "brier":
+        return float(brier_score_loss(y, clip_probability(p)))
+    if kind == "logloss":
+        return float(log_loss(y, clip_probability(p), labels=[0, 1]))
+    raise ValueError(kind)
+
+
+def per_label_metrics(y_true: np.ndarray, probabilities: np.ndarray) -> pd.DataFrame:
+    rows = []
+    for j, label in enumerate(LABEL_COLUMNS):
+        y = y_true[:, j].astype(np.int64)
+        p = probabilities[:, j].astype(np.float64)
+        prevalence = float(np.mean(y))
+        prior = np.full(len(y), prevalence, dtype=np.float64)
+        brier = metric_value(y, p, "brier")
+        prior_brier = metric_value(y, prior, "brier")
+        rows.append(
+            {
+                "Label": label,
+                "N": int(len(y)),
+                "Positive": int(y.sum()),
+                "Negative": int(len(y) - y.sum()),
+                "AUROC": metric_value(y, p, "auc"),
+                "AveragePrecision": metric_value(y, p, "ap"),
+                "Brier": brier,
+                "PriorBrier": prior_brier,
+                "BrierImprovementVsPrior": prior_brier - brier,
+                "LogLoss": metric_value(y, p, "logloss"),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def macro_auc(y_true: np.ndarray, probabilities: np.ndarray) -> float:
+    frame = per_label_metrics(y_true, probabilities)
+    return float(np.nanmean(frame["AUROC"].values))
+
+
+def fast_binary_auc(y: np.ndarray, p: np.ndarray) -> float:
+    """Small-array AUROC via positive-negative pair comparisons, tie-aware."""
+    y = np.asarray(y, dtype=np.int64)
+    p = np.asarray(p, dtype=np.float64)
+    valid = np.isfinite(p)
+    y = y[valid]
+    p = p[valid]
+    positive = p[y == 1]
+    negative = p[y == 0]
+    if len(positive) == 0 or len(negative) == 0:
+        return float("nan")
+    diff = positive[:, None] - negative[None, :]
+    return float((np.sum(diff > 0) + 0.5 * np.sum(diff == 0)) / diff.size)
+
+
+def fast_macro_auc(y_true: np.ndarray, probabilities: np.ndarray) -> float:
+    values = [
+        fast_binary_auc(y_true[:, j], probabilities[:, j])
+        for j in range(y_true.shape[1])
+    ]
+    return float(np.nanmean(values))
+
+
+def bootstrap_macro_delta(
+    y_true: np.ndarray,
+    candidate: np.ndarray,
+    reference: np.ndarray,
+    repeats: int = BOOTSTRAP_REPEATS,
+    seed: int = BOOTSTRAP_SEED,
+) -> Dict[str, float]:
+    rng = np.random.default_rng(seed)
+    n = len(y_true)
+    deltas = []
+    attempts = 0
+    max_attempts = repeats * 20
+    while len(deltas) < repeats and attempts < max_attempts:
+        attempts += 1
+        idx = rng.integers(0, n, size=n)
+        ys = y_true[idx]
+        # Require every label to contain both classes so macro AUC is comparable.
+        if any(len(np.unique(ys[:, j])) < 2 for j in range(ys.shape[1])):
+            continue
+        deltas.append(
+            fast_macro_auc(ys, candidate[idx]) - fast_macro_auc(ys, reference[idx])
+        )
+    if not deltas:
+        return {
+            "mean_delta": float("nan"),
+            "ci_low": float("nan"),
+            "ci_high": float("nan"),
+            "p_gt_0": float("nan"),
+            "n_bootstrap": 0,
+        }
+    a = np.asarray(deltas, dtype=np.float64)
+    return {
+        "mean_delta": float(a.mean()),
+        "ci_low": float(np.quantile(a, 0.025)),
+        "ci_high": float(np.quantile(a, 0.975)),
+        "p_gt_0": float(np.mean(a > 0)),
+        "n_bootstrap": int(len(a)),
+    }
+
+
+def json_dump(path: Path, payload: Mapping[str, Any]) -> None:
+    def convert(value):
+        if isinstance(value, (np.integer,)):
+            return int(value)
+        if isinstance(value, (np.floating,)):
+            return float(value)
+        if isinstance(value, np.ndarray):
+            return value.tolist()
+        if isinstance(value, Path):
+            return str(value)
+        raise TypeError(type(value).__name__)
+
+    path.write_text(
+        json.dumps(payload, indent=2, allow_nan=True, default=convert),
+        encoding="utf-8",
+    )
+
+
+# ============================================================
+# 3. CONTROLLED DATA / W2.3 DISCOVERY
+# ============================================================
+
+
+def load_train() -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    if not TRAIN_CSV.exists():
+        raise FileNotFoundError(TRAIN_CSV)
+    train = pd.read_csv(TRAIN_CSV)
+    train[UID_COLUMN] = train[UID_COLUMN].astype(str)
+    missing = {UID_COLUMN, "Report", *LABEL_COLUMNS} - set(train.columns)
+    if missing:
+        raise RuntimeError(f"train.csv missing columns: {sorted(missing)}")
+    gold = (
+        train[train[LABEL_COLUMNS].notna().all(axis=1)]
+        .copy()
+        .sort_values(UID_COLUMN)
+        .reset_index(drop=True)
+    )
+    unlabeled = (
+        train[train[LABEL_COLUMNS].isna().all(axis=1)]
+        .copy()
+        .sort_values(UID_COLUMN)
+        .reset_index(drop=True)
+    )
+    if len(train) != EXPECTED_TOTAL_STUDIES:
+        raise RuntimeError(
+            f"Expected {EXPECTED_TOTAL_STUDIES} train studies, found {len(train)}"
+        )
+    if len(gold) != EXPECTED_GOLD_STUDIES:
+        raise RuntimeError(
+            f"Expected {EXPECTED_GOLD_STUDIES} gold studies, found {len(gold)}"
+        )
+    if len(unlabeled) != EXPECTED_UNLABELED_STUDIES:
+        raise RuntimeError(
+            f"Expected {EXPECTED_UNLABELED_STUDIES} unlabeled studies, found {len(unlabeled)}"
+        )
+    return train, gold, unlabeled
+
+
+def looks_like_w23_root(path: Path) -> bool:
+    return (path / "results" / "00_outer_fold_assignments.csv").exists() and all(
+        (path / "folds" / f"fold_{f}" / "soft_labels_long.csv").exists()
+        for f in range(1, 6)
+    )
+
+
+def discover_w23_root() -> Path:
+    candidates: List[Path] = []
+    if EXPLICIT_W23_ROOT:
+        base = Path(EXPLICIT_W23_ROOT)
+        candidates += [base, base / "rsna_w2_3"]
+    candidates += [
+        Path("/kaggle/working/rsna_w2_3"),
+        Path("/kaggle/input/rsna-w2-3/rsna_w2_3"),
+    ]
+    for root in shallow_kaggle_dirs(max_depth=4):
+        candidates += [root, root / "rsna_w2_3"]
+    for path in dict.fromkeys(candidates):
+        if looks_like_w23_root(path):
+            return path
+    raise FileNotFoundError(
+        "W2.3 root not found. Set W24_W23_ROOT to a directory containing "
+        "results/00_outer_fold_assignments.csv and folds/fold_1/...fold_5."
+    )
+
+
+def load_and_verify_fold_assignments(
+    w23_root: Path, gold: pd.DataFrame
+) -> pd.DataFrame:
+    path = w23_root / "results" / "00_outer_fold_assignments.csv"
+    fold_df = pd.read_csv(path)
+    fold_df[UID_COLUMN] = fold_df[UID_COLUMN].astype(str)
+    fold_df = (
+        fold_df[[UID_COLUMN, "OuterFold"]]
+        .sort_values(UID_COLUMN)
+        .reset_index(drop=True)
+    )
+    if len(fold_df) != EXPECTED_GOLD_STUDIES or fold_df[UID_COLUMN].duplicated().any():
+        raise RuntimeError("Invalid W2.3 outer fold assignment file")
+    if set(fold_df[UID_COLUMN]) != set(gold[UID_COLUMN].astype(str)):
+        raise RuntimeError("W2.3 fold UID set differs from gold UID set")
+    digest = fold_assignment_sha256(fold_df)
+    if digest != EXPECTED_FOLD_SHA256:
+        raise RuntimeError(f"W2.3 fold checksum mismatch: {digest}")
+    return fold_df
+
+
+# ============================================================
+# 4. EXTERNAL TEACHER SCHEMA DISCOVERY
+# ============================================================
+
+
+@dataclass
+class TeacherTable:
+    name: str
+    path: Path
+    probabilities: pd.DataFrame
+    confidence: Optional[pd.DataFrame]
+    schema: Dict[str, Any]
+
+
+def read_table(path: Path, nrows: Optional[int] = None) -> pd.DataFrame:
+    suffix = path.suffix.lower()
+    if suffix == ".csv":
+        return pd.read_csv(path, nrows=nrows)
+    if suffix in {".parquet", ".pq"}:
+        frame = pd.read_parquet(path)
+        return frame.head(nrows) if nrows is not None else frame
+    if suffix in {".jsonl", ".ndjson"}:
+        frame = pd.read_json(path, lines=True)
+        return frame.head(nrows) if nrows is not None else frame
+    raise ValueError(f"Unsupported teacher file: {path}")
+
+
+def find_uid_column(columns: Sequence[str]) -> Optional[str]:
+    normalized = {normalize_name(c): c for c in columns}
+    for alias in UID_ALIASES:
+        key = normalize_name(alias)
+        if key in normalized:
+            return normalized[key]
+    return None
+
+
+def label_column_candidates(columns: Sequence[str], label: str) -> List[str]:
+    aliases = [
+        normalize_name(label),
+        *[normalize_name(x) for x in LABEL_ALIASES[label]],
+    ]
+    prefixes = [
+        "",
+        "p",
+        "prob",
+        "probability",
+        "score",
+        "prediction",
+        "pred",
+        "label",
+        "llm",
+        "pseudo",
+    ]
+    scored: List[Tuple[int, str]] = []
+    for column in columns:
+        n = normalize_name(column)
+        best = None
+        for alias in aliases:
+            for prefix_rank, prefix in enumerate(prefixes):
+                candidate = f"{prefix}{alias}"
+                if n == candidate:
+                    score = 100 - prefix_rank
+                    best = max(best or score, score)
+                elif n.endswith(alias) and any(
+                    n.startswith(p) for p in ["prob", "score", "pred", "llm", "pseudo"]
+                ):
+                    best = max(best or 0, 70)
+        if best is not None:
+            scored.append((best, column))
+    scored.sort(key=lambda x: (-x[0], x[1]))
+    return [column for _, column in scored]
+
+
+def confidence_column_candidates(columns: Sequence[str], label: str) -> List[str]:
+    aliases = [
+        normalize_name(label),
+        *[normalize_name(x) for x in LABEL_ALIASES[label]],
+    ]
+    output = []
+    for column in columns:
+        n = normalize_name(column)
+        if any(alias in n for alias in aliases) and any(
+            key in n for key in ["conf", "confidence", "weight", "reliability"]
+        ):
+            output.append(column)
+    return output
+
+
+def coerce_probability_series(series: pd.Series, column_name: str) -> pd.Series:
+    if series.dtype == bool:
+        numeric = series.astype(float)
+    else:
+        mapped = (
+            series.astype(str)
+            .str.strip()
+            .str.lower()
+            .map(
+                {
+                    "true": 1.0,
+                    "false": 0.0,
+                    "yes": 1.0,
+                    "no": 0.0,
+                    "positive": 1.0,
+                    "negative": 0.0,
+                    "present": 1.0,
+                    "absent": 0.0,
+                }
+            )
+        )
+        numeric = pd.to_numeric(series, errors="coerce")
+        numeric = numeric.where(numeric.notna(), mapped)
+    finite = numeric[np.isfinite(numeric)]
+    if len(finite) and ((finite < -1e-6).any() or (finite > 1.0 + 1e-6).any()):
+        raise RuntimeError(
+            f"Teacher column {column_name!r} contains values outside [0,1]; "
+            "W2.4 will not guess whether these are logits."
+        )
+    return numeric.clip(0.0, 1.0)
+
+
+def wide_teacher_from_frame(
+    frame: pd.DataFrame, name: str, path: Path
+) -> Optional[TeacherTable]:
+    uid_col = find_uid_column(frame.columns)
+    if uid_col is None:
+        return None
+    mapping: Dict[str, str] = {}
+    confidence_mapping: Dict[str, str] = {}
+    for label in LABEL_COLUMNS:
+        candidates = label_column_candidates(frame.columns, label)
+        if candidates:
+            mapping[label] = candidates[0]
+        conf = confidence_column_candidates(frame.columns, label)
+        if conf:
+            confidence_mapping[label] = conf[0]
+    if len(mapping) < len(LABEL_COLUMNS):
+        return None
+
+    probs = pd.DataFrame({UID_COLUMN: frame[uid_col].astype(str)})
+    for label in LABEL_COLUMNS:
+        probs[label] = coerce_probability_series(frame[mapping[label]], mapping[label])
+
+    if probs[UID_COLUMN].duplicated().any():
+        raise RuntimeError(f"{name}: duplicate UID rows in wide teacher file {path}")
+
+    conf_frame: Optional[pd.DataFrame] = None
+    if len(confidence_mapping) == len(LABEL_COLUMNS):
+        conf_frame = pd.DataFrame({UID_COLUMN: frame[uid_col].astype(str)})
+        for label in LABEL_COLUMNS:
+            conf_frame[label] = coerce_probability_series(
+                frame[confidence_mapping[label]], confidence_mapping[label]
+            )
+
+    return TeacherTable(
+        name=name,
+        path=path,
+        probabilities=probs,
+        confidence=conf_frame,
+        schema={
+            "format": "wide",
+            "uid_column": uid_col,
+            "label_columns": mapping,
+            "confidence_columns": confidence_mapping,
+        },
+    )
+
+
+def long_teacher_from_frame(
+    frame: pd.DataFrame, name: str, path: Path
+) -> Optional[TeacherTable]:
+    uid_col = find_uid_column(frame.columns)
+    if uid_col is None:
+        return None
+    normalized = {normalize_name(c): c for c in frame.columns}
+    label_col = next(
+        (
+            normalized[k]
+            for k in ["label", "target", "finding", "condition"]
+            if k in normalized
+        ),
+        None,
+    )
+    value_col = next(
+        (
+            normalized[k]
+            for k in ["probability", "prob", "score", "prediction", "pred", "value"]
+            if k in normalized
+        ),
+        None,
+    )
+    conf_col = next(
+        (
+            normalized[k]
+            for k in ["confidence", "conf", "weight", "reliability"]
+            if k in normalized
+        ),
+        None,
+    )
+    if label_col is None or value_col is None:
+        return None
+
+    alias_to_label = {}
+    for label in LABEL_COLUMNS:
+        for alias in [label, *LABEL_ALIASES[label]]:
+            alias_to_label[normalize_name(alias)] = label
+
+    work = frame[
+        [uid_col, label_col, value_col] + ([conf_col] if conf_col else [])
+    ].copy()
+    work["_CanonicalLabel"] = work[label_col].map(
+        lambda x: alias_to_label.get(normalize_name(x))
+    )
+    work = work[work["_CanonicalLabel"].notna()].copy()
+    if work.empty:
+        return None
+    work["_Value"] = coerce_probability_series(work[value_col], value_col)
+    if work[[uid_col, "_CanonicalLabel"]].duplicated().any():
+        raise RuntimeError(
+            f"{name}: duplicate UID/label rows in long teacher file {path}"
+        )
+    probs = work.pivot(
+        index=uid_col, columns="_CanonicalLabel", values="_Value"
+    ).reset_index()
+    probs = probs.rename(columns={uid_col: UID_COLUMN})
+    if any(label not in probs.columns for label in LABEL_COLUMNS):
+        return None
+    probs = probs[[UID_COLUMN, *LABEL_COLUMNS]]
+
+    conf_frame = None
+    if conf_col:
+        work["_Conf"] = coerce_probability_series(work[conf_col], conf_col)
+        conf_frame = work.pivot(
+            index=uid_col, columns="_CanonicalLabel", values="_Conf"
+        ).reset_index()
+        conf_frame = conf_frame.rename(columns={uid_col: UID_COLUMN})
+        if all(label in conf_frame.columns for label in LABEL_COLUMNS):
+            conf_frame = conf_frame[[UID_COLUMN, *LABEL_COLUMNS]]
+        else:
+            conf_frame = None
+
+    return TeacherTable(
+        name=name,
+        path=path,
+        probabilities=probs,
+        confidence=conf_frame,
+        schema={
+            "format": "long",
+            "uid_column": uid_col,
+            "label_column": label_col,
+            "value_column": value_col,
+            "confidence_column": conf_col,
+        },
+    )
+
+
+def load_teacher_file(path: Path, name: str) -> TeacherTable:
+    frame = read_table(path)
+    teacher = wide_teacher_from_frame(frame, name, path)
+    if teacher is None:
+        teacher = long_teacher_from_frame(frame, name, path)
+    if teacher is None:
+        raise RuntimeError(
+            f"Could not map all 12 RSNA labels from teacher file {path}. "
+            f"Columns: {list(frame.columns)}"
+        )
+    teacher.probabilities[UID_COLUMN] = teacher.probabilities[UID_COLUMN].astype(str)
+    if teacher.confidence is not None:
+        teacher.confidence[UID_COLUMN] = teacher.confidence[UID_COLUMN].astype(str)
+    return teacher
+
+
+def candidate_teacher_files(root: Path) -> List[Path]:
+    if not root.exists():
+        return []
+    files = []
+    for suffix in ("*.csv", "*.parquet", "*.pq", "*.jsonl", "*.ndjson"):
+        try:
+            files.extend(root.rglob(suffix))
+        except Exception:
+            pass
+    return sorted(set(files), key=lambda p: (len(p.parts), str(p)))
+
+
+def score_teacher_candidate(path: Path) -> Tuple[int, Dict[str, Any]]:
+    try:
+        frame = read_table(path, nrows=200)
+    except Exception as exc:
+        return -1000, {"error": repr(exc)}
+    uid = find_uid_column(frame.columns)
+    mapped = sum(
+        bool(label_column_candidates(frame.columns, label)) for label in LABEL_COLUMNS
+    )
+    normalized = {normalize_name(c) for c in frame.columns}
+    is_long = bool(
+        uid
+        and {"label"} & normalized
+        and (
+            {"probability", "prob", "score", "prediction", "pred", "value"} & normalized
+        )
+    )
+    score = (
+        (50 if uid else 0)
+        + mapped * 10
+        + (100 if mapped == 12 else 0)
+        + (80 if is_long else 0)
+    )
+    return score, {
+        "uid_column": uid,
+        "mapped_wide_labels": mapped,
+        "looks_long": is_long,
+        "columns": list(frame.columns),
+    }
+
+
+def discover_public_teacher_file() -> Tuple[Path, List[Dict[str, Any]]]:
+    if EXPLICIT_PUBLIC_FILE:
+        path = Path(EXPLICIT_PUBLIC_FILE)
+        if not path.exists():
+            raise FileNotFoundError(path)
+        score, info = score_teacher_candidate(path)
+        return path, [{"path": str(path), "score": score, **info}]
+
+    roots: List[Path] = []
+    if EXPLICIT_PUBLIC_ROOT:
+        roots.append(Path(EXPLICIT_PUBLIC_ROOT))
+    roots.extend(
+        [
+            Path("/kaggle/input/rsna-knee-llm-labels"),
+            Path("/kaggle/input/datasets/pilkwang/rsna-knee-llm-labels"),
+        ]
+    )
+    for root in shallow_kaggle_dirs(max_depth=3):
+        if "llm" in root.name.lower() and "knee" in root.name.lower():
+            roots.append(root)
+
+    candidates: List[Tuple[int, Path, Dict[str, Any]]] = []
+    seen = set()
+    for root in roots:
+        if not root.exists():
+            continue
+        for path in candidate_teacher_files(root):
+            if path in seen:
+                continue
+            seen.add(path)
+            score, info = score_teacher_candidate(path)
+            candidates.append((score, path, info))
+
+    candidates.sort(key=lambda x: (-x[0], str(x[1])))
+    audit = [
+        {"path": str(path), "score": score, **info} for score, path, info in candidates
+    ]
+    if not candidates or candidates[0][0] < 100:
+        raise FileNotFoundError(
+            "Could not auto-detect the public LLM teacher file. Attach Kaggle "
+            f"dataset {PUBLIC_DATASET_HINT!r}, then run inspect_public, or set "
+            "W24_PUBLIC_FILE explicitly."
+        )
+    return candidates[0][1], audit
+
+
+# ============================================================
+# 5. SOURCE ADAPTERS
+# ============================================================
+
+
+def public_teacher_status() -> Dict[str, Any]:
+    path, audit = discover_public_teacher_file()
+    teacher = load_teacher_file(path, "public_llm")
+    _, gold, unlabeled = load_train()
+    train_uid_set = set(gold[UID_COLUMN].astype(str)) | set(
+        unlabeled[UID_COLUMN].astype(str)
+    )
+    teacher_uid_set = set(teacher.probabilities[UID_COLUMN].astype(str))
+    overlap = train_uid_set & teacher_uid_set
+    gold_overlap = set(gold[UID_COLUMN].astype(str)) & teacher_uid_set
+    unlabeled_overlap = set(unlabeled[UID_COLUMN].astype(str)) & teacher_uid_set
+    return {
+        "selected_file": str(path),
+        "selected_file_sha256": sha256_file(path),
+        "schema": teacher.schema,
+        "rows": int(len(teacher.probabilities)),
+        "train_uid_overlap": int(len(overlap)),
+        "gold_uid_overlap": int(len(gold_overlap)),
+        "unlabeled_uid_overlap": int(len(unlabeled_overlap)),
+        "has_explicit_confidence": teacher.confidence is not None,
+        "candidate_audit": audit[:20],
+    }
+
+
+def load_public_teacher() -> Tuple[TeacherTable, List[Dict[str, Any]]]:
+    path, audit = discover_public_teacher_file()
+    teacher = load_teacher_file(path, "public_llm")
+    return teacher, audit
+
+
+def load_optional_teacher3() -> Optional[TeacherTable]:
+    if not EXPLICIT_TEACHER3_FILE:
+        return None
+    path = Path(EXPLICIT_TEACHER3_FILE)
+    if not path.exists():
+        raise FileNotFoundError(path)
+    return load_teacher_file(path, "teacher3")
+
+
+def _ensure_canonical_long(
+    frame: pd.DataFrame, required: Sequence[str], name: str
+) -> pd.DataFrame:
+    missing = set(required) - set(frame.columns)
+    if missing:
+        raise RuntimeError(f"{name} missing columns: {sorted(missing)}")
+    output = frame.copy()
+    output[UID_COLUMN] = output[UID_COLUMN].astype(str)
+    if output[[UID_COLUMN, "Label"]].duplicated().any():
+        raise RuntimeError(f"{name} contains duplicate UID/Label rows")
+    unknown = set(output["Label"].dropna().astype(str)) - set(LABEL_COLUMNS)
+    if unknown:
+        raise RuntimeError(f"{name} contains unknown labels: {sorted(unknown)}")
+    return output
+
+
+def assertion_numeric(value: Any) -> float:
+    """Map W2/W2.3 assertion vocabulary onto [-1, 0, +1]."""
+    numeric = safe_float(value, float("nan"))
+    if np.isfinite(numeric):
+        return float(np.clip(numeric, -1.0, 1.0))
+    token = normalize_name(value)
+    positive = {
+        "positive",
+        "present",
+        "abnormal",
+        "yes",
+        "true",
+        "affirmed",
+        "likelypositive",
+    }
+    negative = {
+        "negative",
+        "absent",
+        "normal",
+        "no",
+        "false",
+        "intact",
+        "likelynegative",
+    }
+    uncertain = {
+        "uncertain",
+        "equivocal",
+        "possible",
+        "indeterminate",
+        "notmentioned",
+        "noevidence",
+        "unknown",
+        "neutral",
+        "",
+    }
+    if token in positive:
+        return 1.0
+    if token in negative:
+        return -1.0
+    if token in uncertain:
+        return 0.0
+    # Unknown assertion vocabulary is deliberately neutral rather than guessed.
+    return 0.0
+
+
+def w23_cell_confidence(
+    probability: Any,
+    fused_confidence: Any,
+    evidence_available: Any,
+    fused_assertion: Any,
+) -> float:
+    """
+    W2.3 source-specific cell confidence.
+
+    Explicit report evidence gets high authority. Silence is retained as a
+    weak prior-like opinion, not a strong negative label. FusedAssertion=0 is
+    treated as neutral/uncertain rather than equivalent to absence.
+    """
+    p = safe_float(probability, 0.5)
+    conf = safe_float(fused_confidence, 0.5)
+    conf = float(np.clip(conf, 0.0, 1.0))
+
+    evidence_text = str(evidence_available).strip().lower()
+    evidence = evidence_text in {"1", "true", "yes", "y", "t"}
+
+    assertion = assertion_numeric(fused_assertion)
+    certainty = float(np.clip(2.0 * abs(p - 0.5), 0.0, 1.0))
+
+    if evidence:
+        # Explicit evidence: confidence is dominant, probability certainty is
+        # a secondary signal.
+        value = 0.50 + 0.35 * conf + 0.15 * certainty
+        if abs(assertion) < 0.25:
+            value *= 0.75
+    else:
+        # No evidence is not a negative finding. Keep only a weak source vote.
+        value = 0.08 + 0.12 * certainty
+
+    return float(np.clip(value, 0.03, 1.0))
+
+
+def load_w23_inner_train(w23_root: Path, fold: int) -> pd.DataFrame:
+    path = (
+        w23_root / "folds" / f"fold_{fold}" / "stage_b_inner_gold_oof_predictions.csv"
+    )
+    frame = pd.read_csv(path)
+    frame = _ensure_canonical_long(
+        frame,
+        [UID_COLUMN, "Label", "Gold", "InnerOOFProbability"],
+        f"W2.3 fold {fold} inner OOF",
+    )
+
+    # The inner OOF file may have fewer audit columns than the unlabeled file.
+    for column, default in [
+        ("EvidenceAvailable", True),
+        ("FusedAssertion", 0.0),
+        ("FusedAssertionConfidence", 0.75),
+        ("FusionSource", "w23_inner_oof"),
+    ]:
+        if column not in frame.columns:
+            frame[column] = default
+
+    output = pd.DataFrame(
+        {
+            UID_COLUMN: frame[UID_COLUMN].astype(str),
+            "Label": frame["Label"].astype(str),
+            "Gold": pd.to_numeric(frame["Gold"], errors="raise").astype(int),
+            "RawProbability": pd.to_numeric(
+                frame["InnerOOFProbability"], errors="coerce"
+            ),
+            "EvidenceAvailable": frame["EvidenceAvailable"],
+            "FusedAssertion": frame["FusedAssertion"]
+            .map(assertion_numeric)
+            .astype(float),
+            "FusedAssertionConfidence": pd.to_numeric(
+                frame["FusedAssertionConfidence"], errors="coerce"
+            ).fillna(0.75),
+            "FusionSource": frame["FusionSource"].astype(str),
+        }
+    )
+    output["CellConfidence"] = [
+        w23_cell_confidence(p, c, e, a)
+        for p, c, e, a in zip(
+            output["RawProbability"],
+            output["FusedAssertionConfidence"],
+            output["EvidenceAvailable"],
+            output["FusedAssertion"],
+        )
+    ]
+    return output
+
+
+def load_w23_heldout(w23_root: Path, fold: int) -> pd.DataFrame:
+    path = w23_root / "folds" / f"fold_{fold}" / "heldout_gold_stage_b_predictions.csv"
+    frame = pd.read_csv(path)
+    frame = _ensure_canonical_long(
+        frame,
+        [UID_COLUMN, "Label", "Gold", "FoldSafeChallengeProbability"],
+        f"W2.3 fold {fold} heldout",
+    )
+    for column, default in [
+        ("EvidenceAvailable", True),
+        ("FusedAssertion", 0.0),
+        ("FusedAssertionConfidence", 0.75),
+        ("FusionSource", "w23_heldout"),
+    ]:
+        if column not in frame.columns:
+            frame[column] = default
+
+    output = pd.DataFrame(
+        {
+            UID_COLUMN: frame[UID_COLUMN].astype(str),
+            "Label": frame["Label"].astype(str),
+            "Gold": pd.to_numeric(frame["Gold"], errors="raise").astype(int),
+            "RawProbability": pd.to_numeric(
+                frame["FoldSafeChallengeProbability"], errors="coerce"
+            ),
+            "EvidenceAvailable": frame["EvidenceAvailable"],
+            "FusedAssertion": frame["FusedAssertion"]
+            .map(assertion_numeric)
+            .astype(float),
+            "FusedAssertionConfidence": pd.to_numeric(
+                frame["FusedAssertionConfidence"], errors="coerce"
+            ).fillna(0.75),
+            "FusionSource": frame["FusionSource"].astype(str),
+        }
+    )
+    output["CellConfidence"] = [
+        w23_cell_confidence(p, c, e, a)
+        for p, c, e, a in zip(
+            output["RawProbability"],
+            output["FusedAssertionConfidence"],
+            output["EvidenceAvailable"],
+            output["FusedAssertion"],
+        )
+    ]
+    return output
+
+
+def load_w23_unlabeled(w23_root: Path, fold: int) -> pd.DataFrame:
+    path = w23_root / "folds" / f"fold_{fold}" / "soft_labels_long.csv"
+    frame = pd.read_csv(path)
+    frame = _ensure_canonical_long(
+        frame,
+        [UID_COLUMN, "Label", "ChallengeProbabilityRaw"],
+        f"W2.3 fold {fold} unlabeled",
+    )
+    for column, default in [
+        ("EvidenceAvailable", False),
+        ("FusedAssertion", 0.0),
+        ("FusedAssertionConfidence", 0.5),
+        ("FusionSource", "w23_unlabeled"),
+    ]:
+        if column not in frame.columns:
+            frame[column] = default
+
+    output = pd.DataFrame(
+        {
+            UID_COLUMN: frame[UID_COLUMN].astype(str),
+            "Label": frame["Label"].astype(str),
+            "RawProbability": pd.to_numeric(
+                frame["ChallengeProbabilityRaw"], errors="coerce"
+            ),
+            "EvidenceAvailable": frame["EvidenceAvailable"],
+            "FusedAssertion": frame["FusedAssertion"]
+            .map(assertion_numeric)
+            .astype(float),
+            "FusedAssertionConfidence": pd.to_numeric(
+                frame["FusedAssertionConfidence"], errors="coerce"
+            ).fillna(0.5),
+            "FusionSource": frame["FusionSource"].astype(str),
+        }
+    )
+    output["CellConfidence"] = [
+        w23_cell_confidence(p, c, e, a)
+        for p, c, e, a in zip(
+            output["RawProbability"],
+            output["FusedAssertionConfidence"],
+            output["EvidenceAvailable"],
+            output["FusedAssertion"],
+        )
+    ]
+    return output
+
+
+def teacher_probability_for_uids(
+    teacher: TeacherTable,
+    uids: Sequence[str],
+    label: str,
+) -> Tuple[np.ndarray, np.ndarray]:
+    probs = teacher.probabilities.set_index(UID_COLUMN)
+    p = pd.to_numeric(
+        probs.reindex(list(map(str, uids)))[label], errors="coerce"
+    ).to_numpy(dtype=np.float64)
+
+    if teacher.confidence is not None:
+        conf_table = teacher.confidence.set_index(UID_COLUMN)
+        conf = pd.to_numeric(
+            conf_table.reindex(list(map(str, uids)))[label], errors="coerce"
+        ).to_numpy(dtype=np.float64)
+        conf = np.clip(conf, 0.0, 1.0)
+    else:
+        # No explicit teacher confidence: retain a finite base so a calibrated
+        # probability near 0.5 can still participate weakly, while decisive
+        # probabilities receive more authority.
+        certainty = np.clip(2.0 * np.abs(p - 0.5), 0.0, 1.0)
+        conf = 0.35 + 0.65 * certainty
+
+    conf[~np.isfinite(p)] = 0.0
+    return p, conf
+
+
+# ============================================================
+# 6. FOLD-SAFE SOURCE CALIBRATION AND RELIABILITY
+# ============================================================
+
+
+@dataclass
+class PlattCalibrator:
+    label: str
+    source: str
+    invert: bool
+    fitted: bool
+    coefficient: float
+    intercept: float
+    train_n: int
+    positive_n: int
+    raw_auc: float
+    oriented_auc: float
+    oriented_ap: float
+    oriented_brier: float
+    quality: float
+
+    def orient(self, p: np.ndarray) -> np.ndarray:
+        values = np.asarray(p, dtype=np.float64)
+        return 1.0 - values if self.invert else values
+
+    def predict(self, p: np.ndarray) -> np.ndarray:
+        values = self.orient(np.asarray(p, dtype=np.float64))
+        output = np.full(values.shape, np.nan, dtype=np.float64)
+        valid = np.isfinite(values)
+        if not valid.any():
+            return output
+        oriented = clip_probability(values[valid])
+        if self.fitted:
+            output[valid] = sigmoid(self.coefficient * logit(oriented) + self.intercept)
+        else:
+            output[valid] = oriented
+        return output
+
+
+def fit_platt_calibrator(
+    y: np.ndarray,
+    probability: np.ndarray,
+    label: str,
+    source: str,
+) -> PlattCalibrator:
+    y = np.asarray(y, dtype=np.int64)
+    p = np.asarray(probability, dtype=np.float64)
+    valid = np.isfinite(p)
+    yv = y[valid]
+    pv = p[valid]
+    train_n = int(len(yv))
+    positive_n = int(yv.sum()) if train_n else 0
+
+    if train_n == 0 or len(np.unique(yv)) < 2:
+        return PlattCalibrator(
+            label,
+            source,
+            False,
+            False,
+            1.0,
+            0.0,
+            train_n,
+            positive_n,
+            float("nan"),
+            float("nan"),
+            float("nan"),
+            float("nan"),
+            QUALITY_FLOOR,
+        )
+
+    raw_auc = float(roc_auc_score(yv, pv))
+    invert = raw_auc < INVERT_AUC_THRESHOLD
+    oriented = 1.0 - pv if invert else pv
+    oriented_auc = float(roc_auc_score(yv, oriented))
+    oriented_ap = float(average_precision_score(yv, oriented))
+    oriented_brier = float(brier_score_loss(yv, clip_probability(oriented)))
+
+    # Reliability is intentionally AUC-centric because competition scoring is
+    # macro AUROC. Shrink aggressively because outer-train has only ~45-47 gold
+    # studies per fold.
+    auc_shrunk = 0.5 + (oriented_auc - 0.5) * train_n / (train_n + QUALITY_SHRINK_N)
+    quality = float(np.clip((auc_shrunk - 0.5) / 0.5, 0.0, 1.0))
+    quality = max(QUALITY_FLOOR, quality)
+
+    fitted = False
+    coefficient = 1.0
+    intercept = 0.0
+    try:
+        model = LogisticRegression(
+            C=PLATT_C,
+            solver="lbfgs",
+            class_weight="balanced",
+            max_iter=1000,
+            random_state=BOOTSTRAP_SEED,
+        )
+        model.fit(logit(oriented).reshape(-1, 1), yv)
+        coefficient = float(model.coef_[0, 0])
+        intercept = float(model.intercept_[0])
+        fitted = True
+    except Exception as exc:
+        warnings.warn(
+            f"Platt fit failed for {source}/{label}; using oriented identity: {exc}",
+            RuntimeWarning,
+        )
+
+    return PlattCalibrator(
+        label=label,
+        source=source,
+        invert=invert,
+        fitted=fitted,
+        coefficient=coefficient,
+        intercept=intercept,
+        train_n=train_n,
+        positive_n=positive_n,
+        raw_auc=raw_auc,
+        oriented_auc=oriented_auc,
+        oriented_ap=oriented_ap,
+        oriented_brier=oriented_brier,
+        quality=quality,
+    )
+
+
+def calibrator_row(cal: PlattCalibrator, fold: int) -> Dict[str, Any]:
+    return {
+        "OuterFold": fold,
+        "Label": cal.label,
+        "Source": cal.source,
+        "TrainN": cal.train_n,
+        "PositiveN": cal.positive_n,
+        "RawAUROC": cal.raw_auc,
+        "Inverted": cal.invert,
+        "OrientedAUROC": cal.oriented_auc,
+        "OrientedAP": cal.oriented_ap,
+        "OrientedBrier": cal.oriented_brier,
+        "ReliabilityQuality": cal.quality,
+        "PlattFitted": cal.fitted,
+        "PlattCoefficient": cal.coefficient,
+        "PlattIntercept": cal.intercept,
+    }
+
+
+def fuse_cell(
+    source_probabilities: Sequence[float],
+    source_confidences: Sequence[float],
+    source_qualities: Sequence[float],
+    w23_evidence_available: Optional[bool],
+) -> Dict[str, Any]:
+    probs = np.asarray(source_probabilities, dtype=np.float64)
+    conf = np.asarray(source_confidences, dtype=np.float64)
+    quality = np.asarray(source_qualities, dtype=np.float64)
+
+    valid = np.isfinite(probs) & np.isfinite(conf) & np.isfinite(quality) & (conf > 0)
+    if not valid.any():
+        return {
+            "Probability": float("nan"),
+            "Weight": 0.0,
+            "Agreement": 0.0,
+            "Certainty": 0.0,
+            "Disagreement": False,
+            "SourceCount": 0,
+            "BaseQuality": 0.0,
+        }
+
+    p = probs[valid]
+    c = np.clip(conf[valid], 0.0, 1.0)
+    q = np.clip(quality[valid], QUALITY_FLOOR, 1.0)
+    effective = np.clip(c * q, 1e-8, None)
+
+    fused = float(np.average(p, weights=effective))
+    variance = float(np.average((p - fused) ** 2, weights=effective))
+    weighted_std = math.sqrt(max(0.0, variance))
+    agreement = float(np.clip(1.0 - 2.0 * weighted_std, 0.0, 1.0))
+    certainty = float(np.clip(2.0 * abs(fused - 0.5), 0.0, 1.0))
+    base_quality = float(np.average(q, weights=np.clip(c, 1e-8, None)))
+
+    sides = p >= 0.5
+    disagreement = bool(len(p) >= 2 and np.any(sides != sides[0]))
+
+    # Continuous training authority. Near-0.5 and disagreeing cells remain
+    # available but carry much less loss weight.
+    weight = base_quality * (0.35 + 0.35 * agreement + 0.30 * certainty)
+
+    if disagreement:
+        weight = min(weight, DISAGREEMENT_WEIGHT_CAP)
+
+    # Silence is not a confident negative. If W2.3 saw no evidence and the
+    # consensus is negative, cap authority even if another teacher is decisive.
+    if w23_evidence_available is False and fused < 0.5:
+        weight = min(weight, SILENCE_NEGATIVE_WEIGHT_CAP)
+
+    # A single source should not masquerade as multi-teacher consensus.
+    if len(p) == 1:
+        agreement = 0.5
+        weight *= 0.75
+
+    return {
+        "Probability": float(np.clip(fused, 0.0, 1.0)),
+        "Weight": float(np.clip(weight, 0.0, 1.0)),
+        "Agreement": agreement,
+        "Certainty": certainty,
+        "Disagreement": disagreement,
+        "SourceCount": int(len(p)),
+        "BaseQuality": base_quality,
+    }
+
+
+# ============================================================
+# 7. FOLD BUILDING
+# ============================================================
+
+
+def evidence_bool(value: Any) -> bool:
+    return str(value).strip().lower() in {"1", "true", "yes", "y", "t"}
+
+
+def assertion_state(evidence: Any, assertion: Any) -> str:
+    if not evidence_bool(evidence):
+        return "NOT_ADDRESSED"
+    value = safe_float(assertion, 0.0)
+    if value >= 0.50:
+        return "PRESENT"
+    if value <= -0.50:
+        return "ABSENT"
+    return "UNCERTAIN"
+
+
+def _teacher_index(teacher: TeacherTable) -> pd.DataFrame:
+    return teacher.probabilities.set_index(UID_COLUMN)
+
+
+def _teacher_conf_index(teacher: TeacherTable) -> Optional[pd.DataFrame]:
+    return (
+        teacher.confidence.set_index(UID_COLUMN)
+        if teacher.confidence is not None
+        else None
+    )
+
+
+def _teacher_scalar(
+    teacher: TeacherTable,
+    uid: str,
+    label: str,
+    prob_index: Optional[pd.DataFrame] = None,
+    conf_index: Optional[pd.DataFrame] = None,
+) -> Tuple[float, float]:
+    probs = prob_index if prob_index is not None else _teacher_index(teacher)
+    if uid not in probs.index:
+        return float("nan"), 0.0
+    p = safe_float(probs.at[uid, label])
+    if not np.isfinite(p):
+        return float("nan"), 0.0
+
+    if teacher.confidence is not None:
+        confs = conf_index if conf_index is not None else _teacher_conf_index(teacher)
+        c = (
+            safe_float(confs.at[uid, label])
+            if (confs is not None and uid in confs.index)
+            else float("nan")
+        )
+        c = float(np.clip(c, 0.0, 1.0)) if np.isfinite(c) else 0.0
+    else:
+        c = float(0.35 + 0.65 * np.clip(2.0 * abs(p - 0.5), 0.0, 1.0))
+    return float(p), c
+
+
+def fit_fold_calibrators(
+    fold: int,
+    train_gold: pd.DataFrame,
+    w23_inner: pd.DataFrame,
+    external_teachers: Sequence[TeacherTable],
+) -> Tuple[Dict[Tuple[str, str], PlattCalibrator], pd.DataFrame]:
+    train_uid_set = set(train_gold[UID_COLUMN].astype(str))
+    calibrators: Dict[Tuple[str, str], PlattCalibrator] = {}
+    rows = []
+
+    # W2.3 must be fit/evaluated on its inner OOF probabilities for the outer
+    # training cohort, never on fitted probabilities.
+    w23_inner = w23_inner[w23_inner[UID_COLUMN].isin(train_uid_set)].copy()
+
+    for label in LABEL_COLUMNS:
+        subset = w23_inner[w23_inner["Label"] == label].copy()
+        if set(subset[UID_COLUMN].astype(str)) != train_uid_set:
+            missing = sorted(train_uid_set - set(subset[UID_COLUMN].astype(str)))
+            raise RuntimeError(
+                f"W2.3 fold {fold}/{label} inner OOF does not cover all outer-train gold UIDs. "
+                f"Missing examples: {missing[:3]}"
+            )
+        subset = (
+            subset.set_index(UID_COLUMN)
+            .reindex(train_gold[UID_COLUMN].astype(str))
+            .reset_index()
+        )
+        cal = fit_platt_calibrator(
+            train_gold[label].to_numpy(dtype=np.int64),
+            subset["RawProbability"].to_numpy(dtype=np.float64),
+            label,
+            "w23",
+        )
+        calibrators[("w23", label)] = cal
+        rows.append(calibrator_row(cal, fold))
+
+    for teacher in external_teachers:
+        p_index = _teacher_index(teacher)
+        uids = train_gold[UID_COLUMN].astype(str).tolist()
+        for label in LABEL_COLUMNS:
+            probability = pd.to_numeric(
+                p_index.reindex(uids)[label], errors="coerce"
+            ).to_numpy(dtype=np.float64)
+            cal = fit_platt_calibrator(
+                train_gold[label].to_numpy(dtype=np.int64),
+                probability,
+                label,
+                teacher.name,
+            )
+            calibrators[(teacher.name, label)] = cal
+            rows.append(calibrator_row(cal, fold))
+
+    return calibrators, pd.DataFrame(rows)
+
+
+def _fuse_rows_for_population(
+    fold: int,
+    population: str,
+    base_uids: Sequence[str],
+    w23_frame: pd.DataFrame,
+    calibrators: Mapping[Tuple[str, str], PlattCalibrator],
+    external_teachers: Sequence[TeacherTable],
+    gold_lookup: Optional[pd.DataFrame] = None,
+) -> pd.DataFrame:
+    """Create one long row per UID x label for heldout gold or unlabeled."""
+    uids = list(map(str, base_uids))
+    w23_lookup = w23_frame.set_index([UID_COLUMN, "Label"])
+    teacher_prob_indices = {
+        teacher.name: _teacher_index(teacher) for teacher in external_teachers
+    }
+    teacher_conf_indices = {
+        teacher.name: _teacher_conf_index(teacher) for teacher in external_teachers
+    }
+    gold_index = gold_lookup.set_index(UID_COLUMN) if gold_lookup is not None else None
+
+    rows: List[Dict[str, Any]] = []
+
+    for uid in uids:
+        for label in LABEL_COLUMNS:
+            key = (uid, label)
+            if key not in w23_lookup.index:
+                raise RuntimeError(
+                    f"Missing W2.3 {population} row for {uid}/{label}/fold {fold}"
+                )
+            wrow = w23_lookup.loc[key]
+            if isinstance(wrow, pd.DataFrame):
+                raise RuntimeError(
+                    f"Duplicate W2.3 {population} row for {uid}/{label}/fold {fold}"
+                )
+
+            raw_w23 = safe_float(wrow["RawProbability"])
+            w23_conf = safe_float(wrow["CellConfidence"], 0.0)
+            w23_evidence = evidence_bool(wrow.get("EvidenceAvailable", False))
+            w23_state = assertion_state(
+                wrow.get("EvidenceAvailable", False),
+                wrow.get("FusedAssertion", 0.0),
+            )
+            cal_w23 = calibrators[("w23", label)]
+            calibrated_w23 = (
+                float(cal_w23.predict(np.array([raw_w23]))[0])
+                if np.isfinite(raw_w23)
+                else float("nan")
+            )
+
+            source_names = ["w23"]
+            raw_values = [raw_w23]
+            calibrated_values = [calibrated_w23]
+            confidences = [w23_conf]
+            qualities = [cal_w23.quality]
+
+            external_details: Dict[str, Tuple[float, float, float]] = {}
+            for teacher in external_teachers:
+                raw, conf = _teacher_scalar(
+                    teacher,
+                    uid,
+                    label,
+                    teacher_prob_indices[teacher.name],
+                    teacher_conf_indices[teacher.name],
+                )
+                cal = calibrators[(teacher.name, label)]
+                calibrated = (
+                    float(cal.predict(np.array([raw]))[0])
+                    if np.isfinite(raw)
+                    else float("nan")
+                )
+                source_names.append(teacher.name)
+                raw_values.append(raw)
+                calibrated_values.append(calibrated)
+                confidences.append(conf)
+                qualities.append(cal.quality)
+                external_details[teacher.name] = (raw, calibrated, conf)
+
+            fused = fuse_cell(
+                calibrated_values,
+                confidences,
+                qualities,
+                w23_evidence_available=w23_evidence,
+            )
+
+            row: Dict[str, Any] = {
+                "OuterFold": fold,
+                "Population": population,
+                UID_COLUMN: uid,
+                "Label": label,
+                "W23ReportState": w23_state,
+                "W23EvidenceAvailable": w23_evidence,
+                "W23RawProbability": raw_w23,
+                "W23CalibratedProbability": calibrated_w23,
+                "W23CellConfidence": w23_conf,
+                "W23ReliabilityQuality": cal_w23.quality,
+                "ConsensusProbability": fused["Probability"],
+                "ConsensusWeight": fused["Weight"],
+                "SourceAgreement": fused["Agreement"],
+                "ConsensusCertainty": fused["Certainty"],
+                "SourceDisagreement": fused["Disagreement"],
+                "TeacherCount": fused["SourceCount"],
+                "BaseReliabilityQuality": fused["BaseQuality"],
+                "SoftLabelAvailable": bool(
+                    np.isfinite(fused["Probability"])
+                    and fused["Weight"] >= MIN_TRAIN_WEIGHT
+                ),
+                "HighSelectionCandidate": bool(
+                    np.isfinite(fused["Probability"])
+                    and fused["Weight"] >= HIGH_SELECTION_WEIGHT
+                ),
+            }
+
+            for teacher in external_teachers:
+                raw, calibrated, conf = external_details[teacher.name]
+                row[f"{teacher.name}__RawProbability"] = raw
+                row[f"{teacher.name}__CalibratedProbability"] = calibrated
+                row[f"{teacher.name}__CellConfidence"] = conf
+                row[f"{teacher.name}__ReliabilityQuality"] = calibrators[
+                    (teacher.name, label)
+                ].quality
+
+            if gold_index is not None:
+                row["Gold"] = int(gold_index.at[uid, label])
+            rows.append(row)
+
+    result = pd.DataFrame(rows)
+    expected = len(uids) * len(LABEL_COLUMNS)
+    if len(result) != expected:
+        raise RuntimeError(f"Expected {expected} fused rows, found {len(result)}")
+    if result[[UID_COLUMN, "Label"]].duplicated().any():
+        raise RuntimeError(
+            f"Duplicate fused UID/Label rows in fold {fold}/{population}"
+        )
+    return result
+
+
+def long_to_wide(
+    long_df: pd.DataFrame,
+    value_column: str,
+    uids: Sequence[str],
+    fill_value: Optional[Any] = None,
+) -> pd.DataFrame:
+    wide = long_df.pivot(index=UID_COLUMN, columns="Label", values=value_column)
+    wide = wide.reindex(index=list(map(str, uids)), columns=LABEL_COLUMNS)
+    if fill_value is not None:
+        wide = wide.fillna(fill_value)
+    wide = wide.reset_index()
+    wide.columns.name = None
+    return wide
+
+
+def write_fold_outputs(
+    fold: int,
+    unlabeled_long: pd.DataFrame,
+    heldout_long: pd.DataFrame,
+    reliability: pd.DataFrame,
+    unlabeled_uids: Sequence[str],
+) -> None:
+    fold_dir = FOLD_ROOT / f"fold_{fold}"
+    fold_dir.mkdir(parents=True, exist_ok=True)
+
+    unlabeled_long.to_csv(fold_dir / "soft_labels_long.csv", index=False)
+    heldout_long.to_csv(fold_dir / "heldout_gold_w24_predictions.csv", index=False)
+    reliability.to_csv(fold_dir / "source_reliability.csv", index=False)
+
+    probability = long_to_wide(unlabeled_long, "ConsensusProbability", unlabeled_uids)
+    weight = long_to_wide(
+        unlabeled_long, "ConsensusWeight", unlabeled_uids, fill_value=0.0
+    )
+    availability = long_to_wide(
+        unlabeled_long, "SoftLabelAvailable", unlabeled_uids, fill_value=False
+    )
+    selection = long_to_wide(
+        unlabeled_long, "ConsensusWeight", unlabeled_uids, fill_value=0.0
+    )
+    agreement = long_to_wide(
+        unlabeled_long, "SourceAgreement", unlabeled_uids, fill_value=0.0
+    )
+    count = long_to_wide(unlabeled_long, "TeacherCount", unlabeled_uids, fill_value=0)
+
+    probability.to_csv(fold_dir / "soft_probabilities_wide.csv", index=False)
+    weight.to_csv(fold_dir / "soft_label_weights_wide.csv", index=False)
+    availability.to_csv(fold_dir / "soft_label_availability_wide.csv", index=False)
+    # Compatibility name: in W2.4 this is a continuous training-quality score.
+    selection.to_csv(fold_dir / "candidate_selection_scores_wide.csv", index=False)
+    agreement.to_csv(fold_dir / "source_agreement_wide.csv", index=False)
+    count.to_csv(fold_dir / "teacher_count_wide.csv", index=False)
+
+
+# ============================================================
+# 8. GLOBAL OOF DIAGNOSTICS
+# ============================================================
+
+
+def _oof_matrix(
+    oof_long: pd.DataFrame,
+    value_column: str,
+    gold: pd.DataFrame,
+) -> np.ndarray:
+    wide = oof_long.pivot(index=UID_COLUMN, columns="Label", values=value_column)
+    wide = wide.reindex(index=gold[UID_COLUMN].astype(str), columns=LABEL_COLUMNS)
+    return wide.to_numpy(dtype=np.float64)
+
+
+def _gold_matrix(gold: pd.DataFrame) -> np.ndarray:
+    return gold[LABEL_COLUMNS].to_numpy(dtype=np.int64)
+
+
+def evaluate_oof_sources(
+    oof_long: pd.DataFrame,
+    gold: pd.DataFrame,
+    external_teachers: Sequence[TeacherTable],
+) -> Tuple[pd.DataFrame, pd.DataFrame, Dict[str, Any]]:
+    y = _gold_matrix(gold)
+    source_columns = {
+        "W2.3": "W23RawProbability",
+        "W2.4": "ConsensusProbability",
+    }
+    for teacher in external_teachers:
+        source_columns[teacher.name] = f"{teacher.name}__RawProbability"
+
+    metric_parts = []
+    matrices: Dict[str, np.ndarray] = {}
+    for source_name, value_column in source_columns.items():
+        matrix = _oof_matrix(oof_long, value_column, gold)
+        matrices[source_name] = matrix
+        metrics = per_label_metrics(y, matrix)
+        metrics.insert(0, "Source", source_name)
+        metric_parts.append(metrics)
+
+    metrics_all = pd.concat(metric_parts, ignore_index=True)
+
+    w23 = metrics_all[metrics_all["Source"] == "W2.3"].set_index("Label")
+    w24 = metrics_all[metrics_all["Source"] == "W2.4"].set_index("Label")
+    comparison = pd.DataFrame({"Label": LABEL_COLUMNS})
+    comparison["W23_AUROC"] = [float(w23.at[label, "AUROC"]) for label in LABEL_COLUMNS]
+    comparison["W24_AUROC"] = [float(w24.at[label, "AUROC"]) for label in LABEL_COLUMNS]
+    comparison["Delta_AUROC"] = comparison["W24_AUROC"] - comparison["W23_AUROC"]
+    comparison["W23_AP"] = [
+        float(w23.at[label, "AveragePrecision"]) for label in LABEL_COLUMNS
+    ]
+    comparison["W24_AP"] = [
+        float(w24.at[label, "AveragePrecision"]) for label in LABEL_COLUMNS
+    ]
+    comparison["Delta_AP"] = comparison["W24_AP"] - comparison["W23_AP"]
+    comparison["W23_Brier"] = [float(w23.at[label, "Brier"]) for label in LABEL_COLUMNS]
+    comparison["W24_Brier"] = [float(w24.at[label, "Brier"]) for label in LABEL_COLUMNS]
+    comparison["Delta_Brier_W24MinusW23"] = (
+        comparison["W24_Brier"] - comparison["W23_Brier"]
+    )
+
+    macro = {
+        source_name: {
+            "macro_AUROC": float(
+                np.nanmean(
+                    metrics_all.loc[
+                        metrics_all["Source"] == source_name, "AUROC"
+                    ].values
+                )
+            ),
+            "macro_AP": float(
+                np.nanmean(
+                    metrics_all.loc[
+                        metrics_all["Source"] == source_name, "AveragePrecision"
+                    ].values
+                )
+            ),
+            "macro_Brier": float(
+                np.nanmean(
+                    metrics_all.loc[
+                        metrics_all["Source"] == source_name, "Brier"
+                    ].values
+                )
+            ),
+        }
+        for source_name in source_columns
+    }
+
+    bootstrap = bootstrap_macro_delta(y, matrices["W2.4"], matrices["W2.3"])
+    summary = {
+        "macro": macro,
+        "W24_minus_W23_bootstrap": bootstrap,
+        "oof_gold_studies": int(len(gold)),
+        "labels": len(LABEL_COLUMNS),
+    }
+    return metrics_all, comparison, summary
+
+
+def summarize_unlabeled_coverage(
+    unlabeled_parts: Sequence[pd.DataFrame],
+) -> pd.DataFrame:
+    frame = pd.concat(unlabeled_parts, ignore_index=True)
+    rows = []
+    for (fold, label), group in frame.groupby(["OuterFold", "Label"], sort=True):
+        rows.append(
+            {
+                "OuterFold": int(fold),
+                "Label": label,
+                "Cells": int(len(group)),
+                "AvailableN": int(group["SoftLabelAvailable"].sum()),
+                "AvailableFraction": float(group["SoftLabelAvailable"].mean()),
+                "HighSelectionN": int(group["HighSelectionCandidate"].sum()),
+                "HighSelectionFraction": float(group["HighSelectionCandidate"].mean()),
+                "MeanWeight": float(group["ConsensusWeight"].mean()),
+                "MedianWeight": float(group["ConsensusWeight"].median()),
+                "MeanAgreement": float(group["SourceAgreement"].mean()),
+                "DisagreementFraction": float(group["SourceDisagreement"].mean()),
+                "MeanTeacherCount": float(group["TeacherCount"].mean()),
+                "W23NotAddressedFraction": float(
+                    (group["W23ReportState"] == "NOT_ADDRESSED").mean()
+                ),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+# ============================================================
+# 9. BUILD / VALIDATE / REPORT
+# ============================================================
+
+
+def build_w24() -> Dict[str, Any]:
+    train, gold, unlabeled = load_train()
+    w23_root = discover_w23_root()
+    fold_assignments = load_and_verify_fold_assignments(w23_root, gold)
+
+    public_teacher, public_audit = load_public_teacher()
+    external_teachers: List[TeacherTable] = [public_teacher]
+    teacher3 = load_optional_teacher3()
+    if teacher3 is not None:
+        external_teachers.append(teacher3)
+
+    train_uid_set = set(train[UID_COLUMN].astype(str))
+    schema_audit: Dict[str, Any] = {
+        "w23_root": str(w23_root),
+        "public_candidate_audit": public_audit[:30],
+        "teachers": {},
+    }
+
+    for teacher in external_teachers:
+        teacher_uids = set(teacher.probabilities[UID_COLUMN].astype(str))
+        gold_overlap = teacher_uids & set(gold[UID_COLUMN].astype(str))
+        unlabeled_overlap = teacher_uids & set(unlabeled[UID_COLUMN].astype(str))
+        schema_audit["teachers"][teacher.name] = {
+            "path": str(teacher.path),
+            "sha256": sha256_file(teacher.path),
+            "schema": teacher.schema,
+            "rows": int(len(teacher.probabilities)),
+            "train_overlap": int(len(teacher_uids & train_uid_set)),
+            "gold_overlap": int(len(gold_overlap)),
+            "unlabeled_overlap": int(len(unlabeled_overlap)),
+            "has_explicit_confidence": teacher.confidence is not None,
+        }
+
+        # A teacher with no gold overlap cannot have label-specific reliability
+        # measured in our controlled fold protocol. Refuse instead of silently
+        # assigning arbitrary authority.
+        if len(gold_overlap) < 20:
+            raise RuntimeError(
+                f"{teacher.name} has only {len(gold_overlap)} gold-study overlaps. "
+                "W2.4 requires at least 20 to estimate fold-specific reliability."
+            )
+        if len(unlabeled_overlap) < 0.90 * EXPECTED_UNLABELED_STUDIES:
+            warnings.warn(
+                f"{teacher.name} covers only {len(unlabeled_overlap)}/{EXPECTED_UNLABELED_STUDIES} "
+                "unlabeled studies. Missing cells will fall back to other teachers.",
+                RuntimeWarning,
+            )
+
+    json_dump(RESULT_ROOT / "01_teacher_schema_audit.json", schema_audit)
+    fold_assignments.to_csv(RESULT_ROOT / "00_outer_fold_assignments.csv", index=False)
+
+    reliability_parts: List[pd.DataFrame] = []
+    heldout_parts: List[pd.DataFrame] = []
+    unlabeled_parts: List[pd.DataFrame] = []
+
+    log("=" * 96)
+    log("RSNA W2.4 — HIGH-FIDELITY FOLD-SAFE REPORT SUPERVISION")
+    log("=" * 96)
+    log(f"Train studies          : {len(train)}")
+    log(f"Gold / unlabeled       : {len(gold)} / {len(unlabeled)}")
+    log(f"W2.3 root              : {w23_root}")
+    log(f"Public teacher         : {public_teacher.path}")
+    if teacher3 is not None:
+        log(f"Optional teacher3      : {teacher3.path}")
+    log(f"Outer fold SHA256      : {fold_assignment_sha256(fold_assignments)}")
+    log("Held-out gold is NEVER used to fit W2.4 calibrators or source weights.")
+
+    gold_by_uid = gold.set_index(UID_COLUMN)
+
+    for fold in range(1, NUM_OUTER_FOLDS + 1):
+        log("\n" + "-" * 96)
+        log(f"W2.4 OUTER FOLD {fold}/{NUM_OUTER_FOLDS}")
+        log("-" * 96)
+
+        val_uids = set(
+            fold_assignments.loc[
+                fold_assignments["OuterFold"] == fold,
+                UID_COLUMN,
+            ].astype(str)
+        )
+        train_gold = gold[~gold[UID_COLUMN].isin(val_uids)].copy()
+        val_gold = gold[gold[UID_COLUMN].isin(val_uids)].copy()
+
+        w23_inner = load_w23_inner_train(w23_root, fold)
+        w23_heldout = load_w23_heldout(w23_root, fold)
+        w23_unlabeled = load_w23_unlabeled(w23_root, fold)
+
+        if set(w23_heldout[UID_COLUMN].astype(str)) != val_uids:
+            raise RuntimeError(f"W2.3 heldout UID mismatch in fold {fold}")
+        if set(w23_unlabeled[UID_COLUMN].astype(str)) != set(
+            unlabeled[UID_COLUMN].astype(str)
+        ):
+            raise RuntimeError(f"W2.3 unlabeled UID mismatch in fold {fold}")
+
+        calibrators, reliability = fit_fold_calibrators(
+            fold,
+            train_gold,
+            w23_inner,
+            external_teachers,
+        )
+        reliability_parts.append(reliability)
+
+        heldout_long = _fuse_rows_for_population(
+            fold=fold,
+            population="heldout_gold",
+            base_uids=val_gold[UID_COLUMN].astype(str).tolist(),
+            w23_frame=w23_heldout,
+            calibrators=calibrators,
+            external_teachers=external_teachers,
+            gold_lookup=val_gold,
+        )
+        unlabeled_long = _fuse_rows_for_population(
+            fold=fold,
+            population="unlabeled",
+            base_uids=unlabeled[UID_COLUMN].astype(str).tolist(),
+            w23_frame=w23_unlabeled,
+            calibrators=calibrators,
+            external_teachers=external_teachers,
+            gold_lookup=None,
+        )
+
+        write_fold_outputs(
+            fold,
+            unlabeled_long,
+            heldout_long,
+            reliability,
+            unlabeled[UID_COLUMN].astype(str).tolist(),
+        )
+        heldout_parts.append(heldout_long)
+        unlabeled_parts.append(unlabeled_long)
+
+        val_y = val_gold[LABEL_COLUMNS].to_numpy(dtype=np.int64)
+        val_fused = _oof_matrix(heldout_long, "ConsensusProbability", val_gold)
+        val_w23 = _oof_matrix(heldout_long, "W23RawProbability", val_gold)
+        log(f"Outer-train gold       : {len(train_gold)}")
+        log(f"Heldout gold           : {len(val_gold)}")
+        log(f"W2.3 heldout macro AUC : {macro_auc(val_y, val_w23):.6f}")
+        log(f"W2.4 heldout macro AUC : {macro_auc(val_y, val_fused):.6f}")
+        log(
+            f"Unlabeled available    : "
+            f'{int(unlabeled_long["SoftLabelAvailable"].sum())}/'
+            f"{len(unlabeled_long)} cells "
+            f'({unlabeled_long["SoftLabelAvailable"].mean():.1%})'
+        )
+        log(
+            f"Unlabeled high-quality : "
+            f'{int(unlabeled_long["HighSelectionCandidate"].sum())}/'
+            f"{len(unlabeled_long)} cells "
+            f'({unlabeled_long["HighSelectionCandidate"].mean():.1%})'
+        )
+
+    reliability_all = pd.concat(reliability_parts, ignore_index=True)
+    heldout_all = pd.concat(heldout_parts, ignore_index=True)
+    coverage = summarize_unlabeled_coverage(unlabeled_parts)
+
+    reliability_all.to_csv(
+        RESULT_ROOT / "02_source_reliability_all_folds.csv", index=False
+    )
+    heldout_all.to_csv(
+        RESULT_ROOT / "03_gold_outer_oof_predictions_long.csv", index=False
+    )
+    coverage.to_csv(RESULT_ROOT / "06_unlabeled_coverage.csv", index=False)
+
+    expected_oof_rows = EXPECTED_GOLD_STUDIES * len(LABEL_COLUMNS)
+    if len(heldout_all) != expected_oof_rows:
+        raise RuntimeError(
+            f"Expected {expected_oof_rows} heldout gold rows, found {len(heldout_all)}"
+        )
+    if heldout_all[[UID_COLUMN, "Label"]].duplicated().any():
+        raise RuntimeError("Duplicate gold UID/Label in W2.4 outer OOF")
+
+    metrics_all, comparison, summary = evaluate_oof_sources(
+        heldout_all,
+        gold,
+        external_teachers,
+    )
+    metrics_all.to_csv(
+        RESULT_ROOT / "04_gold_outer_oof_metrics_per_source.csv", index=False
+    )
+    comparison.to_csv(RESULT_ROOT / "05_w24_vs_w23_per_label.csv", index=False)
+    json_dump(RESULT_ROOT / "07_w24_oof_summary.json", summary)
+
+    # Wide OOF files are useful for W6 diagnostics and exact downstream reuse.
+    for source_name, column in [
+        ("w23", "W23RawProbability"),
+        ("w24", "ConsensusProbability"),
+    ]:
+        frame = long_to_wide(
+            heldout_all,
+            column,
+            gold[UID_COLUMN].astype(str).tolist(),
+        )
+        frame.to_csv(
+            RESULT_ROOT / f"gold_outer_oof_{source_name}_probabilities_wide.csv",
+            index=False,
+        )
+
+    manifest = {
+        "name": "RSNA W2.4 High-Fidelity Fold-Safe Report Supervision",
+        "version": "w2_4_consensus_v1",
+        "train_csv": str(TRAIN_CSV),
+        "train_csv_sha256": sha256_file(TRAIN_CSV),
+        "w23_root": str(w23_root),
+        "public_dataset_hint": PUBLIC_DATASET_HINT,
+        "teachers": schema_audit["teachers"],
+        "counts": {
+            "total_studies": len(train),
+            "gold_studies": len(gold),
+            "unlabeled_studies": len(unlabeled),
+            "labels": len(LABEL_COLUMNS),
+        },
+        "outer_folds": {
+            "n_splits": NUM_OUTER_FOLDS,
+            "assignment_sha256": fold_assignment_sha256(fold_assignments),
+            "expected_sha256": EXPECTED_FOLD_SHA256,
+            "match": fold_assignment_sha256(fold_assignments) == EXPECTED_FOLD_SHA256,
+        },
+        "calibration": {
+            "method": "1D Platt on logit probability, fit only on outer-train gold",
+            "C": PLATT_C,
+            "strong_inverse_auc_threshold": INVERT_AUC_THRESHOLD,
+        },
+        "reliability": {
+            "metric": "outer-train AUROC, shrunk toward 0.5",
+            "shrink_n": QUALITY_SHRINK_N,
+            "quality_floor": QUALITY_FLOOR,
+        },
+        "training_weight": {
+            "availability_threshold": MIN_TRAIN_WEIGHT,
+            "high_selection_threshold": HIGH_SELECTION_WEIGHT,
+            "silence_negative_cap": SILENCE_NEGATIVE_WEIGHT_CAP,
+            "cross_teacher_disagreement_cap": DISAGREEMENT_WEIGHT_CAP,
+        },
+        "fold_safety": {
+            "w23_outer_train_source_uses_inner_oof": True,
+            "heldout_gold_used_for_calibrator_fit": False,
+            "heldout_gold_used_for_source_reliability": False,
+            "heldout_gold_used_for_threshold_tuning": False,
+            "external_teacher_upstream_development_fully_nested": "UNVERIFIED",
+        },
+        "oof_summary": summary,
+    }
+    json_dump(RESULT_ROOT / "w2_4_manifest.json", manifest)
+
+    report_lines = [
+        "# RSNA W2.4 — High-Fidelity Fold-Safe Report Supervision",
+        "",
+        "## Controlled validation",
+        "",
+        f"- Exact outer-fold SHA256: `{fold_assignment_sha256(fold_assignments)}`",
+        f'- W2.3 macro AUROC: `{summary["macro"]["W2.3"]["macro_AUROC"]:.6f}`',
+        f'- W2.4 macro AUROC: `{summary["macro"]["W2.4"]["macro_AUROC"]:.6f}`',
+        f'- Delta: `{summary["macro"]["W2.4"]["macro_AUROC"] - summary["macro"]["W2.3"]["macro_AUROC"]:+.6f}`',
+        "",
+        "Bootstrap W2.4 − W2.3:",
+        "",
+        "```json",
+        json.dumps(summary["W24_minus_W23_bootstrap"], indent=2),
+        "```",
+        "",
+        "## Source macro metrics",
+        "",
+        "```json",
+        json.dumps(summary["macro"], indent=2),
+        "```",
+        "",
+        "## Methodological boundary",
+        "",
+        (
+            "Our calibration/fusion layer is fold-safe: held-out gold labels are never used "
+            "to fit calibrators, reliability weights, or thresholds. The external public "
+            "teacher is a fixed upstream artifact; W2.4 cannot verify whether its original "
+            "development process used the same 58-study research cohort."
+        ),
+        "",
+        "## W6 inputs",
+        "",
+        "Each fold contains `soft_probabilities_wide.csv`, `soft_label_weights_wide.csv`, ",
+        "`soft_label_availability_wide.csv`, and compatibility ",
+        "`candidate_selection_scores_wide.csv`.",
+        "",
+    ]
+    (RESULT_ROOT / "W2_4_REPORT.md").write_text(
+        "\n".join(report_lines), encoding="utf-8"
+    )
+
+    log("\n" + "=" * 96)
+    log("W2.4 BUILD COMPLETE")
+    log("=" * 96)
+    log(f'W2.3 macro AUROC       : {summary["macro"]["W2.3"]["macro_AUROC"]:.6f}')
+    log(f'W2.4 macro AUROC       : {summary["macro"]["W2.4"]["macro_AUROC"]:.6f}')
+    log(
+        f"W2.4 - W2.3           : "
+        f'{summary["macro"]["W2.4"]["macro_AUROC"] - summary["macro"]["W2.3"]["macro_AUROC"]:+.6f}'
+    )
+    boot = summary["W24_minus_W23_bootstrap"]
+    log(
+        f'Bootstrap 95% CI       : [{boot["ci_low"]:+.6f}, {boot["ci_high"]:+.6f}] '
+        f'P(delta>0)={boot["p_gt_0"]:.3f}'
+    )
+    for teacher in external_teachers:
+        log(
+            f"{teacher.name:22s}: "
+            f'{summary["macro"][teacher.name]["macro_AUROC"]:.6f} macro AUROC'
+        )
+    log(f"Output root            : {OUTPUT_ROOT}")
+    log("Do NOT feed W2.4 into W6 until these OOF diagnostics are reviewed.")
+
+    return manifest
+
+
+def validate_w24() -> Dict[str, Any]:
+    manifest_path = RESULT_ROOT / "w2_4_manifest.json"
+    summary_path = RESULT_ROOT / "07_w24_oof_summary.json"
+    comparison_path = RESULT_ROOT / "05_w24_vs_w23_per_label.csv"
+    if (
+        not manifest_path.exists()
+        or not summary_path.exists()
+        or not comparison_path.exists()
+    ):
+        raise FileNotFoundError(
+            'W2.4 build outputs not found. Run run_w24("build") first.'
+        )
+
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    comparison = pd.read_csv(comparison_path)
+
+    checks: Dict[str, Any] = {
+        "fold_hash_match": manifest["outer_folds"]["assignment_sha256"]
+        == EXPECTED_FOLD_SHA256,
+        "five_fold_output_dirs": all(
+            (FOLD_ROOT / f"fold_{f}").exists() for f in range(1, 6)
+        ),
+        "all_primary_wide_files_present": True,
+        "all_fold_rows_4349": True,
+        "all_probabilities_in_range": True,
+        "all_weights_in_range": True,
+        "comparison_has_12_labels": len(comparison) == 12,
+    }
+
+    for fold in range(1, 6):
+        fold_dir = FOLD_ROOT / f"fold_{fold}"
+        required = [
+            "soft_probabilities_wide.csv",
+            "soft_label_weights_wide.csv",
+            "soft_label_availability_wide.csv",
+            "candidate_selection_scores_wide.csv",
+            "heldout_gold_w24_predictions.csv",
+            "source_reliability.csv",
+        ]
+        if not all((fold_dir / name).exists() for name in required):
+            checks["all_primary_wide_files_present"] = False
+            continue
+        probability = pd.read_csv(fold_dir / "soft_probabilities_wide.csv")
+        weight = pd.read_csv(fold_dir / "soft_label_weights_wide.csv")
+        if (
+            len(probability) != EXPECTED_UNLABELED_STUDIES
+            or len(weight) != EXPECTED_UNLABELED_STUDIES
+        ):
+            checks["all_fold_rows_4349"] = False
+        p = (
+            probability[LABEL_COLUMNS]
+            .apply(pd.to_numeric, errors="coerce")
+            .to_numpy(dtype=float)
+        )
+        w = (
+            weight[LABEL_COLUMNS]
+            .apply(pd.to_numeric, errors="coerce")
+            .to_numpy(dtype=float)
+        )
+        finite_p = p[np.isfinite(p)]
+        finite_w = w[np.isfinite(w)]
+        if len(finite_p) and (finite_p.min() < -1e-8 or finite_p.max() > 1.0 + 1e-8):
+            checks["all_probabilities_in_range"] = False
+        if len(finite_w) and (finite_w.min() < -1e-8 or finite_w.max() > 1.0 + 1e-8):
+            checks["all_weights_in_range"] = False
+
+    checks["overall_pass"] = bool(all(bool(value) for value in checks.values()))
+    payload = {
+        "checks": checks,
+        "macro": summary.get("macro"),
+        "bootstrap": summary.get("W24_minus_W23_bootstrap"),
+        "manifest_path": str(manifest_path),
+    }
+    json_dump(RESULT_ROOT / "08_validation_summary.json", payload)
+    log(json.dumps(payload, indent=2, allow_nan=True))
+    if not checks["overall_pass"]:
+        raise RuntimeError("W2.4 validation failed; inspect 08_validation_summary.json")
+    return payload
+
+
+# ============================================================
+# 10. STATUS / NOTEBOOK API
+# ============================================================
+
+
+def status_w24() -> Dict[str, Any]:
+    payload: Dict[str, Any] = {
+        "experiment": "RSNA W2.4 High-Fidelity Fold-Safe Report Supervision",
+        "train_csv": str(TRAIN_CSV),
+        "train_csv_exists": TRAIN_CSV.exists(),
+        "output_root": str(OUTPUT_ROOT),
+        "public_dataset_hint": PUBLIC_DATASET_HINT,
+        "config": {
+            "platt_C": PLATT_C,
+            "quality_shrink_n": QUALITY_SHRINK_N,
+            "min_train_weight": MIN_TRAIN_WEIGHT,
+            "high_selection_weight": HIGH_SELECTION_WEIGHT,
+            "silence_negative_weight_cap": SILENCE_NEGATIVE_WEIGHT_CAP,
+            "disagreement_weight_cap": DISAGREEMENT_WEIGHT_CAP,
+        },
+    }
+
+    try:
+        train, gold, unlabeled = load_train()
+        payload["counts"] = {
+            "train": len(train),
+            "gold": len(gold),
+            "unlabeled": len(unlabeled),
+        }
+    except Exception as exc:
+        payload["train_error"] = repr(exc)
+        gold = None
+
+    try:
+        w23_root = discover_w23_root()
+        payload["w23_root"] = str(w23_root)
+        if gold is not None:
+            folds = load_and_verify_fold_assignments(w23_root, gold)
+            payload["fold_sha256"] = fold_assignment_sha256(folds)
+            payload["fold_sha256_match"] = (
+                payload["fold_sha256"] == EXPECTED_FOLD_SHA256
+            )
+    except Exception as exc:
+        payload["w23_error"] = repr(exc)
+
+    try:
+        payload["public_teacher"] = public_teacher_status()
+    except Exception as exc:
+        payload["public_teacher_error"] = repr(exc)
+
+    if EXPLICIT_TEACHER3_FILE:
+        try:
+            t3 = load_optional_teacher3()
+            payload["teacher3"] = (
+                {
+                    "path": str(t3.path),
+                    "schema": t3.schema,
+                    "rows": len(t3.probabilities),
+                }
+                if t3
+                else None
+            )
+        except Exception as exc:
+            payload["teacher3_error"] = repr(exc)
+
+    log(json.dumps(payload, indent=2, allow_nan=True))
+    return payload
+
+
+def inspect_public_w24() -> Dict[str, Any]:
+    path, audit = discover_public_teacher_file()
+    teacher = load_teacher_file(path, "public_llm")
+    result = public_teacher_status()
+    result["selected_preview"] = teacher.probabilities.head(5).to_dict(orient="records")
+    log(json.dumps(result, indent=2, allow_nan=True))
+    return result
+
+
+def run_w24(mode: str = "status"):
+    mode = str(mode).strip().lower()
+    valid = {"status", "inspect_public", "build", "validate", "all"}
+    if mode not in valid:
+        raise ValueError(f"mode must be one of {sorted(valid)}, got {mode!r}")
+    if mode == "status":
+        return status_w24()
+    if mode == "inspect_public":
+        return inspect_public_w24()
+    if mode == "build":
+        return build_w24()
+    if mode == "validate":
+        return validate_w24()
+    # all
+    status_w24()
+    manifest = build_w24()
+    validation = validate_w24()
+    return {"manifest": manifest, "validation": validation}
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="RSNA W2.4 high-fidelity fold-safe report supervision"
+    )
+    parser.add_argument(
+        "--mode",
+        choices=["status", "inspect_public", "build", "validate", "all"],
+        default="status",
+    )
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+    run_w24(args.mode)
+
+
+if __name__ == "__main__":
+    main()
