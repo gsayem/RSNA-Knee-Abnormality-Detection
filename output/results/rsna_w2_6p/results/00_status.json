@@ -1,0 +1,61 @@
+{
+  "experiment": "RSNA W2.6-P batched production report teacher",
+  "uses_pilkwang_labels": false,
+  "is_kaggle": false,
+  "script_dir": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/src/models",
+  "project_root": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection",
+  "train_csv": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/input/train.csv",
+  "train_exists": true,
+  "w2_root_env": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/output/results/rsna_w2",
+  "w23_root_env": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/output/results/rsna_w2_3",
+  "model_path_env": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/models/Qwen2.5-7B-Instruct",
+  "model_exists": true,
+  "accelerator_requested": "localGPU",
+  "accelerator_resolved": "local_gpu",
+  "precision_policy": "auto",
+  "initial_batch_size": 8,
+  "max_input_tokens": 3584,
+  "oom_token_budgets": [
+    3072,
+    2560,
+    2048,
+    1536
+  ],
+  "max_new_tokens": 72,
+  "fs4_labels": [
+    "Medial OA",
+    "Lateral OA",
+    "PF OA",
+    "Synovitis"
+  ],
+  "established_w23_labels": [
+    "ACL",
+    "MCL",
+    "Medial Meniscus",
+    "Lateral Meniscus",
+    "Effusion",
+    "Baker's",
+    "Contusion",
+    "Fracture"
+  ],
+  "production_fs4_cells": 17396,
+  "production_all_teacher_cells": 52188,
+  "fixed_blend_alpha": 0.5,
+  "cache_file": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/output/results/rsna_w2_6p/cache/w26p_fs4_production_v1.jsonl",
+  "cached_fs4_cells": 728,
+  "counts": {
+    "train": 4407,
+    "gold": 58,
+    "unlabeled": 4349
+  },
+  "w2_root": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/output/results/rsna_w2",
+  "w2_gold_sha256": "a783fe3e20317d233a67351e1270cab7a365232a75b56b35b8d521204fe228c2",
+  "w2_full_sha256": "a460fc2752e01be3bc8c2a7a8a82d330c3bbcab233108e97040c3e709aeafadc",
+  "w23_root": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/output/results/rsna_w2_3",
+  "w23_stability_exists": true,
+  "cuda_available": true,
+  "gpu_count": 1,
+  "gpu_names": [
+    "NVIDIA GeForce RTX 4060 Ti"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "variants": {
+    "w23": {
+      "macro_AUROC": 0.7712431042776814,
+      "macro_AP": 0.6832265162015955,
+      "macro_Brier": 0.15907222465897464
+    },
+    "llm_raw_gold_independent": {
+      "macro_AUROC": 0.71321778445609,
+      "macro_AP": 0.5458239334549404,
+      "macro_Brier": 0.21960089116379308
+    },
+    "llm_only": {
+      "macro_AUROC": 0.6648912642066916,
+      "macro_AP": 0.5432363467807934,
+      "macro_Brier": 0.2026905284189968
+    },
+    "llm_plus_w2": {
+      "macro_AUROC": 0.789623532042869,
+      "macro_AP": 0.6891519365749671,
+      "macro_Brier": 0.1737042096223156
+    }
+  },
+  "llm_raw_gold_independent_minus_w23_bootstrap": {
+    "n": 2000,
+    "mean": -0.05875988023271907,
+    "ci_low": -0.11716750407135122,
+    "ci_high": -0.0018154981692209181,
+    "p_gt_0": 0.022
+  },
+  "llm_only_minus_w23_bootstrap": {
+    "n": 2000,
+    "mean": -0.10716350482531987,
+    "ci_low": -0.18371683189028618,
+    "ci_high": -0.03714416699340971,
+    "p_gt_0": 0.0
+  },
+  "llm_plus_w2_minus_w23_bootstrap": {
+    "n": 2000,
+    "mean": 0.017652873735556702,
+    "ci_low": -0.005982429451426821,
+    "ci_high": 0.044547611308551165,
+    "p_gt_0": 0.922
+  },
+  "best_own_variant": "llm_plus_w2",
+  "best_own_macro_AUROC": 0.789623532042869,
+  "w23_macro_AUROC": 0.7712431042776814,
+  "best_own_delta_vs_w23": 0.018380427765187557,
+  "gate_verdict": "DO_NOT_FULL_EXTRACT_YET"
+}
