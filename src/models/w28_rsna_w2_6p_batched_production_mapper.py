@@ -293,7 +293,7 @@ LOCAL_CPU_MAX_GIB = float(os.environ.get("W26P_LOCAL_CPU_MAX_GIB", "36.0"))
 T4_GPU_MAX_GIB = float(os.environ.get("W26P_T4_GPU_MAX_GIB", "11.5"))
 
 # Batching and context. Independent prompts are padded together.
-INITIAL_BATCH_SIZE = int(os.environ.get("W26P_BATCH_SIZE", "8"))
+INITIAL_BATCH_SIZE = int(os.environ.get("W26P_BATCH_SIZE", "32"))
 MIN_BATCH_SIZE = 1
 MAX_INPUT_TOKENS = int(os.environ.get("W26P_MAX_INPUT_TOKENS", "3584"))
 OOM_TOKEN_BUDGETS = [
