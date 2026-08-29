@@ -1,0 +1,702 @@
+================================================================================================
+RSNA W2.5 V6 — OUR OWN GROUNDED LABEL-WISE REPORT TEACHER GOLD GATE
+================================================================================================
+Train/gold              : 4407 / 58
+W2 root                 : /kaggle/input/datasets/isayem/rsna-w2/rsna_w2
+W2.3 root               : /kaggle/input/datasets/isayem/rsna-w2-3/rsna_w2_3
+Fold SHA256             : 1d9959b027c055974325f4de59e26974b036ae8b2c1b63aa417d3eef7aaf9f4a
+Own LLM                 : /kaggle/input/datasets/ragnar123/qwen2-5-7b-instruct
+Pilkwang labels used    : NO
+Gold labels enter only the fold-safe evaluation/calibration stage.
+Gold reports requested     : 58
+Label-wise calls requested : 696
+Already cached pairs       : 36
+Need LLM label calls       : 660
+Extraction mode            : one target per generation
+Loading own report LLM from: /kaggle/input/datasets/ragnar123/qwen2-5-7b-instruct
+GPU id                  : 0
+4-bit requested         : False
+FP16 fallback allowed   : True
+Loading weights: 100%
+ 339/339 [00:09<00:00, 40.82it/s, Materializing param=model.norm.weight]
+Model load mode          : fp16_balanced_2gpu
+Input embedding device   : cuda:0
+HF device-map modules    : {'0': 26, '1': 6}
+GPU 0 free after load    : 2.44 / 14.56 GiB
+GPU 1 free after load    : 5.35 / 14.56 GiB
+  extracted   1/660 study=9102017580 target=ACL                call=  5.0s ETA= 55.1m
+  extracted   2/660 study=9102017580 target=MCL                call=  5.0s ETA= 55.0m
+  extracted   3/660 study=9102017580 target=Medial Meniscus    call=  5.2s ETA= 55.5m
+  extracted   4/660 study=9102017580 target=Lateral Meniscus   call=  5.2s ETA= 55.7m
+  extracted   5/660 study=9102017580 target=Medial OA          call=  6.1s ETA= 57.9m
+  extracted   6/660 study=9102017580 target=Lateral OA         call=  8.1s ETA= 62.9m
+  extracted   7/660 study=9102017580 target=PF OA              call=  9.0s ETA= 67.8m
+  extracted   8/660 study=9102017580 target=Effusion           call=  9.2s ETA= 71.7m
+  extracted   9/660 study=9102017580 target=Synovitis          call=  7.8s ETA= 73.1m
+  extracted  10/660 study=9102017580 target=Baker's            call=  6.9s ETA= 73.1m
+  extracted  11/660 study=9102017580 target=Contusion          call=  5.2s ETA= 71.5m
+  extracted  12/660 study=9102017580 target=Fracture           call=  6.9s ETA= 71.6m
+  extracted  13/660 study=3002209238 target=ACL                call=  6.3s ETA= 71.3m
+  extracted  14/660 study=3002209238 target=MCL                call=  5.0s ETA= 69.9m
+  extracted  15/660 study=3002209238 target=Medial Meniscus    call=  6.7s ETA= 70.0m
+  extracted  16/660 study=3002209238 target=Lateral Meniscus   call=  5.2s ETA= 69.0m
+  extracted  17/660 study=3002209238 target=Medial OA          call=  5.2s ETA= 68.1m
+  extracted  18/660 study=3002209238 target=Lateral OA         call=  5.6s ETA= 67.6m
+  extracted  19/660 study=3002209238 target=PF OA              call=  5.7s ETA= 67.1m
+  extracted  20/660 study=3002209238 target=Effusion           call=  5.6s ETA= 66.6m
+  extracted  21/660 study=3002209238 target=Synovitis          call=  5.5s ETA= 66.1m
+  extracted  22/660 study=3002209238 target=Baker's            call=  5.2s ETA= 65.5m
+  extracted  23/660 study=3002209238 target=Contusion          call=  5.2s ETA= 65.0m
+  extracted  24/660 study=3002209238 target=Fracture           call=  5.2s ETA= 64.5m
+  extracted  25/660 study=9882701935 target=ACL                call=  6.4s ETA= 64.5m
+  extracted  26/660 study=9882701935 target=MCL                call=  5.2s ETA= 64.0m
+  extracted  27/660 study=9882701935 target=Medial Meniscus    call=  5.3s ETA= 63.6m
+  extracted  28/660 study=9882701935 target=Lateral Meniscus   call=  6.9s ETA= 63.9m
+  extracted  29/660 study=9882701935 target=Medial OA          call=  5.3s ETA= 63.5m
+  extracted  30/660 study=9882701935 target=Lateral OA         call=  5.3s ETA= 63.1m
+  extracted  31/660 study=9882701935 target=PF OA              call=  5.9s ETA= 63.0m
+  extracted  32/660 study=9882701935 target=Effusion           call=  6.6s ETA= 63.0m
+  extracted  33/660 study=9882701935 target=Synovitis          call=  5.3s ETA= 62.7m
+  extracted  34/660 study=9882701935 target=Baker's            call=  5.2s ETA= 62.4m
+  extracted  35/660 study=9882701935 target=Contusion          call=  6.0s ETA= 62.3m
+  extracted  36/660 study=9882701935 target=Fracture           call=  6.0s ETA= 62.2m
+  extracted  37/660 study=9098335840 target=ACL                call=  9.2s ETA= 63.0m
+  extracted  38/660 study=9098335840 target=MCL                call=  5.5s ETA= 62.7m
+  extracted  39/660 study=9098335840 target=Medial Meniscus    call=  5.5s ETA= 62.5m
+  extracted  40/660 study=9098335840 target=Lateral Meniscus   call=  8.1s ETA= 62.9m
+  extracted  41/660 study=9098335840 target=Medial OA          call=  6.7s ETA= 63.0m
+  extracted  42/660 study=9098335840 target=Lateral OA         call=  7.7s ETA= 63.3m
+  extracted  43/660 study=9098335840 target=PF OA              call=  5.8s ETA= 63.1m
+  extracted  44/660 study=9098335840 target=Effusion           call=  7.0s ETA= 63.2m
+  extracted  45/660 study=9098335840 target=Synovitis          call=  5.7s ETA= 63.0m
+  extracted  46/660 study=9098335840 target=Baker's            call=  5.4s ETA= 62.7m
+  extracted  47/660 study=9098335840 target=Contusion          call=  5.7s ETA= 62.5m
+  extracted  48/660 study=9098335840 target=Fracture           call=  9.3s ETA= 63.1m
+  extracted  49/660 study=8583976756 target=ACL                call=  5.9s ETA= 62.9m
+  extracted  50/660 study=8583976756 target=MCL                call=  5.9s ETA= 62.7m
+  extracted  51/660 study=8583976756 target=Medial Meniscus    call=  5.2s ETA= 62.4m
+  extracted  52/660 study=8583976756 target=Lateral Meniscus   call=  5.2s ETA= 62.2m
+  extracted  53/660 study=8583976756 target=Medial OA          call=  5.2s ETA= 61.9m
+  extracted  54/660 study=8583976756 target=Lateral OA         call=  5.1s ETA= 61.6m
+  extracted  55/660 study=8583976756 target=PF OA              call=  5.2s ETA= 61.3m
+  extracted  56/660 study=8583976756 target=Effusion           call=  6.6s ETA= 61.3m
+  extracted  57/660 study=8583976756 target=Synovitis          call=  6.5s ETA= 61.3m
+  extracted  58/660 study=8583976756 target=Baker's            call=  5.1s ETA= 61.0m
+  extracted  59/660 study=8583976756 target=Contusion          call=  5.5s ETA= 60.8m
+  extracted  60/660 study=8583976756 target=Fracture           call=  5.2s ETA= 60.5m
+  extracted  61/660 study=5974810604 target=ACL                call=  6.1s ETA= 60.5m
+  extracted  62/660 study=5974810604 target=MCL                call=  7.1s ETA= 60.5m
+  extracted  63/660 study=5974810604 target=Medial Meniscus    call=  7.7s ETA= 60.7m
+  extracted  64/660 study=5974810604 target=Lateral Meniscus   call=  8.7s ETA= 61.0m
+  extracted  65/660 study=5974810604 target=Medial OA          call=  9.1s ETA= 61.3m
+  extracted  66/660 study=5974810604 target=Lateral OA         call=  6.2s ETA= 61.2m
+  extracted  67/660 study=5974810604 target=PF OA              call=  6.3s ETA= 61.2m
+  extracted  68/660 study=5974810604 target=Effusion           call=  6.5s ETA= 61.1m
+  extracted  69/660 study=5974810604 target=Synovitis          call=  6.1s ETA= 61.0m
+  extracted  70/660 study=5974810604 target=Baker's            call=  6.5s ETA= 60.9m
+  extracted  71/660 study=5974810604 target=Contusion          call=  6.1s ETA= 60.8m
+  extracted  72/660 study=5974810604 target=Fracture           call=  8.2s ETA= 61.0m
+  extracted  73/660 study=6907169581 target=ACL                call=  7.0s ETA= 61.0m
+  extracted  74/660 study=6907169581 target=MCL                call=  6.8s ETA= 61.0m
+  extracted  75/660 study=6907169581 target=Medial Meniscus    call=  9.7s ETA= 61.3m
+  extracted  76/660 study=6907169581 target=Lateral Meniscus   call=  9.3s ETA= 61.6m
+  extracted  77/660 study=6907169581 target=Medial OA          call=  6.0s ETA= 61.4m
+  extracted  78/660 study=6907169581 target=Lateral OA         call=  6.0s ETA= 61.3m
+  extracted  79/660 study=6907169581 target=PF OA              call=  6.3s ETA= 61.2m
+  extracted  80/660 study=6907169581 target=Effusion           call=  6.9s ETA= 61.2m
+  extracted  81/660 study=6907169581 target=Synovitis          call=  6.9s ETA= 61.1m
+  extracted  82/660 study=6907169581 target=Baker's            call=  7.5s ETA= 61.2m
+  extracted  83/660 study=6907169581 target=Contusion          call=  5.9s ETA= 61.0m
+  extracted  84/660 study=6907169581 target=Fracture           call=  5.9s ETA= 60.8m
+  extracted  85/660 study=8836556945 target=ACL                call=  5.0s ETA= 60.6m
+  extracted  86/660 study=8836556945 target=MCL                call=  4.9s ETA= 60.3m
+  extracted  87/660 study=8836556945 target=Medial Meniscus    call=  5.0s ETA= 60.1m
+  extracted  88/660 study=8836556945 target=Lateral Meniscus   call=  5.0s ETA= 59.8m
+  extracted  89/660 study=8836556945 target=Medial OA          call=  5.0s ETA= 59.6m
+  extracted  90/660 study=8836556945 target=Lateral OA         call=  5.0s ETA= 59.3m
+  extracted  91/660 study=8836556945 target=PF OA              call=  5.1s ETA= 59.1m
+  extracted  92/660 study=8836556945 target=Effusion           call=  5.0s ETA= 58.9m
+  extracted  93/660 study=8836556945 target=Synovitis          call=  5.1s ETA= 58.7m
+  extracted  94/660 study=8836556945 target=Baker's            call=  5.0s ETA= 58.4m
+  extracted  95/660 study=8836556945 target=Contusion          call=  5.0s ETA= 58.2m
+  extracted  96/660 study=8836556945 target=Fracture           call=  5.0s ETA= 58.0m
+  extracted  97/660 study=1488770819 target=ACL                call=  5.5s ETA= 57.8m
+  extracted  98/660 study=1488770819 target=MCL                call=  5.0s ETA= 57.6m
+  extracted  99/660 study=1488770819 target=Medial Meniscus    call=  5.8s ETA= 57.5m
+  extracted 100/660 study=1488770819 target=Lateral Meniscus   call=  5.7s ETA= 57.3m
+  extracted 101/660 study=1488770819 target=Medial OA          call=  5.0s ETA= 57.1m
+  extracted 102/660 study=1488770819 target=Lateral OA         call=  5.0s ETA= 56.9m
+  extracted 103/660 study=1488770819 target=PF OA              call=  5.2s ETA= 56.7m
+  extracted 104/660 study=1488770819 target=Effusion           call=  5.3s ETA= 56.5m
+  extracted 105/660 study=1488770819 target=Synovitis          call=  5.0s ETA= 56.3m
+  extracted 106/660 study=1488770819 target=Baker's            call=  5.1s ETA= 56.1m
+  extracted 107/660 study=1488770819 target=Contusion          call=  6.0s ETA= 56.0m
+  extracted 108/660 study=1488770819 target=Fracture           call=  6.1s ETA= 55.9m
+  extracted 109/660 study=7488111973 target=ACL                call=  6.5s ETA= 55.9m
+  extracted 110/660 study=7488111973 target=MCL                call=  6.6s ETA= 55.8m
+  extracted 111/660 study=7488111973 target=Medial Meniscus    call=  5.2s ETA= 55.6m
+  extracted 112/660 study=7488111973 target=Lateral Meniscus   call=  6.7s ETA= 55.6m
+  extracted 113/660 study=7488111973 target=Medial OA          call=  5.2s ETA= 55.4m
+  extracted 114/660 study=7488111973 target=Lateral OA         call=  5.1s ETA= 55.2m
+  extracted 115/660 study=7488111973 target=PF OA              call=  5.3s ETA= 55.1m
+  extracted 116/660 study=7488111973 target=Effusion           call=  5.1s ETA= 54.9m
+  extracted 117/660 study=7488111973 target=Synovitis          call=  5.2s ETA= 54.7m
+  extracted 118/660 study=7488111973 target=Baker's            call=  5.2s ETA= 54.6m
+  extracted 119/660 study=7488111973 target=Contusion          call=  5.2s ETA= 54.4m
+  extracted 120/660 study=7488111973 target=Fracture           call=  6.0s ETA= 54.3m
+  extracted 121/660 study=3432197492 target=ACL                call= 10.7s ETA= 54.5m
+  extracted 122/660 study=3432197492 target=MCL                call=  6.7s ETA= 54.5m
+  extracted 123/660 study=3432197492 target=Medial Meniscus    call= 13.8s ETA= 54.9m
+  extracted 124/660 study=3432197492 target=Lateral Meniscus   call= 13.8s ETA= 55.4m
+  extracted 125/660 study=3432197492 target=Medial OA          call=  9.7s ETA= 55.5m
+  extracted 126/660 study=3432197492 target=Lateral OA         call= 10.9s ETA= 55.8m
+  extracted 127/660 study=3432197492 target=PF OA              call= 11.3s ETA= 56.0m
+  extracted 128/660 study=3432197492 target=Effusion           call=  6.8s ETA= 55.9m
+  extracted 129/660 study=3432197492 target=Synovitis          call=  6.9s ETA= 55.9m
+  extracted 130/660 study=3432197492 target=Baker's            call=  9.8s ETA= 56.0m
+  extracted 131/660 study=3432197492 target=Contusion          call=  6.9s ETA= 55.9m
+  extracted 132/660 study=3432197492 target=Fracture           call= 11.3s ETA= 56.2m
+  extracted 133/660 study=0529174803 target=ACL                call=  7.1s ETA= 56.1m
+  extracted 134/660 study=0529174803 target=MCL                call=  7.1s ETA= 56.0m
+  extracted 135/660 study=0529174803 target=Medial Meniscus    call=  5.2s ETA= 55.9m
+  extracted 136/660 study=0529174803 target=Lateral Meniscus   call=  5.2s ETA= 55.7m
+  extracted 137/660 study=0529174803 target=Medial OA          call=  5.2s ETA= 55.5m
+  extracted 138/660 study=0529174803 target=Lateral OA         call=  5.2s ETA= 55.3m
+  extracted 139/660 study=0529174803 target=PF OA              call=  5.6s ETA= 55.2m
+  extracted 140/660 study=0529174803 target=Effusion           call=  6.0s ETA= 55.0m
+  extracted 141/660 study=0529174803 target=Synovitis          call=  5.2s ETA= 54.9m
+  extracted 142/660 study=0529174803 target=Baker's            call=  5.2s ETA= 54.7m
+  extracted 143/660 study=0529174803 target=Contusion          call=  6.5s ETA= 54.6m
+  extracted 144/660 study=0529174803 target=Fracture           call=  7.8s ETA= 54.6m
+  extracted 145/660 study=3322874891 target=ACL                call=  6.0s ETA= 54.4m
+  extracted 146/660 study=3322874891 target=MCL                call=  5.1s ETA= 54.3m
+  extracted 147/660 study=3322874891 target=Medial Meniscus    call=  5.1s ETA= 54.1m
+  extracted 148/660 study=3322874891 target=Lateral Meniscus   call=  6.0s ETA= 54.0m
+  extracted 149/660 study=3322874891 target=Medial OA          call=  5.1s ETA= 53.8m
+  extracted 150/660 study=3322874891 target=Lateral OA         call=  5.1s ETA= 53.6m
+  extracted 151/660 study=3322874891 target=PF OA              call=  5.1s ETA= 53.4m
+  extracted 152/660 study=3322874891 target=Effusion           call=  5.6s ETA= 53.3m
+  extracted 153/660 study=3322874891 target=Synovitis          call=  5.1s ETA= 53.1m
+  extracted 154/660 study=3322874891 target=Baker's            call=  5.1s ETA= 53.0m
+  extracted 155/660 study=3322874891 target=Contusion          call=  6.1s ETA= 52.9m
+  extracted 156/660 study=3322874891 target=Fracture           call=  8.3s ETA= 52.9m
+  extracted 157/660 study=7729200903 target=ACL                call=  5.2s ETA= 52.7m
+  extracted 158/660 study=7729200903 target=MCL                call=  5.2s ETA= 52.5m
+  extracted 159/660 study=7729200903 target=Medial Meniscus    call=  5.6s ETA= 52.4m
+  extracted 160/660 study=7729200903 target=Lateral Meniscus   call=  5.6s ETA= 52.3m
+  extracted 161/660 study=7729200903 target=Medial OA          call=  5.5s ETA= 52.1m
+  extracted 162/660 study=7729200903 target=Lateral OA         call=  9.7s ETA= 52.2m
+  extracted 163/660 study=7729200903 target=PF OA              call= 12.2s ETA= 52.4m
+  extracted 164/660 study=7729200903 target=Effusion           call=  5.5s ETA= 52.2m
+  extracted 165/660 study=7729200903 target=Synovitis          call=  6.1s ETA= 52.1m
+  extracted 166/660 study=7729200903 target=Baker's            call=  7.8s ETA= 52.1m
+  extracted 167/660 study=7729200903 target=Contusion          call=  5.3s ETA= 51.9m
+  extracted 168/660 study=7729200903 target=Fracture           call=  5.3s ETA= 51.8m
+  extracted 169/660 study=6120253309 target=ACL                call=  5.6s ETA= 51.6m
+  extracted 170/660 study=6120253309 target=MCL                call=  5.6s ETA= 51.5m
+  extracted 171/660 study=6120253309 target=Medial Meniscus    call=  8.5s ETA= 51.5m
+  extracted 172/660 study=6120253309 target=Lateral Meniscus   call=  7.7s ETA= 51.4m
+  extracted 173/660 study=6120253309 target=Medial OA          call=  8.5s ETA= 51.4m
+  extracted 174/660 study=6120253309 target=Lateral OA         call=  5.6s ETA= 51.3m
+  extracted 175/660 study=6120253309 target=PF OA              call=  5.9s ETA= 51.2m
+  extracted 176/660 study=6120253309 target=Effusion           call=  6.3s ETA= 51.1m
+  extracted 177/660 study=6120253309 target=Synovitis          call=  6.9s ETA= 51.0m
+  extracted 178/660 study=6120253309 target=Baker's            call=  6.4s ETA= 50.9m
+  extracted 179/660 study=6120253309 target=Contusion          call=  5.6s ETA= 50.8m
+  extracted 180/660 study=6120253309 target=Fracture           call=  5.6s ETA= 50.6m
+  extracted 181/660 study=8921482192 target=ACL                call=  5.1s ETA= 50.5m
+  extracted 182/660 study=8921482192 target=MCL                call=  5.0s ETA= 50.3m
+  extracted 183/660 study=8921482192 target=Medial Meniscus    call=  5.6s ETA= 50.2m
+  extracted 184/660 study=8921482192 target=Lateral Meniscus   call=  5.6s ETA= 50.0m
+  extracted 185/660 study=8921482192 target=Medial OA          call=  5.0s ETA= 49.9m
+  extracted 186/660 study=8921482192 target=Lateral OA         call=  5.0s ETA= 49.7m
+  extracted 187/660 study=8921482192 target=PF OA              call=  5.1s ETA= 49.5m
+  extracted 188/660 study=8921482192 target=Effusion           call=  5.3s ETA= 49.4m
+  extracted 189/660 study=8921482192 target=Synovitis          call=  5.0s ETA= 49.2m
+  extracted 190/660 study=8921482192 target=Baker's            call=  5.4s ETA= 49.1m
+  extracted 191/660 study=8921482192 target=Contusion          call=  5.0s ETA= 48.9m
+  extracted 192/660 study=8921482192 target=Fracture           call=  5.5s ETA= 48.8m
+  extracted 193/660 study=7791102711 target=ACL                call=  7.9s ETA= 48.8m
+  extracted 194/660 study=7791102711 target=MCL                call=  5.1s ETA= 48.6m
+  extracted 195/660 study=7791102711 target=Medial Meniscus    call=  5.2s ETA= 48.5m
+  extracted 196/660 study=7791102711 target=Lateral Meniscus   call=  5.1s ETA= 48.3m
+  extracted 197/660 study=7791102711 target=Medial OA          call=  6.5s ETA= 48.2m
+  extracted 198/660 study=7791102711 target=Lateral OA         call=  5.1s ETA= 48.1m
+  extracted 199/660 study=7791102711 target=PF OA              call=  5.2s ETA= 47.9m
+  extracted 200/660 study=7791102711 target=Effusion           call=  6.9s ETA= 47.9m
+  extracted 201/660 study=7791102711 target=Synovitis          call=  5.2s ETA= 47.7m
+  extracted 202/660 study=7791102711 target=Baker's            call=  5.1s ETA= 47.6m
+  extracted 203/660 study=7791102711 target=Contusion          call=  7.6s ETA= 47.5m
+  extracted 204/660 study=7791102711 target=Fracture           call=  5.1s ETA= 47.4m
+  extracted 205/660 study=8036573378 target=ACL                call=  7.8s ETA= 47.3m
+  extracted 206/660 study=8036573378 target=MCL                call=  7.0s ETA= 47.2m
+  extracted 207/660 study=8036573378 target=Medial Meniscus    call=  5.6s ETA= 47.1m
+  extracted 208/660 study=8036573378 target=Lateral Meniscus   call=  6.4s ETA= 47.0m
+  extracted 209/660 study=8036573378 target=Medial OA          call=  5.5s ETA= 46.9m
+  extracted 210/660 study=8036573378 target=Lateral OA         call=  5.5s ETA= 46.8m
+  extracted 211/660 study=8036573378 target=PF OA              call=  5.7s ETA= 46.6m
+  extracted 212/660 study=8036573378 target=Effusion           call=  5.3s ETA= 46.5m
+  extracted 213/660 study=8036573378 target=Synovitis          call=  5.6s ETA= 46.4m
+  extracted 214/660 study=8036573378 target=Baker's            call=  5.2s ETA= 46.2m
+  extracted 215/660 study=8036573378 target=Contusion          call=  5.5s ETA= 46.1m
+  extracted 216/660 study=8036573378 target=Fracture           call=  6.3s ETA= 46.0m
+  extracted 217/660 study=4436903404 target=ACL                call=  6.3s ETA= 45.9m
+  extracted 218/660 study=4436903404 target=MCL                call=  7.1s ETA= 45.8m
+  extracted 219/660 study=4436903404 target=Medial Meniscus    call=  6.3s ETA= 45.7m
+  extracted 220/660 study=4436903404 target=Lateral Meniscus   call= 10.1s ETA= 45.8m
+  extracted 221/660 study=4436903404 target=Medial OA          call=  6.3s ETA= 45.7m
+  extracted 222/660 study=4436903404 target=Lateral OA         call=  6.2s ETA= 45.5m
+  extracted 223/660 study=4436903404 target=PF OA              call=  8.6s ETA= 45.5m
+  extracted 224/660 study=4436903404 target=Effusion           call=  6.6s ETA= 45.4m
+  extracted 225/660 study=4436903404 target=Synovitis          call=  6.2s ETA= 45.3m
+  extracted 226/660 study=4436903404 target=Baker's            call=  7.4s ETA= 45.3m
+  extracted 227/660 study=4436903404 target=Contusion          call=  6.9s ETA= 45.2m
+  extracted 228/660 study=4436903404 target=Fracture           call=  6.2s ETA= 45.1m
+  extracted 229/660 study=6570466645 target=ACL                call=  8.8s ETA= 45.0m
+  extracted 230/660 study=6570466645 target=MCL                call=  8.7s ETA= 45.0m
+  extracted 231/660 study=6570466645 target=Medial Meniscus    call=  8.8s ETA= 45.0m
+  extracted 232/660 study=6570466645 target=Lateral Meniscus   call=  8.8s ETA= 45.0m
+  extracted 233/660 study=6570466645 target=Medial OA          call=  8.7s ETA= 44.9m
+  extracted 234/660 study=6570466645 target=Lateral OA         call=  8.8s ETA= 44.9m
+  extracted 235/660 study=6570466645 target=PF OA              call=  8.8s ETA= 44.9m
+  extracted 236/660 study=6570466645 target=Effusion           call= 12.7s ETA= 44.9m
+  extracted 237/660 study=6570466645 target=Synovitis          call=  8.8s ETA= 44.9m
+  extracted 238/660 study=6570466645 target=Baker's            call= 16.3s ETA= 45.1m
+  extracted 239/660 study=6570466645 target=Contusion          call=  8.7s ETA= 45.1m
+  extracted 240/660 study=6570466645 target=Fracture           call=  8.7s ETA= 45.0m
+  extracted 241/660 study=3448882465 target=ACL                call=  5.7s ETA= 44.9m
+  extracted 242/660 study=3448882465 target=MCL                call=  5.0s ETA= 44.7m
+  extracted 243/660 study=3448882465 target=Medial Meniscus    call=  5.0s ETA= 44.6m
+  extracted 244/660 study=3448882465 target=Lateral Meniscus   call=  5.0s ETA= 44.5m
+  extracted 245/660 study=3448882465 target=Medial OA          call=  5.0s ETA= 44.3m
+  extracted 246/660 study=3448882465 target=Lateral OA         call=  5.0s ETA= 44.2m
+  extracted 247/660 study=3448882465 target=PF OA              call=  5.1s ETA= 44.0m
+  extracted 248/660 study=3448882465 target=Effusion           call=  5.6s ETA= 43.9m
+  extracted 249/660 study=3448882465 target=Synovitis          call=  5.0s ETA= 43.7m
+  extracted 250/660 study=3448882465 target=Baker's            call=  5.0s ETA= 43.6m
+  extracted 251/660 study=3448882465 target=Contusion          call=  7.4s ETA= 43.5m
+  extracted 252/660 study=3448882465 target=Fracture           call=  5.0s ETA= 43.4m
+  extracted 253/660 study=6100134924 target=ACL                call=  4.9s ETA= 43.2m
+  extracted 254/660 study=6100134924 target=MCL                call=  4.9s ETA= 43.1m
+  extracted 255/660 study=6100134924 target=Medial Meniscus    call=  5.5s ETA= 43.0m
+  extracted 256/660 study=6100134924 target=Lateral Meniscus   call=  5.0s ETA= 42.8m
+  extracted 257/660 study=6100134924 target=Medial OA          call=  5.0s ETA= 42.7m
+  extracted 258/660 study=6100134924 target=Lateral OA         call=  5.0s ETA= 42.5m
+  extracted 259/660 study=6100134924 target=PF OA              call=  5.1s ETA= 42.4m
+  extracted 260/660 study=6100134924 target=Effusion           call=  5.3s ETA= 42.3m
+  extracted 261/660 study=6100134924 target=Synovitis          call=  5.1s ETA= 42.1m
+  extracted 262/660 study=6100134924 target=Baker's            call=  5.4s ETA= 42.0m
+  extracted 263/660 study=6100134924 target=Contusion          call=  5.0s ETA= 41.9m
+  extracted 264/660 study=6100134924 target=Fracture           call=  5.0s ETA= 41.7m
+  extracted 265/660 study=1908452608 target=ACL                call=  5.2s ETA= 41.6m
+  extracted 266/660 study=1908452608 target=MCL                call=  5.2s ETA= 41.5m
+  extracted 267/660 study=1908452608 target=Medial Meniscus    call=  7.0s ETA= 41.4m
+  extracted 268/660 study=1908452608 target=Lateral Meniscus   call=  5.1s ETA= 41.2m
+  extracted 269/660 study=1908452608 target=Medial OA          call=  5.1s ETA= 41.1m
+  extracted 270/660 study=1908452608 target=Lateral OA         call=  5.1s ETA= 41.0m
+  extracted 271/660 study=1908452608 target=PF OA              call=  5.2s ETA= 40.8m
+  extracted 272/660 study=1908452608 target=Effusion           call=  5.1s ETA= 40.7m
+  extracted 273/660 study=1908452608 target=Synovitis          call=  5.2s ETA= 40.6m
+  extracted 274/660 study=1908452608 target=Baker's            call=  7.5s ETA= 40.5m
+  extracted 275/660 study=1908452608 target=Contusion          call=  5.1s ETA= 40.4m
+  extracted 276/660 study=1908452608 target=Fracture           call=  5.1s ETA= 40.2m
+  extracted 277/660 study=2853419550 target=ACL                call=  5.5s ETA= 40.1m
+  extracted 278/660 study=2853419550 target=MCL                call=  5.0s ETA= 40.0m
+  extracted 279/660 study=2853419550 target=Medial Meniscus    call=  5.1s ETA= 39.8m
+  extracted 280/660 study=2853419550 target=Lateral Meniscus   call=  5.1s ETA= 39.7m
+  extracted 281/660 study=2853419550 target=Medial OA          call=  5.1s ETA= 39.6m
+  extracted 282/660 study=2853419550 target=Lateral OA         call=  5.1s ETA= 39.4m
+  extracted 283/660 study=2853419550 target=PF OA              call=  5.2s ETA= 39.3m
+  extracted 284/660 study=2853419550 target=Effusion           call=  5.0s ETA= 39.2m
+  extracted 285/660 study=2853419550 target=Synovitis          call=  5.0s ETA= 39.1m
+  extracted 286/660 study=2853419550 target=Baker's            call=  5.0s ETA= 38.9m
+  extracted 287/660 study=2853419550 target=Contusion          call=  6.6s ETA= 38.8m
+  extracted 288/660 study=2853419550 target=Fracture           call=  5.0s ETA= 38.7m
+  extracted 289/660 study=4383079911 target=ACL                call=  5.2s ETA= 38.6m
+  extracted 290/660 study=4383079911 target=MCL                call=  5.1s ETA= 38.4m
+  extracted 291/660 study=4383079911 target=Medial Meniscus    call=  7.0s ETA= 38.3m
+  extracted 292/660 study=4383079911 target=Lateral Meniscus   call=  7.7s ETA= 38.3m
+  extracted 293/660 study=4383079911 target=Medial OA          call=  5.2s ETA= 38.1m
+  extracted 294/660 study=4383079911 target=Lateral OA         call=  5.2s ETA= 38.0m
+  extracted 295/660 study=4383079911 target=PF OA              call=  5.2s ETA= 37.9m
+  extracted 296/660 study=4383079911 target=Effusion           call=  7.0s ETA= 37.8m
+  extracted 297/660 study=4383079911 target=Synovitis          call=  5.2s ETA= 37.7m
+  extracted 298/660 study=4383079911 target=Baker's            call=  5.2s ETA= 37.6m
+  extracted 299/660 study=4383079911 target=Contusion          call=  7.8s ETA= 37.5m
+  extracted 300/660 study=4383079911 target=Fracture           call=  5.2s ETA= 37.4m
+  extracted 301/660 study=5955725945 target=ACL                call=  9.9s ETA= 37.3m
+  extracted 302/660 study=5955725945 target=MCL                call=  6.4s ETA= 37.2m
+  extracted 303/660 study=5955725945 target=Medial Meniscus    call=  6.6s ETA= 37.1m
+  extracted 304/660 study=5955725945 target=Lateral Meniscus   call= 19.2s ETA= 37.3m
+  extracted 305/660 study=5955725945 target=Medial OA          call=  6.5s ETA= 37.2m
+  extracted 306/660 study=5955725945 target=Lateral OA         call=  6.5s ETA= 37.1m
+  extracted 307/660 study=5955725945 target=PF OA              call=  6.7s ETA= 37.0m
+  extracted 308/660 study=5955725945 target=Effusion           call= 13.3s ETA= 37.0m
+  extracted 309/660 study=5955725945 target=Synovitis          call=  6.5s ETA= 36.9m
+  extracted 310/660 study=5955725945 target=Baker's            call=  6.4s ETA= 36.8m
+  extracted 311/660 study=5955725945 target=Contusion          call=  6.4s ETA= 36.7m
+  extracted 312/660 study=5955725945 target=Fracture           call=  6.4s ETA= 36.6m
+  extracted 313/660 study=4167212742 target=ACL                call=  8.2s ETA= 36.5m
+  extracted 314/660 study=4167212742 target=MCL                call=  7.9s ETA= 36.5m
+  extracted 315/660 study=4167212742 target=Medial Meniscus    call=  8.1s ETA= 36.4m
+  extracted 316/660 study=4167212742 target=Lateral Meniscus   call=  5.9s ETA= 36.3m
+  extracted 317/660 study=4167212742 target=Medial OA          call=  5.8s ETA= 36.2m
+  extracted 318/660 study=4167212742 target=Lateral OA         call=  5.9s ETA= 36.0m
+  extracted 319/660 study=4167212742 target=PF OA              call=  6.0s ETA= 35.9m
+  extracted 320/660 study=4167212742 target=Effusion           call=  7.8s ETA= 35.9m
+  extracted 321/660 study=4167212742 target=Synovitis          call=  7.2s ETA= 35.8m
+  extracted 322/660 study=4167212742 target=Baker's            call=  5.9s ETA= 35.6m
+  extracted 323/660 study=4167212742 target=Contusion          call=  8.1s ETA= 35.6m
+  extracted 324/660 study=4167212742 target=Fracture           call=  6.0s ETA= 35.5m
+  extracted 325/660 study=1713143683 target=ACL                call= 10.8s ETA= 35.4m
+  extracted 326/660 study=1713143683 target=MCL                call=  6.1s ETA= 35.3m
+  extracted 327/660 study=1713143683 target=Medial Meniscus    call=  6.1s ETA= 35.2m
+  extracted 328/660 study=1713143683 target=Lateral Meniscus   call=  8.1s ETA= 35.1m
+  extracted 329/660 study=1713143683 target=Medial OA          call=  6.0s ETA= 35.0m
+  extracted 330/660 study=1713143683 target=Lateral OA         call=  6.0s ETA= 34.9m
+  extracted 331/660 study=1713143683 target=PF OA              call=  6.2s ETA= 34.8m
+  extracted 332/660 study=1713143683 target=Effusion           call=  8.2s ETA= 34.7m
+  extracted 333/660 study=1713143683 target=Synovitis          call=  6.1s ETA= 34.6m
+  extracted 334/660 study=1713143683 target=Baker's            call=  8.3s ETA= 34.5m
+  extracted 335/660 study=1713143683 target=Contusion          call=  6.1s ETA= 34.4m
+  extracted 336/660 study=1713143683 target=Fracture           call=  6.1s ETA= 34.3m
+  extracted 337/660 study=9518305500 target=ACL                call=  5.5s ETA= 34.2m
+  extracted 338/660 study=9518305500 target=MCL                call=  5.2s ETA= 34.1m
+  extracted 339/660 study=9518305500 target=Medial Meniscus    call=  5.6s ETA= 34.0m
+  extracted 340/660 study=9518305500 target=Lateral Meniscus   call=  7.7s ETA= 33.9m
+  extracted 341/660 study=9518305500 target=Medial OA          call=  5.6s ETA= 33.8m
+  extracted 342/660 study=9518305500 target=Lateral OA         call=  5.6s ETA= 33.6m
+  extracted 343/660 study=9518305500 target=PF OA              call=  5.8s ETA= 33.5m
+  extracted 344/660 study=9518305500 target=Effusion           call=  6.3s ETA= 33.4m
+  extracted 345/660 study=9518305500 target=Synovitis          call=  7.1s ETA= 33.3m
+  extracted 346/660 study=9518305500 target=Baker's            call=  6.4s ETA= 33.2m
+  extracted 347/660 study=9518305500 target=Contusion          call=  5.6s ETA= 33.1m
+  extracted 348/660 study=9518305500 target=Fracture           call=  6.5s ETA= 33.0m
+  extracted 349/660 study=8614837125 target=ACL                call=  6.8s ETA= 32.9m
+  extracted 350/660 study=8614837125 target=MCL                call=  7.9s ETA= 32.8m
+  extracted 351/660 study=8614837125 target=Medial Meniscus    call=  7.5s ETA= 32.7m
+  extracted 352/660 study=8614837125 target=Lateral Meniscus   call=  5.7s ETA= 32.6m
+  extracted 353/660 study=8614837125 target=Medial OA          call=  5.6s ETA= 32.5m
+  extracted 354/660 study=8614837125 target=Lateral OA         call=  5.6s ETA= 32.4m
+  extracted 355/660 study=8614837125 target=PF OA              call=  5.9s ETA= 32.3m
+  extracted 356/660 study=8614837125 target=Effusion           call=  6.5s ETA= 32.2m
+  extracted 357/660 study=8614837125 target=Synovitis          call=  5.6s ETA= 32.1m
+  extracted 358/660 study=8614837125 target=Baker's            call=  5.6s ETA= 31.9m
+  extracted 359/660 study=8614837125 target=Contusion          call=  6.6s ETA= 31.8m
+  extracted 360/660 study=8614837125 target=Fracture           call=  5.5s ETA= 31.7m
+  extracted 361/660 study=0568677187 target=ACL                call=  5.2s ETA= 31.6m
+  extracted 362/660 study=0568677187 target=MCL                call=  5.1s ETA= 31.5m
+  extracted 363/660 study=0568677187 target=Medial Meniscus    call=  8.5s ETA= 31.4m
+  extracted 364/660 study=0568677187 target=Lateral Meniscus   call=  5.3s ETA= 31.3m
+  extracted 365/660 study=0568677187 target=Medial OA          call=  5.2s ETA= 31.2m
+  extracted 366/660 study=0568677187 target=Lateral OA         call=  5.2s ETA= 31.0m
+  extracted 367/660 study=0568677187 target=PF OA              call=  5.2s ETA= 30.9m
+  extracted 368/660 study=0568677187 target=Effusion           call=  7.2s ETA= 30.8m
+  extracted 369/660 study=0568677187 target=Synovitis          call=  5.2s ETA= 30.7m
+  extracted 370/660 study=0568677187 target=Baker's            call=  5.1s ETA= 30.6m
+  extracted 371/660 study=0568677187 target=Contusion          call=  5.2s ETA= 30.5m
+  extracted 372/660 study=0568677187 target=Fracture           call=  6.1s ETA= 30.3m
+  extracted 373/660 study=9348424274 target=ACL                call=  5.3s ETA= 30.2m
+  extracted 374/660 study=9348424274 target=MCL                call=  7.8s ETA= 30.1m
+  extracted 375/660 study=9348424274 target=Medial Meniscus    call=  5.2s ETA= 30.0m
+  extracted 376/660 study=9348424274 target=Lateral Meniscus   call=  5.2s ETA= 29.9m
+  extracted 377/660 study=9348424274 target=Medial OA          call=  7.1s ETA= 29.8m
+  extracted 378/660 study=9348424274 target=Lateral OA         call=  7.1s ETA= 29.7m
+  extracted 379/660 study=9348424274 target=PF OA              call=  5.5s ETA= 29.6m
+  extracted 380/660 study=9348424274 target=Effusion           call=  5.8s ETA= 29.5m
+  extracted 381/660 study=9348424274 target=Synovitis          call=  5.2s ETA= 29.4m
+  extracted 382/660 study=9348424274 target=Baker's            call=  6.6s ETA= 29.3m
+  extracted 383/660 study=9348424274 target=Contusion          call=  6.5s ETA= 29.2m
+  extracted 384/660 study=9348424274 target=Fracture           call=  6.4s ETA= 29.1m
+  extracted 385/660 study=4734101132 target=ACL                call=  6.8s ETA= 29.0m
+  extracted 386/660 study=4734101132 target=MCL                call=  6.9s ETA= 28.9m
+  extracted 387/660 study=4734101132 target=Medial Meniscus    call=  5.6s ETA= 28.7m
+  extracted 388/660 study=4734101132 target=Lateral Meniscus   call=  5.7s ETA= 28.6m
+  extracted 389/660 study=4734101132 target=Medial OA          call=  5.5s ETA= 28.5m
+  extracted 390/660 study=4734101132 target=Lateral OA         call=  5.5s ETA= 28.4m
+  extracted 391/660 study=4734101132 target=PF OA              call=  7.2s ETA= 28.3m
+  extracted 392/660 study=4734101132 target=Effusion           call=  5.8s ETA= 28.2m
+  extracted 393/660 study=4734101132 target=Synovitis          call=  5.5s ETA= 28.1m
+  extracted 394/660 study=4734101132 target=Baker's            call=  5.2s ETA= 28.0m
+  extracted 395/660 study=4734101132 target=Contusion          call=  5.9s ETA= 27.9m
+  extracted 396/660 study=4734101132 target=Fracture           call=  5.2s ETA= 27.7m
+  extracted 397/660 study=2670080450 target=ACL                call=  5.3s ETA= 27.6m
+  extracted 398/660 study=2670080450 target=MCL                call=  5.2s ETA= 27.5m
+  extracted 399/660 study=2670080450 target=Medial Meniscus    call=  5.3s ETA= 27.4m
+  extracted 400/660 study=2670080450 target=Lateral Meniscus   call=  5.2s ETA= 27.3m
+  extracted 401/660 study=2670080450 target=Medial OA          call=  7.4s ETA= 27.2m
+  extracted 402/660 study=2670080450 target=Lateral OA         call=  7.9s ETA= 27.1m
+  extracted 403/660 study=2670080450 target=PF OA              call=  5.5s ETA= 27.0m
+  extracted 404/660 study=2670080450 target=Effusion           call=  5.9s ETA= 26.9m
+  extracted 405/660 study=2670080450 target=Synovitis          call=  5.7s ETA= 26.8m
+  extracted 406/660 study=2670080450 target=Baker's            call=  5.2s ETA= 26.6m
+  extracted 407/660 study=2670080450 target=Contusion          call=  5.3s ETA= 26.5m
+  extracted 408/660 study=2670080450 target=Fracture           call=  5.2s ETA= 26.4m
+  extracted 409/660 study=3135447363 target=ACL                call=  5.0s ETA= 26.3m
+  extracted 410/660 study=3135447363 target=MCL                call=  4.9s ETA= 26.2m
+  extracted 411/660 study=3135447363 target=Medial Meniscus    call=  5.0s ETA= 26.1m
+  extracted 412/660 study=3135447363 target=Lateral Meniscus   call=  5.0s ETA= 25.9m
+  extracted 413/660 study=3135447363 target=Medial OA          call=  5.4s ETA= 25.8m
+  extracted 414/660 study=3135447363 target=Lateral OA         call=  5.0s ETA= 25.7m
+  extracted 415/660 study=3135447363 target=PF OA              call=  5.1s ETA= 25.6m
+  extracted 416/660 study=3135447363 target=Effusion           call=  5.4s ETA= 25.5m
+  extracted 417/660 study=3135447363 target=Synovitis          call=  5.5s ETA= 25.4m
+  extracted 418/660 study=3135447363 target=Baker's            call=  5.4s ETA= 25.3m
+  extracted 419/660 study=3135447363 target=Contusion          call=  4.9s ETA= 25.1m
+  extracted 420/660 study=3135447363 target=Fracture           call=  5.0s ETA= 25.0m
+  extracted 421/660 study=4766826710 target=ACL                call= 13.9s ETA= 25.0m
+  extracted 422/660 study=4766826710 target=MCL                call=  5.6s ETA= 24.9m
+  extracted 423/660 study=4766826710 target=Medial Meniscus    call=  5.7s ETA= 24.8m
+  extracted 424/660 study=4766826710 target=Lateral Meniscus   call=  5.7s ETA= 24.7m
+  extracted 425/660 study=4766826710 target=Medial OA          call=  5.7s ETA= 24.6m
+  extracted 426/660 study=4766826710 target=Lateral OA         call=  5.7s ETA= 24.4m
+  extracted 427/660 study=4766826710 target=PF OA              call=  5.9s ETA= 24.3m
+  extracted 428/660 study=4766826710 target=Effusion           call=  6.1s ETA= 24.2m
+  extracted 429/660 study=4766826710 target=Synovitis          call=  5.6s ETA= 24.1m
+  extracted 430/660 study=4766826710 target=Baker's            call=  5.6s ETA= 24.0m
+  extracted 431/660 study=4766826710 target=Contusion          call=  5.7s ETA= 23.9m
+  extracted 432/660 study=4766826710 target=Fracture           call=  8.7s ETA= 23.8m
+  extracted 433/660 study=3216559395 target=ACL                call=  5.7s ETA= 23.7m
+  extracted 434/660 study=3216559395 target=MCL                call=  7.2s ETA= 23.6m
+  extracted 435/660 study=3216559395 target=Medial Meniscus    call=  6.7s ETA= 23.5m
+  extracted 436/660 study=3216559395 target=Lateral Meniscus   call=  5.8s ETA= 23.4m
+  extracted 437/660 study=3216559395 target=Medial OA          call=  5.3s ETA= 23.3m
+  extracted 438/660 study=3216559395 target=Lateral OA         call=  5.2s ETA= 23.2m
+  extracted 439/660 study=3216559395 target=PF OA              call=  5.7s ETA= 23.1m
+  extracted 440/660 study=3216559395 target=Effusion           call=  5.6s ETA= 23.0m
+  extracted 441/660 study=3216559395 target=Synovitis          call=  5.2s ETA= 22.8m
+  extracted 442/660 study=3216559395 target=Baker's            call=  5.2s ETA= 22.7m
+  extracted 443/660 study=3216559395 target=Contusion          call=  6.2s ETA= 22.6m
+  extracted 444/660 study=3216559395 target=Fracture           call=  6.8s ETA= 22.5m
+  extracted 445/660 study=9868367236 target=ACL                call=  6.4s ETA= 22.4m
+  extracted 446/660 study=9868367236 target=MCL                call=  8.5s ETA= 22.3m
+  extracted 447/660 study=9868367236 target=Medial Meniscus    call=  5.5s ETA= 22.2m
+  extracted 448/660 study=9868367236 target=Lateral Meniscus   call=  5.5s ETA= 22.1m
+  extracted 449/660 study=9868367236 target=Medial OA          call=  6.6s ETA= 22.0m
+  extracted 450/660 study=9868367236 target=Lateral OA         call=  5.2s ETA= 21.9m
+  extracted 451/660 study=9868367236 target=PF OA              call=  6.4s ETA= 21.8m
+  extracted 452/660 study=9868367236 target=Effusion           call=  5.2s ETA= 21.7m
+  extracted 453/660 study=9868367236 target=Synovitis          call=  5.2s ETA= 21.6m
+  extracted 454/660 study=9868367236 target=Baker's            call=  5.9s ETA= 21.5m
+  extracted 455/660 study=9868367236 target=Contusion          call=  5.9s ETA= 21.4m
+  extracted 456/660 study=9868367236 target=Fracture           call= 10.9s ETA= 21.3m
+  extracted 457/660 study=7683272910 target=ACL                call=  8.7s ETA= 21.2m
+  extracted 458/660 study=7683272910 target=MCL                call=  8.7s ETA= 21.1m
+  extracted 459/660 study=7683272910 target=Medial Meniscus    call= 11.7s ETA= 21.0m
+  extracted 460/660 study=7683272910 target=Lateral Meniscus   call= 11.9s ETA= 21.0m
+  extracted 461/660 study=7683272910 target=Medial OA          call= 10.1s ETA= 20.9m
+  extracted 462/660 study=7683272910 target=Lateral OA         call=  5.7s ETA= 20.8m
+  extracted 463/660 study=7683272910 target=PF OA              call=  5.9s ETA= 20.7m
+  extracted 464/660 study=7683272910 target=Effusion           call=  6.9s ETA= 20.6m
+  extracted 465/660 study=7683272910 target=Synovitis          call=  5.8s ETA= 20.5m
+  extracted 466/660 study=7683272910 target=Baker's            call=  7.7s ETA= 20.4m
+  extracted 467/660 study=7683272910 target=Contusion          call=  5.7s ETA= 20.3m
+  extracted 468/660 study=7683272910 target=Fracture           call=  5.7s ETA= 20.2m
+  extracted 469/660 study=1472465039 target=ACL                call=  8.1s ETA= 20.1m
+  extracted 470/660 study=1472465039 target=MCL                call=  7.2s ETA= 20.0m
+  extracted 471/660 study=1472465039 target=Medial Meniscus    call=  8.9s ETA= 19.9m
+  extracted 472/660 study=1472465039 target=Lateral Meniscus   call=  9.9s ETA= 19.8m
+  extracted 473/660 study=1472465039 target=Medial OA          call=  6.4s ETA= 19.7m
+  extracted 474/660 study=1472465039 target=Lateral OA         call=  6.4s ETA= 19.6m
+  extracted 475/660 study=1472465039 target=PF OA              call=  6.6s ETA= 19.5m
+  extracted 476/660 study=1472465039 target=Effusion           call=  6.8s ETA= 19.4m
+  extracted 477/660 study=1472465039 target=Synovitis          call=  6.5s ETA= 19.3m
+  extracted 478/660 study=1472465039 target=Baker's            call=  6.9s ETA= 19.2m
+  extracted 479/660 study=1472465039 target=Contusion          call=  6.4s ETA= 19.1m
+  extracted 480/660 study=1472465039 target=Fracture           call= 13.6s ETA= 19.0m
+  extracted 481/660 study=1063784327 target=ACL                call=  5.8s ETA= 18.9m
+  extracted 482/660 study=1063784327 target=MCL                call=  5.7s ETA= 18.8m
+  extracted 483/660 study=1063784327 target=Medial Meniscus    call=  7.9s ETA= 18.7m
+  extracted 484/660 study=1063784327 target=Lateral Meniscus   call=  5.8s ETA= 18.6m
+  extracted 485/660 study=1063784327 target=Medial OA          call=  8.5s ETA= 18.5m
+  extracted 486/660 study=1063784327 target=Lateral OA         call=  5.7s ETA= 18.4m
+  extracted 487/660 study=1063784327 target=PF OA              call= 10.8s ETA= 18.3m
+  extracted 488/660 study=1063784327 target=Effusion           call=  6.8s ETA= 18.2m
+  extracted 489/660 study=1063784327 target=Synovitis          call=  6.9s ETA= 18.1m
+  extracted 490/660 study=1063784327 target=Baker's            call=  8.0s ETA= 18.0m
+  extracted 491/660 study=1063784327 target=Contusion          call=  5.7s ETA= 17.9m
+  extracted 492/660 study=1063784327 target=Fracture           call=  5.7s ETA= 17.8m
+  extracted 493/660 study=7453941774 target=ACL                call=  8.1s ETA= 17.7m
+  extracted 494/660 study=7453941774 target=MCL                call=  6.0s ETA= 17.6m
+  extracted 495/660 study=7453941774 target=Medial Meniscus    call=  6.7s ETA= 17.5m
+  extracted 496/660 study=7453941774 target=Lateral Meniscus   call=  6.5s ETA= 17.4m
+  extracted 497/660 study=7453941774 target=Medial OA          call=  5.1s ETA= 17.3m
+  extracted 498/660 study=7453941774 target=Lateral OA         call=  5.1s ETA= 17.2m
+  extracted 499/660 study=7453941774 target=PF OA              call=  5.1s ETA= 17.0m
+  extracted 500/660 study=7453941774 target=Effusion           call=  7.1s ETA= 16.9m
+  extracted 501/660 study=7453941774 target=Synovitis          call=  5.1s ETA= 16.8m
+  extracted 502/660 study=7453941774 target=Baker's            call=  5.1s ETA= 16.7m
+  extracted 503/660 study=7453941774 target=Contusion          call=  5.1s ETA= 16.6m
+  extracted 504/660 study=7453941774 target=Fracture           call=  5.1s ETA= 16.5m
+  extracted 505/660 study=4144639002 target=ACL                call=  5.0s ETA= 16.4m
+  extracted 506/660 study=4144639002 target=MCL                call=  5.0s ETA= 16.3m
+  extracted 507/660 study=4144639002 target=Medial Meniscus    call=  5.0s ETA= 16.2m
+  extracted 508/660 study=4144639002 target=Lateral Meniscus   call=  5.0s ETA= 16.0m
+  extracted 509/660 study=4144639002 target=Medial OA          call=  5.0s ETA= 15.9m
+  extracted 510/660 study=4144639002 target=Lateral OA         call=  5.0s ETA= 15.8m
+  extracted 511/660 study=4144639002 target=PF OA              call=  5.1s ETA= 15.7m
+  extracted 512/660 study=4144639002 target=Effusion           call=  5.0s ETA= 15.6m
+  extracted 513/660 study=4144639002 target=Synovitis          call=  5.0s ETA= 15.5m
+  extracted 514/660 study=4144639002 target=Baker's            call=  4.9s ETA= 15.4m
+  extracted 515/660 study=4144639002 target=Contusion          call=  5.0s ETA= 15.3m
+  extracted 516/660 study=4144639002 target=Fracture           call=  5.0s ETA= 15.1m
+  extracted 517/660 study=1095171921 target=ACL                call=  6.9s ETA= 15.0m
+  extracted 518/660 study=1095171921 target=MCL                call=  6.3s ETA= 14.9m
+  extracted 519/660 study=1095171921 target=Medial Meniscus    call=  6.7s ETA= 14.8m
+  extracted 520/660 study=1095171921 target=Lateral Meniscus   call=  6.7s ETA= 14.7m
+  extracted 521/660 study=1095171921 target=Medial OA          call=  6.7s ETA= 14.6m
+  extracted 522/660 study=1095171921 target=Lateral OA         call=  6.7s ETA= 14.5m
+  extracted 523/660 study=1095171921 target=PF OA              call=  7.0s ETA= 14.4m
+  extracted 524/660 study=1095171921 target=Effusion           call=  6.3s ETA= 14.3m
+  extracted 525/660 study=1095171921 target=Synovitis          call=  5.9s ETA= 14.2m
+  extracted 526/660 study=1095171921 target=Baker's            call=  6.4s ETA= 14.1m
+  extracted 527/660 study=1095171921 target=Contusion          call=  7.9s ETA= 14.0m
+  extracted 528/660 study=1095171921 target=Fracture           call=  6.3s ETA= 13.9m
+  extracted 529/660 study=7032662220 target=ACL                call=  8.6s ETA= 13.8m
+  extracted 530/660 study=7032662220 target=MCL                call=  5.7s ETA= 13.7m
+  extracted 531/660 study=7032662220 target=Medial Meniscus    call=  5.7s ETA= 13.6m
+  extracted 532/660 study=7032662220 target=Lateral Meniscus   call=  5.8s ETA= 13.5m
+  extracted 533/660 study=7032662220 target=Medial OA          call=  5.8s ETA= 13.4m
+  extracted 534/660 study=7032662220 target=Lateral OA         call=  5.7s ETA= 13.3m
+  extracted 535/660 study=7032662220 target=PF OA              call=  5.9s ETA= 13.2m
+  extracted 536/660 study=7032662220 target=Effusion           call=  6.4s ETA= 13.1m
+  extracted 537/660 study=7032662220 target=Synovitis          call=  7.5s ETA= 13.0m
+  extracted 538/660 study=7032662220 target=Baker's            call=  5.7s ETA= 12.8m
+  extracted 539/660 study=7032662220 target=Contusion          call=  8.3s ETA= 12.7m
+  extracted 540/660 study=7032662220 target=Fracture           call=  7.0s ETA= 12.6m
+  extracted 541/660 study=7532839995 target=ACL                call=  5.1s ETA= 12.5m
+  extracted 542/660 study=7532839995 target=MCL                call=  5.1s ETA= 12.4m
+  extracted 543/660 study=7532839995 target=Medial Meniscus    call=  8.1s ETA= 12.3m
+  extracted 544/660 study=7532839995 target=Lateral Meniscus   call=  8.1s ETA= 12.2m
+  extracted 545/660 study=7532839995 target=Medial OA          call=  5.1s ETA= 12.1m
+  extracted 546/660 study=7532839995 target=Lateral OA         call=  5.1s ETA= 12.0m
+  extracted 547/660 study=7532839995 target=PF OA              call=  5.2s ETA= 11.9m
+  extracted 548/660 study=7532839995 target=Effusion           call=  5.9s ETA= 11.8m
+  extracted 549/660 study=7532839995 target=Synovitis          call=  5.1s ETA= 11.7m
+  extracted 550/660 study=7532839995 target=Baker's            call=  7.3s ETA= 11.6m
+  extracted 551/660 study=7532839995 target=Contusion          call=  5.1s ETA= 11.5m
+  extracted 552/660 study=7532839995 target=Fracture           call=  5.1s ETA= 11.4m
+  extracted 553/660 study=9346125190 target=ACL                call= 13.4s ETA= 11.3m
+  extracted 554/660 study=9346125190 target=MCL                call=  6.5s ETA= 11.2m
+  extracted 555/660 study=9346125190 target=Medial Meniscus    call=  8.7s ETA= 11.1m
+  extracted 556/660 study=9346125190 target=Lateral Meniscus   call=  8.6s ETA= 11.0m
+  extracted 557/660 study=9346125190 target=Medial OA          call= 14.0s ETA= 10.9m
+  extracted 558/660 study=9346125190 target=Lateral OA         call=  6.7s ETA= 10.8m
+  extracted 559/660 study=9346125190 target=PF OA              call= 10.3s ETA= 10.7m
+  extracted 560/660 study=9346125190 target=Effusion           call=  7.1s ETA= 10.6m
+  extracted 561/660 study=9346125190 target=Synovitis          call=  6.7s ETA= 10.5m
+  extracted 562/660 study=9346125190 target=Baker's            call= 10.2s ETA= 10.4m
+  extracted 563/660 study=9346125190 target=Contusion          call=  8.1s ETA= 10.3m
+  extracted 564/660 study=9346125190 target=Fracture           call=  8.6s ETA= 10.2m
+  extracted 565/660 study=3451855003 target=ACL                call=  5.1s ETA= 10.1m
+  extracted 566/660 study=3451855003 target=MCL                call=  5.0s ETA= 10.0m
+  extracted 567/660 study=3451855003 target=Medial Meniscus    call=  5.6s ETA=  9.9m
+  extracted 568/660 study=3451855003 target=Lateral Meniscus   call=  5.1s ETA=  9.8m
+  extracted 569/660 study=3451855003 target=Medial OA          call=  5.0s ETA=  9.6m
+  extracted 570/660 study=3451855003 target=Lateral OA         call=  5.0s ETA=  9.5m
+  extracted 571/660 study=3451855003 target=PF OA              call=  5.2s ETA=  9.4m
+  extracted 572/660 study=3451855003 target=Effusion           call=  5.4s ETA=  9.3m
+  extracted 573/660 study=3451855003 target=Synovitis          call=  5.0s ETA=  9.2m
+  extracted 574/660 study=3451855003 target=Baker's            call=  5.0s ETA=  9.1m
+  extracted 575/660 study=3451855003 target=Contusion          call=  5.0s ETA=  9.0m
+  extracted 576/660 study=3451855003 target=Fracture           call=  5.0s ETA=  8.9m
+  extracted 577/660 study=6968676828 target=ACL                call= 10.5s ETA=  8.8m
+  extracted 578/660 study=6968676828 target=MCL                call=  5.7s ETA=  8.7m
+  extracted 579/660 study=6968676828 target=Medial Meniscus    call= 12.8s ETA=  8.6m
+  extracted 580/660 study=6968676828 target=Lateral Meniscus   call=  7.1s ETA=  8.5m
+  extracted 581/660 study=6968676828 target=Medial OA          call=  7.6s ETA=  8.4m
+  extracted 582/660 study=6968676828 target=Lateral OA         call=  7.6s ETA=  8.3m
+  extracted 583/660 study=6968676828 target=PF OA              call=  7.7s ETA=  8.2m
+  extracted 584/660 study=6968676828 target=Effusion           call=  5.7s ETA=  8.1m
+  extracted 585/660 study=6968676828 target=Synovitis          call=  5.8s ETA=  8.0m
+  extracted 586/660 study=6968676828 target=Baker's            call=  6.7s ETA=  7.9m
+  extracted 587/660 study=6968676828 target=Contusion          call=  5.8s ETA=  7.7m
+  extracted 588/660 study=6968676828 target=Fracture           call=  5.8s ETA=  7.6m
+  extracted 589/660 study=6139890254 target=ACL                call=  7.3s ETA=  7.5m
+  extracted 590/660 study=6139890254 target=MCL                call=  5.8s ETA=  7.4m
+  extracted 591/660 study=6139890254 target=Medial Meniscus    call=  8.7s ETA=  7.3m
+  extracted 592/660 study=6139890254 target=Lateral Meniscus   call=  8.2s ETA=  7.2m
+  extracted 593/660 study=6139890254 target=Medial OA          call=  9.2s ETA=  7.1m
+  extracted 594/660 study=6139890254 target=Lateral OA         call=  5.9s ETA=  7.0m
+  extracted 595/660 study=6139890254 target=PF OA              call=  5.9s ETA=  6.9m
+  extracted 596/660 study=6139890254 target=Effusion           call=  6.7s ETA=  6.8m
+  extracted 597/660 study=6139890254 target=Synovitis          call=  5.9s ETA=  6.7m
+  extracted 598/660 study=6139890254 target=Baker's            call=  5.8s ETA=  6.6m
+  extracted 599/660 study=6139890254 target=Contusion          call=  5.9s ETA=  6.5m
+  extracted 600/660 study=6139890254 target=Fracture           call=  5.8s ETA=  6.4m
+  extracted 601/660 study=4945464037 target=ACL                call=  5.8s ETA=  6.3m
+  extracted 602/660 study=4945464037 target=MCL                call=  5.1s ETA=  6.2m
+  extracted 603/660 study=4945464037 target=Medial Meniscus    call=  6.1s ETA=  6.1m
+  extracted 604/660 study=4945464037 target=Lateral Meniscus   call=  5.1s ETA=  5.9m
+  extracted 605/660 study=4945464037 target=Medial OA          call=  5.1s ETA=  5.8m
+  extracted 606/660 study=4945464037 target=Lateral OA         call=  5.1s ETA=  5.7m
+  extracted 607/660 study=4945464037 target=PF OA              call=  5.3s ETA=  5.6m
+  extracted 608/660 study=4945464037 target=Effusion           call=  6.0s ETA=  5.5m
+  extracted 609/660 study=4945464037 target=Synovitis          call=  5.2s ETA=  5.4m
+  extracted 610/660 study=4945464037 target=Baker's            call=  5.1s ETA=  5.3m
+  extracted 611/660 study=4945464037 target=Contusion          call=  5.2s ETA=  5.2m
+  extracted 612/660 study=4945464037 target=Fracture           call=  5.1s ETA=  5.1m
+  extracted 613/660 study=9613570435 target=ACL                call=  7.4s ETA=  5.0m
+  extracted 614/660 study=9613570435 target=MCL                call= 11.2s ETA=  4.9m
+  extracted 615/660 study=9613570435 target=Medial Meniscus    call=  9.7s ETA=  4.8m
+  extracted 616/660 study=9613570435 target=Lateral Meniscus   call=  9.8s ETA=  4.7m
+  extracted 617/660 study=9613570435 target=Medial OA          call=  6.0s ETA=  4.6m
+  extracted 618/660 study=9613570435 target=Lateral OA         call=  5.9s ETA=  4.5m
+  extracted 619/660 study=9613570435 target=PF OA              call= 12.3s ETA=  4.4m
+  extracted 620/660 study=9613570435 target=Effusion           call=  8.0s ETA=  4.3m
+  extracted 621/660 study=9613570435 target=Synovitis          call=  8.1s ETA=  4.2m
+  extracted 622/660 study=9613570435 target=Baker's            call=  7.1s ETA=  4.0m
+  extracted 623/660 study=9613570435 target=Contusion          call=  6.0s ETA=  3.9m
+  extracted 624/660 study=9613570435 target=Fracture           call=  6.0s ETA=  3.8m
+  extracted 625/660 study=6970552767 target=ACL                call=  5.0s ETA=  3.7m
+  extracted 626/660 study=6970552767 target=MCL                call=  5.0s ETA=  3.6m
+  extracted 627/660 study=6970552767 target=Medial Meniscus    call=  5.0s ETA=  3.5m
+  extracted 628/660 study=6970552767 target=Lateral Meniscus   call=  5.2s ETA=  3.4m
+  extracted 629/660 study=6970552767 target=Medial OA          call=  5.0s ETA=  3.3m
+  extracted 630/660 study=6970552767 target=Lateral OA         call=  5.8s ETA=  3.2m
+  extracted 631/660 study=6970552767 target=PF OA              call=  5.7s ETA=  3.1m
+  extracted 632/660 study=6970552767 target=Effusion           call=  5.6s ETA=  3.0m
+  extracted 633/660 study=6970552767 target=Synovitis          call=  5.7s ETA=  2.9m
+  extracted 634/660 study=6970552767 target=Baker's            call=  5.0s ETA=  2.8m
+  extracted 635/660 study=6970552767 target=Contusion          call=  5.0s ETA=  2.7m
+  extracted 636/660 study=6970552767 target=Fracture           call=  5.0s ETA=  2.5m
+  extracted 637/660 study=1231739312 target=ACL                call=  5.0s ETA=  2.4m
+  extracted 638/660 study=1231739312 target=MCL                call=  4.9s ETA=  2.3m
+  extracted 639/660 study=1231739312 target=Medial Meniscus    call=  5.0s ETA=  2.2m
+  extracted 640/660 study=1231739312 target=Lateral Meniscus   call=  5.0s ETA=  2.1m
+  extracted 641/660 study=1231739312 target=Medial OA          call=  5.0s ETA=  2.0m
+  extracted 642/660 study=1231739312 target=Lateral OA         call=  5.0s ETA=  1.9m
+  extracted 643/660 study=1231739312 target=PF OA              call=  5.1s ETA=  1.8m
+  extracted 644/660 study=1231739312 target=Effusion           call=  5.4s ETA=  1.7m
+  extracted 645/660 study=1231739312 target=Synovitis          call=  5.1s ETA=  1.6m
+  extracted 646/660 study=1231739312 target=Baker's            call=  5.0s ETA=  1.5m
+  extracted 647/660 study=1231739312 target=Contusion          call=  5.0s ETA=  1.4m
+  extracted 648/660 study=1231739312 target=Fracture           call=  5.0s ETA=  1.3m
+  extracted 649/660 study=5217521662 target=ACL                call=  5.1s ETA=  1.2m
+  extracted 650/660 study=5217521662 target=MCL                call=  5.1s ETA=  1.1m
+  extracted 651/660 study=5217521662 target=Medial Meniscus    call=  5.2s ETA=  1.0m
+  extracted 652/660 study=5217521662 target=Lateral Meniscus   call=  5.2s ETA=  0.8m
+  extracted 653/660 study=5217521662 target=Medial OA          call=  5.2s ETA=  0.7m
+  extracted 654/660 study=5217521662 target=Lateral OA         call=  5.2s ETA=  0.6m
+  extracted 655/660 study=5217521662 target=PF OA              call=  5.2s ETA=  0.5m
+  extracted 656/660 study=5217521662 target=Effusion           call=  6.3s ETA=  0.4m
+  extracted 657/660 study=5217521662 target=Synovitis          call=  5.2s ETA=  0.3m
+  extracted 658/660 study=5217521662 target=Baker's            call=  8.6s ETA=  0.2m
+  extracted 659/660 study=5217521662 target=Contusion          call=  6.7s ETA=  0.1m
+  extracted 660/660 study=5217521662 target=Fracture           call=  5.2s ETA=  0.0m
+
+================================================================================================
+W2.5 GOLD GATE COMPLETE
+================================================================================================
+w23                         AUROC=0.771243 AP=0.683227 Brier=0.159072
+llm_raw_gold_independent    AUROC=0.713218 AP=0.545824 Brier=0.219601
+llm_only                    AUROC=0.664891 AP=0.543236 Brier=0.202691
+llm_plus_w2                 AUROC=0.789624 AP=0.689152 Brier=0.173704
+
+Best own variant        : llm_plus_w2
+Best own macro AUROC    : 0.789624
+W2.3 macro AUROC        : 0.771243
+Delta vs W2.3           : +0.018380
+GATE VERDICT            : DO_NOT_FULL_EXTRACT_YET
+Results                 : /kaggle/working/rsna_w2_5_gold_gate/results
+Do NOT run the 4,407-report full corpus yet; review this gold gate first.

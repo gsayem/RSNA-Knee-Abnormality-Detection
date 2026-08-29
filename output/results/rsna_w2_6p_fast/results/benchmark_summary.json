@@ -1,0 +1,8 @@
+{
+  "newly_cached": 256,
+  "total_cached": 256,
+  "elapsed_seconds": 161.5096938610077,
+  "cells_per_minute": 95.10265070044983,
+  "estimated_remaining_hours": 3.0037718671632723,
+  "cache": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/output/results/rsna_w2_6p_fast/cache/w26pf_production_fast_compact_v1.jsonl"
+}

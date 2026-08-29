@@ -1,0 +1,297 @@
+
+================================================================================================
+W2.4 status
+================================================================================================
+{
+  "experiment": "RSNA W2.4 High-Fidelity Fold-Safe Report Supervision",
+  "train_csv": "/kaggle/input/competitions/rsna-knee-abnormality-detection/train.csv",
+  "train_csv_exists": true,
+  "output_root": "/kaggle/working/rsna_w2_4",
+  "public_dataset_hint": "pilkwang/rsna-knee-llm-labels",
+  "primary_teacher_env": "W24_PRIMARY_TEACHER_FILE (W24_PUBLIC_FILE accepted as legacy alias)",
+  "config": {
+    "platt_C": 0.1,
+    "quality_shrink_n": 20.0,
+    "min_train_weight": 0.12,
+    "high_selection_weight": 0.5,
+    "silence_negative_weight_cap": 0.35,
+    "disagreement_weight_cap": 0.55
+  },
+  "counts": {
+    "train": 4407,
+    "gold": 58,
+    "unlabeled": 4349
+  },
+  "w23_root": "/kaggle/input/datasets/isayem/rsna-w2-3/rsna_w2_3",
+  "fold_sha256": "1d9959b027c055974325f4de59e26974b036ae8b2c1b63aa417d3eef7aaf9f4a",
+  "fold_sha256_match": true,
+  "primary_teacher": {
+    "selected_file": "/kaggle/input/datasets/isayem/w24-teacher3-file/report_labels_v2.csv",
+    "selected_file_sha256": "6f704a7bdb2f894cc49445b19ba7c4378c3f548d3449e00361e10044bee40920",
+    "schema": {
+      "format": "wide",
+      "uid_column": "StudyInstanceUID",
+      "label_columns": {
+        "ACL": "ACL",
+        "MCL": "MCL",
+        "Medial Meniscus": "Medial Meniscus",
+        "Lateral Meniscus": "Lateral Meniscus",
+        "Medial OA": "Medial OA",
+        "Lateral OA": "Lateral OA",
+        "PF OA": "PF OA",
+        "Effusion": "Effusion",
+        "Synovitis": "Synovitis",
+        "Baker's": "Baker's",
+        "Contusion": "Contusion",
+        "Fracture": "Fracture"
+      },
+      "confidence_columns": {
+        "ACL": "ACL__conf",
+        "MCL": "MCL__conf",
+        "Medial Meniscus": "Medial Meniscus__conf",
+        "Lateral Meniscus": "Lateral Meniscus__conf",
+        "Medial OA": "Medial OA__conf",
+        "Lateral OA": "Lateral OA__conf",
+        "PF OA": "PF OA__conf",
+        "Effusion": "Effusion__conf",
+        "Synovitis": "Synovitis__conf",
+        "Baker's": "Baker's__conf",
+        "Contusion": "Contusion__conf",
+        "Fracture": "Fracture__conf"
+      }
+    },
+    "rows": 4406,
+    "train_uid_overlap": 4406,
+    "gold_uid_overlap": 57,
+    "unlabeled_uid_overlap": 4349,
+    "missing_gold_uids": [
+      "1.2.826.0.1.3680043.8.498.73527530686853911124431549317032662220"
+    ],
+    "missing_unlabeled_uid_count": 0,
+    "missing_unlabeled_uid_examples": [],
+    "has_explicit_confidence": true,
+    "candidate_audit": [
+      {
+        "path": "/kaggle/input/datasets/isayem/w24-teacher3-file/report_labels_v2.csv",
+        "score": 270,
+        "uid_column": "StudyInstanceUID",
+        "mapped_wide_labels": 12,
+        "looks_long": false,
+        "columns": [
+          "StudyInstanceUID",
+          "ACL",
+          "ACL__conf",
+          "ACL__verdict",
+          "MCL",
+          "MCL__conf",
+          "MCL__verdict",
+          "Medial Meniscus",
+          "Medial Meniscus__conf",
+          "Medial Meniscus__verdict",
+          "Lateral Meniscus",
+          "Lateral Meniscus__conf",
+          "Lateral Meniscus__verdict",
+          "Medial OA",
+          "Medial OA__conf",
+          "Medial OA__verdict",
+          "Lateral OA",
+          "Lateral OA__conf",
+          "Lateral OA__verdict",
+          "PF OA",
+          "PF OA__conf",
+          "PF OA__verdict",
+          "Effusion",
+          "Effusion__conf",
+          "Effusion__verdict",
+          "Synovitis",
+          "Synovitis__conf",
+          "Synovitis__verdict",
+          "Baker's",
+          "Baker's__conf",
+          "Baker's__verdict",
+          "Contusion",
+          "Contusion__conf",
+          "Contusion__verdict",
+          "Fracture",
+          "Fracture__conf",
+          "Fracture__verdict"
+        ]
+      }
+    ]
+  }
+}
+
+================================================================================================
+W2.4 inspect_public
+================================================================================================
+{
+  "selected_file": "/kaggle/input/datasets/isayem/w24-teacher3-file/report_labels_v2.csv",
+  "selected_file_sha256": "6f704a7bdb2f894cc49445b19ba7c4378c3f548d3449e00361e10044bee40920",
+  "schema": {
+    "format": "wide",
+    "uid_column": "StudyInstanceUID",
+    "label_columns": {
+      "ACL": "ACL",
+      "MCL": "MCL",
+      "Medial Meniscus": "Medial Meniscus",
+      "Lateral Meniscus": "Lateral Meniscus",
+      "Medial OA": "Medial OA",
+      "Lateral OA": "Lateral OA",
+      "PF OA": "PF OA",
+      "Effusion": "Effusion",
+      "Synovitis": "Synovitis",
+      "Baker's": "Baker's",
+      "Contusion": "Contusion",
+      "Fracture": "Fracture"
+    },
+    "confidence_columns": {
+      "ACL": "ACL__conf",
+      "MCL": "MCL__conf",
+      "Medial Meniscus": "Medial Meniscus__conf",
+      "Lateral Meniscus": "Lateral Meniscus__conf",
+      "Medial OA": "Medial OA__conf",
+      "Lateral OA": "Lateral OA__conf",
+      "PF OA": "PF OA__conf",
+      "Effusion": "Effusion__conf",
+      "Synovitis": "Synovitis__conf",
+      "Baker's": "Baker's__conf",
+      "Contusion": "Contusion__conf",
+      "Fracture": "Fracture__conf"
+    }
+  },
+  "rows": 4406,
+  "train_uid_overlap": 4406,
+  "gold_uid_overlap": 57,
+  "unlabeled_uid_overlap": 4349,
+  "missing_gold_uids": [
+    "1.2.826.0.1.3680043.8.498.73527530686853911124431549317032662220"
+  ],
+  "missing_unlabeled_uid_count": 0,
+  "missing_unlabeled_uid_examples": [],
+  "has_explicit_confidence": true,
+  "candidate_audit": [
+    {
+      "path": "/kaggle/input/datasets/isayem/w24-teacher3-file/report_labels_v2.csv",
+      "score": 270,
+      "uid_column": "StudyInstanceUID",
+      "mapped_wide_labels": 12,
+      "looks_long": false,
+      "columns": [
+        "StudyInstanceUID",
+        "ACL",
+        "ACL__conf",
+        "ACL__verdict",
+        "MCL",
+        "MCL__conf",
+        "MCL__verdict",
+        "Medial Meniscus",
+        "Medial Meniscus__conf",
+        "Medial Meniscus__verdict",
+        "Lateral Meniscus",
+        "Lateral Meniscus__conf",
+        "Lateral Meniscus__verdict",
+        "Medial OA",
+        "Medial OA__conf",
+        "Medial OA__verdict",
+        "Lateral OA",
+        "Lateral OA__conf",
+        "Lateral OA__verdict",
+        "PF OA",
+        "PF OA__conf",
+        "PF OA__verdict",
+        "Effusion",
+        "Effusion__conf",
+        "Effusion__verdict",
+        "Synovitis",
+        "Synovitis__conf",
+        "Synovitis__verdict",
+        "Baker's",
+        "Baker's__conf",
+        "Baker's__verdict",
+        "Contusion",
+        "Contusion__conf",
+        "Contusion__verdict",
+        "Fracture",
+        "Fracture__conf",
+        "Fracture__verdict"
+      ]
+    }
+  ],
+  "selected_preview": [
+    {
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.10004873229099053869093324292195817260",
+      "ACL": 0.28,
+      "MCL": 0.28,
+      "Medial Meniscus": 0.82,
+      "Lateral Meniscus": 0.28,
+      "Medial OA": 0.82,
+      "Lateral OA": 0.28,
+      "PF OA": 0.28,
+      "Effusion": 0.82,
+      "Synovitis": 0.28,
+      "Baker's": 0.28,
+      "Contusion": 0.08,
+      "Fracture": 0.08
+    },
+    {
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.10004945927472656027199792075652399585",
+      "ACL": 0.28,
+      "MCL": 0.28,
+      "Medial Meniscus": 0.28,
+      "Lateral Meniscus": 0.28,
+      "Medial OA": 0.28,
+      "Lateral OA": 0.28,
+      "PF OA": 0.28,
+      "Effusion": 0.28,
+      "Synovitis": 0.28,
+      "Baker's": 0.28,
+      "Contusion": 0.28,
+      "Fracture": 0.28
+    },
+    {
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.10009278692606631573540062909909132231",
+      "ACL": 0.08,
+      "MCL": 0.08,
+      "Medial Meniscus": 0.68,
+      "Lateral Meniscus": 0.08,
+      "Medial OA": 0.94,
+      "Lateral OA": 0.08,
+      "PF OA": 0.82,
+      "Effusion": 0.08,
+      "Synovitis": 0.28,
+      "Baker's": 0.08,
+      "Contusion": 0.08,
+      "Fracture": 0.28
+    },
+    {
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.10009639203170750274174707434356622764",
+      "ACL": 0.08,
+      "MCL": 0.08,
+      "Medial Meniscus": 0.08,
+      "Lateral Meniscus": 0.08,
+      "Medial OA": 0.08,
+      "Lateral OA": 0.08,
+      "PF OA": 0.08,
+      "Effusion": 0.08,
+      "Synovitis": 0.28,
+      "Baker's": 0.28,
+      "Contusion": 0.08,
+      "Fracture": 0.08
+    },
+    {
+      "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.10013663742400736029415768216599146542",
+      "ACL": 0.08,
+      "MCL": 0.68,
+      "Medial Meniscus": 0.68,
+      "Lateral Meniscus": 0.08,
+      "Medial OA": 0.68,
+      "Lateral OA": 0.68,
+      "PF OA": 0.94,
+      "Effusion": 0.08,
+      "Synovitis": 0.28,
+      "Baker's": 0.08,
+      "Contusion": 0.68,
+      "Fracture": 0.08
+    }
+  ]
+}

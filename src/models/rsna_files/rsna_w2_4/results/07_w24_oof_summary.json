@@ -1,0 +1,28 @@
+{
+  "macro": {
+    "W2.3": {
+      "macro_AUROC": 0.7712431042776814,
+      "macro_AP": 0.6832265162015955,
+      "macro_Brier": 0.15907222465897464
+    },
+    "W2.4": {
+      "macro_AUROC": 0.8498568811504255,
+      "macro_AP": 0.7719323753170148,
+      "macro_Brier": 0.1512659803280024
+    },
+    "primary_teacher": {
+      "macro_AUROC": 0.8700395897324982,
+      "macro_AP": 0.7587425911821705,
+      "macro_Brier": 0.14624853801169588
+    }
+  },
+  "W24_minus_W23_bootstrap": {
+    "mean_delta": 0.07853331542652126,
+    "ci_low": 0.043022013851949245,
+    "ci_high": 0.11192344669242779,
+    "p_gt_0": 1.0,
+    "n_bootstrap": 2000
+  },
+  "oof_gold_studies": 58,
+  "labels": 12
+}

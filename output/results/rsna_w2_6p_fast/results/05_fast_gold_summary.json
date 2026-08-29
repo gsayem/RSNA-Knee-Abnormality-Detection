@@ -1,0 +1,34 @@
+{
+  "version": "w26pf_fast_logits_v1",
+  "prompt_style": "compact",
+  "logit_temperature": 2.0,
+  "fold_sha256": "1d9959b027c055974325f4de59e26974b036ae8b2c1b63aa417d3eef7aaf9f4a",
+  "fold_sha256_match": true,
+  "variants": {
+    "w23": {
+      "macro_AUROC": 0.7712431042776814,
+      "macro_AP": 0.6832265162015955,
+      "macro_Brier": 0.15907222465897464
+    },
+    "fast_replace": {
+      "macro_AUROC": 0.8120898617436204,
+      "macro_AP": 0.7195253426519742,
+      "macro_Brier": 0.17574916274907726
+    },
+    "fast_fixed50": {
+      "macro_AUROC": 0.8132027185058948,
+      "macro_AP": 0.7198850175211869,
+      "macro_Brier": 0.15373025204026539
+    }
+  },
+  "primary_variant": "fast_fixed50",
+  "primary_delta_vs_w23": 0.04195961422821337,
+  "bootstrap": {
+    "n": 2000,
+    "mean": 0.0421192230246913,
+    "ci95_low": 0.01799616924764425,
+    "ci95_high": 0.06836617704369895,
+    "p_delta_gt_0": 1.0
+  },
+  "gate_verdict": "PASS_FAST_PRODUCTION"
+}

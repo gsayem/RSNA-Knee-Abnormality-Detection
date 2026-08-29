@@ -1,0 +1,131 @@
+{
+  "experiment": "RSNA W2.5 V6.1 OUR OWN grounded label-wise report teacher \u2014 gold gate",
+  "train_csv": "/kaggle/input/competitions/rsna-knee-abnormality-detection/train.csv",
+  "train_exists": true,
+  "output_root": "/kaggle/working/rsna_w2_5_gold_gate",
+  "uses_pilkwang_labels": false,
+  "recommended_model": "Qwen2.5-7B-Instruct (local/offline)",
+  "model_path_env": "/kaggle/input/datasets/ragnar123/qwen2-5-7b-instruct",
+  "gpu_id": 0,
+  "use_4bit": false,
+  "allow_fp16_fallback": true,
+  "fp16_shard_all_gpus": true,
+  "fp16_gpu_max_gib": 13.0,
+  "max_input_tokens": 4096,
+  "max_new_tokens": 240,
+  "extraction_mode": "one_target_per_generation",
+  "sample_3_reports_calls": 36,
+  "gold_58_reports_calls": 696,
+  "calibration_C": 0.03,
+  "counts": {
+    "train": 4407,
+    "gold": 58,
+    "unlabeled": 4349
+  },
+  "w2_root": "/kaggle/input/datasets/isayem/rsna-w2/rsna_w2",
+  "w2_gold_structured_sha256": "a783fe3e20317d233a67351e1270cab7a365232a75b56b35b8d521204fe228c2",
+  "w23_root": "/kaggle/input/datasets/isayem/rsna-w2-3/rsna_w2_3",
+  "fold_sha256": "1d9959b027c055974325f4de59e26974b036ae8b2c1b63aa417d3eef7aaf9f4a",
+  "fold_sha256_match": true,
+  "model_path_detected": "/kaggle/input/datasets/ragnar123/qwen2-5-7b-instruct",
+  "model_exists": true,
+  "model_config_sha256": "7463bb0ea78315365e6c6b74de4e73bbcc8359dfb0c5a737584e077d42c0b03c",
+  "cuda_available": true,
+  "gpu_count": 2,
+  "gpu_names": [
+    "Tesla T4",
+    "Tesla T4"
+  ],
+  "gold_label_pairs_cached": 0
+}
+Gold reports requested     : 3
+Label-wise calls requested : 36
+Already cached pairs       : 0
+Need LLM label calls       : 36
+Extraction mode            : one target per generation
+Loading own report LLM from: /kaggle/input/datasets/ragnar123/qwen2-5-7b-instruct
+GPU id                  : 0
+4-bit requested         : False
+FP16 fallback allowed   : True
+Loading weights: 100%
+ 339/339 [00:22<00:00, 17.15it/s, Materializing param=model.norm.weight]
+Model load mode          : fp16_balanced_2gpu
+Input embedding device   : cuda:0
+HF device-map modules    : {'0': 13, '1': 19}
+GPU 0 free after load    : 8.23 / 14.56 GiB
+GPU 1 free after load    : 6.50 / 14.56 GiB
+  extracted   1/36 study=0594649149 target=ACL                call=  5.7s ETA=  3.3m
+  extracted   2/36 study=0594649149 target=MCL                call=  4.5s ETA=  2.9m
+  extracted   3/36 study=0594649149 target=Medial Meniscus    call=  6.0s ETA=  3.0m
+  extracted   4/36 study=0594649149 target=Lateral Meniscus   call=  6.0s ETA=  3.0m
+  extracted   5/36 study=0594649149 target=Medial OA          call=  4.6s ETA=  2.8m
+  extracted   6/36 study=0594649149 target=Lateral OA         call=  4.6s ETA=  2.6m
+  extracted   7/36 study=0594649149 target=PF OA              call=  4.9s ETA=  2.5m
+  extracted   8/36 study=0594649149 target=Effusion           call=  5.3s ETA=  2.4m
+  extracted   9/36 study=0594649149 target=Synovitis          call=  4.6s ETA=  2.3m
+  extracted  10/36 study=0594649149 target=Baker's            call=  5.5s ETA=  2.2m
+  extracted  11/36 study=0594649149 target=Contusion          call=  4.8s ETA=  2.1m
+  extracted  12/36 study=0594649149 target=Fracture           call=  4.8s ETA=  2.0m
+  extracted  13/36 study=8839028269 target=ACL                call=  4.8s ETA=  1.9m
+  extracted  14/36 study=8839028269 target=MCL                call=  4.7s ETA=  1.9m
+  extracted  15/36 study=8839028269 target=Medial Meniscus    call=  4.8s ETA=  1.8m
+  extracted  16/36 study=8839028269 target=Lateral Meniscus   call=  5.8s ETA=  1.7m
+  extracted  17/36 study=8839028269 target=Medial OA          call=  4.8s ETA=  1.6m
+  extracted  18/36 study=8839028269 target=Lateral OA         call=  4.8s ETA=  1.5m
+  extracted  19/36 study=8839028269 target=PF OA              call=  4.9s ETA=  1.4m
+  extracted  20/36 study=8839028269 target=Effusion           call=  6.7s ETA=  1.4m
+  extracted  21/36 study=8839028269 target=Synovitis          call=  6.1s ETA=  1.3m
+  extracted  22/36 study=8839028269 target=Baker's            call=  4.8s ETA=  1.2m
+  extracted  23/36 study=8839028269 target=Contusion          call=  4.8s ETA=  1.1m
+  extracted  24/36 study=8839028269 target=Fracture           call=  6.7s ETA=  1.0m
+  extracted  25/36 study=0836752052 target=ACL                call=  5.5s ETA=  1.0m
+  extracted  26/36 study=0836752052 target=MCL                call=  6.3s ETA=  0.9m
+  extracted  27/36 study=0836752052 target=Medial Meniscus    call=  7.3s ETA=  0.8m
+  extracted  28/36 study=0836752052 target=Lateral Meniscus   call=  5.5s ETA=  0.7m
+  extracted  29/36 study=0836752052 target=Medial OA          call=  6.6s ETA=  0.6m
+  extracted  30/36 study=0836752052 target=Lateral OA         call=  6.7s ETA=  0.5m
+  extracted  31/36 study=0836752052 target=PF OA              call=  8.1s ETA=  0.5m
+  extracted  32/36 study=0836752052 target=Effusion           call=  5.9s ETA=  0.4m
+  extracted  33/36 study=0836752052 target=Synovitis          call=  5.6s ETA=  0.3m
+  extracted  34/36 study=0836752052 target=Baker's            call=  6.0s ETA=  0.2m
+  extracted  35/36 study=0836752052 target=Contusion          call=  5.6s ETA=  0.1m
+  extracted  36/36 study=0836752052 target=Fracture           call=  5.5s ETA=  0.0m
+                                                StudyInstanceUID            Label  Gold OriginalState State                GroundingAction  EffectiveConfidence Lean  Related  Severity Chronicity  EvidenceVerified                                                                                                                                        Evidence  RawStateScore
+1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149              ACL     0             A     N unsupported_or_irrelevant_to_N                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149              MCL     0             A     N unsupported_or_irrelevant_to_N                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149  Medial Meniscus     0             A     A                    as_returned                   85    A        0         0          C              True                                                                          Menisco medial de morfología y señal conservada, sin signos de rotura.         0.0355
+1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149 Lateral Meniscus     0             A     N unsupported_or_irrelevant_to_N                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149        Medial OA     0             N     N        canonical_not_addressed                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149       Lateral OA     0             A     N unsupported_or_irrelevant_to_N                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149            PF OA     1             U     N unsupported_or_irrelevant_to_N                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149         Effusion     1             P     P                    as_returned                   85    N        0         1          A              True                                                                                                                         Leve derrame articular.         0.9645
+1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149        Synovitis     0             N     N        canonical_not_addressed                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149          Baker's     0             A     N unsupported_or_irrelevant_to_N                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149        Contusion     0             A     N unsupported_or_irrelevant_to_N                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10095687747295410396510538520594649149         Fracture     0             A     N unsupported_or_irrelevant_to_N                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269              ACL     0             A     A deterministic_literal_recovery                   80    N        0         0          U              True                                                                                                                                  ACL is intact.         0.0440
+1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269              MCL     0             A     A deterministic_literal_recovery                   80    N        0         0          U              True                                                                                                                              The MCL is intact.         0.0440
+1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269  Medial Meniscus     0             A     N unsupported_or_irrelevant_to_N                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269 Lateral Meniscus     1             P     P                    as_returned                   95    P        0         2          C              True                                                                              Horizontal tear at anterior horn of the lateral meniscus is noted.         0.9815
+1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269        Medial OA     0             N     N        canonical_not_addressed                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269       Lateral OA     0             N     N        canonical_not_addressed                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269            PF OA     1             U     U deterministic_literal_recovery                   75    N        0         0          U              True                                                                             Focal osteochondral defect at lateral patellar facet, about 8x12mm.         0.5000
+1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269         Effusion     0             P     P                    as_returned                   95    N        0         2          C              True                                              moderate joint effusion, distended suprapatellar bursa with thickend synovial tissue are observed.         0.9815
+1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269        Synovitis     1             P     P                    as_returned                   85    P        0         2          C              True                                                                                              Chronic reactive synovitis, suprapatellar bursitis         0.9645
+1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269          Baker's     0             N     N        canonical_not_addressed                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269        Contusion     0             N     N        canonical_not_addressed                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10170898615867673028696505248839028269         Fracture     0             P     P                    as_returned                   95    P        0         2          C              True                                                     Osteochondral fracture at lateral patellar facet, about 8x12mm. with dislodge OCD fragment.         0.9815
+1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052              ACL     0             A     N unsupported_or_irrelevant_to_N                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052              MCL     0             A     A                    as_returned                   95    N        0         0          A              True                                                                                                       Medial collateral ligament (MCL): Normal.         0.0185
+1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052  Medial Meniscus     1             P     P                    as_returned                   95    P        0         3          C              True                               Extensive complete tearing of the body, posterior horn, and posterior root medial meniscus with severe extrusion.         0.9815
+1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052 Lateral Meniscus     0             A     A deterministic_literal_recovery                   80    N        0         0          A              True                                                                     Degenerative signal throughout the lateral meniscus without surfacing tear.         0.0440
+1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052        Medial OA     1             P     P                    as_returned                   95    P        0         3          C              True                                                                                tricompartmental osteoarthritis worse in the medial compartment.         0.9815
+1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052       Lateral OA     0             A     A                    as_returned                   85    A        0         0          C              True                                                                                Tricompartmental osteoarthritis worse in the medial compartment.         0.0355
+1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052            PF OA     1             P     P                    as_returned                   95    P        0         3          C              True Patellofemoral compartment cartilage: High-grade cartilage loss along the medial patellar facet. High grade cartilage loss at lateral trochlea.         0.9815
+1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052         Effusion     0             P     P                    as_returned                   95    P        0         1          A              True                                                                                                                           Small joint effusion.         0.9815
+1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052        Synovitis     1             N     N        canonical_not_addressed                   85    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052          Baker's     0             A     A                    as_returned                   85    A        0         0          A              True                                                                                                                                No Baker's cyst.         0.0355
+1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052        Contusion     0             N     N        canonical_not_addressed                   50    N        0         0          U             False                                                                                                                                                         0.5000
+1.2.826.0.1.3680043.8.498.10306159113324811538703788080836752052         Fracture     0             A     A deterministic_literal_recovery                   80    N        0         0          A              True                                                                                                               No acute fracture or bone bruise.         0.0440
+
+Sample output: /kaggle/working/rsna_w2_5_gold_gate/results/00_sample_teacher_output.csv

@@ -1,0 +1,28 @@
+{
+  "variant": "w60",
+  "scope": "full_all58",
+  "seeds": [
+    6001,
+    6002,
+    6003
+  ],
+  "models": [
+    {
+      "seed": 6001,
+      "checkpoint": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/output/results/rsna_w6_curia/checkpoints/w60/full/seed_6001_epoch_24.pt",
+      "final_loss": 0.0760678711812943
+    },
+    {
+      "seed": 6002,
+      "checkpoint": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/output/results/rsna_w6_curia/checkpoints/w60/full/seed_6002_epoch_24.pt",
+      "final_loss": 0.0765715653542429
+    },
+    {
+      "seed": 6003,
+      "checkpoint": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/output/results/rsna_w6_curia/checkpoints/w60/full/seed_6003_epoch_24.pt",
+      "final_loss": 0.0758969141170382
+    }
+  ],
+  "use": "production hidden-test inference",
+  "validation_note": "Full-fit uses all 58 gold labels and all W2.6-P pseudo labels; no OOF claim."
+}

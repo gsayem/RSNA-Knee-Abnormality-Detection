@@ -1,0 +1,141 @@
+{
+  "device": "cuda:0",
+  "gpu_count": 2,
+  "artifact_root": "/kaggle/input/datasets/isayem/rsna-w4-0-submission-bundle/test_w4_bundle",
+  "artifact_error": null,
+  "curia_root": "/kaggle/input/datasets/isayem/curia-2-model/curia-2-model",
+  "curia_error": null,
+  "test_csv_exists": true,
+  "test_series_csv_exists": true,
+  "test_series_root_exists": true,
+  "sample_submission_exists": true,
+  "submission_work_root": "/kaggle/working/rsna_w4_0_submission"
+}
+========================================================================================
+RSNA W4.0 CURIA-2 FINAL SUBMISSION INFERENCE
+========================================================================================
+Device                : cuda:0
+CUDA GPU count        : 2
+Encoder GPUs          : [0, 1]
+Competition data root : /kaggle/input/competitions/rsna-knee-abnormality-detection
+Output                : /kaggle/working/rsna_w4_0_submission
+Primary               : W4 fold-gated Curia ensemble
+Secondary             : W4 fold_safe_weak all-label ensemble
+W4 artifact root      : /kaggle/input/datasets/isayem/rsna-w4-0-submission-bundle/test_w4_bundle
+Verified checkpoints  : 10
+Curia-2 root          : /kaggle/input/datasets/isayem/curia-2-model/curia-2-model
+Curia SHA256          : 403a02e27531d2858ecd1e9b1ec2d5ea7bfa909f10ff0d9e8416090a6a8c96ef
+Test studies          : 3
+Test series           : 15
+
+========================================================================================
+W4.0 CURIA-2 TEST FEATURE CACHE
+========================================================================================
+Curia root            : /kaggle/input/datasets/isayem/curia-2-model/curia-2-model
+Curia SHA256          : 403a02e27531d2858ecd1e9b1ec2d5ea7bfa909f10ff0d9e8416090a6a8c96ef
+CUDA GPU count        : 2
+Cache GPU IDs         : [0, 1]
+Curia FP16 batch      : 16
+Test studies          : 3
+Already cached        : 0
+Need encoding         : 3
+Max slices / series   : 24
+Loading weights: 100%
+ 223/223 [00:00<00:00, 745.72it/s, Materializing param=layernorm.weight]
+Loading weights: 100%
+ 223/223 [00:00<00:00, 440.33it/s, Materializing param=layernorm.weight]
+Test worker 1: device=cuda:1, studies=1, batch=16
+Test worker 0: device=cuda:0, studies=2, batch=16
+Test cache    1/3 ( 33.3%) elapsed=00:00:20 ETA=00:00:41 worker=1 encoded=1 failures=0
+Test cache    2/3 ( 66.7%) elapsed=00:00:21 ETA=00:00:10 worker=0 encoded=1 failures=0
+Test cache    3/3 (100.0%) elapsed=00:00:25 ETA=00:00:00 worker=0 encoded=2 failures=0
+
+Test feature-cache summary:
+{
+  "cache_version": "w4_0_curia2_cls_allseries_24slice_canonical_orientation_slow_processor_v1",
+  "cache_complete": true,
+  "test_studies": 3,
+  "cached_studies": 3,
+  "encoded_series": 15,
+  "encoded_slices": 360,
+  "mean_series_per_study": 5.0,
+  "mean_slices_per_study": 120.0,
+  "curia_model_sha256": "403a02e27531d2858ecd1e9b1ec2d5ea7bfa909f10ff0d9e8416090a6a8c96ef",
+  "minimum_orientation_alignment": 0.9669094367754172,
+  "series_plane_matches": 15,
+  "series_audit_rows": 15
+}
+
+Loading test Curia feature cache into CPU RAM...
+  loaded    1/3 elapsed=00:00:00
+  loaded    2/3 elapsed=00:00:00
+  loaded    3/3 elapsed=00:00:00
+Test feature payload  : 0.001 GB FP16
+
+========================================================================================
+W4.0 HEAD INFERENCE
+========================================================================================
+
+Fold 1/5 gold_only...
+/tmp/ipykernel_58/1171024741.py:2520: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.slice_transformer = nn.TransformerEncoder(
+  head inference    3/3 elapsed=00:00:00
+Fold 1/5 fold_safe_weak...
+  head inference    3/3 elapsed=00:00:00
+
+Fold 2/5 gold_only...
+  head inference    3/3 elapsed=00:00:00
+Fold 2/5 fold_safe_weak...
+  head inference    3/3 elapsed=00:00:00
+
+Fold 3/5 gold_only...
+  head inference    3/3 elapsed=00:00:00
+Fold 3/5 fold_safe_weak...
+  head inference    3/3 elapsed=00:00:00
+
+Fold 4/5 gold_only...
+  head inference    3/3 elapsed=00:00:00
+Fold 4/5 fold_safe_weak...
+  head inference    3/3 elapsed=00:00:00
+
+Fold 5/5 gold_only...
+  head inference    3/3 elapsed=00:00:00
+Fold 5/5 fold_safe_weak...
+  head inference    3/3 elapsed=00:00:00
+
+========================================================================================
+W4.0 SUBMISSION GENERATION COMPLETE
+========================================================================================
+
+PRIMARY / Kaggle submission.csv:
+/kaggle/working/submission.csv
+
+Primary fold-gated copy:
+/kaggle/working/rsna_w4_0_submission/submission_w4_curia_fold_gated_primary.csv
+
+Secondary weak-all:
+/kaggle/working/rsna_w4_0_submission/submission_w4_curia_weak_all.csv
+
+Diagnostic gold-all:
+/kaggle/working/rsna_w4_0_submission/submission_w4_curia_gold_all.csv
+
+All submission files passed exact sample_submission schema/order/UID/range/finite validation.
+
+Prediction means by label:
+           Label  PrimaryMean  WeakAllMean  GoldAllMean  WeakGateFoldCount
+             ACL     0.297198     0.297198     0.229774                  5
+             MCL     0.282906     0.282906     0.188000                  5
+ Medial Meniscus     0.512002     0.512002     0.603573                  5
+Lateral Meniscus     0.327594     0.327594     0.334565                  5
+       Medial OA     0.294539     0.255029     0.294539                  0
+      Lateral OA     0.170235     0.122920     0.170235                  0
+           PF OA     0.538944     0.208815     0.538944                  0
+        Effusion     0.367477     0.367477     0.613773                  5
+       Synovitis     0.331046     0.095753     0.331046                  0
+         Baker's     0.646436     0.646436     0.117321                  5
+       Contusion     0.238460     0.234541     0.011249                  3
+        Fracture     0.316307     0.316307     0.192735                  5
+
+Total runtime          : 00:00:34
+
+IMPORTANT: /kaggle/working/submission.csv is the W4 fold-gated PRIMARY submission.

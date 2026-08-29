@@ -1,0 +1,48 @@
+{
+  "submission_version": "w4_0_curia2_final_submission_v1",
+  "primary_strategy": "fold_gated",
+  "secondary_strategy": "weak_all",
+  "artifact_root": "/kaggle/input/datasets/isayem/rsna-w4-0-submission-bundle/test_w4_bundle",
+  "curia_root": "/kaggle/input/datasets/isayem/curia-2-model/curia-2-model",
+  "curia_sha256": "403a02e27531d2858ecd1e9b1ec2d5ea7bfa909f10ff0d9e8416090a6a8c96ef",
+  "curia_config": {
+    "model_sha256": "403a02e27531d2858ecd1e9b1ec2d5ea7bfa909f10ff0d9e8416090a6a8c96ef",
+    "hidden_size": 768,
+    "num_channels": 1,
+    "image_size": 512,
+    "patch_size": 16,
+    "num_hidden_layers": 12,
+    "num_attention_heads": 12
+  },
+  "w4_config_hash": "c0fba803bef4b924d76476e51cbdb7a36bffaef8603f8f8e3dcdc980c9f9b9e8",
+  "expected_development_metrics": {
+    "gold_oof_macro_AUROC": 0.6206400750390512,
+    "weak_oof_macro_AUROC": 0.6410767022764444,
+    "fold_gated_oof_macro_AUROC": 0.6523168373553919,
+    "fold_gated_oof_macro_AP": 0.5135558332035449,
+    "fold_gated_oof_macro_F1": 0.49551845871666833
+  },
+  "test_cache": {
+    "cache_version": "w4_0_curia2_cls_allseries_24slice_canonical_orientation_slow_processor_v1",
+    "cache_complete": true,
+    "test_studies": 3,
+    "cached_studies": 3,
+    "encoded_series": 15,
+    "encoded_slices": 360,
+    "mean_series_per_study": 5.0,
+    "mean_slices_per_study": 120.0,
+    "curia_model_sha256": "403a02e27531d2858ecd1e9b1ec2d5ea7bfa909f10ff0d9e8416090a6a8c96ef",
+    "minimum_orientation_alignment": 0.9669094367754172,
+    "series_plane_matches": 15,
+    "series_audit_rows": 15,
+    "runtime_seconds_this_call": 25.442617893218994
+  },
+  "output_paths": {
+    "kaggle_submission": "/kaggle/working/submission.csv",
+    "primary_copy": "/kaggle/working/rsna_w4_0_submission/submission_w4_curia_fold_gated_primary.csv",
+    "weak_all": "/kaggle/working/rsna_w4_0_submission/submission_w4_curia_weak_all.csv",
+    "gold_all": "/kaggle/working/rsna_w4_0_submission/submission_w4_curia_gold_all.csv"
+  },
+  "test_studies": 3,
+  "runtime_seconds": 34.73480486869812
+}

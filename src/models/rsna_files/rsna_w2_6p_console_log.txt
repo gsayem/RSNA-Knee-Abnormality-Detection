@@ -1,0 +1,1050 @@
+Time
+#
+Log Message
+5.8s	1	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+5.8s	2	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+5.8s	3	0.00s - to python to disable frozen modules.
+5.8s	4	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+6.3s	5	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+6.3s	6	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+6.3s	7	0.00s - to python to disable frozen modules.
+6.3s	8	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+13.9s	9	{
+13.9s	10	  "experiment": "RSNA W2.6-P batched production report teacher",
+13.9s	11	  "uses_pilkwang_labels": false,
+13.9s	12	  "is_kaggle": true,
+13.9s	13	  "script_dir": "/kaggle/working",
+13.9s	14	  "project_root": "/kaggle/working",
+13.9s	15	  "train_csv": "/kaggle/input/competitions/rsna-knee-abnormality-detection/train.csv",
+13.9s	16	  "train_exists": true,
+13.9s	17	  "w2_root_env": "/kaggle/input/datasets/isayem/rsna-w2/rsna_w2",
+13.9s	18	  "w23_root_env": "/kaggle/input/datasets/isayem/rsna-w2-3/rsna_w2_3",
+13.9s	19	  "model_path_env": "/kaggle/input/datasets/ragnar123/qwen2-5-7b-instruct",
+13.9s	20	  "model_exists": true,
+13.9s	21	  "accelerator_requested": "kaggle_t4",
+13.9s	22	  "accelerator_resolved": "kaggle_t4",
+13.9s	23	  "precision_policy": "auto",
+13.9s	24	  "initial_batch_size": 8,
+13.9s	25	  "max_input_tokens": 3584,
+13.9s	26	  "oom_token_budgets": [
+13.9s	27	    3072,
+13.9s	28	    2560,
+13.9s	29	    2048,
+13.9s	30	    1536
+13.9s	31	  ],
+13.9s	32	  "max_new_tokens": 72,
+13.9s	33	  "fs4_labels": [
+13.9s	34	    "Medial OA",
+13.9s	35	    "Lateral OA",
+13.9s	36	    "PF OA",
+13.9s	37	    "Synovitis"
+13.9s	38	  ],
+13.9s	39	  "established_w23_labels": [
+13.9s	40	    "ACL",
+13.9s	41	    "MCL",
+13.9s	42	    "Medial Meniscus",
+13.9s	43	    "Lateral Meniscus",
+13.9s	44	    "Effusion",
+13.9s	45	    "Baker's",
+13.9s	46	    "Contusion",
+13.9s	47	    "Fracture"
+13.9s	48	  ],
+13.9s	49	  "production_fs4_cells": 17396,
+13.9s	50	  "production_all_teacher_cells": 52188,
+13.9s	51	  "fixed_blend_alpha": 0.5,
+13.9s	52	  "cache_file": "/kaggle/working/rsna_w2_6p/cache/w26p_fs4_production_v1.jsonl",
+13.9s	53	  "cached_fs4_cells": 0,
+13.9s	54	  "counts": {
+13.9s	55	    "train": 4407,
+13.9s	56	    "gold": 58,
+13.9s	57	    "unlabeled": 4349
+13.9s	58	  },
+13.9s	59	  "w2_root": "/kaggle/input/datasets/isayem/rsna-w2/rsna_w2",
+13.9s	60	  "w2_gold_sha256": "a783fe3e20317d233a67351e1270cab7a365232a75b56b35b8d521204fe228c2",
+13.9s	61	  "w2_full_sha256": "a460fc2752e01be3bc8c2a7a8a82d330c3bbcab233108e97040c3e709aeafadc",
+13.9s	62	  "w23_root": "/kaggle/input/datasets/isayem/rsna-w2-3/rsna_w2_3",
+13.9s	63	  "w23_stability_exists": true,
+13.9s	64	  "cuda_available": true,
+13.9s	65	  "gpu_count": 2,
+13.9s	66	  "gpu_names": [
+13.9s	67	    "Tesla T4",
+13.9s	68	    "Tesla T4"
+13.9s	69	  ]
+13.9s	70	}
+14.0s	71	================================================================================================
+14.0s	72	W2.6-P PRODUCTION BUILD
+14.0s	73	================================================================================================
+14.0s	74	Train/gold/unlabeled      : 4407 / 58 / 4349
+14.0s	75	W2 root                   : /kaggle/input/datasets/isayem/rsna-w2/rsna_w2
+14.0s	76	W2.3 root                 : /kaggle/input/datasets/isayem/rsna-w2-3/rsna_w2_3
+14.0s	77	Qwen model                : /kaggle/input/datasets/ragnar123/qwen2-5-7b-instruct
+14.0s	78	Pilkwang labels           : NO
+14.0s	79	All 58 gold reports are used ONLY as production FS4 exemplars.
+18.8s	80	Building production retrieval: Medial OA
+38.2s	81	Building production retrieval: Lateral OA
+57.5s	82	Building production retrieval: PF OA
+77.1s	83	Building production retrieval: Synovitis
+97.2s	84	================================================================================================
+97.2s	85	W2.6-P — BATCHED PRODUCTION FS4 MAPPER
+97.2s	86	================================================================================================
+97.2s	87	FS4 production cells      : 17396
+97.2s	88	Valid cached cells        : 0
+97.2s	89	Need new mappings         : 17396
+97.2s	90	Initial batch size        : 8
+97.2s	91	Max input tokens          : 3584
+97.2s	92	Output token cap          : 72
+112.8s	93	Loading production mapper : /kaggle/input/datasets/ragnar123/qwen2-5-7b-instruct
+112.8s	94	Requested accelerator     : kaggle_t4
+112.8s	95	Resolved accelerator      : kaggle_t4
+112.8s	96	Precision policy          : auto
+112.8s	97	CUDA GPUs                 : 2
+134.7s	98	Model load mode           : fp16_balanced_2gpu
+134.7s	99	Input embedding device    : cuda:0
+134.7s	100	HF device-map modules     : {'0': 13, '1': 19}
+134.7s	101	GPU 0 free after load    : 8.23 / 14.56 GiB
+134.9s	102	GPU 1 free after load    : 6.49 / 14.56 GiB
+153.6s	103	  mapped     8/17396 batch= 8 active_bs= 8 call= 18.6s rate=  25.8 cells/min ETA=11.25h
+168.0s	104	  mapped    16/17396 batch= 8 active_bs= 8 call= 14.5s rate=  29.0 cells/min ETA= 9.99h
+186.0s	105	  mapped    24/17396 batch= 8 active_bs= 8 call= 18.0s rate=  28.2 cells/min ETA=10.27h
+202.0s	106	  mapped    32/17396 batch= 8 active_bs= 8 call= 16.0s rate=  28.6 cells/min ETA=10.11h
+220.9s	107	  mapped    40/17396 batch= 8 active_bs= 8 call= 18.9s rate=  27.9 cells/min ETA=10.36h
+239.7s	108	  mapped    48/17396 batch= 8 active_bs= 8 call= 18.8s rate=  27.5 cells/min ETA=10.52h
+267.8s	109	  mapped    56/17396 batch= 8 active_bs= 8 call= 28.0s rate=  25.3 cells/min ETA=11.42h
+297.6s	110	  mapped    64/17396 batch= 8 active_bs= 8 call= 30.0s rate=  23.6 cells/min ETA=12.25h
+325.5s	111	  mapped    72/17396 batch= 8 active_bs= 8 call= 27.7s rate=  22.7 cells/min ETA=12.74h
+354.4s	112	  mapped    80/17396 batch= 8 active_bs= 8 call= 28.9s rate=  21.9 cells/min ETA=13.19h
+374.7s	113	  mapped    88/17396 batch= 8 active_bs= 8 call= 20.4s rate=  22.0 cells/min ETA=13.10h
+403.9s	114	  mapped    96/17396 batch= 8 active_bs= 8 call= 29.2s rate=  21.4 cells/min ETA=13.47h
+433.6s	115	  mapped   104/17396 batch= 8 active_bs= 8 call= 29.7s rate=  20.9 cells/min ETA=13.80h
+462.8s	116	  mapped   112/17396 batch= 8 active_bs= 8 call= 29.1s rate=  20.5 cells/min ETA=14.05h
+492.0s	117	  mapped   120/17396 batch= 8 active_bs= 8 call= 29.2s rate=  20.2 cells/min ETA=14.28h
+520.9s	118	  mapped   128/17396 batch= 8 active_bs= 8 call= 29.0s rate=  19.9 cells/min ETA=14.47h
+538.7s	119	  mapped   136/17396 batch= 8 active_bs= 8 call= 17.7s rate=  20.2 cells/min ETA=14.23h
+564.0s	120	  mapped   144/17396 batch= 8 active_bs= 8 call= 25.4s rate=  20.1 cells/min ETA=14.28h
+583.1s	121	  mapped   152/17396 batch= 8 active_bs= 8 call= 19.1s rate=  20.3 cells/min ETA=14.12h
+603.2s	122	  mapped   160/17396 batch= 8 active_bs= 8 call= 20.1s rate=  20.5 cells/min ETA=14.01h
+631.4s	123	  mapped   168/17396 batch= 8 active_bs= 8 call= 28.4s rate=  20.3 cells/min ETA=14.15h
+661.2s	124	  mapped   176/17396 batch= 8 active_bs= 8 call= 29.6s rate=  20.1 cells/min ETA=14.30h
+690.2s	125	  mapped   184/17396 batch= 8 active_bs= 8 call= 29.2s rate=  19.9 cells/min ETA=14.43h
+718.2s	126	  mapped   192/17396 batch= 8 active_bs= 8 call= 27.8s rate=  19.8 cells/min ETA=14.52h
+747.3s	127	  mapped   200/17396 batch= 8 active_bs= 8 call= 29.1s rate=  19.6 cells/min ETA=14.63h
+778.1s	128	  mapped   208/17396 batch= 8 active_bs= 8 call= 30.8s rate=  19.4 cells/min ETA=14.76h
+806.8s	129	  mapped   216/17396 batch= 8 active_bs= 8 call= 28.7s rate=  19.3 cells/min ETA=14.84h
+837.2s	130	  mapped   224/17396 batch= 8 active_bs= 8 call= 30.5s rate=  19.1 cells/min ETA=14.96h
+859.0s	131	  mapped   232/17396 batch= 8 active_bs= 8 call= 21.6s rate=  19.2 cells/min ETA=14.88h
+888.4s	132	  mapped   240/17396 batch= 8 active_bs= 8 call= 29.4s rate=  19.1 cells/min ETA=14.96h
+910.3s	133	  mapped   248/17396 batch= 8 active_bs= 8 call= 21.9s rate=  19.2 cells/min ETA=14.89h
+934.2s	134	  mapped   256/17396 batch= 8 active_bs= 8 call= 23.9s rate=  19.2 cells/min ETA=14.86h
+942.9s	135	  batch CUDA OOM: n=8 token_budget=3584; trying smaller context...
+951.9s	136	  batch CUDA OOM: n=8 token_budget=3072; trying smaller context...
+961.1s	137	  batch CUDA OOM: n=8 token_budget=2560; trying smaller context...
+970.6s	138	  batch CUDA OOM: n=8 token_budget=2048; trying smaller context...
+999.8s	139	  mapped   264/17396 batch= 8 active_bs= 8 call= 65.6s rate=  18.3 cells/min ETA=15.59h
+1009.7s	140	  batch CUDA OOM: n=8 token_budget=3584; trying smaller context...
+1019.7s	141	  batch CUDA OOM: n=8 token_budget=3072; trying smaller context...
+1029.8s	142	  batch CUDA OOM: n=8 token_budget=2560; trying smaller context...
+1039.9s	143	  batch CUDA OOM: n=8 token_budget=2048; trying smaller context...
+1068.6s	144	  mapped   272/17396 batch= 8 active_bs= 8 call= 68.8s rate=  17.5 cells/min ETA=16.33h
+1078.8s	145	  batch CUDA OOM: n=8 token_budget=3584; trying smaller context...
+1089.3s	146	  batch CUDA OOM: n=8 token_budget=3072; trying smaller context...
+1100.7s	147	  batch CUDA OOM: n=8 token_budget=2560; trying smaller context...
+1111.3s	148	  batch CUDA OOM: n=8 token_budget=2048; trying smaller context...
+1139.6s	149	  mapped   280/17396 batch= 8 active_bs= 8 call= 71.0s rate=  16.7 cells/min ETA=17.06h
+1149.4s	150	  batch CUDA OOM: n=8 token_budget=3584; trying smaller context...
+1159.7s	151	  batch CUDA OOM: n=8 token_budget=3072; trying smaller context...
+1170.7s	152	  batch CUDA OOM: n=8 token_budget=2560; trying smaller context...
+1181.6s	153	  batch CUDA OOM: n=8 token_budget=2048; trying smaller context...
+1209.8s	154	  mapped   288/17396 batch= 8 active_bs= 8 call= 70.4s rate=  16.1 cells/min ETA=17.74h
+1240.9s	155	  mapped   296/17396 batch= 8 active_bs= 8 call= 31.0s rate=  16.1 cells/min ETA=17.75h
+1268.1s	156	  mapped   304/17396 batch= 8 active_bs= 8 call= 27.0s rate=  16.1 cells/min ETA=17.70h
+1289.7s	157	  mapped   312/17396 batch= 8 active_bs= 8 call= 21.9s rate=  16.2 cells/min ETA=17.57h
+1326.0s	158	  mapped   320/17396 batch= 8 active_bs= 8 call= 36.1s rate=  16.1 cells/min ETA=17.66h
+1361.4s	159	  mapped   328/17396 batch= 8 active_bs= 8 call= 35.6s rate=  16.0 cells/min ETA=17.73h
+1396.7s	160	  mapped   336/17396 batch= 8 active_bs= 8 call= 35.1s rate=  16.0 cells/min ETA=17.80h
+1421.9s	161	  mapped   344/17396 batch= 8 active_bs= 8 call= 25.2s rate=  16.0 cells/min ETA=17.72h
+1447.1s	162	  mapped   352/17396 batch= 8 active_bs= 8 call= 25.1s rate=  16.1 cells/min ETA=17.65h
+1474.0s	163	  mapped   360/17396 batch= 8 active_bs= 8 call= 27.0s rate=  16.1 cells/min ETA=17.60h
+1500.5s	164	  mapped   368/17396 batch= 8 active_bs= 8 call= 26.5s rate=  16.2 cells/min ETA=17.55h
+1535.4s	165	  mapped   376/17396 batch= 8 active_bs= 8 call= 34.9s rate=  16.1 cells/min ETA=17.61h
+1570.0s	166	  mapped   384/17396 batch= 8 active_bs= 8 call= 34.6s rate=  16.1 cells/min ETA=17.66h
+1595.0s	167	  mapped   392/17396 batch= 8 active_bs= 8 call= 25.1s rate=  16.1 cells/min ETA=17.59h
+1630.5s	168	  mapped   400/17396 batch= 8 active_bs= 8 call= 35.6s rate=  16.0 cells/min ETA=17.65h
+1640.9s	169	  batch CUDA OOM: n=8 token_budget=3584; trying smaller context...
+1641.6s	170	  batch CUDA OOM: n=8 token_budget=3072; trying smaller context...
+1645.7s	171	  batch CUDA OOM: n=8 token_budget=2560; trying smaller context...
+1646.8s	172	  batch CUDA OOM: n=8 token_budget=2048; trying smaller context...
+1675.1s	173	  mapped   408/17396 batch= 8 active_bs= 8 call= 44.6s rate=  15.9 cells/min ETA=17.82h
+1700.9s	174	  mapped   416/17396 batch= 8 active_bs= 8 call= 25.6s rate=  15.9 cells/min ETA=17.76h
+1737.9s	175	  mapped   424/17396 batch= 8 active_bs= 8 call= 37.0s rate=  15.9 cells/min ETA=17.82h
+1774.5s	176	  mapped   432/17396 batch= 8 active_bs= 8 call= 36.6s rate=  15.8 cells/min ETA=17.88h
+1801.7s	177	  mapped   440/17396 batch= 8 active_bs= 8 call= 27.2s rate=  15.8 cells/min ETA=17.84h
+1836.9s	178	  mapped   448/17396 batch= 8 active_bs= 8 call= 35.4s rate=  15.8 cells/min ETA=17.89h
+1877.3s	179	  mapped   456/17396 batch= 8 active_bs= 8 call= 40.2s rate=  15.7 cells/min ETA=17.98h
+1920.2s	180	  mapped   464/17396 batch= 8 active_bs= 8 call= 42.9s rate=  15.6 cells/min ETA=18.10h
+1955.9s	181	  mapped   472/17396 batch= 8 active_bs= 8 call= 35.8s rate=  15.6 cells/min ETA=18.14h
+1993.1s	182	  mapped   480/17396 batch= 8 active_bs= 8 call= 37.2s rate=  15.5 cells/min ETA=18.19h
+2032.4s	183	  mapped   488/17396 batch= 8 active_bs= 8 call= 39.5s rate=  15.4 cells/min ETA=18.26h
+2059.4s	184	  mapped   496/17396 batch= 8 active_bs= 8 call= 27.0s rate=  15.5 cells/min ETA=18.22h
+2096.7s	185	  mapped   504/17396 batch= 8 active_bs= 8 call= 37.1s rate=  15.4 cells/min ETA=18.26h
+2134.3s	186	  mapped   512/17396 batch= 8 active_bs= 8 call= 37.5s rate=  15.4 cells/min ETA=18.31h
+2177.6s	187	  mapped   520/17396 batch= 8 active_bs= 8 call= 43.3s rate=  15.3 cells/min ETA=18.41h
+2215.3s	188	  mapped   528/17396 batch= 8 active_bs= 8 call= 37.9s rate=  15.2 cells/min ETA=18.46h
+2256.5s	189	  mapped   536/17396 batch= 8 active_bs= 8 call= 41.2s rate=  15.2 cells/min ETA=18.54h
+2283.8s	190	  mapped   544/17396 batch= 8 active_bs= 8 call= 27.3s rate=  15.2 cells/min ETA=18.49h
+2321.1s	191	  mapped   552/17396 batch= 8 active_bs= 8 call= 37.1s rate=  15.2 cells/min ETA=18.53h
+2359.1s	192	  mapped   560/17396 batch= 8 active_bs= 8 call= 38.0s rate=  15.1 cells/min ETA=18.57h
+2404.2s	193	  mapped   568/17396 batch= 8 active_bs= 8 call= 45.1s rate=  15.0 cells/min ETA=18.68h
+2446.1s	194	  mapped   576/17396 batch= 8 active_bs= 8 call= 41.8s rate=  15.0 cells/min ETA=18.75h
+2490.6s	195	  mapped   584/17396 batch= 8 active_bs= 8 call= 44.6s rate=  14.9 cells/min ETA=18.84h
+2531.3s	196	  mapped   592/17396 batch= 8 active_bs= 8 call= 40.6s rate=  14.8 cells/min ETA=18.89h
+2574.1s	197	  mapped   600/17396 batch= 8 active_bs= 8 call= 43.0s rate=  14.8 cells/min ETA=18.97h
+2606.4s	198	  mapped   608/17396 batch= 8 active_bs= 8 call= 32.1s rate=  14.8 cells/min ETA=18.96h
+2646.9s	199	  mapped   616/17396 batch= 8 active_bs= 8 call= 40.5s rate=  14.7 cells/min ETA=19.01h
+2670.8s	200	  mapped   624/17396 batch= 8 active_bs= 8 call= 23.9s rate=  14.8 cells/min ETA=18.93h
+2699.7s	201	  mapped   632/17396 batch= 8 active_bs= 8 call= 28.8s rate=  14.8 cells/min ETA=18.90h
+2723.7s	202	  mapped   640/17396 batch= 8 active_bs= 8 call= 24.0s rate=  14.8 cells/min ETA=18.83h
+2762.7s	203	  mapped   648/17396 batch= 8 active_bs= 8 call= 39.0s rate=  14.8 cells/min ETA=18.87h
+2787.3s	204	  mapped   656/17396 batch= 8 active_bs= 8 call= 24.6s rate=  14.8 cells/min ETA=18.80h
+2826.8s	205	  mapped   664/17396 batch= 8 active_bs= 8 call= 39.5s rate=  14.8 cells/min ETA=18.84h
+2866.2s	206	  mapped   672/17396 batch= 8 active_bs= 8 call= 39.4s rate=  14.8 cells/min ETA=18.88h
+2909.8s	207	  mapped   680/17396 batch= 8 active_bs= 8 call= 43.5s rate=  14.7 cells/min ETA=18.95h
+2952.3s	208	  mapped   688/17396 batch= 8 active_bs= 8 call= 42.5s rate=  14.7 cells/min ETA=19.01h
+2994.5s	209	  mapped   696/17396 batch= 8 active_bs= 8 call= 42.2s rate=  14.6 cells/min ETA=19.06h
+3054.0s	210	  mapped   704/17396 batch= 8 active_bs= 8 call= 59.7s rate=  14.5 cells/min ETA=19.23h
+3094.8s	211	  mapped   712/17396 batch= 8 active_bs= 8 call= 40.6s rate=  14.4 cells/min ETA=19.27h
+3153.4s	212	  mapped   720/17396 batch= 8 active_bs= 8 call= 58.6s rate=  14.3 cells/min ETA=19.42h
+3198.6s	213	  mapped   728/17396 batch= 8 active_bs= 8 call= 45.3s rate=  14.3 cells/min ETA=19.48h
+3259.3s	214	  mapped   736/17396 batch= 8 active_bs= 8 call= 60.7s rate=  14.1 cells/min ETA=19.65h
+3299.1s	215	  mapped   744/17396 batch= 8 active_bs= 8 call= 39.7s rate=  14.1 cells/min ETA=19.67h
+3345.1s	216	  mapped   752/17396 batch= 8 active_bs= 8 call= 46.1s rate=  14.1 cells/min ETA=19.74h
+3372.7s	217	  mapped   760/17396 batch= 8 active_bs= 8 call= 27.6s rate=  14.1 cells/min ETA=19.69h
+3418.7s	218	  mapped   768/17396 batch= 8 active_bs= 8 call= 46.0s rate=  14.0 cells/min ETA=19.75h
+3463.3s	219	  mapped   776/17396 batch= 8 active_bs= 8 call= 44.6s rate=  14.0 cells/min ETA=19.80h
+3522.4s	220	  mapped   784/17396 batch= 8 active_bs= 8 call= 59.1s rate=  13.9 cells/min ETA=19.94h
+3566.3s	221	  mapped   792/17396 batch= 8 active_bs= 8 call= 43.9s rate=  13.8 cells/min ETA=19.98h
+3600.7s	222	  mapped   800/17396 batch= 8 active_bs= 8 call= 34.4s rate=  13.8 cells/min ETA=19.97h
+3646.2s	223	  mapped   808/17396 batch= 8 active_bs= 8 call= 45.5s rate=  13.8 cells/min ETA=20.02h
+3710.3s	224	  mapped   816/17396 batch= 8 active_bs= 8 call= 64.1s rate=  13.7 cells/min ETA=20.18h
+3743.7s	225	  mapped   824/17396 batch= 8 active_bs= 8 call= 33.4s rate=  13.7 cells/min ETA=20.16h
+3801.8s	226	  mapped   832/17396 batch= 8 active_bs= 8 call= 58.1s rate=  13.6 cells/min ETA=20.28h
+3858.5s	227	  mapped   840/17396 batch= 8 active_bs= 8 call= 56.7s rate=  13.5 cells/min ETA=20.39h
+3902.3s	228	  mapped   848/17396 batch= 8 active_bs= 8 call= 43.7s rate=  13.5 cells/min ETA=20.42h
+3951.1s	229	  mapped   856/17396 batch= 8 active_bs= 8 call= 48.9s rate=  13.5 cells/min ETA=20.48h
+3986.1s	230	  mapped   864/17396 batch= 8 active_bs= 8 call= 35.0s rate=  13.5 cells/min ETA=20.47h
+4033.6s	231	  mapped   872/17396 batch= 8 active_bs= 8 call= 47.5s rate=  13.4 cells/min ETA=20.52h
+4090.9s	232	  mapped   880/17396 batch= 8 active_bs= 8 call= 57.3s rate=  13.3 cells/min ETA=20.62h
+4132.9s	233	  mapped   888/17396 batch= 8 active_bs= 8 call= 42.0s rate=  13.3 cells/min ETA=20.65h
+4178.2s	234	  mapped   896/17396 batch= 8 active_bs= 8 call= 45.2s rate=  13.3 cells/min ETA=20.68h
+4224.1s	235	  mapped   904/17396 batch= 8 active_bs= 8 call= 45.9s rate=  13.3 cells/min ETA=20.72h
+4269.8s	236	  mapped   912/17396 batch= 8 active_bs= 8 call= 45.8s rate=  13.2 cells/min ETA=20.76h
+4327.9s	237	  mapped   920/17396 batch= 8 active_bs= 8 call= 58.3s rate=  13.2 cells/min ETA=20.86h
+4374.1s	238	  mapped   928/17396 batch= 8 active_bs= 8 call= 45.9s rate=  13.1 cells/min ETA=20.90h
+4421.8s	239	  mapped   936/17396 batch= 8 active_bs= 8 call= 48.0s rate=  13.1 cells/min ETA=20.94h
+4479.3s	240	  mapped   944/17396 batch= 8 active_bs= 8 call= 57.2s rate=  13.0 cells/min ETA=21.03h
+4524.6s	241	  mapped   952/17396 batch= 8 active_bs= 8 call= 45.4s rate=  13.0 cells/min ETA=21.06h
+4557.7s	242	  mapped   960/17396 batch= 8 active_bs= 8 call= 33.0s rate=  13.0 cells/min ETA=21.03h
+4616.6s	243	  mapped   968/17396 batch= 8 active_bs= 8 call= 58.9s rate=  13.0 cells/min ETA=21.13h
+4650.1s	244	  mapped   976/17396 batch= 8 active_bs= 8 call= 33.7s rate=  13.0 cells/min ETA=21.10h
+4713.8s	245	  mapped   984/17396 batch= 8 active_bs= 8 call= 63.7s rate=  12.9 cells/min ETA=21.21h
+4744.9s	246	  mapped   992/17396 batch= 8 active_bs= 8 call= 31.2s rate=  12.9 cells/min ETA=21.18h
+4793.7s	247	  mapped  1000/17396 batch= 8 active_bs= 8 call= 48.6s rate=  12.9 cells/min ETA=21.22h
+4840.0s	248	  mapped  1008/17396 batch= 8 active_bs= 8 call= 46.5s rate=  12.9 cells/min ETA=21.25h
+4900.2s	249	  mapped  1016/17396 batch= 8 active_bs= 8 call= 60.2s rate=  12.8 cells/min ETA=21.34h
+4956.6s	250	  mapped  1024/17396 batch= 8 active_bs= 8 call= 56.4s rate=  12.7 cells/min ETA=21.41h
+4991.7s	251	  mapped  1032/17396 batch= 8 active_bs= 8 call= 35.1s rate=  12.7 cells/min ETA=21.39h
+5052.0s	252	  mapped  1040/17396 batch= 8 active_bs= 8 call= 60.3s rate=  12.7 cells/min ETA=21.48h
+5093.6s	253	  mapped  1048/17396 batch= 8 active_bs= 8 call= 41.6s rate=  12.7 cells/min ETA=21.49h
+5141.6s	254	  mapped  1056/17396 batch= 8 active_bs= 8 call= 47.7s rate=  12.7 cells/min ETA=21.52h
+5188.1s	255	  mapped  1064/17396 batch= 8 active_bs= 8 call= 46.5s rate=  12.6 cells/min ETA=21.55h
+5235.2s	256	  mapped  1072/17396 batch= 8 active_bs= 8 call= 47.2s rate=  12.6 cells/min ETA=21.57h
+5270.3s	257	  mapped  1080/17396 batch= 8 active_bs= 8 call= 35.0s rate=  12.6 cells/min ETA=21.55h
+5331.2s	258	  mapped  1088/17396 batch= 8 active_bs= 8 call= 61.0s rate=  12.6 cells/min ETA=21.64h
+5365.5s	259	  mapped  1096/17396 batch= 8 active_bs= 8 call= 34.2s rate=  12.6 cells/min ETA=21.61h
+5413.6s	260	  mapped  1104/17396 batch= 8 active_bs= 8 call= 48.2s rate=  12.5 cells/min ETA=21.64h
+5461.7s	261	  mapped  1112/17396 batch= 8 active_bs= 8 call= 48.3s rate=  12.5 cells/min ETA=21.67h
+5509.6s	262	  mapped  1120/17396 batch= 8 active_bs= 8 call= 47.7s rate=  12.5 cells/min ETA=21.70h
+5557.1s	263	  mapped  1128/17396 batch= 8 active_bs= 8 call= 47.6s rate=  12.5 cells/min ETA=21.72h
+5602.3s	264	  mapped  1136/17396 batch= 8 active_bs= 8 call= 45.3s rate=  12.5 cells/min ETA=21.74h
+5648.0s	265	  mapped  1144/17396 batch= 8 active_bs= 8 call= 45.4s rate=  12.5 cells/min ETA=21.76h
+5696.2s	266	  mapped  1152/17396 batch= 8 active_bs= 8 call= 48.2s rate=  12.4 cells/min ETA=21.78h
+5754.2s	267	  mapped  1160/17396 batch= 8 active_bs= 8 call= 57.9s rate=  12.4 cells/min ETA=21.85h
+5799.8s	268	  mapped  1168/17396 batch= 8 active_bs= 8 call= 45.7s rate=  12.4 cells/min ETA=21.86h
+5858.8s	269	  mapped  1176/17396 batch= 8 active_bs= 8 call= 58.9s rate=  12.3 cells/min ETA=21.93h
+5916.8s	270	  mapped  1184/17396 batch= 8 active_bs= 8 call= 58.0s rate=  12.3 cells/min ETA=21.99h
+5950.5s	271	  mapped  1192/17396 batch= 8 active_bs= 8 call= 33.6s rate=  12.3 cells/min ETA=21.96h
+5998.8s	272	  mapped  1200/17396 batch= 8 active_bs= 8 call= 48.3s rate=  12.3 cells/min ETA=21.98h
+6038.6s	273	  mapped  1208/17396 batch= 8 active_bs= 8 call= 39.8s rate=  12.3 cells/min ETA=21.98h
+6097.9s	274	  mapped  1216/17396 batch= 8 active_bs= 8 call= 59.3s rate=  12.2 cells/min ETA=22.04h
+6154.2s	275	  mapped  1224/17396 batch= 8 active_bs= 8 call= 56.3s rate=  12.2 cells/min ETA=22.09h
+6212.0s	276	  mapped  1232/17396 batch= 8 active_bs= 8 call= 57.8s rate=  12.2 cells/min ETA=22.15h
+6271.1s	277	  mapped  1240/17396 batch= 8 active_bs= 8 call= 59.0s rate=  12.1 cells/min ETA=22.21h
+6328.3s	278	  mapped  1248/17396 batch= 8 active_bs= 8 call= 57.2s rate=  12.1 cells/min ETA=22.26h
+6387.0s	279	  mapped  1256/17396 batch= 8 active_bs= 8 call= 58.7s rate=  12.1 cells/min ETA=22.32h
+6434.8s	280	  mapped  1264/17396 batch= 8 active_bs= 8 call= 47.8s rate=  12.0 cells/min ETA=22.33h
+6484.1s	281	  mapped  1272/17396 batch= 8 active_bs= 8 call= 49.3s rate=  12.0 cells/min ETA=22.36h
+6552.6s	282	  mapped  1280/17396 batch= 8 active_bs= 8 call= 68.5s rate=  12.0 cells/min ETA=22.45h
+6610.3s	283	  mapped  1288/17396 batch= 8 active_bs= 8 call= 58.0s rate=  11.9 cells/min ETA=22.50h
+6658.8s	284	  mapped  1296/17396 batch= 8 active_bs= 8 call= 48.5s rate=  11.9 cells/min ETA=22.51h
+6706.6s	285	  mapped  1304/17396 batch= 8 active_bs= 8 call= 47.6s rate=  11.9 cells/min ETA=22.53h
+6768.5s	286	  mapped  1312/17396 batch= 8 active_bs= 8 call= 61.8s rate=  11.9 cells/min ETA=22.59h
+6816.3s	287	  mapped  1320/17396 batch= 8 active_bs= 8 call= 47.8s rate=  11.9 cells/min ETA=22.60h
+6865.9s	288	  mapped  1328/17396 batch= 8 active_bs= 8 call= 49.6s rate=  11.8 cells/min ETA=22.62h
+6924.6s	289	  mapped  1336/17396 batch= 8 active_bs= 8 call= 58.7s rate=  11.8 cells/min ETA=22.67h
+6987.5s	290	  mapped  1344/17396 batch= 8 active_bs= 8 call= 62.9s rate=  11.8 cells/min ETA=22.73h
+7034.9s	291	  mapped  1352/17396 batch= 8 active_bs= 8 call= 47.6s rate=  11.8 cells/min ETA=22.75h
+7096.7s	292	  mapped  1360/17396 batch= 8 active_bs= 8 call= 61.6s rate=  11.7 cells/min ETA=22.80h
+7146.2s	293	  mapped  1368/17396 batch= 8 active_bs= 8 call= 49.6s rate=  11.7 cells/min ETA=22.82h
+7209.5s	294	  mapped  1376/17396 batch= 8 active_bs= 8 call= 63.4s rate=  11.7 cells/min ETA=22.88h
+7258.5s	295	  mapped  1384/17396 batch= 8 active_bs= 8 call= 48.9s rate=  11.7 cells/min ETA=22.89h
+7321.3s	296	  mapped  1392/17396 batch= 8 active_bs= 8 call= 63.0s rate=  11.6 cells/min ETA=22.95h
+7380.5s	297	  mapped  1400/17396 batch= 8 active_bs= 8 call= 59.2s rate=  11.6 cells/min ETA=23.00h
+7440.4s	298	  mapped  1408/17396 batch= 8 active_bs= 8 call= 59.7s rate=  11.6 cells/min ETA=23.04h
+7508.7s	299	  mapped  1416/17396 batch= 8 active_bs= 8 call= 68.4s rate=  11.5 cells/min ETA=23.12h
+7577.3s	300	  mapped  1424/17396 batch= 8 active_bs= 8 call= 68.6s rate=  11.5 cells/min ETA=23.19h
+7640.1s	301	  mapped  1432/17396 batch= 8 active_bs= 8 call= 62.8s rate=  11.4 cells/min ETA=23.24h
+7709.3s	302	  mapped  1440/17396 batch= 8 active_bs= 8 call= 69.1s rate=  11.4 cells/min ETA=23.31h
+7758.7s	303	  mapped  1448/17396 batch= 8 active_bs= 8 call= 49.4s rate=  11.4 cells/min ETA=23.32h
+7817.1s	304	  mapped  1456/17396 batch= 8 active_bs= 8 call= 58.4s rate=  11.4 cells/min ETA=23.36h
+7878.8s	305	  mapped  1464/17396 batch= 8 active_bs= 8 call= 61.7s rate=  11.3 cells/min ETA=23.41h
+7930.2s	306	  mapped  1472/17396 batch= 8 active_bs= 8 call= 51.4s rate=  11.3 cells/min ETA=23.42h
+7979.6s	307	  mapped  1480/17396 batch= 8 active_bs= 8 call= 49.4s rate=  11.3 cells/min ETA=23.43h
+8045.6s	308	  mapped  1488/17396 batch= 8 active_bs= 8 call= 66.0s rate=  11.3 cells/min ETA=23.49h
+8108.9s	309	  mapped  1496/17396 batch= 8 active_bs= 8 call= 63.3s rate=  11.3 cells/min ETA=23.54h
+8168.4s	310	  mapped  1504/17396 batch= 8 active_bs= 8 call= 59.5s rate=  11.2 cells/min ETA=23.58h
+8234.5s	311	  mapped  1512/17396 batch= 8 active_bs= 8 call= 66.1s rate=  11.2 cells/min ETA=23.64h
+8295.3s	312	  mapped  1520/17396 batch= 8 active_bs= 8 call= 60.8s rate=  11.2 cells/min ETA=23.68h
+8355.7s	313	  mapped  1528/17396 batch= 8 active_bs= 8 call= 60.4s rate=  11.2 cells/min ETA=23.71h
+8417.1s	314	  mapped  1536/17396 batch= 8 active_bs= 8 call= 61.4s rate=  11.1 cells/min ETA=23.75h
+8485.1s	315	  mapped  1544/17396 batch= 8 active_bs= 8 call= 68.0s rate=  11.1 cells/min ETA=23.81h
+8546.0s	316	  mapped  1552/17396 batch= 8 active_bs= 8 call= 60.9s rate=  11.1 cells/min ETA=23.85h
+8604.5s	317	  mapped  1560/17396 batch= 8 active_bs= 8 call= 58.7s rate=  11.1 cells/min ETA=23.88h
+8652.5s	318	  mapped  1568/17396 batch= 8 active_bs= 8 call= 47.7s rate=  11.0 cells/min ETA=23.88h
+8708.9s	319	  mapped  1576/17396 batch= 8 active_bs= 8 call= 56.4s rate=  11.0 cells/min ETA=23.91h
+8756.6s	320	  mapped  1584/17396 batch= 8 active_bs= 8 call= 47.9s rate=  11.0 cells/min ETA=23.91h
+8817.5s	321	  mapped  1592/17396 batch= 8 active_bs= 8 call= 60.7s rate=  11.0 cells/min ETA=23.94h
+8875.7s	322	  mapped  1600/17396 batch= 8 active_bs= 8 call= 58.2s rate=  11.0 cells/min ETA=23.97h
+8935.3s	323	  mapped  1608/17396 batch= 8 active_bs= 8 call= 59.7s rate=  11.0 cells/min ETA=24.00h
+8984.2s	324	  mapped  1616/17396 batch= 8 active_bs= 8 call= 48.7s rate=  11.0 cells/min ETA=24.00h
+9043.4s	325	  mapped  1624/17396 batch= 8 active_bs= 8 call= 59.5s rate=  10.9 cells/min ETA=24.03h
+9102.9s	326	  mapped  1632/17396 batch= 8 active_bs= 8 call= 59.2s rate=  10.9 cells/min ETA=24.06h
+9157.2s	327	  mapped  1640/17396 batch= 8 active_bs= 8 call= 54.4s rate=  10.9 cells/min ETA=24.08h
+9217.3s	328	  mapped  1648/17396 batch= 8 active_bs= 8 call= 60.0s rate=  10.9 cells/min ETA=24.11h
+9274.6s	329	  mapped  1656/17396 batch= 8 active_bs= 8 call= 57.4s rate=  10.9 cells/min ETA=24.13h
+9337.9s	330	  mapped  1664/17396 batch= 8 active_bs= 8 call= 63.3s rate=  10.8 cells/min ETA=24.17h
+9401.6s	331	  mapped  1672/17396 batch= 8 active_bs= 8 call= 63.7s rate=  10.8 cells/min ETA=24.21h
+9468.2s	332	  mapped  1680/17396 batch= 8 active_bs= 8 call= 66.7s rate=  10.8 cells/min ETA=24.25h
+9527.4s	333	  mapped  1688/17396 batch= 8 active_bs= 8 call= 59.1s rate=  10.8 cells/min ETA=24.28h
+9600.1s	334	  mapped  1696/17396 batch= 8 active_bs= 8 call= 73.0s rate=  10.8 cells/min ETA=24.34h
+9661.9s	335	  mapped  1704/17396 batch= 8 active_bs= 8 call= 61.6s rate=  10.7 cells/min ETA=24.37h
+9725.3s	336	  mapped  1712/17396 batch= 8 active_bs= 8 call= 63.6s rate=  10.7 cells/min ETA=24.41h
+9791.9s	337	  mapped  1720/17396 batch= 8 active_bs= 8 call= 66.6s rate=  10.7 cells/min ETA=24.45h
+9840.2s	338	  mapped  1728/17396 batch= 8 active_bs= 8 call= 48.1s rate=  10.7 cells/min ETA=24.44h
+9889.9s	339	  mapped  1736/17396 batch= 8 active_bs= 8 call= 50.0s rate=  10.7 cells/min ETA=24.44h
+9950.6s	340	  mapped  1744/17396 batch= 8 active_bs= 8 call= 60.4s rate=  10.7 cells/min ETA=24.47h
+10004.5s	341	  mapped  1752/17396 batch= 8 active_bs= 8 call= 53.9s rate=  10.7 cells/min ETA=24.48h
+10064.0s	342	  mapped  1760/17396 batch= 8 active_bs= 8 call= 59.5s rate=  10.6 cells/min ETA=24.50h
+10133.1s	343	  mapped  1768/17396 batch= 8 active_bs= 8 call= 69.2s rate=  10.6 cells/min ETA=24.55h
+10197.6s	344	  mapped  1776/17396 batch= 8 active_bs= 8 call= 64.5s rate=  10.6 cells/min ETA=24.58h
+10243.7s	345	  mapped  1784/17396 batch= 8 active_bs= 8 call= 46.0s rate=  10.6 cells/min ETA=24.57h
+10291.1s	346	  mapped  1792/17396 batch= 8 active_bs= 8 call= 47.4s rate=  10.6 cells/min ETA=24.57h
+10339.7s	347	  mapped  1800/17396 batch= 8 active_bs= 8 call= 48.7s rate=  10.6 cells/min ETA=24.56h
+10375.4s	348	  mapped  1808/17396 batch= 8 active_bs= 8 call= 35.7s rate=  10.6 cells/min ETA=24.53h
+10431.1s	349	  mapped  1816/17396 batch= 8 active_bs= 8 call= 55.6s rate=  10.6 cells/min ETA=24.54h
+10483.1s	350	  mapped  1824/17396 batch= 8 active_bs= 8 call= 52.3s rate=  10.6 cells/min ETA=24.54h
+10532.1s	351	  mapped  1832/17396 batch= 8 active_bs= 8 call= 48.8s rate=  10.6 cells/min ETA=24.54h
+10597.1s	352	  mapped  1840/17396 batch= 8 active_bs= 8 call= 65.0s rate=  10.6 cells/min ETA=24.57h
+10657.4s	353	  mapped  1848/17396 batch= 8 active_bs= 8 call= 60.3s rate=  10.5 cells/min ETA=24.59h
+10708.2s	354	  mapped  1856/17396 batch= 8 active_bs= 8 call= 50.8s rate=  10.5 cells/min ETA=24.59h
+10766.5s	355	  mapped  1864/17396 batch= 8 active_bs= 8 call= 58.3s rate=  10.5 cells/min ETA=24.61h
+10833.0s	356	  mapped  1872/17396 batch= 8 active_bs= 8 call= 66.5s rate=  10.5 cells/min ETA=24.64h
+10890.2s	357	  mapped  1880/17396 batch= 8 active_bs= 8 call= 57.2s rate=  10.5 cells/min ETA=24.66h
+10958.8s	358	  mapped  1888/17396 batch= 8 active_bs= 8 call= 68.6s rate=  10.5 cells/min ETA=24.70h
+11018.7s	359	  mapped  1896/17396 batch= 8 active_bs= 8 call= 59.9s rate=  10.5 cells/min ETA=24.72h
+11052.7s	360	  mapped  1904/17396 batch= 8 active_bs= 8 call= 34.0s rate=  10.5 cells/min ETA=24.68h
+11114.0s	361	  mapped  1912/17396 batch= 8 active_bs= 8 call= 61.3s rate=  10.4 cells/min ETA=24.70h
+11176.7s	362	  mapped  1920/17396 batch= 8 active_bs= 8 call= 62.6s rate=  10.4 cells/min ETA=24.72h
+11212.9s	363	  mapped  1928/17396 batch= 8 active_bs= 8 call= 36.2s rate=  10.4 cells/min ETA=24.69h
+11272.6s	364	  mapped  1936/17396 batch= 8 active_bs= 8 call= 59.7s rate=  10.4 cells/min ETA=24.71h
+11325.8s	365	  mapped  1944/17396 batch= 8 active_bs= 8 call= 53.2s rate=  10.4 cells/min ETA=24.71h
+11375.0s	366	  mapped  1952/17396 batch= 8 active_bs= 8 call= 49.4s rate=  10.4 cells/min ETA=24.70h
+11444.6s	367	  mapped  1960/17396 batch= 8 active_bs= 8 call= 69.4s rate=  10.4 cells/min ETA=24.74h
+11490.1s	368	  mapped  1968/17396 batch= 8 active_bs= 8 call= 45.8s rate=  10.4 cells/min ETA=24.73h
+11553.0s	369	  mapped  1976/17396 batch= 8 active_bs= 8 call= 62.7s rate=  10.4 cells/min ETA=24.75h
+11605.1s	370	  mapped  1984/17396 batch= 8 active_bs= 8 call= 52.2s rate=  10.4 cells/min ETA=24.75h
+11657.5s	371	  mapped  1992/17396 batch= 8 active_bs= 8 call= 52.6s rate=  10.4 cells/min ETA=24.75h
+11705.0s	372	  mapped  2000/17396 batch= 8 active_bs= 8 call= 47.5s rate=  10.4 cells/min ETA=24.74h
+11757.9s	373	  mapped  2008/17396 batch= 8 active_bs= 8 call= 52.7s rate=  10.4 cells/min ETA=24.74h
+11806.9s	374	  mapped  2016/17396 batch= 8 active_bs= 8 call= 49.2s rate=  10.4 cells/min ETA=24.74h
+11864.0s	375	  mapped  2024/17396 batch= 8 active_bs= 8 call= 56.9s rate=  10.4 cells/min ETA=24.74h
+11918.8s	376	  mapped  2032/17396 batch= 8 active_bs= 8 call= 54.8s rate=  10.3 cells/min ETA=24.75h
+11978.1s	377	  mapped  2040/17396 batch= 8 active_bs= 8 call= 59.2s rate=  10.3 cells/min ETA=24.76h
+12031.9s	378	  mapped  2048/17396 batch= 8 active_bs= 8 call= 53.8s rate=  10.3 cells/min ETA=24.77h
+12084.2s	379	  mapped  2056/17396 batch= 8 active_bs= 8 call= 52.5s rate=  10.3 cells/min ETA=24.77h
+12143.6s	380	  mapped  2064/17396 batch= 8 active_bs= 8 call= 59.1s rate=  10.3 cells/min ETA=24.78h
+12197.5s	381	  mapped  2072/17396 batch= 8 active_bs= 8 call= 54.0s rate=  10.3 cells/min ETA=24.78h
+12249.0s	382	  mapped  2080/17396 batch= 8 active_bs= 8 call= 51.7s rate=  10.3 cells/min ETA=24.78h
+12289.7s	383	  mapped  2088/17396 batch= 8 active_bs= 8 call= 40.7s rate=  10.3 cells/min ETA=24.75h
+12345.5s	384	  mapped  2096/17396 batch= 8 active_bs= 8 call= 55.5s rate=  10.3 cells/min ETA=24.76h
+12387.1s	385	  mapped  2104/17396 batch= 8 active_bs= 8 call= 41.7s rate=  10.3 cells/min ETA=24.74h
+12435.6s	386	  mapped  2112/17396 batch= 8 active_bs= 8 call= 48.7s rate=  10.3 cells/min ETA=24.73h
+12489.5s	387	  mapped  2120/17396 batch= 8 active_bs= 8 call= 53.9s rate=  10.3 cells/min ETA=24.73h
+12554.3s	388	  mapped  2128/17396 batch= 8 active_bs= 8 call= 64.8s rate=  10.3 cells/min ETA=24.75h
+12613.1s	389	  mapped  2136/17396 batch= 8 active_bs= 8 call= 58.6s rate=  10.3 cells/min ETA=24.76h
+12675.0s	390	  mapped  2144/17396 batch= 8 active_bs= 8 call= 61.8s rate=  10.3 cells/min ETA=24.78h
+12754.6s	391	  mapped  2152/17396 batch= 8 active_bs= 8 call= 79.6s rate=  10.2 cells/min ETA=24.83h
+12811.4s	392	  mapped  2160/17396 batch= 8 active_bs= 8 call= 56.8s rate=  10.2 cells/min ETA=24.84h
+12858.6s	393	  mapped  2168/17396 batch= 8 active_bs= 8 call= 47.3s rate=  10.2 cells/min ETA=24.83h
+12920.8s	394	  mapped  2176/17396 batch= 8 active_bs= 8 call= 62.1s rate=  10.2 cells/min ETA=24.84h
+12981.7s	395	  mapped  2184/17396 batch= 8 active_bs= 8 call= 60.9s rate=  10.2 cells/min ETA=24.86h
+13030.3s	396	  mapped  2192/17396 batch= 8 active_bs= 8 call= 48.7s rate=  10.2 cells/min ETA=24.85h
+13093.5s	397	  mapped  2200/17396 batch= 8 active_bs= 8 call= 63.2s rate=  10.2 cells/min ETA=24.86h
+13141.5s	398	  mapped  2208/17396 batch= 8 active_bs= 8 call= 48.1s rate=  10.2 cells/min ETA=24.85h
+13211.9s	399	  mapped  2216/17396 batch= 8 active_bs= 8 call= 70.2s rate=  10.2 cells/min ETA=24.88h
+13276.6s	400	  mapped  2224/17396 batch= 8 active_bs= 8 call= 64.7s rate=  10.2 cells/min ETA=24.90h
+13336.2s	401	  mapped  2232/17396 batch= 8 active_bs= 8 call= 59.6s rate=  10.1 cells/min ETA=24.91h
+13398.5s	402	  mapped  2240/17396 batch= 8 active_bs= 8 call= 62.3s rate=  10.1 cells/min ETA=24.93h
+13460.9s	403	  mapped  2248/17396 batch= 8 active_bs= 8 call= 62.4s rate=  10.1 cells/min ETA=24.94h
+13504.7s	404	  mapped  2256/17396 batch= 8 active_bs= 8 call= 44.1s rate=  10.1 cells/min ETA=24.92h
+13574.6s	405	  mapped  2264/17396 batch= 8 active_bs= 8 call= 69.7s rate=  10.1 cells/min ETA=24.95h
+13623.8s	406	  mapped  2272/17396 batch= 8 active_bs= 8 call= 49.2s rate=  10.1 cells/min ETA=24.94h
+13664.7s	407	  mapped  2280/17396 batch= 8 active_bs= 8 call= 40.9s rate=  10.1 cells/min ETA=24.92h
+13706.5s	408	  mapped  2288/17396 batch= 8 active_bs= 8 call= 41.8s rate=  10.1 cells/min ETA=24.89h
+13769.8s	409	  mapped  2296/17396 batch= 8 active_bs= 8 call= 63.3s rate=  10.1 cells/min ETA=24.91h
+13827.1s	410	  mapped  2304/17396 batch= 8 active_bs= 8 call= 57.4s rate=  10.1 cells/min ETA=24.91h
+13886.8s	411	  mapped  2312/17396 batch= 8 active_bs= 8 call= 59.6s rate=  10.1 cells/min ETA=24.92h
+13930.8s	412	  mapped  2320/17396 batch= 8 active_bs= 8 call= 44.1s rate=  10.1 cells/min ETA=24.90h
+13979.0s	413	  mapped  2328/17396 batch= 8 active_bs= 8 call= 48.4s rate=  10.1 cells/min ETA=24.89h
+14043.7s	414	  mapped  2336/17396 batch= 8 active_bs= 8 call= 64.7s rate=  10.1 cells/min ETA=24.91h
+14102.3s	415	  mapped  2344/17396 batch= 8 active_bs= 8 call= 58.5s rate=  10.1 cells/min ETA=24.91h
+14165.6s	416	  mapped  2352/17396 batch= 8 active_bs= 8 call= 63.1s rate=  10.1 cells/min ETA=24.93h
+14214.7s	417	  mapped  2360/17396 batch= 8 active_bs= 8 call= 49.4s rate=  10.1 cells/min ETA=24.92h
+14258.3s	418	  mapped  2368/17396 batch= 8 active_bs= 8 call= 43.4s rate=  10.1 cells/min ETA=24.90h
+14304.6s	419	  mapped  2376/17396 batch= 8 active_bs= 8 call= 46.3s rate=  10.1 cells/min ETA=24.88h
+14354.8s	420	  mapped  2384/17396 batch= 8 active_bs= 8 call= 50.1s rate=  10.1 cells/min ETA=24.87h
+14400.3s	421	  mapped  2392/17396 batch= 8 active_bs= 8 call= 45.5s rate=  10.1 cells/min ETA=24.86h
+14463.2s	422	  mapped  2400/17396 batch= 8 active_bs= 8 call= 63.0s rate=  10.1 cells/min ETA=24.87h
+14521.9s	423	  mapped  2408/17396 batch= 8 active_bs= 8 call= 58.7s rate=  10.0 cells/min ETA=24.87h
+14565.6s	424	  mapped  2416/17396 batch= 8 active_bs= 8 call= 43.7s rate=  10.0 cells/min ETA=24.85h
+14629.3s	425	  mapped  2424/17396 batch= 8 active_bs= 8 call= 63.7s rate=  10.0 cells/min ETA=24.87h
+14686.8s	426	  mapped  2432/17396 batch= 8 active_bs= 8 call= 57.5s rate=  10.0 cells/min ETA=24.87h
+14749.2s	427	  mapped  2440/17396 batch= 8 active_bs= 8 call= 62.5s rate=  10.0 cells/min ETA=24.88h
+14795.8s	428	  mapped  2448/17396 batch= 8 active_bs= 8 call= 46.5s rate=  10.0 cells/min ETA=24.87h
+14857.6s	429	  mapped  2456/17396 batch= 8 active_bs= 8 call= 62.1s rate=  10.0 cells/min ETA=24.88h
+14918.1s	430	  mapped  2464/17396 batch= 8 active_bs= 8 call= 60.5s rate=  10.0 cells/min ETA=24.89h
+14980.7s	431	  mapped  2472/17396 batch= 8 active_bs= 8 call= 62.4s rate=  10.0 cells/min ETA=24.90h
+15020.3s	432	  mapped  2480/17396 batch= 8 active_bs= 8 call= 39.6s rate=  10.0 cells/min ETA=24.87h
+15063.8s	433	  mapped  2488/17396 batch= 8 active_bs= 8 call= 43.5s rate=  10.0 cells/min ETA=24.85h
+15124.4s	434	  mapped  2496/17396 batch= 8 active_bs= 8 call= 60.8s rate=  10.0 cells/min ETA=24.86h
+15184.3s	435	  mapped  2504/17396 batch= 8 active_bs= 8 call= 59.7s rate=  10.0 cells/min ETA=24.86h
+15231.8s	436	  mapped  2512/17396 batch= 8 active_bs= 8 call= 47.5s rate=  10.0 cells/min ETA=24.85h
+15292.3s	437	  mapped  2520/17396 batch= 8 active_bs= 8 call= 60.5s rate=  10.0 cells/min ETA=24.85h
+15339.0s	438	  mapped  2528/17396 batch= 8 active_bs= 8 call= 46.8s rate=  10.0 cells/min ETA=24.84h
+15390.1s	439	  mapped  2536/17396 batch= 8 active_bs= 8 call= 51.1s rate=  10.0 cells/min ETA=24.83h
+15428.0s	440	  mapped  2544/17396 batch= 8 active_bs= 8 call= 37.9s rate=  10.0 cells/min ETA=24.80h
+15487.4s	441	  mapped  2552/17396 batch= 8 active_bs= 8 call= 59.4s rate=  10.0 cells/min ETA=24.81h
+15549.7s	442	  mapped  2560/17396 batch= 8 active_bs= 8 call= 62.3s rate=  10.0 cells/min ETA=24.81h
+15623.8s	443	  mapped  2568/17396 batch= 8 active_bs= 8 call= 74.0s rate=   9.9 cells/min ETA=24.84h
+15686.8s	444	  mapped  2576/17396 batch= 8 active_bs= 8 call= 63.0s rate=   9.9 cells/min ETA=24.85h
+15743.7s	445	  mapped  2584/17396 batch= 8 active_bs= 8 call= 57.2s rate=   9.9 cells/min ETA=24.85h
+15783.6s	446	  mapped  2592/17396 batch= 8 active_bs= 8 call= 39.7s rate=   9.9 cells/min ETA=24.83h
+15831.6s	447	  mapped  2600/17396 batch= 8 active_bs= 8 call= 47.9s rate=   9.9 cells/min ETA=24.81h
+15869.8s	448	  mapped  2608/17396 batch= 8 active_bs= 8 call= 38.3s rate=   9.9 cells/min ETA=24.78h
+15924.0s	449	  mapped  2616/17396 batch= 8 active_bs= 8 call= 54.2s rate=   9.9 cells/min ETA=24.78h
+15988.5s	450	  mapped  2624/17396 batch= 8 active_bs= 8 call= 64.5s rate=   9.9 cells/min ETA=24.79h
+16043.5s	451	  mapped  2632/17396 batch= 8 active_bs= 8 call= 54.9s rate=   9.9 cells/min ETA=24.79h
+16089.4s	452	  mapped  2640/17396 batch= 8 active_bs= 8 call= 46.0s rate=   9.9 cells/min ETA=24.77h
+16147.7s	453	  mapped  2648/17396 batch= 8 active_bs= 8 call= 58.3s rate=   9.9 cells/min ETA=24.77h
+16207.2s	454	  mapped  2656/17396 batch= 8 active_bs= 8 call= 59.7s rate=   9.9 cells/min ETA=24.78h
+16259.5s	455	  mapped  2664/17396 batch= 8 active_bs= 8 call= 52.1s rate=   9.9 cells/min ETA=24.77h
+16298.6s	456	  mapped  2672/17396 batch= 8 active_bs= 8 call= 39.1s rate=   9.9 cells/min ETA=24.74h
+16344.8s	457	  mapped  2680/17396 batch= 8 active_bs= 8 call= 46.2s rate=   9.9 cells/min ETA=24.72h
+16397.5s	458	  mapped  2688/17396 batch= 8 active_bs= 8 call= 52.7s rate=   9.9 cells/min ETA=24.72h
+16448.6s	459	  mapped  2696/17396 batch= 8 active_bs= 8 call= 51.1s rate=   9.9 cells/min ETA=24.71h
+16488.8s	460	  mapped  2704/17396 batch= 8 active_bs= 8 call= 40.3s rate=   9.9 cells/min ETA=24.68h
+16543.6s	461	  mapped  2712/17396 batch= 8 active_bs= 8 call= 54.8s rate=   9.9 cells/min ETA=24.68h
+16595.0s	462	  mapped  2720/17396 batch= 8 active_bs= 8 call= 51.4s rate=   9.9 cells/min ETA=24.67h
+16658.6s	463	  mapped  2728/17396 batch= 8 active_bs= 8 call= 63.6s rate=   9.9 cells/min ETA=24.68h
+16706.8s	464	  mapped  2736/17396 batch= 8 active_bs= 8 call= 48.2s rate=   9.9 cells/min ETA=24.67h
+16758.5s	465	  mapped  2744/17396 batch= 8 active_bs= 8 call= 51.7s rate=   9.9 cells/min ETA=24.66h
+16816.6s	466	  mapped  2752/17396 batch= 8 active_bs= 8 call= 58.1s rate=   9.9 cells/min ETA=24.66h
+16878.9s	467	  mapped  2760/17396 batch= 8 active_bs= 8 call= 62.3s rate=   9.9 cells/min ETA=24.66h
+16944.9s	468	  mapped  2768/17396 batch= 8 active_bs= 8 call= 66.0s rate=   9.9 cells/min ETA=24.68h
+17007.3s	469	  mapped  2776/17396 batch= 8 active_bs= 8 call= 62.6s rate=   9.9 cells/min ETA=24.68h
+17054.4s	470	  mapped  2784/17396 batch= 8 active_bs= 8 call= 46.9s rate=   9.9 cells/min ETA=24.67h
+17097.4s	471	  mapped  2792/17396 batch= 8 active_bs= 8 call= 43.0s rate=   9.9 cells/min ETA=24.65h
+17161.3s	472	  mapped  2800/17396 batch= 8 active_bs= 8 call= 64.2s rate=   9.9 cells/min ETA=24.65h
+17217.1s	473	  mapped  2808/17396 batch= 8 active_bs= 8 call= 55.5s rate=   9.9 cells/min ETA=24.65h
+17267.3s	474	  mapped  2816/17396 batch= 8 active_bs= 8 call= 50.4s rate=   9.9 cells/min ETA=24.64h
+17323.2s	475	  mapped  2824/17396 batch= 8 active_bs= 8 call= 55.9s rate=   9.9 cells/min ETA=24.64h
+17392.2s	476	  mapped  2832/17396 batch= 8 active_bs= 8 call= 69.0s rate=   9.8 cells/min ETA=24.65h
+17448.0s	477	  mapped  2840/17396 batch= 8 active_bs= 8 call= 55.8s rate=   9.8 cells/min ETA=24.65h
+17508.1s	478	  mapped  2848/17396 batch= 8 active_bs= 8 call= 59.9s rate=   9.8 cells/min ETA=24.65h
+17574.0s	479	  mapped  2856/17396 batch= 8 active_bs= 8 call= 65.9s rate=   9.8 cells/min ETA=24.66h
+17632.1s	480	  mapped  2864/17396 batch= 8 active_bs= 8 call= 58.4s rate=   9.8 cells/min ETA=24.66h
+17674.6s	481	  mapped  2872/17396 batch= 8 active_bs= 8 call= 42.4s rate=   9.8 cells/min ETA=24.64h
+17738.9s	482	  mapped  2880/17396 batch= 8 active_bs= 8 call= 64.2s rate=   9.8 cells/min ETA=24.65h
+17786.4s	483	  mapped  2888/17396 batch= 8 active_bs= 8 call= 47.4s rate=   9.8 cells/min ETA=24.63h
+17830.4s	484	  mapped  2896/17396 batch= 8 active_bs= 8 call= 44.0s rate=   9.8 cells/min ETA=24.61h
+17899.7s	485	  mapped  2904/17396 batch= 8 active_bs= 8 call= 69.3s rate=   9.8 cells/min ETA=24.63h
+17964.5s	486	  mapped  2912/17396 batch= 8 active_bs= 8 call= 65.0s rate=   9.8 cells/min ETA=24.63h
+18024.7s	487	  mapped  2920/17396 batch= 8 active_bs= 8 call= 60.0s rate=   9.8 cells/min ETA=24.64h
+18071.5s	488	  mapped  2928/17396 batch= 8 active_bs= 8 call= 46.8s rate=   9.8 cells/min ETA=24.62h
+18118.0s	489	  mapped  2936/17396 batch= 8 active_bs= 8 call= 46.7s rate=   9.8 cells/min ETA=24.60h
+18185.8s	490	  mapped  2944/17396 batch= 8 active_bs= 8 call= 67.5s rate=   9.8 cells/min ETA=24.61h
+18248.2s	491	  mapped  2952/17396 batch= 8 active_bs= 8 call= 62.5s rate=   9.8 cells/min ETA=24.62h
+18303.0s	492	  mapped  2960/17396 batch= 8 active_bs= 8 call= 54.8s rate=   9.8 cells/min ETA=24.61h
+18348.8s	493	  mapped  2968/17396 batch= 8 active_bs= 8 call= 45.9s rate=   9.8 cells/min ETA=24.59h
+18407.3s	494	  mapped  2976/17396 batch= 8 active_bs= 8 call= 58.3s rate=   9.8 cells/min ETA=24.59h
+18467.6s	495	  mapped  2984/17396 batch= 8 active_bs= 8 call= 60.3s rate=   9.8 cells/min ETA=24.60h
+18530.5s	496	  mapped  2992/17396 batch= 8 active_bs= 8 call= 63.1s rate=   9.8 cells/min ETA=24.60h
+18590.5s	497	  mapped  3000/17396 batch= 8 active_bs= 8 call= 59.8s rate=   9.8 cells/min ETA=24.60h
+18653.6s	498	  mapped  3008/17396 batch= 8 active_bs= 8 call= 63.1s rate=   9.7 cells/min ETA=24.61h
+18714.5s	499	  mapped  3016/17396 batch= 8 active_bs= 8 call= 60.9s rate=   9.7 cells/min ETA=24.61h
+18777.6s	500	  mapped  3024/17396 batch= 8 active_bs= 8 call= 63.1s rate=   9.7 cells/min ETA=24.61h
+18839.6s	501	  mapped  3032/17396 batch= 8 active_bs= 8 call= 62.0s rate=   9.7 cells/min ETA=24.61h
+18893.4s	502	  mapped  3040/17396 batch= 8 active_bs= 8 call= 53.8s rate=   9.7 cells/min ETA=24.61h
+18964.6s	503	  mapped  3048/17396 batch= 8 active_bs= 8 call= 71.2s rate=   9.7 cells/min ETA=24.62h
+19029.2s	504	  mapped  3056/17396 batch= 8 active_bs= 8 call= 64.6s rate=   9.7 cells/min ETA=24.63h
+19089.3s	505	  mapped  3064/17396 batch= 8 active_bs= 8 call= 60.1s rate=   9.7 cells/min ETA=24.63h
+19152.1s	506	  mapped  3072/17396 batch= 8 active_bs= 8 call= 63.0s rate=   9.7 cells/min ETA=24.63h
+19214.6s	507	  mapped  3080/17396 batch= 8 active_bs= 8 call= 62.3s rate=   9.7 cells/min ETA=24.63h
+19274.2s	508	  mapped  3088/17396 batch= 8 active_bs= 8 call= 59.7s rate=   9.7 cells/min ETA=24.63h
+19345.6s	509	  mapped  3096/17396 batch= 8 active_bs= 8 call= 71.3s rate=   9.7 cells/min ETA=24.65h
+19415.8s	510	  mapped  3104/17396 batch= 8 active_bs= 8 call= 70.2s rate=   9.7 cells/min ETA=24.66h
+19479.3s	511	  mapped  3112/17396 batch= 8 active_bs= 8 call= 63.5s rate=   9.7 cells/min ETA=24.66h
+19547.9s	512	  mapped  3120/17396 batch= 8 active_bs= 8 call= 68.5s rate=   9.6 cells/min ETA=24.67h
+19612.2s	513	  mapped  3128/17396 batch= 8 active_bs= 8 call= 64.3s rate=   9.6 cells/min ETA=24.68h
+19675.1s	514	  mapped  3136/17396 batch= 8 active_bs= 8 call= 62.9s rate=   9.6 cells/min ETA=24.68h
+19739.6s	515	  mapped  3144/17396 batch= 8 active_bs= 8 call= 64.5s rate=   9.6 cells/min ETA=24.69h
+19803.4s	516	  mapped  3152/17396 batch= 8 active_bs= 8 call= 63.8s rate=   9.6 cells/min ETA=24.69h
+19886.5s	517	  mapped  3160/17396 batch= 8 active_bs= 8 call= 83.0s rate=   9.6 cells/min ETA=24.72h
+19955.6s	518	  mapped  3168/17396 batch= 8 active_bs= 8 call= 69.1s rate=   9.6 cells/min ETA=24.73h
+20018.3s	519	  mapped  3176/17396 batch= 8 active_bs= 8 call= 62.7s rate=   9.6 cells/min ETA=24.73h
+20080.5s	520	  mapped  3184/17396 batch= 8 active_bs= 8 call= 62.2s rate=   9.6 cells/min ETA=24.73h
+20144.5s	521	  mapped  3192/17396 batch= 8 active_bs= 8 call= 64.0s rate=   9.6 cells/min ETA=24.73h
+20208.1s	522	  mapped  3200/17396 batch= 8 active_bs= 8 call= 63.6s rate=   9.6 cells/min ETA=24.74h
+20263.0s	523	  mapped  3208/17396 batch= 8 active_bs= 8 call= 54.9s rate=   9.6 cells/min ETA=24.73h
+20311.6s	524	  mapped  3216/17396 batch= 8 active_bs= 8 call= 48.6s rate=   9.6 cells/min ETA=24.71h
+20376.1s	525	  mapped  3224/17396 batch= 8 active_bs= 8 call= 64.5s rate=   9.6 cells/min ETA=24.72h
+20426.3s	526	  mapped  3232/17396 batch= 8 active_bs= 8 call= 50.3s rate=   9.6 cells/min ETA=24.70h
+20497.6s	527	  mapped  3240/17396 batch= 8 active_bs= 8 call= 71.2s rate=   9.5 cells/min ETA=24.71h
+20546.6s	528	  mapped  3248/17396 batch= 8 active_bs= 8 call= 49.0s rate=   9.5 cells/min ETA=24.70h
+20595.5s	529	  mapped  3256/17396 batch= 8 active_bs= 8 call= 49.1s rate=   9.5 cells/min ETA=24.68h
+20660.5s	530	  mapped  3264/17396 batch= 8 active_bs= 8 call= 64.8s rate=   9.5 cells/min ETA=24.69h
+20715.3s	531	  mapped  3272/17396 batch= 8 active_bs= 8 call= 54.8s rate=   9.5 cells/min ETA=24.68h
+20765.4s	532	  mapped  3280/17396 batch= 8 active_bs= 8 call= 50.1s rate=   9.5 cells/min ETA=24.66h
+20829.1s	533	  mapped  3288/17396 batch= 8 active_bs= 8 call= 63.9s rate=   9.5 cells/min ETA=24.67h
+20876.6s	534	  mapped  3296/17396 batch= 8 active_bs= 8 call= 47.5s rate=   9.5 cells/min ETA=24.65h
+20954.4s	535	  mapped  3304/17396 batch= 8 active_bs= 8 call= 77.8s rate=   9.5 cells/min ETA=24.67h
+21006.3s	536	  mapped  3312/17396 batch= 8 active_bs= 8 call= 51.9s rate=   9.5 cells/min ETA=24.65h
+21054.7s	537	  mapped  3320/17396 batch= 8 active_bs= 8 call= 48.2s rate=   9.5 cells/min ETA=24.64h
+21124.7s	538	  mapped  3328/17396 batch= 8 active_bs= 8 call= 70.1s rate=   9.5 cells/min ETA=24.65h
+21187.3s	539	  mapped  3336/17396 batch= 8 active_bs= 8 call= 62.7s rate=   9.5 cells/min ETA=24.65h
+21235.6s	540	  mapped  3344/17396 batch= 8 active_bs= 8 call= 48.1s rate=   9.5 cells/min ETA=24.63h
+21286.4s	541	  mapped  3352/17396 batch= 8 active_bs= 8 call= 50.8s rate=   9.5 cells/min ETA=24.62h
+21350.7s	542	  mapped  3360/17396 batch= 8 active_bs= 8 call= 64.3s rate=   9.5 cells/min ETA=24.62h
+21414.6s	543	  mapped  3368/17396 batch= 8 active_bs= 8 call= 63.9s rate=   9.5 cells/min ETA=24.62h
+21462.4s	544	  mapped  3376/17396 batch= 8 active_bs= 8 call= 48.0s rate=   9.5 cells/min ETA=24.60h
+21528.2s	545	  mapped  3384/17396 batch= 8 active_bs= 8 call= 65.6s rate=   9.5 cells/min ETA=24.61h
+21590.3s	546	  mapped  3392/17396 batch= 8 active_bs= 8 call= 62.1s rate=   9.5 cells/min ETA=24.61h
+21637.5s	547	  mapped  3400/17396 batch= 8 active_bs= 8 call= 47.2s rate=   9.5 cells/min ETA=24.59h
+21702.3s	548	  mapped  3408/17396 batch= 8 active_bs= 8 call= 64.8s rate=   9.5 cells/min ETA=24.59h
+21764.2s	549	  mapped  3416/17396 batch= 8 active_bs= 8 call= 62.0s rate=   9.5 cells/min ETA=24.59h
+21823.7s	550	  mapped  3424/17396 batch= 8 active_bs= 8 call= 59.5s rate=   9.5 cells/min ETA=24.58h
+21887.9s	551	  mapped  3432/17396 batch= 8 active_bs= 8 call= 64.2s rate=   9.5 cells/min ETA=24.59h
+21951.8s	552	  mapped  3440/17396 batch= 8 active_bs= 8 call= 64.1s rate=   9.5 cells/min ETA=24.59h
+22015.0s	553	  mapped  3448/17396 batch= 8 active_bs= 8 call= 63.1s rate=   9.5 cells/min ETA=24.59h
+22078.2s	554	  mapped  3456/17396 batch= 8 active_bs= 8 call= 63.1s rate=   9.4 cells/min ETA=24.59h
+22126.2s	555	  mapped  3464/17396 batch= 8 active_bs= 8 call= 48.2s rate=   9.5 cells/min ETA=24.57h
+22191.6s	556	  mapped  3472/17396 batch= 8 active_bs= 8 call= 65.5s rate=   9.4 cells/min ETA=24.57h
+22239.9s	557	  mapped  3480/17396 batch= 8 active_bs= 8 call= 48.2s rate=   9.4 cells/min ETA=24.55h
+22288.7s	558	  mapped  3488/17396 batch= 8 active_bs= 8 call= 48.6s rate=   9.4 cells/min ETA=24.54h
+22353.6s	559	  mapped  3496/17396 batch= 8 active_bs= 8 call= 64.9s rate=   9.4 cells/min ETA=24.54h
+22416.5s	560	  mapped  3504/17396 batch= 8 active_bs= 8 call= 63.0s rate=   9.4 cells/min ETA=24.54h
+22479.0s	561	  mapped  3512/17396 batch= 8 active_bs= 8 call= 62.3s rate=   9.4 cells/min ETA=24.54h
+22543.1s	562	  mapped  3520/17396 batch= 8 active_bs= 8 call= 64.4s rate=   9.4 cells/min ETA=24.54h
+22606.6s	563	  mapped  3528/17396 batch= 8 active_bs= 8 call= 63.2s rate=   9.4 cells/min ETA=24.54h
+22655.9s	564	  mapped  3536/17396 batch= 8 active_bs= 8 call= 49.3s rate=   9.4 cells/min ETA=24.52h
+22712.9s	565	  batch CUDA OOM: n=2 token_budget=3584; trying smaller context...
+22734.1s	566	  mapped  3544/17396 batch= 8 active_bs= 8 call= 78.3s rate=   9.4 cells/min ETA=24.54h
+22806.1s	567	  mapped  3552/17396 batch= 8 active_bs= 8 call= 71.9s rate=   9.4 cells/min ETA=24.54h
+22870.0s	568	  mapped  3560/17396 batch= 8 active_bs= 8 call= 63.9s rate=   9.4 cells/min ETA=24.54h
+22933.7s	569	  mapped  3568/17396 batch= 8 active_bs= 8 call= 64.0s rate=   9.4 cells/min ETA=24.54h
+22999.7s	570	  mapped  3576/17396 batch= 8 active_bs= 8 call= 65.7s rate=   9.4 cells/min ETA=24.55h
+23062.2s	571	  mapped  3584/17396 batch= 8 active_bs= 8 call= 62.5s rate=   9.4 cells/min ETA=24.54h
+23137.3s	572	  mapped  3592/17396 batch= 8 active_bs= 8 call= 75.3s rate=   9.4 cells/min ETA=24.56h
+23202.4s	573	  mapped  3600/17396 batch= 8 active_bs= 8 call= 64.8s rate=   9.4 cells/min ETA=24.56h
+23265.3s	574	  mapped  3608/17396 batch= 8 active_bs= 8 call= 63.0s rate=   9.4 cells/min ETA=24.55h
+23329.5s	575	  mapped  3616/17396 batch= 8 active_bs= 8 call= 64.1s rate=   9.4 cells/min ETA=24.55h
+23393.6s	576	  mapped  3624/17396 batch= 8 active_bs= 8 call= 64.1s rate=   9.3 cells/min ETA=24.55h
+23435.9s	577	  mapped  3632/17396 batch= 8 active_bs= 8 call= 42.3s rate=   9.4 cells/min ETA=24.53h
+23494.2s	578	  batch CUDA OOM: n=2 token_budget=3584; trying smaller context...
+23515.3s	579	  mapped  3640/17396 batch= 8 active_bs= 8 call= 79.5s rate=   9.3 cells/min ETA=24.54h
+23581.1s	580	  mapped  3648/17396 batch= 8 active_bs= 8 call= 65.7s rate=   9.3 cells/min ETA=24.54h
+23643.6s	581	  mapped  3656/17396 batch= 8 active_bs= 8 call= 62.5s rate=   9.3 cells/min ETA=24.54h
+23706.8s	582	  mapped  3664/17396 batch= 8 active_bs= 8 call= 63.2s rate=   9.3 cells/min ETA=24.54h
+23751.0s	583	  mapped  3672/17396 batch= 8 active_bs= 8 call= 44.2s rate=   9.3 cells/min ETA=24.52h
+23822.4s	584	  mapped  3680/17396 batch= 8 active_bs= 8 call= 71.4s rate=   9.3 cells/min ETA=24.52h
+23886.5s	585	  mapped  3688/17396 batch= 8 active_bs= 8 call= 64.1s rate=   9.3 cells/min ETA=24.52h
+23944.4s	586	  mapped  3696/17396 batch= 8 active_bs= 8 call= 57.9s rate=   9.3 cells/min ETA=24.52h
+24010.2s	587	  mapped  3704/17396 batch= 8 active_bs= 8 call= 65.7s rate=   9.3 cells/min ETA=24.52h
+24050.6s	588	  mapped  3712/17396 batch= 8 active_bs= 8 call= 40.4s rate=   9.3 cells/min ETA=24.49h
+24111.5s	589	  mapped  3720/17396 batch= 8 active_bs= 8 call= 61.1s rate=   9.3 cells/min ETA=24.49h
+24175.5s	590	  mapped  3728/17396 batch= 8 active_bs= 8 call= 63.8s rate=   9.3 cells/min ETA=24.48h
+24237.1s	591	  mapped  3736/17396 batch= 8 active_bs= 8 call= 61.6s rate=   9.3 cells/min ETA=24.48h
+24301.5s	592	  mapped  3744/17396 batch= 8 active_bs= 8 call= 64.6s rate=   9.3 cells/min ETA=24.48h
+24364.9s	593	  mapped  3752/17396 batch= 8 active_bs= 8 call= 63.4s rate=   9.3 cells/min ETA=24.48h
+24429.5s	594	  mapped  3760/17396 batch= 8 active_bs= 8 call= 64.3s rate=   9.3 cells/min ETA=24.47h
+24476.3s	595	  mapped  3768/17396 batch= 8 active_bs= 8 call= 46.9s rate=   9.3 cells/min ETA=24.45h
+24537.5s	596	  mapped  3776/17396 batch= 8 active_bs= 8 call= 61.2s rate=   9.3 cells/min ETA=24.45h
+24597.2s	597	  mapped  3784/17396 batch= 8 active_bs= 8 call= 59.9s rate=   9.3 cells/min ETA=24.44h
+24656.9s	598	  mapped  3792/17396 batch= 8 active_bs= 8 call= 59.4s rate=   9.3 cells/min ETA=24.44h
+24717.2s	599	  mapped  3800/17396 batch= 8 active_bs= 8 call= 60.3s rate=   9.3 cells/min ETA=24.43h
+24774.1s	600	  mapped  3808/17396 batch= 8 active_bs= 8 call= 57.1s rate=   9.3 cells/min ETA=24.42h
+24839.4s	601	  mapped  3816/17396 batch= 8 active_bs= 8 call= 65.1s rate=   9.3 cells/min ETA=24.42h
+24900.3s	602	  mapped  3824/17396 batch= 8 active_bs= 8 call= 60.8s rate=   9.3 cells/min ETA=24.42h
+24945.7s	603	  mapped  3832/17396 batch= 8 active_bs= 8 call= 45.5s rate=   9.3 cells/min ETA=24.39h
+25008.0s	604	  mapped  3840/17396 batch= 8 active_bs= 8 call= 62.2s rate=   9.3 cells/min ETA=24.39h
+25072.8s	605	  mapped  3848/17396 batch= 8 active_bs= 8 call= 64.8s rate=   9.3 cells/min ETA=24.39h
+25118.7s	606	  mapped  3856/17396 batch= 8 active_bs= 8 call= 46.1s rate=   9.3 cells/min ETA=24.37h
+25168.6s	607	  mapped  3864/17396 batch= 8 active_bs= 8 call= 49.7s rate=   9.3 cells/min ETA=24.35h
+25224.6s	608	  mapped  3872/17396 batch= 8 active_bs= 8 call= 56.2s rate=   9.3 cells/min ETA=24.34h
+25284.9s	609	  mapped  3880/17396 batch= 8 active_bs= 8 call= 60.3s rate=   9.3 cells/min ETA=24.34h
+25342.3s	610	  mapped  3888/17396 batch= 8 active_bs= 8 call= 57.4s rate=   9.3 cells/min ETA=24.33h
+25386.5s	611	  mapped  3896/17396 batch= 8 active_bs= 8 call= 43.9s rate=   9.3 cells/min ETA=24.31h
+25444.5s	612	  mapped  3904/17396 batch= 8 active_bs= 8 call= 58.0s rate=   9.3 cells/min ETA=24.30h
+25502.1s	613	  mapped  3912/17396 batch= 8 active_bs= 8 call= 57.6s rate=   9.3 cells/min ETA=24.29h
+25570.6s	614	  mapped  3920/17396 batch= 8 active_bs= 8 call= 68.6s rate=   9.2 cells/min ETA=24.29h
+25614.1s	615	  mapped  3928/17396 batch= 8 active_bs= 8 call= 43.5s rate=   9.2 cells/min ETA=24.27h
+25672.4s	616	  mapped  3936/17396 batch= 8 active_bs= 8 call= 58.2s rate=   9.2 cells/min ETA=24.26h
+25715.3s	617	  mapped  3944/17396 batch= 8 active_bs= 8 call= 42.9s rate=   9.3 cells/min ETA=24.24h
+25775.1s	618	  mapped  3952/17396 batch= 8 active_bs= 8 call= 59.8s rate=   9.2 cells/min ETA=24.23h
+25820.5s	619	  mapped  3960/17396 batch= 8 active_bs= 8 call= 45.5s rate=   9.3 cells/min ETA=24.21h
+25880.3s	620	  mapped  3968/17396 batch= 8 active_bs= 8 call= 59.8s rate=   9.2 cells/min ETA=24.20h
+25942.0s	621	  mapped  3976/17396 batch= 8 active_bs= 8 call= 61.7s rate=   9.2 cells/min ETA=24.20h
+26003.1s	622	  mapped  3984/17396 batch= 8 active_bs= 8 call= 61.1s rate=   9.2 cells/min ETA=24.19h
+26047.4s	623	  mapped  3992/17396 batch= 8 active_bs= 8 call= 44.5s rate=   9.2 cells/min ETA=24.17h
+26121.1s	624	  mapped  4000/17396 batch= 8 active_bs= 8 call= 73.5s rate=   9.2 cells/min ETA=24.17h
+26190.3s	625	  mapped  4008/17396 batch= 8 active_bs= 8 call= 69.2s rate=   9.2 cells/min ETA=24.18h
+26234.3s	626	  mapped  4016/17396 batch= 8 active_bs= 8 call= 44.0s rate=   9.2 cells/min ETA=24.15h
+26299.9s	627	  mapped  4024/17396 batch= 8 active_bs= 8 call= 65.6s rate=   9.2 cells/min ETA=24.15h
+26361.0s	628	  mapped  4032/17396 batch= 8 active_bs= 8 call= 61.3s rate=   9.2 cells/min ETA=24.15h
+26421.8s	629	  mapped  4040/17396 batch= 8 active_bs= 8 call= 60.6s rate=   9.2 cells/min ETA=24.14h
+26484.9s	630	  mapped  4048/17396 batch= 8 active_bs= 8 call= 63.2s rate=   9.2 cells/min ETA=24.14h
+26531.9s	631	  mapped  4056/17396 batch= 8 active_bs= 8 call= 46.9s rate=   9.2 cells/min ETA=24.12h
+26579.4s	632	  mapped  4064/17396 batch= 8 active_bs= 8 call= 47.5s rate=   9.2 cells/min ETA=24.10h
+26645.3s	633	  mapped  4072/17396 batch= 8 active_bs= 8 call= 65.9s rate=   9.2 cells/min ETA=24.10h
+26708.1s	634	  mapped  4080/17396 batch= 8 active_bs= 8 call= 62.8s rate=   9.2 cells/min ETA=24.09h
+26770.3s	635	  mapped  4088/17396 batch= 8 active_bs= 8 call= 62.3s rate=   9.2 cells/min ETA=24.09h
+26829.2s	636	  mapped  4096/17396 batch= 8 active_bs= 8 call= 59.0s rate=   9.2 cells/min ETA=24.08h
+26872.9s	637	  mapped  4104/17396 batch= 8 active_bs= 8 call= 43.6s rate=   9.2 cells/min ETA=24.06h
+26917.3s	638	  mapped  4112/17396 batch= 8 active_bs= 8 call= 44.3s rate=   9.2 cells/min ETA=24.03h
+26976.4s	639	  mapped  4120/17396 batch= 8 active_bs= 8 call= 59.4s rate=   9.2 cells/min ETA=24.03h
+27041.5s	640	  mapped  4128/17396 batch= 8 active_bs= 8 call= 64.9s rate=   9.2 cells/min ETA=24.02h
+27101.5s	641	  mapped  4136/17396 batch= 8 active_bs= 8 call= 60.0s rate=   9.2 cells/min ETA=24.02h
+27166.0s	642	  mapped  4144/17396 batch= 8 active_bs= 8 call= 64.5s rate=   9.2 cells/min ETA=24.01h
+27225.7s	643	  mapped  4152/17396 batch= 8 active_bs= 8 call= 59.7s rate=   9.2 cells/min ETA=24.00h
+27285.3s	644	  mapped  4160/17396 batch= 8 active_bs= 8 call= 59.9s rate=   9.2 cells/min ETA=24.00h
+27345.4s	645	  mapped  4168/17396 batch= 8 active_bs= 8 call= 59.8s rate=   9.2 cells/min ETA=23.99h
+27389.6s	646	  mapped  4176/17396 batch= 8 active_bs= 8 call= 44.2s rate=   9.2 cells/min ETA=23.97h
+27451.2s	647	  mapped  4184/17396 batch= 8 active_bs= 8 call= 61.6s rate=   9.2 cells/min ETA=23.96h
+27514.5s	648	  mapped  4192/17396 batch= 8 active_bs= 8 call= 63.3s rate=   9.2 cells/min ETA=23.96h
+27579.9s	649	  mapped  4200/17396 batch= 8 active_bs= 8 call= 65.4s rate=   9.2 cells/min ETA=23.95h
+27644.9s	650	  mapped  4208/17396 batch= 8 active_bs= 8 call= 65.1s rate=   9.2 cells/min ETA=23.95h
+27691.5s	651	  mapped  4216/17396 batch= 8 active_bs= 8 call= 46.4s rate=   9.2 cells/min ETA=23.93h
+27739.7s	652	  mapped  4224/17396 batch= 8 active_bs= 8 call= 48.2s rate=   9.2 cells/min ETA=23.91h
+27782.4s	653	  mapped  4232/17396 batch= 8 active_bs= 8 call= 42.6s rate=   9.2 cells/min ETA=23.89h
+27848.1s	654	  mapped  4240/17396 batch= 8 active_bs= 8 call= 65.7s rate=   9.2 cells/min ETA=23.89h
+27912.0s	655	  mapped  4248/17396 batch= 8 active_bs= 8 call= 64.2s rate=   9.2 cells/min ETA=23.88h
+27975.6s	656	  mapped  4256/17396 batch= 8 active_bs= 8 call= 63.3s rate=   9.2 cells/min ETA=23.88h
+28048.6s	657	  mapped  4264/17396 batch= 8 active_bs= 8 call= 73.2s rate=   9.2 cells/min ETA=23.88h
+28099.0s	658	  mapped  4272/17396 batch= 8 active_bs= 8 call= 50.2s rate=   9.2 cells/min ETA=23.86h
+28148.9s	659	  mapped  4280/17396 batch= 8 active_bs= 8 call= 49.9s rate=   9.2 cells/min ETA=23.85h
+28209.8s	660	  mapped  4288/17396 batch= 8 active_bs= 8 call= 61.1s rate=   9.2 cells/min ETA=23.84h
+28276.3s	661	  mapped  4296/17396 batch= 8 active_bs= 8 call= 66.2s rate=   9.2 cells/min ETA=23.84h
+28347.1s	662	  mapped  4304/17396 batch= 8 active_bs= 8 call= 71.1s rate=   9.2 cells/min ETA=23.84h
+28413.8s	663	  mapped  4312/17396 batch= 8 active_bs= 8 call= 66.4s rate=   9.1 cells/min ETA=23.84h
+28477.5s	664	  mapped  4320/17396 batch= 8 active_bs= 8 call= 63.7s rate=   9.1 cells/min ETA=23.83h
+28544.3s	665	  mapped  4328/17396 batch= 8 active_bs= 8 call= 67.0s rate=   9.1 cells/min ETA=23.83h
+28605.9s	666	  mapped  4336/17396 batch= 8 active_bs= 8 call= 61.6s rate=   9.1 cells/min ETA=23.82h
+28680.0s	667	  mapped  4344/17396 batch= 8 active_bs= 8 call= 74.2s rate=   9.1 cells/min ETA=23.82h
+28739.9s	668	  mapped  4352/17396 batch= 8 active_bs= 8 call= 59.7s rate=   9.1 cells/min ETA=23.82h
+28767.9s	669	  mapped  4360/17396 batch= 8 active_bs= 8 call= 28.0s rate=   9.1 cells/min ETA=23.78h
+28789.5s	670	  mapped  4368/17396 batch= 8 active_bs= 8 call= 21.6s rate=   9.1 cells/min ETA=23.74h
+28819.2s	671	  mapped  4376/17396 batch= 8 active_bs= 8 call= 29.7s rate=   9.2 cells/min ETA=23.71h
+28839.9s	672	  mapped  4384/17396 batch= 8 active_bs= 8 call= 20.7s rate=   9.2 cells/min ETA=23.67h
+28859.6s	673	  mapped  4392/17396 batch= 8 active_bs= 8 call= 19.7s rate=   9.2 cells/min ETA=23.62h
+28879.6s	674	  mapped  4400/17396 batch= 8 active_bs= 8 call= 20.1s rate=   9.2 cells/min ETA=23.58h
+28899.9s	675	  mapped  4408/17396 batch= 8 active_bs= 8 call= 20.3s rate=   9.2 cells/min ETA=23.54h
+28928.1s	676	  mapped  4416/17396 batch= 8 active_bs= 8 call= 28.0s rate=   9.2 cells/min ETA=23.51h
+28956.1s	677	  mapped  4424/17396 batch= 8 active_bs= 8 call= 28.1s rate=   9.2 cells/min ETA=23.47h
+28988.9s	678	  mapped  4432/17396 batch= 8 active_bs= 8 call= 32.8s rate=   9.2 cells/min ETA=23.44h
+29009.1s	679	  mapped  4440/17396 batch= 8 active_bs= 8 call= 20.2s rate=   9.2 cells/min ETA=23.40h
+29030.4s	680	  mapped  4448/17396 batch= 8 active_bs= 8 call= 21.3s rate=   9.2 cells/min ETA=23.36h
+29060.8s	681	  mapped  4456/17396 batch= 8 active_bs= 8 call= 30.4s rate=   9.2 cells/min ETA=23.33h
+29082.5s	682	  mapped  4464/17396 batch= 8 active_bs= 8 call= 21.9s rate=   9.3 cells/min ETA=23.29h
+29105.1s	683	  mapped  4472/17396 batch= 8 active_bs= 8 call= 22.3s rate=   9.3 cells/min ETA=23.26h
+29134.7s	684	  mapped  4480/17396 batch= 8 active_bs= 8 call= 29.6s rate=   9.3 cells/min ETA=23.22h
+29165.2s	685	  mapped  4488/17396 batch= 8 active_bs= 8 call= 30.5s rate=   9.3 cells/min ETA=23.19h
+29194.8s	686	  mapped  4496/17396 batch= 8 active_bs= 8 call= 29.6s rate=   9.3 cells/min ETA=23.16h
+29216.4s	687	  mapped  4504/17396 batch= 8 active_bs= 8 call= 21.5s rate=   9.3 cells/min ETA=23.12h
+29245.3s	688	  mapped  4512/17396 batch= 8 active_bs= 8 call= 29.0s rate=   9.3 cells/min ETA=23.09h
+29266.2s	689	  mapped  4520/17396 batch= 8 active_bs= 8 call= 20.8s rate=   9.3 cells/min ETA=23.05h
+29295.2s	690	  mapped  4528/17396 batch= 8 active_bs= 8 call= 29.3s rate=   9.3 cells/min ETA=23.02h
+29315.4s	691	  mapped  4536/17396 batch= 8 active_bs= 8 call= 20.0s rate=   9.3 cells/min ETA=22.98h
+29335.9s	692	  mapped  4544/17396 batch= 8 active_bs= 8 call= 20.5s rate=   9.3 cells/min ETA=22.94h
+29366.1s	693	  mapped  4552/17396 batch= 8 active_bs= 8 call= 30.4s rate=   9.3 cells/min ETA=22.91h
+29396.6s	694	  mapped  4560/17396 batch= 8 active_bs= 8 call= 30.2s rate=   9.4 cells/min ETA=22.88h
+29426.8s	695	  mapped  4568/17396 batch= 8 active_bs= 8 call= 30.3s rate=   9.4 cells/min ETA=22.85h
+29460.4s	696	  mapped  4576/17396 batch= 8 active_bs= 8 call= 33.6s rate=   9.4 cells/min ETA=22.82h
+29488.4s	697	  mapped  4584/17396 batch= 8 active_bs= 8 call= 28.0s rate=   9.4 cells/min ETA=22.79h
+29521.0s	698	  mapped  4592/17396 batch= 8 active_bs= 8 call= 32.5s rate=   9.4 cells/min ETA=22.76h
+29552.7s	699	  mapped  4600/17396 batch= 8 active_bs= 8 call= 31.7s rate=   9.4 cells/min ETA=22.73h
+29588.3s	700	  mapped  4608/17396 batch= 8 active_bs= 8 call= 35.8s rate=   9.4 cells/min ETA=22.71h
+29597.8s	701	  batch CUDA OOM: n=8 token_budget=3584; trying smaller context...
+29607.3s	702	  batch CUDA OOM: n=8 token_budget=3072; trying smaller context...
+29617.5s	703	  batch CUDA OOM: n=8 token_budget=2560; trying smaller context...
+29627.8s	704	  batch CUDA OOM: n=8 token_budget=2048; trying smaller context...
+29652.0s	705	  mapped  4616/17396 batch= 8 active_bs= 8 call= 63.5s rate=   9.4 cells/min ETA=22.70h
+29663.2s	706	  batch CUDA OOM: n=8 token_budget=3584; trying smaller context...
+29674.4s	707	  batch CUDA OOM: n=8 token_budget=3072; trying smaller context...
+29686.1s	708	  batch CUDA OOM: n=8 token_budget=2560; trying smaller context...
+29696.7s	709	  batch CUDA OOM: n=8 token_budget=2048; trying smaller context...
+29719.8s	710	  mapped  4624/17396 batch= 8 active_bs= 8 call= 68.1s rate=   9.4 cells/min ETA=22.70h
+29730.3s	711	  batch CUDA OOM: n=8 token_budget=3584; trying smaller context...
+29741.2s	712	  batch CUDA OOM: n=8 token_budget=3072; trying smaller context...
+29752.7s	713	  batch CUDA OOM: n=8 token_budget=2560; trying smaller context...
+29764.3s	714	  batch CUDA OOM: n=8 token_budget=2048; trying smaller context...
+29788.1s	715	  mapped  4632/17396 batch= 8 active_bs= 8 call= 68.1s rate=   9.4 cells/min ETA=22.70h
+29798.2s	716	  batch CUDA OOM: n=8 token_budget=3584; trying smaller context...
+29808.8s	717	  batch CUDA OOM: n=8 token_budget=3072; trying smaller context...
+29820.6s	718	  batch CUDA OOM: n=8 token_budget=2560; trying smaller context...
+29832.6s	719	  batch CUDA OOM: n=8 token_budget=2048; trying smaller context...
+29856.3s	720	  mapped  4640/17396 batch= 8 active_bs= 8 call= 68.2s rate=   9.4 cells/min ETA=22.70h
+29888.9s	721	  mapped  4648/17396 batch= 8 active_bs= 8 call= 32.5s rate=   9.4 cells/min ETA=22.67h
+29925.2s	722	  mapped  4656/17396 batch= 8 active_bs= 8 call= 36.3s rate=   9.4 cells/min ETA=22.64h
+29951.0s	723	  mapped  4664/17396 batch= 8 active_bs= 8 call= 25.9s rate=   9.4 cells/min ETA=22.61h
+29976.7s	724	  mapped  4672/17396 batch= 8 active_bs= 8 call= 25.7s rate=   9.4 cells/min ETA=22.58h
+30003.0s	725	  mapped  4680/17396 batch= 8 active_bs= 8 call= 26.3s rate=   9.4 cells/min ETA=22.54h
+30038.6s	726	  mapped  4688/17396 batch= 8 active_bs= 8 call= 35.7s rate=   9.4 cells/min ETA=22.52h
+30073.3s	727	  mapped  4696/17396 batch= 8 active_bs= 8 call= 34.6s rate=   9.4 cells/min ETA=22.49h
+30108.0s	728	  mapped  4704/17396 batch= 8 active_bs= 8 call= 35.0s rate=   9.4 cells/min ETA=22.46h
+30145.3s	729	  mapped  4712/17396 batch= 8 active_bs= 8 call= 37.0s rate=   9.4 cells/min ETA=22.44h
+30181.0s	730	  mapped  4720/17396 batch= 8 active_bs= 8 call= 35.7s rate=   9.4 cells/min ETA=22.41h
+30216.6s	731	  mapped  4728/17396 batch= 8 active_bs= 8 call= 35.6s rate=   9.4 cells/min ETA=22.39h
+30256.9s	732	  mapped  4736/17396 batch= 8 active_bs= 8 call= 40.3s rate=   9.4 cells/min ETA=22.37h
+30281.8s	733	  mapped  4744/17396 batch= 8 active_bs= 8 call= 25.2s rate=   9.4 cells/min ETA=22.33h
+30317.4s	734	  mapped  4752/17396 batch= 8 active_bs= 8 call= 35.4s rate=   9.4 cells/min ETA=22.31h
+30359.6s	735	  mapped  4760/17396 batch= 8 active_bs= 8 call= 42.2s rate=   9.4 cells/min ETA=22.29h
+30393.4s	736	  mapped  4768/17396 batch= 8 active_bs= 8 call= 33.8s rate=   9.5 cells/min ETA=22.26h
+30428.8s	737	  mapped  4776/17396 batch= 8 active_bs= 8 call= 35.4s rate=   9.5 cells/min ETA=22.24h
+30466.7s	738	  mapped  4784/17396 batch= 8 active_bs= 8 call= 37.8s rate=   9.5 cells/min ETA=22.21h
+30506.2s	739	  mapped  4792/17396 batch= 8 active_bs= 8 call= 39.7s rate=   9.5 cells/min ETA=22.19h
+30540.9s	740	  mapped  4800/17396 batch= 8 active_bs= 8 call= 34.7s rate=   9.5 cells/min ETA=22.16h
+30566.9s	741	  mapped  4808/17396 batch= 8 active_bs= 8 call= 25.8s rate=   9.5 cells/min ETA=22.13h
+30607.2s	742	  mapped  4816/17396 batch= 8 active_bs= 8 call= 40.2s rate=   9.5 cells/min ETA=22.11h
+30642.4s	743	  mapped  4824/17396 batch= 8 active_bs= 8 call= 35.5s rate=   9.5 cells/min ETA=22.09h
+30680.5s	744	  mapped  4832/17396 batch= 8 active_bs= 8 call= 37.9s rate=   9.5 cells/min ETA=22.06h
+30708.5s	745	  mapped  4840/17396 batch= 8 active_bs= 8 call= 28.0s rate=   9.5 cells/min ETA=22.03h
+30735.4s	746	  mapped  4848/17396 batch= 8 active_bs= 8 call= 26.9s rate=   9.5 cells/min ETA=22.00h
+30763.0s	747	  mapped  4856/17396 batch= 8 active_bs= 8 call= 27.9s rate=   9.5 cells/min ETA=21.97h
+30801.2s	748	  mapped  4864/17396 batch= 8 active_bs= 8 call= 37.9s rate=   9.5 cells/min ETA=21.95h
+30838.5s	749	  mapped  4872/17396 batch= 8 active_bs= 8 call= 37.3s rate=   9.5 cells/min ETA=21.92h
+30875.7s	750	  mapped  4880/17396 batch= 8 active_bs= 8 call= 37.2s rate=   9.5 cells/min ETA=21.90h
+30915.9s	751	  mapped  4888/17396 batch= 8 active_bs= 8 call= 40.4s rate=   9.5 cells/min ETA=21.88h
+30942.8s	752	  mapped  4896/17396 batch= 8 active_bs= 8 call= 26.9s rate=   9.5 cells/min ETA=21.85h
+30970.4s	753	  mapped  4904/17396 batch= 8 active_bs= 8 call= 27.4s rate=   9.5 cells/min ETA=21.82h
+31013.6s	754	  mapped  4912/17396 batch= 8 active_bs= 8 call= 43.5s rate=   9.5 cells/min ETA=21.80h
+31041.4s	755	  mapped  4920/17396 batch= 8 active_bs= 8 call= 27.8s rate=   9.6 cells/min ETA=21.77h
+31081.1s	756	  mapped  4928/17396 batch= 8 active_bs= 8 call= 39.7s rate=   9.6 cells/min ETA=21.75h
+31118.7s	757	  mapped  4936/17396 batch= 8 active_bs= 8 call= 37.3s rate=   9.6 cells/min ETA=21.73h
+31155.3s	758	  mapped  4944/17396 batch= 8 active_bs= 8 call= 36.6s rate=   9.6 cells/min ETA=21.70h
+31196.5s	759	  mapped  4952/17396 batch= 8 active_bs= 8 call= 41.4s rate=   9.6 cells/min ETA=21.68h
+31223.9s	760	  mapped  4960/17396 batch= 8 active_bs= 8 call= 27.4s rate=   9.6 cells/min ETA=21.65h
+31261.5s	761	  mapped  4968/17396 batch= 8 active_bs= 8 call= 37.6s rate=   9.6 cells/min ETA=21.63h
+31303.8s	762	  mapped  4976/17396 batch= 8 active_bs= 8 call= 42.3s rate=   9.6 cells/min ETA=21.61h
+31342.3s	763	  mapped  4984/17396 batch= 8 active_bs= 8 call= 38.3s rate=   9.6 cells/min ETA=21.59h
+31385.0s	764	  mapped  4992/17396 batch= 8 active_bs= 8 call= 43.0s rate=   9.6 cells/min ETA=21.57h
+31429.6s	765	  mapped  5000/17396 batch= 8 active_bs= 8 call= 44.6s rate=   9.6 cells/min ETA=21.55h
+31474.8s	766	  mapped  5008/17396 batch= 8 active_bs= 8 call= 45.2s rate=   9.6 cells/min ETA=21.53h
+31513.8s	767	  mapped  5016/17396 batch= 8 active_bs= 8 call= 38.7s rate=   9.6 cells/min ETA=21.51h
+31555.3s	768	  mapped  5024/17396 batch= 8 active_bs= 8 call= 41.5s rate=   9.6 cells/min ETA=21.49h
+31604.2s	769	  mapped  5032/17396 batch= 8 active_bs= 8 call= 48.9s rate=   9.6 cells/min ETA=21.48h
+31647.7s	770	  mapped  5040/17396 batch= 8 active_bs= 8 call= 43.5s rate=   9.6 cells/min ETA=21.46h
+31676.7s	771	  mapped  5048/17396 batch= 8 active_bs= 8 call= 29.0s rate=   9.6 cells/min ETA=21.43h
+31721.9s	772	  mapped  5056/17396 batch= 8 active_bs= 8 call= 45.2s rate=   9.6 cells/min ETA=21.41h
+31761.2s	773	  mapped  5064/17396 batch= 8 active_bs= 8 call= 39.3s rate=   9.6 cells/min ETA=21.39h
+31799.8s	774	  mapped  5072/17396 batch= 8 active_bs= 8 call= 38.6s rate=   9.6 cells/min ETA=21.37h
+31845.6s	775	  mapped  5080/17396 batch= 8 active_bs= 8 call= 45.8s rate=   9.6 cells/min ETA=21.36h
+31891.3s	776	  mapped  5088/17396 batch= 8 active_bs= 8 call= 45.8s rate=   9.6 cells/min ETA=21.34h
+31934.2s	777	  mapped  5096/17396 batch= 8 active_bs= 8 call= 42.9s rate=   9.6 cells/min ETA=21.32h
+31962.6s	778	  mapped  5104/17396 batch= 8 active_bs= 8 call= 28.4s rate=   9.6 cells/min ETA=21.29h
+32002.0s	779	  mapped  5112/17396 batch= 8 active_bs= 8 call= 39.4s rate=   9.6 cells/min ETA=21.27h
+32044.7s	780	  mapped  5120/17396 batch= 8 active_bs= 8 call= 42.7s rate=   9.6 cells/min ETA=21.25h
+32088.2s	781	  mapped  5128/17396 batch= 8 active_bs= 8 call= 43.4s rate=   9.6 cells/min ETA=21.23h
+32126.1s	782	  mapped  5136/17396 batch= 8 active_bs= 8 call= 37.9s rate=   9.6 cells/min ETA=21.21h
+32170.6s	783	  mapped  5144/17396 batch= 8 active_bs= 8 call= 44.5s rate=   9.6 cells/min ETA=21.20h
+32220.1s	784	  mapped  5152/17396 batch= 8 active_bs= 8 call= 49.5s rate=   9.6 cells/min ETA=21.18h
+32260.9s	785	  mapped  5160/17396 batch= 8 active_bs= 8 call= 40.9s rate=   9.6 cells/min ETA=21.16h
+32307.1s	786	  mapped  5168/17396 batch= 8 active_bs= 8 call= 46.3s rate=   9.6 cells/min ETA=21.15h
+32349.7s	787	  mapped  5176/17396 batch= 8 active_bs= 8 call= 42.6s rate=   9.6 cells/min ETA=21.13h
+32393.4s	788	  mapped  5184/17396 batch= 8 active_bs= 8 call= 43.5s rate=   9.6 cells/min ETA=21.11h
+32447.1s	789	  mapped  5192/17396 batch= 8 active_bs= 8 call= 53.9s rate=   9.6 cells/min ETA=21.10h
+32487.5s	790	  mapped  5200/17396 batch= 8 active_bs= 8 call= 40.4s rate=   9.6 cells/min ETA=21.08h
+32528.1s	791	  mapped  5208/17396 batch= 8 active_bs= 8 call= 40.4s rate=   9.6 cells/min ETA=21.06h
+32571.0s	792	  mapped  5216/17396 batch= 8 active_bs= 8 call= 42.9s rate=   9.6 cells/min ETA=21.04h
+32616.8s	793	  mapped  5224/17396 batch= 8 active_bs= 8 call= 45.8s rate=   9.6 cells/min ETA=21.02h
+32659.3s	794	  mapped  5232/17396 batch= 8 active_bs= 8 call= 42.4s rate=   9.7 cells/min ETA=21.00h
+32702.2s	795	  mapped  5240/17396 batch= 8 active_bs= 8 call= 42.9s rate=   9.7 cells/min ETA=20.99h
+32744.7s	796	  mapped  5248/17396 batch= 8 active_bs= 8 call= 42.6s rate=   9.7 cells/min ETA=20.97h
+32789.0s	797	  mapped  5256/17396 batch= 8 active_bs= 8 call= 44.3s rate=   9.7 cells/min ETA=20.95h
+32832.8s	798	  mapped  5264/17396 batch= 8 active_bs= 8 call= 44.0s rate=   9.7 cells/min ETA=20.93h
+32884.0s	799	  mapped  5272/17396 batch= 8 active_bs= 8 call= 51.2s rate=   9.7 cells/min ETA=20.92h
+32928.3s	800	  mapped  5280/17396 batch= 8 active_bs= 8 call= 44.4s rate=   9.7 cells/min ETA=20.90h
+32969.3s	801	  mapped  5288/17396 batch= 8 active_bs= 8 call= 41.0s rate=   9.7 cells/min ETA=20.88h
+33017.0s	802	  mapped  5296/17396 batch= 8 active_bs= 8 call= 47.5s rate=   9.7 cells/min ETA=20.87h
+33047.5s	803	  mapped  5304/17396 batch= 8 active_bs= 8 call= 30.5s rate=   9.7 cells/min ETA=20.84h
+33092.6s	804	  mapped  5312/17396 batch= 8 active_bs= 8 call= 45.1s rate=   9.7 cells/min ETA=20.83h
+33132.7s	805	  mapped  5320/17396 batch= 8 active_bs= 8 call= 40.0s rate=   9.7 cells/min ETA=20.81h
+33171.2s	806	  mapped  5328/17396 batch= 8 active_bs= 8 call= 38.5s rate=   9.7 cells/min ETA=20.79h
+33211.0s	807	  mapped  5336/17396 batch= 8 active_bs= 8 call= 39.9s rate=   9.7 cells/min ETA=20.77h
+33250.5s	808	  mapped  5344/17396 batch= 8 active_bs= 8 call= 39.5s rate=   9.7 cells/min ETA=20.75h
+33290.1s	809	  mapped  5352/17396 batch= 8 active_bs= 8 call= 39.6s rate=   9.7 cells/min ETA=20.73h
+33340.9s	810	  mapped  5360/17396 batch= 8 active_bs= 8 call= 51.1s rate=   9.7 cells/min ETA=20.71h
+33381.8s	811	  mapped  5368/17396 batch= 8 active_bs= 8 call= 40.6s rate=   9.7 cells/min ETA=20.69h
+33422.6s	812	  mapped  5376/17396 batch= 8 active_bs= 8 call= 40.8s rate=   9.7 cells/min ETA=20.67h
+33462.8s	813	  mapped  5384/17396 batch= 8 active_bs= 8 call= 40.3s rate=   9.7 cells/min ETA=20.65h
+33502.3s	814	  mapped  5392/17396 batch= 8 active_bs= 8 call= 39.4s rate=   9.7 cells/min ETA=20.63h
+33540.7s	815	  mapped  5400/17396 batch= 8 active_bs= 8 call= 38.7s rate=   9.7 cells/min ETA=20.61h
+33586.3s	816	  mapped  5408/17396 batch= 8 active_bs= 8 call= 45.3s rate=   9.7 cells/min ETA=20.60h
+33626.0s	817	  mapped  5416/17396 batch= 8 active_bs= 8 call= 39.7s rate=   9.7 cells/min ETA=20.58h
+33670.4s	818	  mapped  5424/17396 batch= 8 active_bs= 8 call= 44.3s rate=   9.7 cells/min ETA=20.56h
+33714.6s	819	  mapped  5432/17396 batch= 8 active_bs= 8 call= 44.3s rate=   9.7 cells/min ETA=20.54h
+33767.3s	820	  mapped  5440/17396 batch= 8 active_bs= 8 call= 52.8s rate=   9.7 cells/min ETA=20.53h
+33812.5s	821	  mapped  5448/17396 batch= 8 active_bs= 8 call= 45.2s rate=   9.7 cells/min ETA=20.52h
+33854.4s	822	  mapped  5456/17396 batch= 8 active_bs= 8 call= 41.9s rate=   9.7 cells/min ETA=20.50h
+33905.9s	823	  mapped  5464/17396 batch= 8 active_bs= 8 call= 51.4s rate=   9.7 cells/min ETA=20.49h
+33957.1s	824	  mapped  5472/17396 batch= 8 active_bs= 8 call= 51.2s rate=   9.7 cells/min ETA=20.47h
+34003.0s	825	  mapped  5480/17396 batch= 8 active_bs= 8 call= 45.9s rate=   9.7 cells/min ETA=20.46h
+34044.7s	826	  mapped  5488/17396 batch= 8 active_bs= 8 call= 41.8s rate=   9.7 cells/min ETA=20.44h
+34086.5s	827	  mapped  5496/17396 batch= 8 active_bs= 8 call= 41.8s rate=   9.7 cells/min ETA=20.42h
+34133.4s	828	  mapped  5504/17396 batch= 8 active_bs= 8 call= 47.0s rate=   9.7 cells/min ETA=20.40h
+34178.5s	829	  mapped  5512/17396 batch= 8 active_bs= 8 call= 44.9s rate=   9.7 cells/min ETA=20.39h
+34226.4s	830	  mapped  5520/17396 batch= 8 active_bs= 8 call= 48.0s rate=   9.7 cells/min ETA=20.37h
+34268.6s	831	  mapped  5528/17396 batch= 8 active_bs= 8 call= 42.2s rate=   9.7 cells/min ETA=20.36h
+34312.2s	832	  mapped  5536/17396 batch= 8 active_bs= 8 call= 43.5s rate=   9.7 cells/min ETA=20.34h
+34354.7s	833	  mapped  5544/17396 batch= 8 active_bs= 8 call= 42.5s rate=   9.7 cells/min ETA=20.32h
+34400.9s	834	  mapped  5552/17396 batch= 8 active_bs= 8 call= 46.3s rate=   9.7 cells/min ETA=20.31h
+34444.5s	835	  mapped  5560/17396 batch= 8 active_bs= 8 call= 43.7s rate=   9.7 cells/min ETA=20.29h
+34488.1s	836	  mapped  5568/17396 batch= 8 active_bs= 8 call= 43.5s rate=   9.7 cells/min ETA=20.27h
+34534.4s	837	  mapped  5576/17396 batch= 8 active_bs= 8 call= 46.5s rate=   9.7 cells/min ETA=20.26h
+34577.5s	838	  mapped  5584/17396 batch= 8 active_bs= 8 call= 42.9s rate=   9.7 cells/min ETA=20.24h
+34621.6s	839	  mapped  5592/17396 batch= 8 active_bs= 8 call= 44.2s rate=   9.7 cells/min ETA=20.22h
+34675.1s	840	  mapped  5600/17396 batch= 8 active_bs= 8 call= 53.5s rate=   9.7 cells/min ETA=20.21h
+34723.5s	841	  mapped  5608/17396 batch= 8 active_bs= 8 call= 48.6s rate=   9.7 cells/min ETA=20.20h
+34768.0s	842	  mapped  5616/17396 batch= 8 active_bs= 8 call= 44.4s rate=   9.7 cells/min ETA=20.18h
+34814.6s	843	  mapped  5624/17396 batch= 8 active_bs= 8 call= 46.4s rate=   9.7 cells/min ETA=20.16h
+34863.1s	844	  mapped  5632/17396 batch= 8 active_bs= 8 call= 48.5s rate=   9.7 cells/min ETA=20.15h
+34910.7s	845	  mapped  5640/17396 batch= 8 active_bs= 8 call= 47.6s rate=   9.7 cells/min ETA=20.14h
+34960.1s	846	  mapped  5648/17396 batch= 8 active_bs= 8 call= 49.6s rate=   9.7 cells/min ETA=20.12h
+35004.2s	847	  mapped  5656/17396 batch= 8 active_bs= 8 call= 43.9s rate=   9.7 cells/min ETA=20.10h
+35055.4s	848	  mapped  5664/17396 batch= 8 active_bs= 8 call= 51.2s rate=   9.7 cells/min ETA=20.09h
+35103.9s	849	  mapped  5672/17396 batch= 8 active_bs= 8 call= 48.5s rate=   9.7 cells/min ETA=20.08h
+35152.2s	850	  mapped  5680/17396 batch= 8 active_bs= 8 call= 48.3s rate=   9.7 cells/min ETA=20.06h
+35202.9s	851	  mapped  5688/17396 batch= 8 active_bs= 8 call= 50.7s rate=   9.7 cells/min ETA=20.05h
+35250.3s	852	  mapped  5696/17396 batch= 8 active_bs= 8 call= 47.4s rate=   9.7 cells/min ETA=20.04h
+35304.8s	853	  mapped  5704/17396 batch= 8 active_bs= 8 call= 54.6s rate=   9.7 cells/min ETA=20.03h
+35351.8s	854	  mapped  5712/17396 batch= 8 active_bs= 8 call= 46.9s rate=   9.7 cells/min ETA=20.01h
+35405.1s	855	  mapped  5720/17396 batch= 8 active_bs= 8 call= 53.3s rate=   9.7 cells/min ETA=20.00h
+35459.4s	856	  mapped  5728/17396 batch= 8 active_bs= 8 call= 54.2s rate=   9.7 cells/min ETA=19.99h
+35512.9s	857	  mapped  5736/17396 batch= 8 active_bs= 8 call= 53.5s rate=   9.7 cells/min ETA=19.98h
+35562.6s	858	  mapped  5744/17396 batch= 8 active_bs= 8 call= 49.7s rate=   9.7 cells/min ETA=19.96h
+35618.9s	859	  mapped  5752/17396 batch= 8 active_bs= 8 call= 56.3s rate=   9.7 cells/min ETA=19.95h
+35675.0s	860	  mapped  5760/17396 batch= 8 active_bs= 8 call= 56.1s rate=   9.7 cells/min ETA=19.94h
+35723.5s	861	  mapped  5768/17396 batch= 8 active_bs= 8 call= 48.5s rate=   9.7 cells/min ETA=19.93h
+35771.3s	862	  mapped  5776/17396 batch= 8 active_bs= 8 call= 48.0s rate=   9.7 cells/min ETA=19.91h
+35823.2s	863	  mapped  5784/17396 batch= 8 active_bs= 8 call= 51.8s rate=   9.7 cells/min ETA=19.90h
+35873.6s	864	  mapped  5792/17396 batch= 8 active_bs= 8 call= 50.3s rate=   9.7 cells/min ETA=19.89h
+35911.7s	865	  mapped  5800/17396 batch= 8 active_bs= 8 call= 38.2s rate=   9.7 cells/min ETA=19.87h
+35962.3s	866	  mapped  5808/17396 batch= 8 active_bs= 8 call= 50.6s rate=   9.7 cells/min ETA=19.86h
+36015.4s	867	  mapped  5816/17396 batch= 8 active_bs= 8 call= 53.1s rate=   9.7 cells/min ETA=19.84h
+36070.5s	868	  mapped  5824/17396 batch= 8 active_bs= 8 call= 55.2s rate=   9.7 cells/min ETA=19.83h
+36108.7s	869	  mapped  5832/17396 batch= 8 active_bs= 8 call= 38.2s rate=   9.7 cells/min ETA=19.81h
+36167.1s	870	  mapped  5840/17396 batch= 8 active_bs= 8 call= 58.2s rate=   9.7 cells/min ETA=19.81h
+36219.6s	871	  mapped  5848/17396 batch= 8 active_bs= 8 call= 52.6s rate=   9.7 cells/min ETA=19.79h
+36275.9s	872	  mapped  5856/17396 batch= 8 active_bs= 8 call= 56.3s rate=   9.7 cells/min ETA=19.78h
+36328.7s	873	  mapped  5864/17396 batch= 8 active_bs= 8 call= 52.8s rate=   9.7 cells/min ETA=19.77h
+36383.4s	874	  mapped  5872/17396 batch= 8 active_bs= 8 call= 54.9s rate=   9.7 cells/min ETA=19.76h
+36436.9s	875	  mapped  5880/17396 batch= 8 active_bs= 8 call= 53.5s rate=   9.7 cells/min ETA=19.75h
+36502.3s	876	  mapped  5888/17396 batch= 8 active_bs= 8 call= 65.1s rate=   9.7 cells/min ETA=19.74h
+36554.6s	877	  mapped  5896/17396 batch= 8 active_bs= 8 call= 52.4s rate=   9.7 cells/min ETA=19.73h
+36605.7s	878	  mapped  5904/17396 batch= 8 active_bs= 8 call= 51.1s rate=   9.7 cells/min ETA=19.72h
+36660.9s	879	  mapped  5912/17396 batch= 8 active_bs= 8 call= 55.2s rate=   9.7 cells/min ETA=19.71h
+36725.9s	880	  mapped  5920/17396 batch= 8 active_bs= 8 call= 65.0s rate=   9.7 cells/min ETA=19.70h
+36782.4s	881	  mapped  5928/17396 batch= 8 active_bs= 8 call= 56.5s rate=   9.7 cells/min ETA=19.69h
+36837.9s	882	  mapped  5936/17396 batch= 8 active_bs= 8 call= 55.5s rate=   9.7 cells/min ETA=19.68h
+36897.4s	883	  mapped  5944/17396 batch= 8 active_bs= 8 call= 59.5s rate=   9.7 cells/min ETA=19.67h
+36952.3s	884	  mapped  5952/17396 batch= 8 active_bs= 8 call= 54.9s rate=   9.7 cells/min ETA=19.66h
+37007.4s	885	  mapped  5960/17396 batch= 8 active_bs= 8 call= 55.0s rate=   9.7 cells/min ETA=19.65h
+37071.0s	886	  mapped  5968/17396 batch= 8 active_bs= 8 call= 63.6s rate=   9.7 cells/min ETA=19.65h
+37135.6s	887	  mapped  5976/17396 batch= 8 active_bs= 8 call= 64.8s rate=   9.7 cells/min ETA=19.64h
+37183.8s	888	  mapped  5984/17396 batch= 8 active_bs= 8 call= 47.9s rate=   9.7 cells/min ETA=19.63h
+37250.4s	889	  mapped  5992/17396 batch= 8 active_bs= 8 call= 66.6s rate=   9.7 cells/min ETA=19.62h
+37306.7s	890	  mapped  6000/17396 batch= 8 active_bs= 8 call= 56.3s rate=   9.7 cells/min ETA=19.61h
+37368.6s	891	  mapped  6008/17396 batch= 8 active_bs= 8 call= 61.9s rate=   9.7 cells/min ETA=19.60h
+37431.7s	892	  mapped  6016/17396 batch= 8 active_bs= 8 call= 63.2s rate=   9.7 cells/min ETA=19.60h
+37492.6s	893	  mapped  6024/17396 batch= 8 active_bs= 8 call= 61.1s rate=   9.7 cells/min ETA=19.59h
+37553.2s	894	  mapped  6032/17396 batch= 8 active_bs= 8 call= 60.4s rate=   9.7 cells/min ETA=19.58h
+37602.2s	895	  mapped  6040/17396 batch= 8 active_bs= 8 call= 49.0s rate=   9.7 cells/min ETA=19.57h
+37652.7s	896	  mapped  6048/17396 batch= 8 active_bs= 8 call= 50.4s rate=   9.7 cells/min ETA=19.55h
+37714.8s	897	  mapped  6056/17396 batch= 8 active_bs= 8 call= 62.1s rate=   9.7 cells/min ETA=19.55h
+37762.4s	898	  mapped  6064/17396 batch= 8 active_bs= 8 call= 47.5s rate=   9.7 cells/min ETA=19.53h
+37813.8s	899	  mapped  6072/17396 batch= 8 active_bs= 8 call= 51.4s rate=   9.7 cells/min ETA=19.52h
+37863.7s	900	  mapped  6080/17396 batch= 8 active_bs= 8 call= 49.9s rate=   9.7 cells/min ETA=19.51h
+37914.9s	901	  mapped  6088/17396 batch= 8 active_bs= 8 call= 51.1s rate=   9.7 cells/min ETA=19.49h
+37965.4s	902	  mapped  6096/17396 batch= 8 active_bs= 8 call= 50.6s rate=   9.7 cells/min ETA=19.48h
+38030.5s	903	  mapped  6104/17396 batch= 8 active_bs= 8 call= 65.1s rate=   9.7 cells/min ETA=19.47h
+38101.7s	904	  mapped  6112/17396 batch= 8 active_bs= 8 call= 71.2s rate=   9.7 cells/min ETA=19.47h
+38151.5s	905	  mapped  6120/17396 batch= 8 active_bs= 8 call= 49.8s rate=   9.7 cells/min ETA=19.46h
+38213.8s	906	  mapped  6128/17396 batch= 8 active_bs= 8 call= 62.3s rate=   9.7 cells/min ETA=19.45h
+38261.9s	907	  mapped  6136/17396 batch= 8 active_bs= 8 call= 48.1s rate=   9.7 cells/min ETA=19.43h
+38328.9s	908	  mapped  6144/17396 batch= 8 active_bs= 8 call= 67.1s rate=   9.7 cells/min ETA=19.43h
+38390.5s	909	  mapped  6152/17396 batch= 8 active_bs= 8 call= 61.6s rate=   9.6 cells/min ETA=19.42h
+38391.5s	910	  batch CUDA OOM: n=8 token_budget=3584; trying smaller context...
+38392.2s	911	  batch CUDA OOM: n=8 token_budget=3072; trying smaller context...
+38393.2s	912	  batch CUDA OOM: n=8 token_budget=2560; trying smaller context...
+38394.2s	913	  batch CUDA OOM: n=8 token_budget=2048; trying smaller context...
+38425.1s	914	  mapped  6160/17396 batch= 8 active_bs= 8 call= 34.8s rate=   9.7 cells/min ETA=19.40h
+38475.3s	915	  mapped  6168/17396 batch= 8 active_bs= 8 call= 49.9s rate=   9.7 cells/min ETA=19.39h
+38545.2s	916	  mapped  6176/17396 batch= 8 active_bs= 8 call= 69.9s rate=   9.6 cells/min ETA=19.38h
+38608.1s	917	  mapped  6184/17396 batch= 8 active_bs= 8 call= 63.1s rate=   9.6 cells/min ETA=19.38h
+38657.1s	918	  mapped  6192/17396 batch= 8 active_bs= 8 call= 48.8s rate=   9.6 cells/min ETA=19.36h
+38720.8s	919	  mapped  6200/17396 batch= 8 active_bs= 8 call= 63.9s rate=   9.6 cells/min ETA=19.36h
+38768.8s	920	  mapped  6208/17396 batch= 8 active_bs= 8 call= 47.8s rate=   9.6 cells/min ETA=19.34h
+38846.7s	921	  mapped  6216/17396 batch= 8 active_bs= 8 call= 77.9s rate=   9.6 cells/min ETA=19.34h
+38896.8s	922	  mapped  6224/17396 batch= 8 active_bs= 8 call= 50.1s rate=   9.6 cells/min ETA=19.33h
+38962.9s	923	  mapped  6232/17396 batch= 8 active_bs= 8 call= 66.3s rate=   9.6 cells/min ETA=19.32h
+39033.3s	924	  mapped  6240/17396 batch= 8 active_bs= 8 call= 70.3s rate=   9.6 cells/min ETA=19.32h
+39101.7s	925	  mapped  6248/17396 batch= 8 active_bs= 8 call= 68.4s rate=   9.6 cells/min ETA=19.31h
+39168.8s	926	  mapped  6256/17396 batch= 8 active_bs= 8 call= 66.9s rate=   9.6 cells/min ETA=19.31h
+39232.8s	927	  mapped  6264/17396 batch= 8 active_bs= 8 call= 64.0s rate=   9.6 cells/min ETA=19.30h
+39297.3s	928	  mapped  6272/17396 batch= 8 active_bs= 8 call= 64.5s rate=   9.6 cells/min ETA=19.29h
+39346.8s	929	  mapped  6280/17396 batch= 8 active_bs= 8 call= 49.7s rate=   9.6 cells/min ETA=19.28h
+39413.4s	930	  mapped  6288/17396 batch= 8 active_bs= 8 call= 66.5s rate=   9.6 cells/min ETA=19.27h
+39478.7s	931	  mapped  6296/17396 batch= 8 active_bs= 8 call= 65.1s rate=   9.6 cells/min ETA=19.27h
+39545.8s	932	  mapped  6304/17396 batch= 8 active_bs= 8 call= 67.1s rate=   9.6 cells/min ETA=19.26h
+39610.9s	933	  mapped  6312/17396 batch= 8 active_bs= 8 call= 65.3s rate=   9.6 cells/min ETA=19.26h
+39659.9s	934	  mapped  6320/17396 batch= 8 active_bs= 8 call= 49.0s rate=   9.6 cells/min ETA=19.24h
+39712.0s	935	  mapped  6328/17396 batch= 8 active_bs= 8 call= 52.1s rate=   9.6 cells/min ETA=19.23h
+39775.1s	936	  mapped  6336/17396 batch= 8 active_bs= 8 call= 62.9s rate=   9.6 cells/min ETA=19.22h
+39839.2s	937	  mapped  6344/17396 batch= 8 active_bs= 8 call= 64.2s rate=   9.6 cells/min ETA=19.21h
+39905.9s	938	  mapped  6352/17396 batch= 8 active_bs= 8 call= 66.7s rate=   9.6 cells/min ETA=19.21h
+39973.4s	939	  mapped  6360/17396 batch= 8 active_bs= 8 call= 67.7s rate=   9.6 cells/min ETA=19.20h
+40022.5s	940	  mapped  6368/17396 batch= 8 active_bs= 8 call= 49.1s rate=   9.6 cells/min ETA=19.19h
+40086.9s	941	  mapped  6376/17396 batch= 8 active_bs= 8 call= 64.4s rate=   9.6 cells/min ETA=19.18h
+40137.2s	942	  mapped  6384/17396 batch= 8 active_bs= 8 call= 50.1s rate=   9.6 cells/min ETA=19.17h
+40201.1s	943	  mapped  6392/17396 batch= 8 active_bs= 8 call= 63.9s rate=   9.6 cells/min ETA=19.16h
+40263.9s	944	  mapped  6400/17396 batch= 8 active_bs= 8 call= 63.0s rate=   9.6 cells/min ETA=19.15h
+40341.2s	945	  mapped  6408/17396 batch= 8 active_bs= 8 call= 77.3s rate=   9.6 cells/min ETA=19.15h
+40406.6s	946	  mapped  6416/17396 batch= 8 active_bs= 8 call= 65.4s rate=   9.6 cells/min ETA=19.14h
+40482.4s	947	  mapped  6424/17396 batch= 8 active_bs= 8 call= 75.9s rate=   9.6 cells/min ETA=19.14h
+40547.7s	948	  mapped  6432/17396 batch= 8 active_bs= 8 call= 65.1s rate=   9.5 cells/min ETA=19.14h
+40603.7s	949	  batch CUDA OOM: n=2 token_budget=3584; trying smaller context...
+40625.3s	950	  mapped  6440/17396 batch= 8 active_bs= 8 call= 77.6s rate=   9.5 cells/min ETA=19.13h
+40688.4s	951	  mapped  6448/17396 batch= 8 active_bs= 8 call= 63.0s rate=   9.5 cells/min ETA=19.13h
+40752.2s	952	  mapped  6456/17396 batch= 8 active_bs= 8 call= 63.8s rate=   9.5 cells/min ETA=19.12h
+40815.2s	953	  mapped  6464/17396 batch= 8 active_bs= 8 call= 63.0s rate=   9.5 cells/min ETA=19.11h
+40877.1s	954	  mapped  6472/17396 batch= 8 active_bs= 8 call= 61.9s rate=   9.5 cells/min ETA=19.10h
+40947.8s	955	  mapped  6480/17396 batch= 8 active_bs= 8 call= 70.7s rate=   9.5 cells/min ETA=19.10h
+41017.9s	956	  mapped  6488/17396 batch= 8 active_bs= 8 call= 70.1s rate=   9.5 cells/min ETA=19.09h
+41061.7s	957	  mapped  6496/17396 batch= 8 active_bs= 8 call= 44.0s rate=   9.5 cells/min ETA=19.08h
+41127.9s	958	  mapped  6504/17396 batch= 8 active_bs= 8 call= 66.2s rate=   9.5 cells/min ETA=19.07h
+41178.1s	959	  mapped  6512/17396 batch= 8 active_bs= 8 call= 50.2s rate=   9.5 cells/min ETA=19.06h
+41233.5s	960	  mapped  6520/17396 batch= 8 active_bs= 8 call= 55.2s rate=   9.5 cells/min ETA=19.04h
+41296.1s	961	  mapped  6528/17396 batch= 8 active_bs= 8 call= 62.6s rate=   9.5 cells/min ETA=19.04h
+41357.9s	962	  mapped  6536/17396 batch= 8 active_bs= 8 call= 62.0s rate=   9.5 cells/min ETA=19.03h
+41420.7s	963	  mapped  6544/17396 batch= 8 active_bs= 8 call= 62.6s rate=   9.5 cells/min ETA=19.02h
+41482.7s	964	  mapped  6552/17396 batch= 8 active_bs= 8 call= 62.1s rate=   9.5 cells/min ETA=19.01h
+41547.0s	965	  mapped  6560/17396 batch= 8 active_bs= 8 call= 64.3s rate=   9.5 cells/min ETA=19.00h
+41608.3s	966	  mapped  6568/17396 batch= 8 active_bs= 8 call= 61.0s rate=   9.5 cells/min ETA=18.99h
+41671.9s	967	  mapped  6576/17396 batch= 8 active_bs= 8 call= 63.7s rate=   9.5 cells/min ETA=18.98h
+41735.9s	968	  mapped  6584/17396 batch= 8 active_bs= 8 call= 64.0s rate=   9.5 cells/min ETA=18.98h
+41798.9s	969	  mapped  6592/17396 batch= 8 active_bs= 8 call= 63.2s rate=   9.5 cells/min ETA=18.97h
+41849.3s	970	  mapped  6600/17396 batch= 8 active_bs= 8 call= 50.2s rate=   9.5 cells/min ETA=18.95h
+41913.4s	971	  mapped  6608/17396 batch= 8 active_bs= 8 call= 64.2s rate=   9.5 cells/min ETA=18.95h
+41957.9s	972	  mapped  6616/17396 batch= 8 active_bs= 8 call= 44.6s rate=   9.5 cells/min ETA=18.93h
+42034.9s	973	  mapped  6624/17396 batch= 8 active_bs= 8 call= 76.8s rate=   9.5 cells/min ETA=18.93h
+42099.2s	974	  mapped  6632/17396 batch= 8 active_bs= 8 call= 64.2s rate=   9.5 cells/min ETA=18.92h
+42164.4s	975	  mapped  6640/17396 batch= 8 active_bs= 8 call= 65.3s rate=   9.5 cells/min ETA=18.91h
+42227.1s	976	  mapped  6648/17396 batch= 8 active_bs= 8 call= 62.9s rate=   9.5 cells/min ETA=18.90h
+42273.4s	977	  mapped  6656/17396 batch= 8 active_bs= 8 call= 46.1s rate=   9.5 cells/min ETA=18.89h
+42351.6s	978	  mapped  6664/17396 batch= 8 active_bs= 8 call= 78.3s rate=   9.5 cells/min ETA=18.89h
+42417.8s	979	  mapped  6672/17396 batch= 8 active_bs= 8 call= 66.2s rate=   9.5 cells/min ETA=18.88h
+42491.7s	980	  mapped  6680/17396 batch= 8 active_bs= 8 call= 73.9s rate=   9.5 cells/min ETA=18.87h
+42536.8s	981	  mapped  6688/17396 batch= 8 active_bs= 8 call= 45.3s rate=   9.5 cells/min ETA=18.86h
+42609.1s	982	  mapped  6696/17396 batch= 8 active_bs= 8 call= 72.2s rate=   9.5 cells/min ETA=18.85h
+42660.8s	983	  mapped  6704/17396 batch= 8 active_bs= 8 call= 51.7s rate=   9.5 cells/min ETA=18.84h
+42711.8s	984	  mapped  6712/17396 batch= 8 active_bs= 8 call= 51.3s rate=   9.5 cells/min ETA=18.83h
+42777.9s	985	  mapped  6720/17396 batch= 8 active_bs= 8 call= 65.9s rate=   9.5 cells/min ETA=18.82h
+42841.0s	986	  mapped  6728/17396 batch= 8 active_bs= 8 call= 63.3s rate=   9.5 cells/min ETA=18.81h
+42911.1s	987	  mapped  6736/17396 batch= 8 active_bs= 8 call= 70.1s rate=   9.4 cells/min ETA=18.80h
+42982.6s	988	  mapped  6744/17396 batch= 8 active_bs= 8 call= 71.5s rate=   9.4 cells/min ETA=18.80h
+43040.7s	989	  mapped  6752/17396 batch= 8 active_bs= 8 call= 57.9s rate=   9.4 cells/min ETA=18.79h
+43108.2s	990	  mapped  6760/17396 batch= 8 active_bs= 8 call= 67.5s rate=   9.4 cells/min ETA=18.78h
+43156.2s	991	  mapped  6768/17396 batch= 8 active_bs= 8 call= 48.0s rate=   9.4 cells/min ETA=18.77h
+43207.4s	992	Timeout waiting for execute reply (43200s).
+43210.8s	993	Traceback (most recent call last):
+43210.8s	994	  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 730, in _async_poll_for_reply
+43210.8s	995	    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+43210.8s	996	          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43210.8s	997	  File "/usr/local/lib/python3.12/dist-packages/nbclient/util.py", line 96, in ensure_async
+43210.8s	998	    result = await obj
+43210.8s	999	             ^^^^^^^^^
+43210.8s	1000	  File "/usr/local/lib/python3.12/dist-packages/jupyter_client/channels.py", line 230, in get_msg
+43210.8s	1001	    raise Empty
+43210.8s	1002	_queue.Empty
+43210.8s	1003	
+43210.8s	1004	During handling of the above exception, another exception occurred:
+43210.8s	1005	
+43210.8s	1006	Traceback (most recent call last):
+43210.8s	1007	  File "<string>", line 1, in <module>
+43210.8s	1008	  File "/usr/local/lib/python3.12/dist-packages/papermill/execute.py", line 116, in execute_notebook
+43210.8s	1009	    nb = papermill_engines.execute_notebook_with_engine(
+43210.8s	1010	         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43210.8s	1011	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 49, in execute_notebook_with_engine
+43210.8s	1012	    return self.get_engine(engine_name).execute_notebook(nb, kernel_name, **kwargs)
+43210.8s	1013	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43210.8s	1014	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 371, in execute_notebook
+43210.8s	1015	    cls.execute_managed_notebook(nb_man, kernel_name, log_output=log_output, **kwargs)
+43210.8s	1016	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 443, in execute_managed_notebook
+43210.8s	1017	    return PapermillNotebookClient(nb_man, **final_kwargs).execute()
+43210.8s	1018	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43210.8s	1019	  File "/usr/local/lib/python3.12/dist-packages/papermill/clientwrap.py", line 45, in execute
+43210.8s	1020	    self.papermill_execute_cells()
+43210.8s	1021	  File "/usr/local/lib/python3.12/dist-packages/papermill/clientwrap.py", line 72, in papermill_execute_cells
+43210.8s	1022	    self.execute_cell(cell, index)
+43210.8s	1023	  File "/usr/local/lib/python3.12/dist-packages/nbclient/util.py", line 84, in wrapped
+43210.8s	1024	    return just_run(coro(*args, **kwargs))
+43210.8s	1025	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43210.8s	1026	  File "/usr/local/lib/python3.12/dist-packages/nbclient/util.py", line 62, in just_run
+43210.8s	1027	    return loop.run_until_complete(coro)
+43210.8s	1028	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43210.8s	1029	  File "/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+43210.8s	1030	    return future.result()
+43210.8s	1031	           ^^^^^^^^^^^^^^^
+43210.8s	1032	  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 949, in async_execute_cell
+43210.8s	1033	    exec_reply = await self.task_poll_for_reply
+43210.8s	1034	                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43210.8s	1035	  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 754, in _async_poll_for_reply
+43210.8s	1036	    await self._async_handle_timeout(timeout, cell)
+43210.8s	1037	  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 801, in _async_handle_timeout
+43210.8s	1038	    raise CellTimeoutError.error_from_timeout_and_cell(
+43210.8s	1039	nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 43200 seconds.
+43210.8s	1040	The message was: Cell execution timed out.
+43210.8s	1041	Here is a preview of the cell contents:
+43210.8s	1042	-------------------
+43210.8s	1043	['#!/usr/bin/env python3', '"""', 'RSNA Knee Abnormality Detection', 'W2.6-P — Batched Production Report Teacher', '']
+43210.8s	1044	...
+43210.8s	1045	['    ', '#     # 3. Create a clickable download link in the notebook output', '#     display(FileLink(file_name))', '# else:', '#     print(f"Error: The directory {folder_to_zip} does not exist.")']
+43210.8s	1046	-------------------
+43210.8s	1047

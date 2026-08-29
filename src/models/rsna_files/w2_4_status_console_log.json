@@ -1,0 +1,60 @@
+{
+  "experiment": "RSNA W2.4 High-Fidelity Fold-Safe Report Supervision",
+  "train_csv": "/kaggle/input/competitions/rsna-knee-abnormality-detection/train.csv",
+  "train_csv_exists": true,
+  "output_root": "/kaggle/working/rsna_w2_4",
+  "public_dataset_hint": "pilkwang/rsna-knee-llm-labels",
+  "config": {
+    "platt_C": 0.1,
+    "quality_shrink_n": 20.0,
+    "min_train_weight": 0.12,
+    "high_selection_weight": 0.5,
+    "silence_negative_weight_cap": 0.35,
+    "disagreement_weight_cap": 0.55
+  },
+  "counts": {
+    "train": 4407,
+    "gold": 58,
+    "unlabeled": 4349
+  },
+  "w23_root": "/kaggle/input/datasets/isayem/rsna-w2-3/rsna_w2_3",
+  "fold_sha256": "1d9959b027c055974325f4de59e26974b036ae8b2c1b63aa417d3eef7aaf9f4a",
+  "fold_sha256_match": true,
+  "public_teacher_error": "FileNotFoundError(\"Could not auto-detect the public LLM teacher file. Attach Kaggle dataset 'pilkwang/rsna-knee-llm-labels', then run inspect_public, or set W24_PUBLIC_FILE explicitly.\")",
+  "teacher3": {
+    "path": "/kaggle/input/datasets/isayem/w24-teacher3-file/report_labels_v2.csv",
+    "schema": {
+      "format": "wide",
+      "uid_column": "StudyInstanceUID",
+      "label_columns": {
+        "ACL": "ACL",
+        "MCL": "MCL",
+        "Medial Meniscus": "Medial Meniscus",
+        "Lateral Meniscus": "Lateral Meniscus",
+        "Medial OA": "Medial OA",
+        "Lateral OA": "Lateral OA",
+        "PF OA": "PF OA",
+        "Effusion": "Effusion",
+        "Synovitis": "Synovitis",
+        "Baker's": "Baker's",
+        "Contusion": "Contusion",
+        "Fracture": "Fracture"
+      },
+      "confidence_columns": {
+        "ACL": "ACL__conf",
+        "MCL": "MCL__conf",
+        "Medial Meniscus": "Medial Meniscus__conf",
+        "Lateral Meniscus": "Medial Meniscus__conf",
+        "Medial OA": "Medial OA__conf",
+        "Lateral OA": "Lateral OA__conf",
+        "PF OA": "PF OA__conf",
+        "Effusion": "Effusion__conf",
+        "Synovitis": "Synovitis__conf",
+        "Baker's": "Baker's__conf",
+        "Contusion": "Contusion__conf",
+        "Fracture": "Fracture__conf"
+      }
+    },
+    "rows": 4406
+  }
+}

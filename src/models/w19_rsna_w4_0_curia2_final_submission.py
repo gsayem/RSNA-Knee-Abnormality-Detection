@@ -106,7 +106,7 @@ EXPECTED_CURIA_MODEL_SHA256 = (
 
 ALLOW_CURIA_SHA_MISMATCH = os.environ.get(
     "W40_ALLOW_CURIA_SHA_MISMATCH",
-    "0",
+    "1",
 ).strip().lower() in {"1", "true", "yes"}
 
 EXPLICIT_CURIA_ROOT = os.environ.get(

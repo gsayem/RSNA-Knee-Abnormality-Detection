@@ -1,0 +1,13 @@
+OuterFold,Label,UnlabeledStudies,PseudoLabelGatePass,PseudoLabelGateReason,EvidenceAvailableN,SoftLabelAvailableN,SoftLabelCoverage,MeanProbabilityAvailable,MedianProbabilityAvailable,StdProbabilityAvailable,SelectionScoreN_ge_0.5,RuleStructuredN,SemanticRecoveredN
+3,ACL,4349,True,pass,1588,1588,0.36514141181880894,0.33571526828368087,0.19343935773130216,0.273074303625177,1274,2427,0
+3,MCL,4349,True,pass,1611,1611,0.37042998390434584,0.3049080194721355,0.21814912967823102,0.1598072704919118,1202,2242,0
+3,Medial Meniscus,4349,True,pass,2453,2453,0.564037709818349,0.5445365599228901,0.6761107256932222,0.29054825202556633,1695,2901,3
+3,Lateral Meniscus,4349,True,pass,2599,2599,0.5976086456656703,0.3537369042268334,0.21064434694618653,0.24206523285448756,2124,3135,3
+3,Medial OA,4349,False,insufficient_evidence_n|evidence_auc_below_gate|evidence_brier_not_better_than_prior,342,0,0.0,,,,0,333,9
+3,Lateral OA,4349,False,insufficient_evidence_n|evidence_auc_below_gate|evidence_brier_not_better_than_prior,207,0,0.0,,,,0,201,6
+3,PF OA,4349,False,insufficient_evidence_n|evidence_auc_below_gate|evidence_brier_not_better_than_prior,830,0,0.0,,,,0,797,33
+3,Effusion,4349,True,pass,3132,3132,0.720165555300069,0.5035675897432755,0.5769356125579498,0.19894447177338628,987,3132,0
+3,Synovitis,4349,False,insufficient_evidence_n|evidence_auc_below_gate|evidence_brier_not_better_than_prior,460,0,0.0,,,,0,460,0
+3,Baker's,4349,True,pass,1644,1644,0.3780179351575075,0.5111066742835166,0.5458055401609383,0.23352715451637956,838,1644,0
+3,Contusion,4349,True,pass,1662,1662,0.382156817659232,0.4325365673166171,0.44075040792636366,0.1807011147717165,245,1662,0
+3,Fracture,4349,True,pass,859,859,0.1975166704989653,0.3730178572727399,0.22202607447671352,0.23384394792802696,522,857,2

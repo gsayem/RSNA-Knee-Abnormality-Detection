@@ -1,0 +1,53 @@
+{
+  "created_at": "2026-08-28T18:09:00.714851+00:00",
+  "is_kaggle": false,
+  "script_dir": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/src/models",
+  "project_root": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection",
+  "data_root": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/input",
+  "output_root": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/output/results/rsna_w6_curia",
+  "accelerator": "cuda",
+  "device": "cuda:0",
+  "precision": "torch.bfloat16",
+  "teacher_weight_mode": "recommended",
+  "spatial_grid": 3,
+  "paths": {
+    "w26_root": {
+      "ok": true,
+      "value": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/output/results/rsna_w2_6p_fast"
+    },
+    "external_w4_cache": {
+      "ok": true,
+      "value": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/output/results/rsna_w4_0_curia2/feature_cache/studies"
+    },
+    "curia_root": {
+      "ok": true,
+      "value": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/models/curia-2-model"
+    },
+    "train_csv": {
+      "ok": true,
+      "value": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/input/train.csv"
+    },
+    "train_series_csv": {
+      "ok": true,
+      "value": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/input/train_series.csv"
+    },
+    "train_series_root": {
+      "ok": true,
+      "value": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/input/train_series"
+    },
+    "sample_submission": {
+      "ok": true,
+      "value": "/media/sayem/980/gsayem/RSNA-Knee-Abnormality-Detection/input/sample_submission.csv"
+    }
+  },
+  "train_table_validation": {
+    "ok": true,
+    "rows": 4407,
+    "fold_sha256": "1d9959b027c055974325f4de59e26974b036ae8b2c1b63aa417d3eef7aaf9f4a"
+  },
+  "teacher_validation": {
+    "ok": true,
+    "rows": 4349,
+    "selected_cells": 32027
+  }
+}

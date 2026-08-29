@@ -1,0 +1,171 @@
+========================================================================================
+RSNA W3.1 - FOLD-SAFE CONSERVATIVE WEAK SUPERVISION
+========================================================================================
+Device                     : cuda:0
+CUDA GPU count             : 2
+W3.0 feature cache         : /kaggle/working/rsna_w3_0/feature_cache
+W2.3 root                  : /kaggle/working/rsna_w2_3
+Output                     : /kaggle/working/rsna_w3_1
+Pseudo lambda              : 0.25
+Selection threshold        : 0.5
+Pseudo studies/gold step   : 1
+Pseudo target              : continuous probability
+Pseudo loss weighting      : NONE beyond global lambda
+Epoch length               : gold loader length
+Outer fold SHA256: 1d9959b027c055974325f4de59e26974b036ae8b2c1b63aa417d3eef7aaf9f4a
+Expected V4/W2.3 SHA256: 1d9959b027c055974325f4de59e26974b036ae8b2c1b63aa417d3eef7aaf9f4a
+W2.3 outer fold assignments: EXACT MATCH.
+W3.0 cached studies: 4407/4407
+
+
+########################################################################################
+OUTER IMAGE FOLD 1/5
+########################################################################################
+Gold train/validation studies: 47 / 11
+Fold 1 W2.3 high-selection pool: 3484 studies, 8809 selected cells
+Fold 1 Epoch 01/12: gold=1.1209 pseudo=0.7078 total=1.2978 val_auc=0.6057 val_ap=0.5347 val_f1=0.2120
+Fold 1 Epoch 02/12: gold=1.0272 pseudo=0.7135 total=1.2055 val_auc=0.5240 val_ap=0.5034 val_f1=0.2418
+Fold 1 Epoch 03/12: gold=1.0027 pseudo=0.6981 total=1.1772 val_auc=0.5531 val_ap=0.5228 val_f1=0.2916
+Fold 1 Epoch 04/12: gold=0.9856 pseudo=0.6727 total=1.1537 val_auc=0.5431 val_ap=0.5281 val_f1=0.1526
+Fold 1 Epoch 05/12: gold=0.9808 pseudo=0.6721 total=1.1488 val_auc=0.5151 val_ap=0.5263 val_f1=0.2998
+Fold 1 Epoch 06/12: gold=0.9593 pseudo=0.6920 total=1.1323 val_auc=0.5321 val_ap=0.5300 val_f1=0.2114
+Fold 1 Epoch 07/12: gold=0.9669 pseudo=0.6826 total=1.1376 val_auc=0.5483 val_ap=0.5355 val_f1=0.3157
+Fold 1 Epoch 08/12: gold=0.9621 pseudo=0.6938 total=1.1355 val_auc=0.5198 val_ap=0.5198 val_f1=0.2447
+Fold 1 Epoch 09/12: gold=0.9459 pseudo=0.6874 total=1.1177 val_auc=0.5220 val_ap=0.5387 val_f1=0.1883
+Fold 1 Epoch 10/12: gold=0.9261 pseudo=0.6744 total=1.0947 val_auc=0.5202 val_ap=0.5305 val_f1=0.1564
+Fold 1 Epoch 11/12: gold=0.9394 pseudo=0.6704 total=1.1069 val_auc=0.5325 val_ap=0.5348 val_f1=0.1883
+Fold 1 Epoch 12/12: gold=0.9236 pseudo=0.6706 total=1.0912 val_auc=0.5274 val_ap=0.5249 val_f1=0.1883
+Fold 1 final: AUROC=0.5274 AP=0.5249 F1=0.1883
+
+
+########################################################################################
+OUTER IMAGE FOLD 2/5
+########################################################################################
+Gold train/validation studies: 46 / 12
+Fold 2 W2.3 high-selection pool: 3444 studies, 8333 selected cells
+Fold 2 Epoch 01/12: gold=1.1029 pseudo=0.7405 total=1.2880 val_auc=0.4688 val_ap=0.4329 val_f1=0.0485
+Fold 2 Epoch 02/12: gold=1.0065 pseudo=0.7080 total=1.1835 val_auc=0.5121 val_ap=0.4471 val_f1=0.3764
+Fold 2 Epoch 03/12: gold=0.9670 pseudo=0.6708 total=1.1347 val_auc=0.5432 val_ap=0.4566 val_f1=0.3274
+Fold 2 Epoch 04/12: gold=0.9586 pseudo=0.6766 total=1.1277 val_auc=0.5406 val_ap=0.4708 val_f1=0.2826
+Fold 2 Epoch 05/12: gold=0.9747 pseudo=0.6742 total=1.1433 val_auc=0.5457 val_ap=0.4831 val_f1=0.3842
+Fold 2 Epoch 06/12: gold=0.9528 pseudo=0.6764 total=1.1219 val_auc=0.5518 val_ap=0.4896 val_f1=0.2367
+Fold 2 Epoch 07/12: gold=0.9505 pseudo=0.6579 total=1.1150 val_auc=0.5404 val_ap=0.4777 val_f1=0.2304
+Fold 2 Epoch 08/12: gold=0.9391 pseudo=0.6715 total=1.1070 val_auc=0.5494 val_ap=0.5070 val_f1=0.2648
+Fold 2 Epoch 09/12: gold=0.9384 pseudo=0.6864 total=1.1100 val_auc=0.5445 val_ap=0.4905 val_f1=0.1824
+Fold 2 Epoch 10/12: gold=0.9237 pseudo=0.6653 total=1.0901 val_auc=0.5478 val_ap=0.4941 val_f1=0.2058
+Fold 2 Epoch 11/12: gold=0.9301 pseudo=0.6680 total=1.0971 val_auc=0.5519 val_ap=0.5014 val_f1=0.2410
+Fold 2 Epoch 12/12: gold=0.9197 pseudo=0.6674 total=1.0865 val_auc=0.5513 val_ap=0.4958 val_f1=0.2699
+Fold 2 final: AUROC=0.5513 AP=0.4958 F1=0.2699
+
+
+########################################################################################
+OUTER IMAGE FOLD 3/5
+########################################################################################
+Gold train/validation studies: 47 / 11
+Fold 3 W2.3 high-selection pool: 3484 studies, 8887 selected cells
+Fold 3 Epoch 01/12: gold=1.1002 pseudo=0.7308 total=1.2829 val_auc=0.4549 val_ap=0.4985 val_f1=0.2623
+Fold 3 Epoch 02/12: gold=1.0035 pseudo=0.7113 total=1.1813 val_auc=0.5159 val_ap=0.5349 val_f1=0.3716
+Fold 3 Epoch 03/12: gold=0.9840 pseudo=0.6644 total=1.1501 val_auc=0.5149 val_ap=0.5606 val_f1=0.1969
+Fold 3 Epoch 04/12: gold=0.9457 pseudo=0.6826 total=1.1164 val_auc=0.5106 val_ap=0.5742 val_f1=0.2126
+Fold 3 Epoch 05/12: gold=0.9499 pseudo=0.6777 total=1.1193 val_auc=0.4966 val_ap=0.5705 val_f1=0.2212
+Fold 3 Epoch 06/12: gold=0.9630 pseudo=0.6788 total=1.1327 val_auc=0.4925 val_ap=0.5580 val_f1=0.3003
+Fold 3 Epoch 07/12: gold=0.9568 pseudo=0.6955 total=1.1307 val_auc=0.5113 val_ap=0.5654 val_f1=0.3051
+Fold 3 Epoch 08/12: gold=0.9322 pseudo=0.6748 total=1.1009 val_auc=0.5139 val_ap=0.5954 val_f1=0.3551
+Fold 3 Epoch 09/12: gold=0.9195 pseudo=0.6982 total=1.0941 val_auc=0.5139 val_ap=0.5880 val_f1=0.4229
+Fold 3 Epoch 10/12: gold=0.8902 pseudo=0.6930 total=1.0635 val_auc=0.5100 val_ap=0.5821 val_f1=0.3938
+Fold 3 Epoch 11/12: gold=0.8891 pseudo=0.7015 total=1.0645 val_auc=0.5065 val_ap=0.5881 val_f1=0.4086
+Fold 3 Epoch 12/12: gold=0.8787 pseudo=0.7010 total=1.0540 val_auc=0.5191 val_ap=0.5910 val_f1=0.3938
+Fold 3 final: AUROC=0.5191 AP=0.5910 F1=0.3938
+
+
+########################################################################################
+OUTER IMAGE FOLD 4/5
+########################################################################################
+Gold train/validation studies: 47 / 11
+Fold 4 W2.3 high-selection pool: 3419 studies, 8604 selected cells
+Fold 4 Epoch 01/12: gold=1.0960 pseudo=0.6906 total=1.2687 val_auc=0.5417 val_ap=0.5370 val_f1=0.2113
+Fold 4 Epoch 02/12: gold=0.9999 pseudo=0.7097 total=1.1773 val_auc=0.5812 val_ap=0.5211 val_f1=0.1655
+Fold 4 Epoch 03/12: gold=0.9528 pseudo=0.6940 total=1.1263 val_auc=0.6241 val_ap=0.5785 val_f1=0.1690
+Fold 4 Epoch 04/12: gold=0.9649 pseudo=0.6926 total=1.1380 val_auc=0.6032 val_ap=0.5643 val_f1=0.2199
+Fold 4 Epoch 05/12: gold=0.9720 pseudo=0.6765 total=1.1412 val_auc=0.6116 val_ap=0.5594 val_f1=0.4046
+Fold 4 Epoch 06/12: gold=0.9696 pseudo=0.6804 total=1.1397 val_auc=0.6558 val_ap=0.6024 val_f1=0.1783
+Fold 4 Epoch 07/12: gold=0.9388 pseudo=0.6773 total=1.1081 val_auc=0.6482 val_ap=0.5622 val_f1=0.2817
+Fold 4 Epoch 08/12: gold=0.9499 pseudo=0.6741 total=1.1185 val_auc=0.6396 val_ap=0.5613 val_f1=0.2714
+Fold 4 Epoch 09/12: gold=0.9294 pseudo=0.6779 total=1.0988 val_auc=0.6277 val_ap=0.5696 val_f1=0.2877
+Fold 4 Epoch 10/12: gold=0.9298 pseudo=0.6881 total=1.1018 val_auc=0.6141 val_ap=0.5714 val_f1=0.2835
+Fold 4 Epoch 11/12: gold=0.9240 pseudo=0.6600 total=1.0890 val_auc=0.6185 val_ap=0.5722 val_f1=0.2861
+Fold 4 Epoch 12/12: gold=0.9221 pseudo=0.6542 total=1.0857 val_auc=0.6200 val_ap=0.5711 val_f1=0.2783
+Fold 4 final: AUROC=0.6200 AP=0.5711 F1=0.2783
+
+
+########################################################################################
+OUTER IMAGE FOLD 5/5
+########################################################################################
+Gold train/validation studies: 45 / 13
+Fold 5 W2.3 high-selection pool: 3465 studies, 8437 selected cells
+Fold 5 Epoch 01/12: gold=1.0210 pseudo=0.7961 total=1.2200 val_auc=0.6252 val_ap=0.5370 val_f1=0.2658
+Fold 5 Epoch 02/12: gold=0.9679 pseudo=0.6855 total=1.1393 val_auc=0.5964 val_ap=0.5300 val_f1=0.2881
+Fold 5 Epoch 03/12: gold=0.9749 pseudo=0.7279 total=1.1569 val_auc=0.5695 val_ap=0.4822 val_f1=0.2658
+Fold 5 Epoch 04/12: gold=0.9521 pseudo=0.6800 total=1.1221 val_auc=0.5573 val_ap=0.4746 val_f1=0.2044
+Fold 5 Epoch 05/12: gold=0.9376 pseudo=0.6884 total=1.1097 val_auc=0.5554 val_ap=0.4801 val_f1=0.2452
+Fold 5 Epoch 06/12: gold=0.9529 pseudo=0.6908 total=1.1256 val_auc=0.5352 val_ap=0.4725 val_f1=0.2658
+Fold 5 Epoch 07/12: gold=0.9181 pseudo=0.6999 total=1.0930 val_auc=0.5329 val_ap=0.4563 val_f1=0.2148
+Fold 5 Epoch 08/12: gold=0.9268 pseudo=0.6908 total=1.0996 val_auc=0.5539 val_ap=0.4877 val_f1=0.3602
+Fold 5 Epoch 09/12: gold=0.9150 pseudo=0.6704 total=1.0826 val_auc=0.5386 val_ap=0.4748 val_f1=0.2671
+Fold 5 Epoch 10/12: gold=0.9095 pseudo=0.6886 total=1.0817 val_auc=0.5441 val_ap=0.4877 val_f1=0.2676
+Fold 5 Epoch 11/12: gold=0.8929 pseudo=0.6897 total=1.0653 val_auc=0.5404 val_ap=0.4837 val_f1=0.2759
+Fold 5 Epoch 12/12: gold=0.8949 pseudo=0.6867 total=1.0666 val_auc=0.5334 val_ap=0.4875 val_f1=0.2972
+Fold 5 final: AUROC=0.5334 AP=0.4875 F1=0.2972
+
+
+========================================================================================
+W3.1 COMPLETE
+========================================================================================
+
+Epoch-wise pooled OOF:
+ Epoch  OOF_Macro_AUROC  OOF_Macro_AP  OOF_Macro_F1
+     1         0.485377      0.390668      0.324477
+     2         0.502418      0.402333      0.413247
+     3         0.499934      0.369537      0.314509
+     4         0.509502      0.381342      0.319418
+     5         0.502527      0.406959      0.384713
+     6         0.512542      0.396932      0.338622
+     7         0.521835      0.392388      0.339574
+     8         0.516282      0.429022      0.358224
+     9         0.514200      0.410736      0.341152
+    10         0.520334      0.420282      0.333866
+    11         0.525587      0.421893      0.337136
+    12         0.523402      0.426204      0.341625
+
+Final pooled OOF:
+  W3.1 AUROC : 0.523402
+  W3.0 AUROC : 0.545918
+  Delta      : -0.022516
+  W3.1 AP    : 0.426204
+  W3.1 F1    : 0.341625
+
+Practical result: NEGATIVE
+
+Paired descriptive bootstrap (2000 valid):
+  delta AUROC 95% CI: [-0.082698, +0.037468]
+  P(delta > 0): 0.224
+
+Per-label AUROC delta vs W3.0:
+           Label  W3_0_AUROC  W3_1_AUROC  Delta_AUROC
+             ACL    0.498775    0.506127     0.007353
+             MCL    0.401361    0.342404    -0.058957
+ Medial Meniscus    0.580529    0.462740    -0.117788
+Lateral Meniscus    0.580124    0.571429    -0.008696
+       Medial OA    0.607752    0.562791    -0.044961
+      Lateral OA    0.693424    0.696325     0.002901
+           PF OA    0.623552    0.580438    -0.043115
+        Effusion    0.420497    0.524224     0.103727
+       Synovitis    0.454002    0.475508     0.021505
+         Baker's    0.519928    0.469203    -0.050725
+       Contusion    0.587045    0.474359    -0.112686
+        Fracture    0.584028    0.615278     0.031250
+
+Results directory:
+/kaggle/working/rsna_w3_1/results
+
+Runtime: 00:01:57

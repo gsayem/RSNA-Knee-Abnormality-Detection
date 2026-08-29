@@ -1,0 +1,21 @@
+{
+  "variant": "w60",
+  "test_studies": 3,
+  "encoded": 3,
+  "status": "complete",
+  "worker_devices": [
+    "cuda:0"
+  ],
+  "curia_root": "/home/sayem/.cache/rsna_w6/curia-2",
+  "curia_sha256": "403a02e27531d2858ecd1e9b1ec2d5ea7bfa909f10ff0d9e8416090a6a8c96ef",
+  "curia_config": {
+    "model_sha256": "403a02e27531d2858ecd1e9b1ec2d5ea7bfa909f10ff0d9e8416090a6a8c96ef",
+    "hidden_size": 768,
+    "num_channels": 1,
+    "image_size": 512,
+    "patch_size": 16,
+    "num_hidden_layers": 12,
+    "num_attention_heads": 12
+  },
+  "elapsed_seconds": 6.245494604110718
+}

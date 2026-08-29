@@ -1,0 +1,61 @@
+OuterFold,Label,Source,SourceFoldSafeForOOF,SelectedCellN,SelectedStudyFraction,MeanSoftTargetSelected
+1,ACL,W2.3 exact outer-fold target/mask,True,1256,0.2888020234536675,0.308541476726532
+1,MCL,W2.3 exact outer-fold target/mask,True,1254,0.28834214762014254,0.2565450668334961
+1,Medial Meniscus,W2.3 exact outer-fold target/mask,True,1638,0.3766383076569326,0.5592585206031799
+1,Lateral Meniscus,W2.3 exact outer-fold target/mask,True,2031,0.467003908944585,0.30179792642593384
+1,Medial OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.38132238388061523
+1,Lateral OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.30309101939201355
+1,PF OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.4657103419303894
+1,Effusion,W2.3 exact outer-fold target/mask,True,830,0.19084847091285354,0.27474167943000793
+1,Synovitis,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.3540878891944885
+1,Baker's,W2.3 exact outer-fold target/mask,True,548,0.12600597838583583,0.6683103442192078
+1,Contusion,W2.3 exact outer-fold target/mask,True,662,0.15221890089675788,0.32969504594802856
+1,Fracture,W2.3 exact outer-fold target/mask,True,590,0.13566337088985975,0.2836073040962219
+2,ACL,W2.3 exact outer-fold target/mask,True,1309,0.3009887330420786,0.34009209275245667
+2,MCL,W2.3 exact outer-fold target/mask,True,1205,0.2770751896987813,0.23942328989505768
+2,Medial Meniscus,W2.3 exact outer-fold target/mask,True,1694,0.38951483099563117,0.5793673992156982
+2,Lateral Meniscus,W2.3 exact outer-fold target/mask,True,1800,0.41388825017245345,0.30488884449005127
+2,Medial OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.38132238388061523
+2,Lateral OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.30309101939201355
+2,PF OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.4657103419303894
+2,Effusion,W2.3 exact outer-fold target/mask,True,968,0.22257990342607495,0.23152858018875122
+2,Synovitis,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.3540878891944885
+2,Baker's,W2.3 exact outer-fold target/mask,True,844,0.19406760174752816,0.4270440340042114
+2,Contusion,W2.3 exact outer-fold target/mask,True,0,0.0,
+2,Fracture,W2.3 exact outer-fold target/mask,True,513,0.11795815129914923,0.24565009772777557
+3,ACL,W2.3 exact outer-fold target/mask,True,1274,0.292940905955392,0.30456992983818054
+3,MCL,W2.3 exact outer-fold target/mask,True,1202,0.2763853759484939,0.23776529729366302
+3,Medial Meniscus,W2.3 exact outer-fold target/mask,True,1695,0.3897447689123937,0.5552549362182617
+3,Lateral Meniscus,W2.3 exact outer-fold target/mask,True,2124,0.48838813520349506,0.3138428330421448
+3,Medial OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.38132238388061523
+3,Lateral OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.30309101939201355
+3,PF OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.4657103419303894
+3,Effusion,W2.3 exact outer-fold target/mask,True,987,0.22694872384456197,0.3482516407966614
+3,Synovitis,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.3540878891944885
+3,Baker's,W2.3 exact outer-fold target/mask,True,838,0.19268797424695333,0.4328264892101288
+3,Contusion,W2.3 exact outer-fold target/mask,True,245,0.056334789606806164,0.4066004455089569
+3,Fracture,W2.3 exact outer-fold target/mask,True,522,0.1200275925500115,0.28453361988067627
+4,ACL,W2.3 exact outer-fold target/mask,True,1308,0.30075879512531617,0.3066908121109009
+4,MCL,W2.3 exact outer-fold target/mask,True,1197,0.27523568636468154,0.22766661643981934
+4,Medial Meniscus,W2.3 exact outer-fold target/mask,True,1595,0.36675097723614625,0.5500738024711609
+4,Lateral Meniscus,W2.3 exact outer-fold target/mask,True,2153,0.4950563347896068,0.2956666350364685
+4,Medial OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.38132238388061523
+4,Lateral OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.30309101939201355
+4,PF OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.4657103419303894
+4,Effusion,W2.3 exact outer-fold target/mask,True,881,0.2025753046677397,0.34317052364349365
+4,Synovitis,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.3540878891944885
+4,Baker's,W2.3 exact outer-fold target/mask,True,890,0.204644745918602,0.47281384468078613
+4,Contusion,W2.3 exact outer-fold target/mask,True,0,0.0,
+4,Fracture,W2.3 exact outer-fold target/mask,True,580,0.133363991722235,0.2960633635520935
+5,ACL,W2.3 exact outer-fold target/mask,True,1257,0.28903196137042997,0.30769428610801697
+5,MCL,W2.3 exact outer-fold target/mask,True,1190,0.27362612094734423,0.2316790372133255
+5,Medial Meniscus,W2.3 exact outer-fold target/mask,True,1862,0.42814440101172685,0.5449060797691345
+5,Lateral Meniscus,W2.3 exact outer-fold target/mask,True,1462,0.3361692343067372,0.3747611343860626
+5,Medial OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.38132238388061523
+5,Lateral OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.30309101939201355
+5,PF OA,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.4657103419303894
+5,Effusion,W2.3 exact outer-fold target/mask,True,999,0.22970797884571165,0.3821674585342407
+5,Synovitis,W2.6-P final all-58 50/50 hybrid,False,4349,1.0,0.3540878891944885
+5,Baker's,W2.3 exact outer-fold target/mask,True,500,0.11496895838123707,0.7122830748558044
+5,Contusion,W2.3 exact outer-fold target/mask,True,725,0.16670498965279373,0.3372819125652313
+5,Fracture,W2.3 exact outer-fold target/mask,True,442,0.10163255920901357,0.38462522625923157

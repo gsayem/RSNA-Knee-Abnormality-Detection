@@ -1,0 +1,15 @@
+{
+  "cache_version": "w4_0_curia2_cls_allseries_24slice_canonical_orientation_slow_processor_v1",
+  "cache_complete": true,
+  "test_studies": 3,
+  "cached_studies": 3,
+  "encoded_series": 15,
+  "encoded_slices": 360,
+  "mean_series_per_study": 5.0,
+  "mean_slices_per_study": 120.0,
+  "curia_model_sha256": "403a02e27531d2858ecd1e9b1ec2d5ea7bfa909f10ff0d9e8416090a6a8c96ef",
+  "minimum_orientation_alignment": 0.9669094367754172,
+  "series_plane_matches": 15,
+  "series_audit_rows": 15,
+  "runtime_seconds_this_call": 25.442617893218994
+}

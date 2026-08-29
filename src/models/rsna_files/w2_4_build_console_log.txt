@@ -1,0 +1,70 @@
+================================================================================================
+RSNA W2.4 — HIGH-FIDELITY FOLD-SAFE REPORT SUPERVISION
+================================================================================================
+Train studies          : 4407
+Gold / unlabeled       : 58 / 4349
+W2.3 root              : /kaggle/input/datasets/isayem/rsna-w2-3/rsna_w2_3
+Public teacher         : /kaggle/input/datasets/isayem/w24-teacher3-file/report_labels_v2.csv
+Outer fold SHA256      : 1d9959b027c055974325f4de59e26974b036ae8b2c1b63aa417d3eef7aaf9f4a
+Held-out gold is NEVER used to fit W2.4 calibrators or source weights.
+
+------------------------------------------------------------------------------------------------
+W2.4 OUTER FOLD 1/5
+------------------------------------------------------------------------------------------------
+Outer-train gold       : 47
+Heldout gold           : 11
+W2.3 heldout macro AUC : 0.780506
+W2.4 heldout macro AUC : 0.830605
+Unlabeled available    : 48073/52188 cells (92.1%)
+Unlabeled high-quality : 2780/52188 cells (5.3%)
+
+------------------------------------------------------------------------------------------------
+W2.4 OUTER FOLD 2/5
+------------------------------------------------------------------------------------------------
+Outer-train gold       : 46
+Heldout gold           : 12
+W2.3 heldout macro AUC : 0.822280
+W2.4 heldout macro AUC : 0.906330
+Unlabeled available    : 48038/52188 cells (92.0%)
+Unlabeled high-quality : 1579/52188 cells (3.0%)
+
+------------------------------------------------------------------------------------------------
+W2.4 OUTER FOLD 3/5
+------------------------------------------------------------------------------------------------
+Outer-train gold       : 47
+Heldout gold           : 11
+W2.3 heldout macro AUC : 0.798446
+W2.4 heldout macro AUC : 0.905985
+Unlabeled available    : 47078/52188 cells (90.2%)
+Unlabeled high-quality : 2530/52188 cells (4.8%)
+
+------------------------------------------------------------------------------------------------
+W2.4 OUTER FOLD 4/5
+------------------------------------------------------------------------------------------------
+Outer-train gold       : 47
+Heldout gold           : 11
+W2.3 heldout macro AUC : 0.853786
+W2.4 heldout macro AUC : 0.892791
+Unlabeled available    : 47063/52188 cells (90.2%)
+Unlabeled high-quality : 2564/52188 cells (4.9%)
+
+------------------------------------------------------------------------------------------------
+W2.4 OUTER FOLD 5/5
+------------------------------------------------------------------------------------------------
+Outer-train gold       : 45
+Heldout gold           : 13
+W2.3 heldout macro AUC : 0.786836
+W2.4 heldout macro AUC : 0.811723
+Unlabeled available    : 48460/52188 cells (92.9%)
+Unlabeled high-quality : 1742/52188 cells (3.3%)
+
+================================================================================================
+W2.4 BUILD COMPLETE
+================================================================================================
+W2.3 macro AUROC       : 0.771243
+W2.4 macro AUROC       : 0.849857
+W2.4 - W2.3           : +0.078614
+Bootstrap 95% CI       : [+0.043022, +0.111923] P(delta>0)=1.000
+primary_teacher       : 0.870040 macro AUROC
+Output root            : /kaggle/working/rsna_w2_4
+Do NOT feed W2.4 into W6 until these OOF diagnostics are reviewed.
