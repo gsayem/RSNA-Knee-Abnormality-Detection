@@ -734,7 +734,7 @@ def discover_curia_root() -> Path:
     candidates.extend(
         [
             CURIA_DOWNLOAD_ROOT,
-            PROJECT_ROOT / "models" / "curia-2",
+            PROJECT_ROOT / "models" / "curia-2-model",
             PROJECT_ROOT / "models" / "raidium-curia-2",
             DATA_ROOT / "models" / "curia-2",
             Path("/kaggle/working/curia-2"),
@@ -3071,6 +3071,7 @@ def cache_w61(accelerator: Optional[str] = None) -> Dict[str, Any]:
                 okay = False
         if okay:
             existing += 1
+            log(f"existing {existing}")
         else:
             need.append(uid)
 
@@ -5031,30 +5032,56 @@ def run_w6(mode: str, accelerator: Optional[str] = None):
 
 
 def _cli() -> None:
-    parser = argparse.ArgumentParser(description="RSNA W6 Curia pipeline")
-    parser.add_argument(
-        "mode",
-        choices=[
-            "status",
-            "check_curia",
-            "prepare_curia",
-            "validate_teacher",
-            "cache_w60",
-            "train_w60_cv",
-            "train_w60_full",
-            "cache_w61",
-            "train_w61_cv",
-            "train_w61_full",
-            "submit",
-        ],
-    )
-    parser.add_argument(
-        "--accelerator", default=None, help="auto/localGPU/kaggle_t4/apple_mps/cpu"
-    )
-    args = parser.parse_args()
-    result = run_w6(args.mode, args.accelerator)
-    if isinstance(result, Path):
-        print(result)
+    # parser = argparse.ArgumentParser(description="RSNA W6 Curia pipeline")
+    # parser.add_argument(
+    #     "mode",
+    #     choices=[
+    #         "status",
+    #         "check_curia",
+    #         "prepare_curia",
+    #         "validate_teacher",
+    #         "cache_w60",
+    #         "train_w60_cv",
+    #         "train_w60_full",
+    #         "cache_w61",
+    #         "train_w61_cv",
+    #         "train_w61_full",
+    #         "submit",
+    #     ],
+    # )
+    # parser.add_argument(
+    #     "--accelerator", default=None, help="auto/localGPU/kaggle_t4/apple_mps/cpu"
+    # )
+    # args = parser.parse_args()
+    # result = run_w6(args.mode, args.accelerator)
+    # if isinstance(result, Path):
+    #     print(result)
+    # log("\n" + "=" * 96)
+    # log("STATUS")
+    # log("=" * 96)
+    # result = run_w6("status", "localGPU")
+    # log("\n" + "=" * 96)
+    # log("check_curia")
+    # log("=" * 96)
+    # result = run_w6("check_curia", "localGPU")
+
+    # log("\n" + "=" * 96)
+    # log("validate_teacher")
+    # log("=" * 96)
+    # result = run_w6("validate_teacher", "localGPU")
+
+    # log("\n" + "=" * 96)
+    # log("cache_w61")
+    # log("=" * 96)
+    # result = run_w6("cache_w61", "localGPU")
+    log("\n" + "=" * 96)
+    log("train_w61_cv")
+    log("=" * 96)
+    result = run_w6("train_w61_cv", "localGPU")
+
+    # result = run_w6("train_w60_full", "localGPU")
+    # result = run_w6("submit", "localGPU")
+    print(result)
 
 
 if __name__ == "__main__":
